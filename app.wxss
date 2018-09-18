@@ -1,10 +1,10 @@
-/* @import 'style/weui.wxss'; */
-@import 'style/font.wxss';
+@import 'style/colorui.wxss';
+@import 'style/icon.wxss';
 
 /* reset */
 
 page {
-  background-color: #f8f8f8;
+  background-color: #ededed;
   height: 100%;
   font-size: 32rpx;
   line-height: 1.6;
@@ -60,16 +60,51 @@ form {
   align-items: center;
   justify-content: space-between;
 }
+
 .center-h {
   justify-content: space-between;
 }
+
 .center-v {
   align-items: center;
 }
+
 .weight1 {
   flex: 1;
 }
 
 .weight2 {
   flex: 2;
+}
+
+.ml {
+  margin-left: 32rpx;
+}
+
+.mll {
+  margin-left: 8rpx;
+}
+
+.lfont {
+  font-size: 24rpx;
+}
+
+.martch-parent {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-conner-mini {
+  border-radius: 1em;
+  background: linear-gradient(#3552f4, #23359F);
+  text-align: center;
+  color: white;
+  width: 6em;
+  padding: 8rpx;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.debug {
+  background-color: red;
 }

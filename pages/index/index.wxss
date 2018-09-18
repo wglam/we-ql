@@ -12,29 +12,59 @@
 
 .nickname {
   color: #333;
-  padding-left: 24rpx;
+}
+
+.vipname {
+  display: flex;
+  color: #666;
+  font-size: 24rpx;
 }
 
 .user-step {
   width: 100%;
   height: 64rpx;
-  padding: 10rpx;
+  /* padding: 10rpx;
   border-width: 2rpx;
   border-color: #eee;
-  border-style: solid;
-}
-
-.top {
-  padding: 48rpx 0rpx 48rpx 48rpx;
-  height: 260rpx;
-  /* border-bottom: 1rpx solid #eee; */
+  border-style: solid; */
 }
 
 .banner {
-  height: 260rpx;
-  border: 1rpx solid #dcdcdc;
+  height: 30%;
   background-color: #fff;
-  box-shadow: 12rpx 8rpx 12rpx #dcdcdc;
-  margin: -120rpx 72rpx 0rpx;
-  position: relative;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32rpx;
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner-item {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.top {
+  padding: 64rpx 0rpx;
+}
+.mt{
+  margin-top: 32rpx;
+}
+.mb{
+  margin-bottom: 32rpx;
+}
+
+.mr{
+  margin-right: 32rpx;
+}
+.ml{
+  margin-left: 32rpx; 
 }
