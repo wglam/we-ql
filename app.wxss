@@ -77,18 +77,30 @@ form {
   flex: 2;
 }
 
-.ml {
-  margin-left: 32rpx;
+.mt{
+  margin-top: 32rpx;
+}
+.mb{
+  margin-bottom: 32rpx;
 }
 
-.mll {
+.mr{
+  margin-right: 32rpx;
+}
+.ml{
+  margin-left: 32rpx; 
+}
+
+.ml-min {
   margin-left: 8rpx;
 }
 
-.lfont {
+.font-min {
   font-size: 24rpx;
 }
-
+.font-large {
+  font-size: 48rpx;
+}
 .martch-parent {
   width: 100%;
   height: 100%;

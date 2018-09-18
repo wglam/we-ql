@@ -55,16 +55,3 @@
 .top {
   padding: 64rpx 0rpx;
 }
-.mt{
-  margin-top: 32rpx;
-}
-.mb{
-  margin-bottom: 32rpx;
-}
-
-.mr{
-  margin-right: 32rpx;
-}
-.ml{
-  margin-left: 32rpx; 
-}

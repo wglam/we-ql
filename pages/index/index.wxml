@@ -4,8 +4,8 @@
     <view class='flex col center-h ml'>
       <view class='nickname weight2 '>{{user.name}}</view>
       <view class='flex'>
-        <view class='iconfont icon-vip lfont' style="{{user.vip?'color:#FF9900;':'color:#3366FF;'}}" />
-        <view class='vipname lfont mll'> {{user.vipname}}</view>
+        <view class='iconfont icon-vip font-min' style="{{user.vip?'color:#FF9900;':'color:#3366FF;'}}" />
+        <view class='vipname font-min ml-min'> {{user.vipname}}</view>
       </view>
     </view>
 
@@ -23,20 +23,16 @@
     </swiper-item>
   </block>
 </swiper>
-<view class="body flex col mt">
-  <view class="weui-media-box weui-media-box_text">
-    <view class="weui-media-box__title weui-media-box__title_in-text">标题一</view>
-    <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
-  </view>
-  <view class="btn-conner-mini mb mr" hover-class="weui-cell_active">立即前往</view>
 
-  <view class='order-item'>
-    <view class='order-bar justify-between'>
-      <view class='ml-sm'>喵星酱的杂货铺</view>
+<view class='goods-list-li mt'>
+  <view class='goods-list-text'>
+    <view class='goods-list-top'>
+      <view class='text-lg font-large'>会员问卷</view>
+      <view class='gray-text font-min'>Member of the questionnaire</view>
     </view>
-    
-    <view class='flex p-sm justify-end'>
-      <view class='btn-conner-mini'>立即前往</view>
+    <view class='goods-list-foot'>
+      <view />
+      <view class='btn-conner-mini font-min'>立即前往</view>
     </view>
   </view>
 </view>
