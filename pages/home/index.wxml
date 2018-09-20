@@ -10,9 +10,10 @@
       </view>
     </view>
   </view>
-
   <view class='flex-1 user-step'>
+222
   </view>
+
 </view>
 
 <swiper class='banner pl pr pb' indicator-dots autoplay circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#3756FE'>

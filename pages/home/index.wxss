@@ -15,6 +15,17 @@
 .user-step {
   width: 100%;
   height: 64rpx;
+  background-color: #cfdfff;
+  border-top-left-radius: 50% 2.5em;
+  border-bottom-left-radius: 50% 2.5em;
+}
+
+.user-step ::before {
+  content: '1';
+  width: 64rpx;
+  height: 64rpx;
+  background-color: #23359f;
+  /* border-radius: 50%; */
 }
 
 .banner {
