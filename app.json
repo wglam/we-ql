@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home2/home",
     "pages/home/index"
   ],
   "window": {

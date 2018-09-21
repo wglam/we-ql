@@ -26,7 +26,7 @@
 </swiper>
 
 <!--  -->
-<view class='body flex-col m radius' hover-class='hover' hidden='{{user.vip}}'>
+<view class='body flex-col m radius card' hover-class='hover' hidden='{{user.vip}}'>
   <view class='flex-col mt ml mr'>
     <view class='text-lg font-l'>成为会员</view>
     <view class='grays-text font-min'>Member</view>
