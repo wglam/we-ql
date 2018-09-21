@@ -1,0 +1,128 @@
+.mt {
+  margin-top: 24rpx;
+}
+
+.mb {
+  margin-bottom: 24rpx;
+}
+
+.mr {
+  margin-right: 24rpx;
+}
+
+.ml {
+  margin-left: 24rpx;
+}
+
+.m {
+  margin: 24rpx;
+}
+/*  */
+.dmt {
+  margin-top: 48rpx;
+}
+
+.dmb {
+  margin-bottom: 48rpx;
+}
+
+.dmr {
+  margin-right: 48rpx;
+}
+
+.dml {
+  margin-left: 48rpx;
+}
+
+.dm {
+  margin: 48rpx;
+}
+/*  */
+
+.pt {
+  padding-top: 24rpx;
+}
+
+.pb {
+  padding-bottom: 24rpx;
+}
+
+.pr {
+  padding-right: 24rpx;
+}
+
+.pl {
+  padding-left: 24rpx;
+}
+
+.p {
+  padding: 24rpx;
+}
+/*  */
+
+.dpt {
+  padding-top: 48rpx;
+}
+
+.dpb {
+  padding-bottom: 48rpx;
+}
+
+.dpr {
+  padding-right: 48rpx;
+}
+
+.dpl {
+  padding-left: 48rpx;
+}
+
+.dp {
+  padding: 48rpx;
+}
+/*  */
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-c {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-h {
+  justify-content: space-between;
+}
+
+.flex-v {
+  align-items: center;
+}
+
+.font-min {
+  font-size: 24rpx;
+}
+.font-l {
+  font-size: 36rpx;
+}
+
+.radius {
+  border-radius: 6rpx;
+}
+
+image {
+  height: 240rpx;
+  will-change: transform;
+}
