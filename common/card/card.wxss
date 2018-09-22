@@ -5,7 +5,15 @@
 .card {
   position: relative;
   background-color: white;
-  height: 300rpx;
+  height: 360rpx;
+}
+
+.card-shadow {
+  box-shadow: 0rpx 1rpx 20rpx 2rpx rgba(0, 0, 0, 0.2);
+}
+
+.card-hover {
+  box-shadow: 0rpx 1rpx 20rpx 2rpx rgba(0, 0, 0, 0.1);
 }
 
 .card-img {
@@ -36,12 +44,12 @@
 }
 
 .progress-shew {
-  background: #e6e6e6;
+  background: #e6e6e680;
   transform: skew(-10deg);
   height: 16rpx;
 }
 
 .progress-bar {
-  background: linear-gradient(#FFCE76, #ffa000);
+  background: linear-gradient(#ffce76, #ffa000);
   height: 100%;
 }

@@ -1,6 +1,6 @@
-<view class="{{bottom?'body m round':'body ml mr mt round'}}" hover-class='hover' hover-start-time='10'>
-  <view class='card'>
-    <image class='card-img round-top' src='{{url}}' mode="aspectFill" />
+<view class="body radius card-shadow {{bottom?'m':'ml mr mt'}}" hover-class='hover card-hover' hover-start-time='10'>
+  <view class='card radius'>
+    <image class='card-img radius-top' src='{{url}}' mode="aspectFill" />
     <view class="card-info pl pt">
       <view class='white-text font-l'>{{title}}</view>
       <view class='white-text font-min'>{{info}}</view>
@@ -11,7 +11,7 @@
         <view class='white-text font-min'>{{ progress+'%'}}</view>
       </view>
       <view class="progress-shew" style='margin-left:2em;margin-right:2em;'>
-        <view class="progress-bar" style="{{'width:'+progress+'%;'}}" />
+        <view class="progress-bar" style="width:{{progress}}%;" />
       </view>
     </view>
   </view>

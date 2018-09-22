@@ -1,0 +1,61 @@
+.user {
+  background-image: url(http://image.weilanwl.com/img/swiper-bg.png);
+  background-size: cover;
+}
+
+.user-info {
+  position: absolute;
+  top: 0rpx;
+  width: 100%;
+}
+
+.user-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  border-width: 2rpx;
+  border-color: #eee;
+  border-style: solid;
+}
+
+.user-step {
+  width: 100%;
+  height: 64rpx;
+  background-color: #cfdfff;
+  border-top-left-radius: 50% 2.5em;
+  border-bottom-left-radius: 50% 2.5em;
+}
+
+.top {
+  height: 29%;
+  background-color: white;
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 72rpx;
+}
+
+.banner {
+  background-color: white;
+  height: 360rpx;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: -48rpx;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-shadow {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0rpx 1rpx 20rpx 2rpx rgba(0, 0, 0, 0.3);
+}

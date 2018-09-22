@@ -7,7 +7,7 @@ Page({
   data: {
     user: {
       name: "张三丰",
-      avatarUrl: "http://imgsrc.baidu.com/imgad/pic/item/c83d70cf3bc79f3d5f29c12eb0a1cd11738b29e7.jpg",
+      avatarUrl: "http://image.weilanwl.com/img/square-3.jpg",
       vip: true,
       vipname: '普通会员'
     },

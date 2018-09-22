@@ -128,12 +128,12 @@
   font-size: 36rpx;
 }
 
-.round {
-  border-radius: 6rpx;
+.radius {
+  border-radius: 5px;
 }
 
-.round-top {
-  border-radius: 6rpx 6rpx 0rpx 0rpx;
+.radius-top {
+  border-radius: 5px 5px 0rpx 0rpx;
 }
 
 .black_text {
@@ -163,4 +163,10 @@
 
 .debug {
   background-color: red;
+}
+.round {
+  border-radius: 1000rpx;
+}
+.bg-trans{
+  background-color: transparent;
 }
