@@ -1,5 +1,5 @@
 <view class='body flex flex-c dpt dpb user'>
-  <view class='flex flex-v flex-2 '>
+  <view class='flex flex-v flex-2'>
     <image class="ml user-avatar" src="{{user.avatarUrl}}" mode="widthFix" />
     <view class='flex-col flex-h ml'>
       <view class='text-b flex-1 font-l'>{{user.name}}</view>
@@ -9,8 +9,14 @@
       </view>
     </view>
   </view>
-  <view class='flex-1 user-step'>
-
+  <view class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
+    <view class='user-step-icon'>
+      <view class='iconfont icon-zuji align' style='font-size: 48rpx;' />
+    </view>
+    <view class='flex flex-v'>
+      <view style='text-align: center;'> {{step}}</view>
+      <view style='color:#A49697;margin-left:3rpx;'>步</view>
+    </view>
   </view>
 </view>
 <view class='banner pl pr pb'>

@@ -18,14 +18,6 @@
   border-style: solid;
 }
 
-.user-step {
-  width: 100%;
-  height: 64rpx;
-  background-color: #cfdfff;
-  border-top-left-radius: 50% 2.5em;
-  border-bottom-left-radius: 50% 2.5em;
-}
-
 .top {
   height: 29%;
   background-color: white;
@@ -58,4 +50,29 @@
   width: 100%;
   height: 100%;
   box-shadow: 0rpx 1rpx 20rpx 2rpx rgba(0, 0, 0, 0.3);
+}
+
+.user-step {
+  width: 100%;
+  height: 60rpx;
+  background: linear-gradient(180deg,#EEDECF, #E5CFCB);
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  text-align: center;
+  color: #ffa000;
+}
+
+.user-step-icon {
+  width: 90rpx;
+  height: 90rpx;
+  background: linear-gradient(#ebb774, #e88b12);
+  border-radius: 2em;
+  color: #e3cac6;
+  display: flex;
+  align-items: center;
+}
+
+.align {
+  width: 100%;
+  text-align: center;
 }

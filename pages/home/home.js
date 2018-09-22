@@ -22,7 +22,8 @@ Page({
       image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537262850940&di=19c04f38fb61236f689b6d7b9b120574&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fproducts%2F20150425%2Ftooopen_89347611.jpg'
     }],
     process: 60,
-    image: 'http://image.weilanwl.com/img/4x3-1.jpg'
+    image: 'http://image.weilanwl.com/img/4x3-1.jpg',
+    step:313245
   },
 
   /**
