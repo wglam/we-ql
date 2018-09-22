@@ -1,22 +1,47 @@
 /* common/card.wxss */
 @import '/style/my.wxss';
+@import '/style/icon.wxss';
 
 .card {
-  background-color: #fff;
+  position: relative;
+  background-color: white;
+  height: 300rpx;
 }
 
 .card-img {
   width: 100%;
-  height: 244rpx;
+  height: 100%;
 }
 
 .card-info {
   position: absolute;
-  top: 0;
+  top: 0rpx;
   width: 100%;
 }
 
+.card-pro {
+  position: absolute;
+  right: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+}
 
-.relative{
-position: relative;
+.btn {
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  color: #ffa000;
+  font-size: 32rpx;
+  justify-content: center;
+}
+
+.progress-shew {
+  background: #e6e6e6;
+  transform: skew(-10deg);
+  height: 16rpx;
+}
+
+.progress-bar {
+  background: linear-gradient(#FFCE76, #ffa000);
+  height: 100%;
 }

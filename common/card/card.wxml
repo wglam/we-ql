@@ -1,15 +1,22 @@
-<!-- <view class='body m radius'>
-  <image class='card-img' src='{{url}}' mode='aspectFill' />
-  <view class='card-info flex-col p debug'>
-    
+<view class="{{bottom?'body m round':'body ml mr mt round'}}" hover-class='hover' hover-start-time='10'>
+  <view class='card'>
+    <image class='card-img round-top' src='{{url}}' mode="aspectFill" />
+    <view class="card-info pl pt">
+      <view class='white-text font-l'>{{title}}</view>
+      <view class='white-text font-min'>{{info}}</view>
+    </view>
+    <view class='card-pro dmb' hidden='{{progress<0}}'>
+      <view class='flex-col' style='margin-left:2em;margin-right:2em;align-items: flex-end;'>
+        <view class='white-text font-min'>{{progressName}}</view>
+        <view class='white-text font-min'>{{ progress+'%'}}</view>
+      </view>
+      <view class="progress-shew" style='margin-left:2em;margin-right:2em;'>
+        <view class="progress-bar" style="{{'width:'+progress+'%;'}}" />
+      </view>
+    </view>
   </view>
-
-  <view bindtap='eatingClick'>+ 饮食打卡</view>
-</view> -->
-<view class="relative">
-  <image class='card-img' src="http://image.weilanwl.com/img/4x3-1.jpg" mode="aspectFill" />
-  <view class="card-info">
-    <view class='text-lg font-l'>饮食计划</view>
-    <view class='gray-text font-min'>Eating plan</view>
+  <view class='btn' bindtap='onClick'>
+    <view class='iconfont icon-add' />
+    <view class='hml'> {{btn}}</view>
   </view>
 </view>

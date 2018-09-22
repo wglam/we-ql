@@ -6,7 +6,7 @@
 page {
   background-color: #ededed;
   height: 100%;
-  font-size: 32rpx;
+  font-size: 30rpx;
   line-height: 1.6;
 }
 

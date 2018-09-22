@@ -17,7 +17,9 @@
 .m {
   margin: 24rpx;
 }
+
 /*  */
+
 .dmt {
   margin-top: 48rpx;
 }
@@ -37,6 +39,11 @@
 .dm {
   margin: 48rpx;
 }
+
+.hml {
+  margin-left: 12rpx;
+}
+
 /*  */
 
 .pt {
@@ -58,6 +65,7 @@
 .p {
   padding: 24rpx;
 }
+
 /*  */
 
 .dpt {
@@ -79,6 +87,7 @@
 .dp {
   padding: 48rpx;
 }
+
 /*  */
 
 .flex-col {
@@ -114,26 +123,39 @@
 .font-min {
   font-size: 24rpx;
 }
+
 .font-l {
   font-size: 36rpx;
 }
 
-.radius {
+.round {
   border-radius: 6rpx;
 }
-.black_text{
-  color: #333333;
+
+.round-top {
+  border-radius: 6rpx 6rpx 0rpx 0rpx;
 }
-.gray-text{
-  color: #aaaaaa;
+
+.black_text {
+  color: #333;
+}
+
+.gray-text {
+  color: #aaa;
+}
+
+.white-text {
+  color: white;
 }
 
 .body {
   background-color: #fff;
 }
+
 .hover {
   background-color: #f6f6f6;
 }
+
 .martch-parent {
   width: 100%;
   height: 100%;
