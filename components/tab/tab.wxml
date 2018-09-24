@@ -15,11 +15,11 @@
 
   <view class="tab-slider" style="background-color:{{active}}; width: {{100/tabs.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
 
-  <swiper current='{{current}}' class='tab-content' bindchange='onChange'>
-    <swiper-item wx:for="{{tabs}}" wx:key="*this">
+  <swiper current='{{current}}' class='tab-content' bindchange='onChange' duration='200'>
+    <swiper-item wx:for="{{tabs}}" wx:key="*this" style='overflow-y: auto ;'>
       <slot name='{{index}}' />
     </swiper-item>
   </swiper>
-  <!-- style='overflow-y: auto ;' -->
-  <!-- <slot name='bottom' /> -->
+  <!-- -->
+  <slot name='bottom' />
 </view>

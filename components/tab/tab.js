@@ -53,6 +53,7 @@ Component({
       this.setData({
         current: i
       });
+      this.triggerEvent('Tab',i);
     }
   }
 })
