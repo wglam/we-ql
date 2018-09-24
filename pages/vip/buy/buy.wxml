@@ -1,0 +1,4 @@
+<tab tabs='{{tabs}}'>
+  <buyinfo slot='0' />
+  <buyinfo slot='1' vip />
+</tab>
