@@ -1,0 +1,12 @@
+<view style="width:100%; height:100%; display: flex;flex-direction:column;">
+  <view class='content'>
+    <view class='title'>{{vip?'VIP会员':'普通会员'}}</view>
+    <view wx:for="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" wx:key="*this">
+      <view>{{item}}</view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <navigator class='btn success block lg'>拼团</navigator>
+    <navigator class='btn success block lg'>立即购买</navigator>
+  </view>
+</view>
