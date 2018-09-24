@@ -1,0 +1,24 @@
+<view style="width:100%; height:100%; display: flex;flex-direction:column;">
+  <!-- <view class="tab">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" bindtap="tabClick" class='tab-item' style='background:{{current==index?background.active:background.def}};'>
+        <view style="color:{{current==index?title.active:title.def}};">{{item}}</view>
+      </view>
+    </block>
+  </view> -->
+
+  <view class="tab">
+    <view id='{{index}}' class='tab-item' bindtap="tabClick" wx:for="{{tabs}}" wx:key="*this">
+      <view style="color:{{current==index?active:normal}};">{{item}}</view>
+    </view>
+  </view>
+  <view class="tab-slider" style="background-color:{{active}}; width: {{100/tabs.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
+
+  <swiper current='{{current}}' class='tab-content' bindchange='onChange'>
+    <swiper-item wx:for="{{tabs}}" wx:key="*this" style='overflow-y: auto ;'>
+      <slot name='{{index}}' />
+    </swiper-item>
+  </swiper>
+
+  <slot name='bottom' />
+</view>

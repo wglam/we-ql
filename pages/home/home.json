@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-      "card": "../common/card/card"
+      "card": "../components/card/card"
      
     }
 }

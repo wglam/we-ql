@@ -31,7 +31,7 @@
 </view>
 
 
-<card url='{{image}}' btn='立即前往' progressName='完成进度' title='111' info='222' progress='60' bindClick="eatingClick" />
+<card url='{{image}}' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
 <card url='{{image}}' btn='立即前往' />
 <card url='{{image}}' btn='立即前往' />
 <card url='{{image}}' btn='立即前往' />

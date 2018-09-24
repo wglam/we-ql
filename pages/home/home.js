@@ -82,9 +82,9 @@ Page({
 
   },
 
-  eatingClick: function () {
+  join: function () {
     wx.showToast({
-      title: 'eating',
+      title: 'join',
     })
   }
 })
