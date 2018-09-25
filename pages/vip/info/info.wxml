@@ -1,9 +1,9 @@
-<view style="width:100%; height:100%; display: flex;flex-direction:column;">
-  <view class='content'>
+<bottom>
+  <view slot='content'>
     <view wx:for='123456789qwertyuiopasdfghjk' wx:key='{{index}}'>
       {{item}}</view>
   </view>
-  <view class='bottom'>
+  <view class='bottom' slot="bottom">
     <view class='bottom-text' style='width:25%' hover-class='hover' hover-start-time='10'>
       咨询
     </view>
@@ -15,4 +15,4 @@
       立即购买
     </view>
   </view>
-</view>
+</bottom>

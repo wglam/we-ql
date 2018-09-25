@@ -1,0 +1,6 @@
+<view style="width:100%; height:100%; display: flex;flex-direction:column;">
+  <view style='width:100%;flex:1;overflow-y: auto;'>
+    <slot name='content' />
+  </view>
+  <slot name='bottom' />
+</view>

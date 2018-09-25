@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/vip/info/info",
     "pages/training/schedule/index",
     "pages/vip/buy/buy",
     "pages/home/home"
