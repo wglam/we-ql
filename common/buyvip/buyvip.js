@@ -23,7 +23,7 @@ Component({
       period: '6个月',
       money: '369'
     }],
-    detials: [{
+    vipinfos: [{
       url: 'http://image.weilanwl.com/img/4x3-1.jpg',
       name: '专业全方位系统评估'
     }, {

@@ -1,5 +1,5 @@
 <tab tabs='{{tabs}}' bindTab='tabChange'>
-  <buyinfo wx:for="{{tabs}}" wx:key="*this" slot='{{index}}' name='{{item}}'/>
+  <buyvip wx:for="{{tabs}}" wx:key="*this" slot='{{index}}' name='{{item}}'/>
   <view class='bottom' slot='bottom'>
     <navigator class='bottom-btn' hover-start-time='10' open-type='navigateBack'>拼团</navigator>
     <navigator class='bottom-btn' hover-start-time='10' open-type='navigateBack'>立即购买</navigator>
