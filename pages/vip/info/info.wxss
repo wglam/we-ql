@@ -1,0 +1,23 @@
+.content {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.bottom {
+  /* position: fixed;
+  bottom: 0; */
+  width: 100%;
+  background: white;
+  display: flex;
+}
+
+.bottom-text {
+  display: inline-flex;
+  min-height: 120rpx;
+  justify-content: center;
+  align-items: center;
+  border-right: 2rpx solid #f8f8f8;
+  border-top: 2rpx solid #f8f8f8;
+  text-align: center;
+}
