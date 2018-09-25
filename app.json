@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/training/schedule/index",
     "pages/vip/buy/buy",
     "pages/home/home"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

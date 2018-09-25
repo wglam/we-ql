@@ -1,0 +1,13 @@
+.demo4-calendar {
+  background-color: white;
+  padding-top: 10px;
+}
+
+.demo4-header {
+  font-size: large;
+  color: #333333;
+}
+
+.demo4-board {
+  color: #333333;
+}

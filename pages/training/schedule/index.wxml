@@ -1,0 +1,1 @@
+<calendar weeks-type="cn" cell-size="30" next prev show-more-days="{{true}}" calendar-style="demo4-calendar" header-style="demo4-header" board-style="demo4-board" days-color="{{demo4_days_style}}" />
