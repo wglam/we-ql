@@ -28,7 +28,8 @@ Component({
    */
   methods: {
     onClick:function(){
-      this.triggerEvent('Click')
+      const that = this;
+      that.triggerEvent('Click')
     }
   }
 })
