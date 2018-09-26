@@ -1,24 +1,28 @@
-<view class='body flex flex-c dpt dpb user'>
-  <view class='flex flex-v flex-2'>
-    <image class="ml user-avatar" src="{{user.avatarUrl}}" mode="widthFix" />
-    <view class='flex-col flex-h ml'>
-      <view class='text-b flex-1 font-l'>{{user.name}}</view>
-      <view class='flex flex-wrap align-end'>
-        <view class='iconfont icon-vip ' style="{{(user.vip?'color:#FF9900;':'color:#3366FF;') +'font-size: 28rpx;'}}" />
-        <view class='white-text font-min' style=' margin-left: 6rpx;'> {{user.vipname}}</view>
+<view style='position: relative; height:20%;'>
+  <image style='width:100%;height:100%;' src='top.png' mode="aspectFill" />
+  <view class='flex flex-c dpt dpb' style='position: absolute;top: 0rpx;  width: 100%;'>
+    <view class='flex flex-v flex-2'>
+      <image class="ml user-avatar" src="{{user.avatarUrl}}" mode="widthFix" />
+      <view class='flex-col flex-h ml'>
+        <view class='text-b flex-1 font-l'>{{user.name}}</view>
+        <view class='flex flex-wrap align-end'>
+          <view class='iconfont icon-vip ' style="{{(user.vip?'color:#FF9900;':'color:#3366FF;') +'font-size: 28rpx;'}}" />
+          <view class='white-text font-min' style=' margin-left: 6rpx;'> {{user.vipname}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
+      <view class='user-step-icon'>
+        <view class='iconfont icon-zuji align' style='font-size: 42rpx;' />
+      </view>
+      <view class='flex flex-v'>
+        <view style='text-align: center;'> {{step}}</view>
+        <view style='color:#A49697;margin-left:3rpx;'>步</view>
       </view>
     </view>
   </view>
-  <view class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
-    <view class='user-step-icon'>
-      <view class='iconfont icon-zuji align' style='font-size: 48rpx;' />
-    </view>
-    <view class='flex flex-v'>
-      <view style='text-align: center;'> {{step}}</view>
-      <view style='color:#A49697;margin-left:3rpx;'>步</view>
-    </view>
-  </view>
 </view>
+
 <view class='banner pl pr pb'>
   <swiper class='banner-shadow radius' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
     <block wx:for="{{swiper}}" wx:key="*this">
@@ -30,9 +34,9 @@
   </swiper>
 </view>
 
-
-<card url='{{image}}' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
-<card url='{{image}}' btn='立即前往' />
-<card url='{{image}}' btn='立即前往' />
-<card url='{{image}}' btn='立即前往' />
-<card url='{{image}}' btn='立即前往' bottom />
+<card url="/pages/vip/info/info" bg='{{image}}' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
+<card url="" bg='{{image}}' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
+<card url="" bg='{{image}}' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='60' />
+<card url="" bg='{{image}}' btn='饮食打卡' title='饮食计划' info='Eating plan' />
+<!--  -->
+<view style='height:24rpx;'/>

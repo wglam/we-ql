@@ -132,11 +132,11 @@
 }
 
 .radius {
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .radius-top {
-  border-radius: 5px 5px 0rpx 0rpx;
+  border-radius: 4px 4px 0rpx 0rpx;
 }
 
 .black_text {

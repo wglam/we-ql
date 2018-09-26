@@ -1,12 +1,10 @@
-.user {
-  background-image: url(http://image.weilanwl.com/img/swiper-bg.png);
-  background-size: cover;
-}
+
 
 .user-info {
   position: absolute;
   top: 0rpx;
   width: 100%;
+  
 }
 
 .user-avatar {
@@ -17,12 +15,6 @@
   border-color: #eee;
   border-style: solid;
 }
-
-.top {
-  height: 29%;
-  background-color: white;
-}
-
 .video-play {
   position: absolute;
   top: 50%;
@@ -34,7 +26,7 @@
 
 .banner {
   background-color: white;
-  height: 360rpx;
+  height: 340rpx;
   align-items: center;
   justify-content: center;
   text-align: center;

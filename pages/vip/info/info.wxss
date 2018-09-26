@@ -8,7 +8,7 @@
 
 .bottom-text {
   display: inline-flex;
-  min-height: 120rpx;
+  min-height: 96rpx;
   justify-content: center;
   align-items: center;
   border-right: 2rpx solid #f8f8f8;

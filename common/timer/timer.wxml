@@ -1,0 +1,2 @@
+<!--common/timer/timer.wxml-->
+<view>{{hour}}:{{minute}}:{{seconds}}:{{milliseconds}}</view>

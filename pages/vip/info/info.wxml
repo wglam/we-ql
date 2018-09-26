@@ -7,12 +7,12 @@
     <view class='bottom-text' style='width:25%' hover-class='hover' hover-start-time='10'>
       咨询
     </view>
-    <view class='flex-col bottom-text' style='width:35%' hover-class='hover' hover-start-time='10'>
-      <view>获取健身</view>
-      <view>饮食计划</view>
-    </view>
-    <view class='bottom-text' style='width:40%' hover-class='hover' hover-start-time='10'>
+    <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%' hover-class='hover' hover-start-time='10'>
+      <view style='line-height:1.2em;'>获取健身</view>
+      <view style='line-height:1.2em;'>饮食计划</view>
+    </navigator>
+    <navigator url='/pages/vip/buy/buy' class='bottom-text' style='width:40%' hover-class='hover' hover-start-time='10'>
       立即购买
-    </view>
+    </navigator>
   </view>
 </bottom>

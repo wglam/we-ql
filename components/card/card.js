@@ -5,6 +5,7 @@ Component({
    */
   properties: {
     url:String,
+    bg:String,
     title:String,
     info:String,
     btn:String,

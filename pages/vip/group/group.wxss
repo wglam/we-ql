@@ -1,0 +1,85 @@
+.banner {
+  background-color: white;
+  height: 340rpx;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.h-end {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.price {
+  font-size: 48rpx;
+  display: inline-flex;
+  align-items: center;
+  line-height: 2em;
+  color: #e03026;
+}
+
+.src_price {
+  font-size: 28rpx;
+  display: inline-flex;
+  color: #666;
+  padding-left: 12rpx;
+  text-decoration: line-through;
+}
+
+.tips {
+  font-size: 28rpx;
+  display: inline-flex;
+  align-items: flex-end;
+  color: #666;
+  padding-bottom: 12rpx;
+}
+
+.line {
+  margin-top: 1px;
+}
+
+.hp-v {
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+}
+
+.hmt {
+  margin-top: 12rpx;
+}
+
+.more {
+  color: #999;
+}
+
+.more::after {
+  content: "\e6a3";
+  width: 1.4em;
+  height: 1em;
+  color: #999;
+  text-align: center;
+  font-family: iconfont !important;
+}
+
+.swiperitem {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  height: 50%;
+  align-items: center;
+  border-top: 2rpx solid #f8f8f8f8;
+  padding: 24rpx 0rpx;
+}
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+
+swiper {
+  height: 264rpx;
+}

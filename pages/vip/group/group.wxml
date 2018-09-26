@@ -1,0 +1,48 @@
+<swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+  <block wx:for="{{swiper}}" wx:key="*this">
+    <swiper-item>
+      <image class='martch-parent' src='{{item.image}}' mode='aspectFill' />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='body flex'>
+  <view class='flex-1 pl'>
+    <view class='price'>
+      ￥{{price}}
+    </view>
+    <view class='src_price'>
+      ￥{{srcPrice}}
+    </view>
+  </view>
+  <view class='tips flex-1  h-end pr'>
+    {{tips}}
+  </view>
+</view>
+<view class='body pl pr pb'>
+  {{title}}
+</view>
+<view class='body pl pr flex hmt hp-v'>
+  <view style='flex:1;'>
+    {{num}}人在拼单，可直接参与
+  </view>
+  <view class='more'>查看更多</view>
+</view>
+<!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
+
+
+</scroll-view> -->
+<swiper class='body pl pr' autoplay circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+  <block wx:for="{{groups}}" wx:key="*this">
+    <swiper-item wx:if="{{index%2==0}}" class='swiperitem'>
+      <view class='item'>
+        <image class='avatar ' src='{{item.avatar}}' mode='widthFix' />
+        <view class='ml'>{{item.name}}</view>
+        
+      </view>
+      <view class='item' wx:if="{{(index+1)<groups.length}}">
+        <image class='avatar' src='{{groups[index+1].avatar}}' mode='widthFix' />
+        <view class='ml'>{{groups[index+1].name}}</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

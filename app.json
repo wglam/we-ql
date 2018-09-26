@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/vip/customplan/index",
+    "pages/vip/group/group",
+    "pages/home/home",
     "pages/vip/info/info",
+    "pages/vip/customplan/index",
     "pages/training/schedule/index",
-    "pages/vip/buy/buy",
-    "pages/home/home"
+    "pages/vip/buy/buy"
   ],
   "window": {
     "backgroundTextStyle": "light",

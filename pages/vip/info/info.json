@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "会员",
   "usingComponents": {
     "bottom": "../components/bottom/index"
   }
