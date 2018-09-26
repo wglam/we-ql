@@ -33,7 +33,7 @@
 
 
 </scroll-view> -->
-    <swiper class='body pl pr' circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+    <swiper class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
       <block wx:for="{{groups}}" wx:key="{{index}}">
         <swiper-item wx:if="{{index%2==0}}" class='swiperitem'>
           <view class='item'>
