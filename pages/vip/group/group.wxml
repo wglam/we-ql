@@ -1,48 +1,74 @@
-<swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-  <block wx:for="{{swiper}}" wx:key="*this">
-    <swiper-item>
-      <image class='martch-parent' src='{{item.image}}' mode='aspectFill' />
-    </swiper-item>
-  </block>
-</swiper>
-<view class='body flex'>
-  <view class='flex-1 pl'>
-    <view class='price'>
-      ￥{{price}}
+<bottom>
+  <view slot='content'>
+    <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+      <block wx:for="{{swiper}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class='martch-parent' src='{{item.image}}' mode='aspectFill' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='body flex'>
+      <view class='flex-1 pl'>
+        <view class='price'>
+          ￥{{price}}
+        </view>
+        <view class='src_price'>
+          ￥{{srcPrice}}
+        </view>
+      </view>
+      <view class='tips flex-1  h-end pr'>
+        {{tips}}
+      </view>
     </view>
-    <view class='src_price'>
-      ￥{{srcPrice}}
+    <view class='body pl pr pb'>
+      {{title}}
     </view>
-  </view>
-  <view class='tips flex-1  h-end pr'>
-    {{tips}}
-  </view>
-</view>
-<view class='body pl pr pb'>
-  {{title}}
-</view>
-<view class='body pl pr flex hmt hp-v'>
-  <view style='flex:1;'>
-    {{num}}人在拼单，可直接参与
-  </view>
-  <view class='more'>查看更多</view>
-</view>
-<!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
+    <view class='body pl pr flex hmt hp-v'>
+      <view style='flex:1;'>
+        {{groupnum}}人在拼单，可直接参与
+      </view>
+      <view class='more'>查看更多</view>
+    </view>
+    <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
 
 
 </scroll-view> -->
-<swiper class='body pl pr' autoplay circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-  <block wx:for="{{groups}}" wx:key="*this">
-    <swiper-item wx:if="{{index%2==0}}" class='swiperitem'>
-      <view class='item'>
-        <image class='avatar ' src='{{item.avatar}}' mode='widthFix' />
-        <view class='ml'>{{item.name}}</view>
-        
-      </view>
-      <view class='item' wx:if="{{(index+1)<groups.length}}">
-        <image class='avatar' src='{{groups[index+1].avatar}}' mode='widthFix' />
-        <view class='ml'>{{groups[index+1].name}}</view>
-      </view>
-    </swiper-item>
-  </block>
-</swiper>
+    <swiper class='body pl pr' circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+      <block wx:for="{{groups}}" wx:key="{{index}}">
+        <swiper-item wx:if="{{index%2==0}}" class='swiperitem'>
+          <view class='item'>
+            <view class='flex-v flex-2'>
+              <image class='avatar' src='{{item.avatar}}' mode='widthFix' />
+              <view class='ml'>{{item.name}}</view>
+            </view>
+            <view class='font-min flex-1'>
+              <view class='num'>{{item.sum-item.current}}人</view>
+              <timer before='剩余' time='{{item.deadline>=currentTime?item.deadline-currentTime:0}}' />
+            </view>
+            <view class='btn' hover-class='btn-hover'>去拼单</view>
+          </view>
+          <view class='item' wx:if="{{(index+1)<groups.length}}">
+            <view class='flex-v flex-2'>
+              <image class='avatar' src='{{groups[index+1].avatar}}' mode='widthFix' />
+              <view class='ml'>{{groups[index+1].name}}</view>
+            </view>
+            <view class='font-min flex-1'>
+              <view class='num'>{{groups[index+1].sum-groups[index+1].current}}人</view>
+              <timer before='剩余' time='{{groups[index+1].deadline>=currentTime?groups[index+1].deadline-currentTime:0}}' />
+            </view>
+            <view class='btn' hover-class='btn-hover'>去拼单</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  </view>
+  <view class='bottom' slot="bottom">
+    <view class='self' hover-class='hover' hover-start-time='10'>
+      ￥{{selfPrice}}
+    </view>
+    <navigator class='pin' hover-class='hover' hover-start-time='10'>
+      ￥{{price}}
+    </navigator>
+  </view>
+</bottom>

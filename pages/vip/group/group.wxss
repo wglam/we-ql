@@ -72,6 +72,7 @@
   align-items: center;
   border-top: 2rpx solid #f8f8f8f8;
   padding: 24rpx 0rpx;
+  justify-content: space-between;
 }
 
 .avatar {
@@ -82,4 +83,79 @@
 
 swiper {
   height: 264rpx;
+}
+
+.flex-v {
+  display: flex;
+  align-items: center;
+}
+
+.num {
+  color: #e03026;
+}
+
+.num::before {
+  content: '还差';
+  color: #333;
+}
+
+.num::after {
+  content: '拼成';
+  color: #333;
+}
+
+.btn {
+  background: #fa9614;
+  border-radius: 2rpx;
+  border-color: transparent;
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-hover {
+  background: #e88b12;
+}
+
+.bottom {
+  /* position: fixed;
+  bottom: 0; */
+  width: 100%;
+  background: white;
+  display: flex;
+}
+
+.self {
+  display: inline-flex;
+  min-height: 96rpx;
+  justify-content: center;
+  align-items: center;
+  border-right: 2rpx solid #f8f8f8;
+  border-top: 2rpx solid #f8f8f8;
+  text-align: center;
+  flex-direction: column;
+  line-height: 1.2em;
+  flex: 1;
+}
+
+.self::after {
+  content: '单独购买';
+}
+
+.pin {
+  display: inline-flex;
+  min-height: 96rpx;
+  justify-content: center;
+  align-items: center;
+  border-right: 2rpx solid #f8f8f8;
+  border-top: 2rpx solid #f8f8f8;
+  text-align: center;
+  flex-direction: column;
+  line-height: 1.2em;
+  flex: 1;
+}
+
+.pin::after {
+  content: '发起拼单';
 }
