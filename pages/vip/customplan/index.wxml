@@ -1,14 +1,67 @@
-<bottom>
-  <view slot='content'>
-    <image src='{{image}}' style='width:100%;height:420rpx;' mode='center' />
-    
-  </view>
-  <view class='bottom' slot="bottom">
-    <view class='bottom-text' style='width:50%' hover-class='hover' hover-start-time='10'>
-      咨询
+<form bindsubmit="formSubmit">
+  <bottom>
+
+    <view slot='content'>
+      <view style='width:100%;height:420rpx;'>
+        <image src='{{image}}' style='width:100%;height:100%;' mode='center' />
+      </view>
+      <view class="cells-title">填写个人资料，领取专属健身及饮食计划</view>
+
+      <view class='form-box'>
+        <view class='form-item'>
+          <view class='form-title cur'>
+            姓名
+          </view>
+          <input type="text" placeholder="请输入姓名" class='form-input' name='name' />
+        </view>
+        <view class='form-item'>
+          <view class='form-title cur'>
+            性别
+          </view>
+          <picker name='gender' value="{{gender}}" range="{{genders}}">
+            <view class="picker">
+              {{genders[gender]}}
+            </view>
+          </picker>
+        </view>
+        <view class='form-item'>
+          <view class='form-title cur'>
+            手机号
+          </view>
+          <input type="number" placeholder="请输入手机号" class='form-input' name='phone' maxlength='11' />
+        </view>
+        <view class='form-item'>
+          <view class='form-title cur'>
+            微信号
+          </view>
+          <input type="text" placeholder="请输入微信号" class='form-input' name='wx' />
+        </view>
+
+        <view class='form-item'>
+          <view class='form-title cur'>
+            身高
+          </view>
+          <input type="digit" placeholder="请输入身高" class='form-input' name='tops' />
+          <view>cm</view>
+        </view>
+        <view class='form-item'>
+          <view class='form-title cur'>
+            体重
+          </view>
+          <input type="digit" placeholder="请输入当前体重" class='form-input' name='weight' confirm-type='done' />
+          <view>kg</view>
+        </view>
+      </view>
+
+      <!--  -->
     </view>
-    <view class='bottom-text' style='width:50%' hover-class='hover' hover-start-time='10'>
-      提交
+    <view class='bottom' slot="bottom">
+      <button style='width:50%' hover-class='hover' hover-start-time='10'>
+        咨询
+      </button>
+      <button style='width:50%' hover-class='hover' hover-start-time='10' formType="submit">
+        提交
+      </button>
     </view>
-  </view>
-</bottom>
+  </bottom>
+</form>
