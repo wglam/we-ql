@@ -1,9 +1,10 @@
+
 .bottom {
   width: 100%;
   background: white;
   display: flex;
-  height: 108rpx;
-  padding: 16rpx;
+  height: 100%;
+  padding: 18rpx;
   justify-content: space-around;
 }
 

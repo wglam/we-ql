@@ -1,6 +1,10 @@
-<view style="width:100%; height:100%; display: flex;flex-direction:column;">
-  <view style='width:100%;flex:1;overflow-y: auto;'>
-    <slot name='content' />
-  </view>
+<!-- <view style="width:100%; height:100%; display: flex;flex-direction:column;">
+
+</view> -->
+
+<scroll-view scroll-y class='c'>
+  <slot name='content' />
+</scroll-view>
+<view class='b'>
   <slot name='bottom' />
 </view>

@@ -1,4 +1,8 @@
-.content {
+.c {
   width: 100%;
-  flex: 1;
+  height: 90%;
+}
+
+.b {
+  height: 10%;
 }

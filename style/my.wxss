@@ -185,6 +185,8 @@
   font-size: 1.2em;
   letter-spacing: 16rpx;
   line-height: 1em;
+  justify-content: flex-start;
+  padding-left: 6%;
 }
 
 .submit-hover {
@@ -201,7 +203,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 18rpx;
+  padding-right: 16%;
 }
 
 .cancel {
@@ -211,6 +213,8 @@
   font-size: 1.2em;
   letter-spacing: 16rpx;
   line-height: 1em;
+  justify-content: flex-start;
+  padding-left: 6%;
 }
 
 .cancel-hover {
@@ -227,5 +231,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 18rpx;
+  padding-right: 16%;
+}
+
+.form-col {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30rpx 20rpx;
+}
+
+.form-col-title {
+  width: 100%;
+}
+
+.form-col-title.cur::after {
+  top: 0;
+  right: 25rpx;
+  border-radius: 50rpx;
+  color: #da0000;
+  content: "*";
 }
