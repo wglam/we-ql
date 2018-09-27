@@ -1,13 +1,12 @@
 {
   "pages": [
-      "pages/vip/group/group",
     "pages/vip/que/que",
     "pages/home/home",
     "pages/vip/info/info",
     "pages/vip/customplan/index",
     "pages/training/schedule/index",
-    "pages/vip/buy/buy"
-  
+    "pages/vip/buy/buy",
+    "pages/vip/group/group"
   ],
   "window": {
     "backgroundTextStyle": "light",

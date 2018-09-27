@@ -1,1 +1,18 @@
-/* pages/vip/que/que.wxss */
+.bottom {
+  width: 100%;
+  background: white;
+  display: flex;
+  height: 108rpx;
+  padding: 16rpx;
+  justify-content: space-around;
+}
+
+.btn-text {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* border-right: 2rpx solid #f8f8f8;
+  border-top: 2rpx solid #f8f8f8; */
+  text-align: center;
+  width: 50%;
+}

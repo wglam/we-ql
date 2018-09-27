@@ -1,2 +1,19 @@
-<!--pages/vip/que/que.wxml-->
-<text>pages/vip/que/que.wxml</text>
+<form bindsubmit="formSubmit">
+  <bottom>
+    <view slot='content'>
+      <multitxt />
+
+
+    </view>
+    <view class='bottom' slot="bottom">
+      <button class='submit' hover-class='submit-hover' style='width:35%;' formType="submit">
+      提交
+      </button>
+
+
+      <button class='cancel' hover-class='cancel-hover' style='width:35%;'>
+        取消
+      </button>
+    </view>
+  </bottom>
+</form>
