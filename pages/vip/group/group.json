@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "拼团",
   "usingComponents": {
-   "timer": "../../../common/timer/timer",
-   "bottom": "../components/bottom/index"
+   "timer": "/components/timer/timer",
+   "bottom": "/components/bottom/index"
   }
 }
