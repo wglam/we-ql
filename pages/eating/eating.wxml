@@ -1,2 +1,14 @@
-<!--pages/eating/eating.wxml-->
-<text>pages/eating/eating.wxml</text>
+<block wx:for="{{items}}" wx:key="{{index}}">
+  <view class='card-title ml mr' style="color:{{colors[index%colors.length]}};">
+    {{item.title}}</view>
+  <view class='card shadow ml mr mb flex'>
+    <view style='width:18rpx;background:{{colors[index%colors.length]}};'>
+    </view>
+    <view class='flex-col pt pb pr flex-1'>
+      <view class='content title'>{{item.ttips}}</view>
+      <view class='content'>{{item.tips}}</view>
+      <view class='content title'>{{item.texamples}}</view>
+      <view class='content'>{{item.examples}}</view>
+    </view>
+  </view>
+</block>

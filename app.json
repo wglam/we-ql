@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/eating/eating",
     "pages/home/home",
     "pages/fitness/plan/plan",
     "pages/vip/info/info",
@@ -8,7 +9,6 @@
     "pages/vip/buy/buy",
     "pages/vip/group/group",
     "pages/vip/que/que",
-    "pages/eating/eating",
     "pages/my/my"
   ],
   "window": {

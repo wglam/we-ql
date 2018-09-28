@@ -1,1 +1,23 @@
-/* pages/eating/eating.wxss */
+.card {
+  background: white;
+  border-radius: 24rpx;
+  color: #333;
+}
+
+.card-title {
+  font-size: 28rpx;
+  padding-left: 1em;
+  padding-top: 12rpx;
+  padding-bottom: 6rpx;
+}
+
+.content {
+  font-size: 28rpx;
+  padding-left: 1em;
+}
+
+.content.title {
+  font-size: 24rpx;
+  color: #999;
+}
+
