@@ -26,6 +26,6 @@
     <view class="form-col-title {{cur?'cur':''}}">
       {{title}}
     </view>
-    <textarea  auto-height  placeholder="{{holder}}" style='min-height:3em;background:#f8f8f8;' name='{{form}}' />
+    <textarea  auto-height  placeholder="{{holder}}" style='z-index:-1;min-height:3em;background:#f8f8f8;' name='{{form}}' />
   </view>
 </template>

@@ -4,5 +4,8 @@
 }
 
 .b {
-  height: 10%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2147483647;
 }

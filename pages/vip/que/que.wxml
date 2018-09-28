@@ -1,10 +1,9 @@
 <import src='/common/template/template.wxml' />
 
 <form bindsubmit="formSubmit">
-  <bottom>
+  <bottom bottom='108'>
     
     <view slot='content'>
-    
       <view class='form-box'>
         <block wx:for="{{forms}}" wx:key='{{index}}'>
           <template is="{{item.template}}" data="{{...item}}" />

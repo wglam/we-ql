@@ -2,9 +2,9 @@
 
 </view> -->
 
-<scroll-view scroll-y class='c'>
-  <slot name='content' />
-</scroll-view>
-<view class='b'>
+<slot name='content' />
+<view style="height:{{bottom}}rpx;" class='mt' />
+
+<view class='b' style="height:{{bottom}}rpx;">
   <slot name='bottom' />
 </view>
