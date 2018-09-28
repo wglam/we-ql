@@ -1,13 +1,15 @@
 {
   "pages": [
-
-    "pages/vip/que/que",
     "pages/home/home",
+    "pages/fitness/plan/plan",
     "pages/vip/info/info",
     "pages/vip/customplan/index",
-    "pages/training/schedule/index",
+    "pages/fitness/schedule/index",
     "pages/vip/buy/buy",
-    "pages/vip/group/group"
+    "pages/vip/group/group",
+    "pages/vip/que/que",
+    "pages/eating/eating",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,5 +17,34 @@
     "navigationBarTitleText": "xx",
     "navigationBarTextStyle": "black"
   },
-  "tabbar": []
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#FF7E00",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home-active.png"
+      },
+      {
+        "pagePath": "pages/fitness/plan/plan",
+        "text": "健身计划",
+        "iconPath": "img/fitness.png",
+        "selectedIconPath": "img/fitness-active.png"
+      },
+      {
+        "pagePath": "pages/eating/eating",
+        "text": "饮食计划",
+        "iconPath": "img/eating.png",
+        "selectedIconPath": "img/eating-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我",
+        "iconPath": "img/my.png",
+        "selectedIconPath": "img/my-active.png"
+      }
+    ]
+  }
 }
