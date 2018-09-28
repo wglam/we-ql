@@ -178,7 +178,7 @@
   background-color: transparent;
 }
 
-.submit {
+/* .submit {
   border-radius: 2em;
   background: #ff7e00;
   color: white;
@@ -232,22 +232,4 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 16%;
-}
-
-.form-col {
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 30rpx 20rpx;
-}
-
-.form-col-title {
-  width: 100%;
-}
-
-.form-col-title.cur::after {
-  top: 0;
-  right: 25rpx;
-  border-radius: 50rpx;
-  color: #da0000;
-  content: "*";
-}
+} */

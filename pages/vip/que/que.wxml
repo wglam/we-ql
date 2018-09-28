@@ -1,23 +1,21 @@
-<import src='/common/template/template.wxml' />
-
-<form bindsubmit="formSubmit">
-  <bottom bottom='108'>
-    
-    <view slot='content'>
-      <view class='form-box'>
-        <block wx:for="{{forms}}" wx:key='{{index}}'>
-          <template is="{{item.template}}" data="{{...item}}" />
-        </block>
-      </view>
-
+<!--  -->
+<form bindsubmit='formSubmit'>
+  <scroll-view scroll-y scroll-x style='height:90%;'>
+    <view wx:for="11111111111111111111111111111111111111111111111111111">
+      {{item}}
     </view>
-    <view class='bottom' slot="bottom">
-      <button class='submit' hover-class='submit-hover' style='width:35%;' formType="submit">
-        提交
-      </button>
-      <button class='cancel' hover-class='cancel-hover' style='width:35%;'>
-        取消
-      </button>
+
+  </scroll-view>
+
+  <view class='body pl pr flex-col' style='height:10%'>
+    <view class='progress-bar' style='width:{{current/sum*100}}%' />
+    <view class='b-page'>
+      <view wx:if="{{current<=1}}" />
+      <view wx:else class='pre' hover-class='item-hover' />
+      <view>{{current}}/{{sum}}</view>
+      <view wx:if="{{current<sum}}" class='next' hover-class='item-hover' />
+      <button wx:else class='submit' hover-class='item-hover' form-type='submit'>
+        提交</button>
     </view>
-  </bottom>
+  </view>
 </form>

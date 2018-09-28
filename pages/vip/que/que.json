@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "问卷调查",
   "usingComponents": {
-    "bottom": "../components/bottom/index",
-    "multitxt": "../components/multitxt/multitxt"
+    "xform": "../common/xform/xform"
   }
 }

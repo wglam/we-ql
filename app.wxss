@@ -32,12 +32,8 @@ page {
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
 
+
 button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  /* border-right: 2rpx solid #f8f8f8; *//* border-top: 2rpx solid #f8f8f8; */
-  text-align: center;
   background: white;
   border-radius: 0;
 }
@@ -45,4 +41,3 @@ button {
 button::after {
   border: none;
 }
-

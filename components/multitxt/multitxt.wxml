@@ -1,2 +1,2 @@
 <!--components/multitxt/multitxt.wxml-->
-<text>components/multitxt/multitxt.wxml</text>
+ <input type="text" placeholder="请输入姓名" class='form-input' name='name' />

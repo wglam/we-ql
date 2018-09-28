@@ -12,6 +12,7 @@ Form({
   },
   formSubmit: function(e) {
     const params = e.detail.value
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       wx.showModal({

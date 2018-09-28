@@ -1,5 +1,5 @@
 <form bindsubmit="formSubmit">
-  <bottom>
+  <bottom bottom='108'>
 
     <view slot='content'>
       <view style='width:100%;height:420rpx;'>
