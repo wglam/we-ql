@@ -21,7 +21,7 @@ Page({
     }, {
       title: "中餐推荐",
       ttips: "饮食结构：",
-      tips: "鸡蛋白1-2个 脂肪 坚果20g 小番茄5个",
+      tips: "碳水 米饭（糙米100克或红薯拳头大小 ）蛋白质 120g即食鸡胸肉（牛肉或者去皮鸡腿肉）",
       texamples: "搭配示例：",
       examples: "鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个"
     }, {
@@ -36,56 +36,56 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
