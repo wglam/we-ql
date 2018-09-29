@@ -1,5 +1,5 @@
 /* common/card.wxss */
-@import '/style/my.wxss';
+@import '/style/ql.wxss';
 @import '/style/icon.wxss';
 
 .card {

@@ -1,5 +1,5 @@
 @import 'style/colorui.wxss';
-@import 'style/my.wxss';
+@import 'style/ql.wxss';
 @import '/style/coloricon.wxss';
 @import 'style/icon.wxss';
 /* reset */

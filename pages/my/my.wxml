@@ -9,7 +9,13 @@
 
 <navigator class="click-item mt">
   <view> 身体数据</view>
-  <view class="iconfont icon-right" />
+  <view class='bmi-right'>
+    <view class='badge secondary capsule-badge mr' style='background:#00CC99;'>
+      <text>BMI {{user.bmi}}</text>
+      <text>{{user.bmiName}}</text>
+    </view>
+    <view class="iconfont icon-right" />
+  </view>
 </navigator>
 <navigator class="click-item">
   <view> 饮食相册</view>

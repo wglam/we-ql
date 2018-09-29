@@ -11,7 +11,9 @@ Page({
       vip: true,
       vipname: '普通会员',
       flag: "自我打败是最可悲的失败，自我战胜是最可贵的胜利。",
-      day:20
+      day:20,
+      bmi:21,
+      bmiName: "正常",
     }
   },
 
