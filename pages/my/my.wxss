@@ -66,28 +66,11 @@
   border-top: 1rpx solid #eee;
 }
 
-.bmi {
-  margin-right: 12rpx;
-  height: 2em;
-  width: 4em;
-}
-
 .bmi-right {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.bmi-0 {
-  border-radius: 4rpx;
-  background: #69f;
-  color: white;
-  font-size: 18rpx;
-  height: 2em;
-  width: 4em;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
 
 

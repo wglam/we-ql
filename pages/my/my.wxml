@@ -7,7 +7,7 @@
   </view>
 </view>
 
-<navigator class="click-item mt">
+<navigator url='body/body' class="click-item mt">
   <view> 身体数据</view>
   <view class='bmi-right'>
     <view class='badge secondary capsule-badge mr' style='background:#00CC99;'>

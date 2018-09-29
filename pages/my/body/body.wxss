@@ -1,0 +1,28 @@
+.click-item {
+  background: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  height: 88rpx;
+  align-items: center;
+  border-top: 1rpx solid #eee;
+}
+
+.bmi-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.badge-item {
+  color: white;
+  font-size: 24rpx;
+  height: 1.5em;
+  line-height: 1.5em;
+  width: 3em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
