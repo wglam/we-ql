@@ -7,7 +7,7 @@
   /* align-items: center; */
   padding-left: 24rpx;
   padding-right: 24rpx;
-  min-height: 244rpx;
+  min-height: 256rpx;
 }
 
 .user-avatar {
@@ -52,4 +52,16 @@
   margin-top: 24rpx;
   letter-spacing: 2rpx;
   vertical-align: middle;
+}
+
+.click-item {
+  background: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  height: 84rpx;
+  align-items: center;
+  border-top: 1rpx solid #eee;
 }
