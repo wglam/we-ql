@@ -1,2 +1,12 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class='top'>
+  <view class='daka shadow'>累计打卡{{user.day}}天</view>
+  <image class='user-avatar' src="{{user.avatar}}" mode='widthFix' />
+  <view class='info'>
+    <view class='name'>{{user.name}}</view>
+    <view class='flag'>{{user.flag}}</view>
+  </view>
+</view>
+
+<view>
+  身体数据
+</view>

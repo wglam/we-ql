@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: -48rpx;
+  margin-top: -24rpx;
 }
 
 .banner-img {

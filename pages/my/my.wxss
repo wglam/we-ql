@@ -1,1 +1,55 @@
 /* pages/my/my.wxss */
+
+.top {
+  display: flex;
+  /* justify-content: center; */
+  background: white;
+  /* align-items: center; */
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  min-height: 244rpx;
+}
+
+.user-avatar {
+  width: 196rpx;
+  height: 196rpx;
+  border-radius: 50%;
+  border-width: 2rpx;
+  border-color: #eee;
+  border-style: solid;
+  position: fixed;
+  left: 24rpx;
+  top: 24rpx;
+}
+
+.daka {
+  position: fixed;
+  right: 0;
+  background: #ffcc5f;
+  border-top-left-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
+  color: white;
+  font-size: 24rpx;
+  padding: 6rpx 12rpx;
+  letter-spacing: 4rpx;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  top: 36rpx;
+}
+
+.info {
+  margin-left: 220rpx;
+  padding-top: 48rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  letter-spacing: 6rpx;
+}
+
+.flag {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 24rpx;
+  letter-spacing: 2rpx;
+  vertical-align: middle;
+}
