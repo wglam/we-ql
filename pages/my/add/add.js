@@ -27,8 +27,8 @@ function initChart(canvas, width, height) {
 
   chart.source(data, {
     year: {
-      range: [0, 1],
-      ticks: [1997, 1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015, 2017]
+      tickCount: 3,
+      range: [0, 1]
     },
     value: {
       tickCount: 2,
