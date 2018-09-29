@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/my/body/body",
+    "pages/my/add/add",
     "pages/my/my",
     "pages/eating/eating",
     "pages/home/home",
@@ -10,7 +10,8 @@
     "pages/fitness/schedule/index",
     "pages/vip/buy/buy",
     "pages/vip/group/group",
-    "pages/vip/que/que"
+    "pages/vip/que/que",
+    "pages/my/body/body"
   ],
   "window": {
     "backgroundTextStyle": "light",

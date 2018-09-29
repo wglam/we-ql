@@ -1,0 +1,4 @@
+<!--pages/my/add/add.wxml-->
+<view class='charts' >
+<ff-canvas id="line-dom" canvas-id="line" opts="{{ opts }}" ></ff-canvas>
+</view>
