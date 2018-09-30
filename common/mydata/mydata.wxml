@@ -12,10 +12,12 @@
 <view class='click-item mt'>
   {{name}}记录
 </view>
-<view class='click-item' wx:for="{{datas}}" wx:key='{{index}}'>
-  <view class='font-min gray-text'>{{item.time}}</view>
-  <view class='font-l '>{{item.y}} {{unit}}</view>
-</view>
+<scroll-view scroll-y style="height:42%;">
+  <view class='click-item' wx:for="{{datas}}" wx:key='{{index}}'>
+    <view class='font-min gray-text'>{{item.time}}</view>
+    <view class='font-l '>{{item.y}} {{unit}}</view>
+  </view>
+</scroll-view>
 
 <view class="modal-box {{inputHide ?'':'cur'}}">
   <view class='modal-dialog dialog'>

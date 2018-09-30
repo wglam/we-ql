@@ -19,7 +19,7 @@
 
 
   <swiper current='{{current}}' class='tab-content' bindchange='onChange' duration='200'>
-    <swiper-item wx:for="{{tabs}}" wx:key="*this" style='overflow-y: auto ;' catchtouchmove="{{touchmove?'':'stopTouchMove'}}">
+    <swiper-item wx:for="{{tabs}}" wx:key="*this" style="{{touchmove?'overflow-y: auto ;':''}}" catchtouchmove="{{touchmove?'':'stopTouchMove'}}">
       <slot name='{{index}}' />
     </swiper-item>
   </swiper>

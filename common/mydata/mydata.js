@@ -82,7 +82,7 @@ function drawCharts(minx, maxx, miny, maxy, target, unit, src) {
     yticks.push(target)
     yticks.push(maxy)
   }
-  console.log(yticks)
+
 
   chart.source(src, {
     x: {
@@ -139,10 +139,7 @@ let maxy = null;
 Component({
 
   attached: function() {
-
     charts = this.data.datas;
-    unit = this.data.unit;
-    target = this.data.target;
     minx = 1527401498000;
     maxx = 1538287898000;
 
@@ -157,11 +154,20 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    unit: String,
+    unit: {
+      type: String,
+      value: '',
+      observer: function(newVal, oldVal, changedPath) {
+        unit = newVal;
+      }
+    },
     name: String,
     target: {
       type: Number,
-      value: -1
+      value: -1,
+      observer: function(newVal, oldVal, changedPath) {
+        target = newVal;
+      }
     }
   },
 
@@ -174,9 +180,7 @@ Component({
       onInit: initChars
     },
 
-    datas: [
-
-      {
+    datas: [{
         x: 1538287898000,
         y: 55.0,
         time: "2018-09-30"
