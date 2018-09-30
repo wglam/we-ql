@@ -1,2 +1,2 @@
 <!--pages/my/add/add.wxml-->
-<chats />
+<chats unit='cm' name='体重' />

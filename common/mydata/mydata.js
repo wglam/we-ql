@@ -1,6 +1,6 @@
 import F2 from '../../components/f2-canvas/lib/f2';
 
-let chart = null;
+
 //生成从minNum到maxNum的随机数
 function randomNum(minNum, maxNum) {
   switch (arguments.length) {
@@ -31,43 +31,14 @@ Date.prototype.Format = function(fmt) {
   return fmt;
 }
 
-var date = new Date();
+// 
+let chart = null;
 
-function initChart(canvas, width, height) {
-  const data = new Array;
-  var temp;
-
-  date.setDate(date.getDate() - 100);
-
-  for (var i = 1; i <= 100; i++) {
-    data.push({
-      key: i,
-      value: randomNum(50, 60)
-    })
-  }
-
+function initChars(canvas, width, height) {
   chart = new F2.Chart({
     el: canvas,
     width,
     height
-  });
-
-  chart.source(data, {
-    key: {
-      formatter(val) {
-        var temp = new Date(date.getTime())
-        temp.setDate(temp.getDate() + val)
-        return temp.Format("MM/dd");
-      },
-      min: 90,
-      max: 100
-    },
-    value: {
-      ticks: [50, 53, 55, 60],
-      formatter(val) {
-        return val.toFixed(1) + 'cm';
-      }
-    }
   });
 
   chart.tooltip(false);
@@ -82,10 +53,58 @@ function initChart(canvas, width, height) {
     }
   });
 
-  chart.axis('value', {
-    line: null,
+  chart.axis('y', {
+    line: null
+  });
+  chart.axis('x', {
+    line: null
+  });
+
+  drawCharts(minx, maxx, miny, maxy, target, unit, charts)
+  return chart;
+}
+
+function drawCharts(minx, maxx, miny, maxy, target, unit, src) {
+  chart.clear();
+  var yticks = new Array
+  if (target == null || target < 0 || target == miny || target == maxy) {
+    yticks = [miny, maxy];
+  } else if (target < miny) {
+    yticks.push(target)
+    yticks.push(miny)
+    yticks.push(maxy)
+  } else if (target > maxy) {
+    yticks.push(miny)
+    yticks.push(maxy)
+    yticks.push(target)
+  } else if (target > miny && target < maxy) {
+    yticks.push(miny)
+    yticks.push(target)
+    yticks.push(maxy)
+  }
+  console.log(yticks)
+
+  chart.source(src, {
+    x: {
+      tickCount: 4,
+      formatter(val) {
+        var temp = new Date(val)
+        return temp.Format("MM/dd");
+      },
+      min: minx,
+      max: maxx
+    },
+    y: {
+      ticks: yticks,
+      formatter(val) {
+        return val + unit;
+      }
+    }
+  });
+
+  chart.axis('y', {
     grid: (text, index, total) => {
-      if (text == '53.0cm') {
+      if (text == (target + unit)) {
         return {
           stroke: '#726C7A',
           lineDash: [8, 8]
@@ -96,40 +115,136 @@ function initChart(canvas, width, height) {
       }
     }
   });
-  chart.axis('key', {
-    line: null
-  });
-
+  //  {
+  //   sortable: false // 数据已在外部排序，提升性能
+  // }
   chart.line({
-    sortable: false // 数据已在外部排序，提升性能
-  }).position('key*value').color('type', (type) => {
+    sortable: true
+  }).position('x*y').color('type', (type) => {
     return "#e88b12";
   });
   chart.render();
-  return chart;
 }
 
+let unit = null;
+let charts = null;
+let minx = null;
+let maxx = null;
+
+let target = null;
+
+let miny = null;
+let maxy = null;
+
 Component({
+
+  attached: function() {
+
+    charts = this.data.datas;
+    unit = this.data.unit;
+    target = this.data.target;
+    minx = 1527401498000;
+    maxx = 1538287898000;
+
+    maxy = 61;
+    miny = 50;
+
+  },
+  ready: function() {
+
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-
+    unit: String,
+    name: String
   },
 
   /**
    * 组件的初始数据
    */
   data: {
+    inputHide: true,
     opts: {
-      onInit: initChart
-    }
+      onInit: initChars
+    },
+    target: -1,
+    datas: [
+
+      {
+        x: 1538287898000,
+        y: 55.0,
+        time: "2018-09-30"
+      }, {
+        x: 1537769498000,
+        y: 58.0,
+        time: "2018-09-24"
+      }, {
+        x: 1537251098000,
+        y: 56.0,
+        time: "2018-09-18"
+      }, {
+        x: 1531894298000,
+        y: 51.0,
+        time: "2018-07-18"
+      }, {
+        x: 1531375898000,
+        y: 55.0,
+        time: "2018-07-12"
+      },
+      {
+        x: 1529907098000,
+        y: 58.0,
+        time: "2018-06-25"
+      },
+      {
+        x: 1529302298000,
+        y: 55.0,
+        time: "2018-06-18"
+      },
+      {
+        x: 1528611098000,
+        y: 58.0,
+        time: "2018-06-10"
+      }, {
+        x: 1527401498000,
+        y: 60.0,
+        time: "2018-05-27"
+      }, {
+        x: 1526191898000,
+        y: 50.0,
+        time: "2018-05-13"
+      }, {
+        x: 1525155098000,
+        y: 58.0,
+        time: "2018-05-01"
+      }
+    ]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    _hideInput: function() {
+      var that = this;
+      that.setData({
+        inputHide: true
+      });
+    },
+    showInput: function() {
+      var that = this;
+      that.setData({
+        inputHide: false
+      });
+    },
+    confirm: function(e) {
+      console.log(e);
+    },
+    cancel: function(e) {
+      console.log(e);
+      this._hideInput();
+    }
   }
 })

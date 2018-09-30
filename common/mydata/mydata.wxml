@@ -1,3 +1,37 @@
-<scroll-view scroll-x class='charts'>
-  <ff-canvas id="line-dom" canvas-id="line" opts="{{ opts }}"></ff-canvas>
-</scroll-view>
+<view class='charts'>
+  <ff-canvas id="line-dom" canvas-id="line" opts="{{opts}}" />
+</view>
+<view class="click-item" bindtap="showInput">
+  <view> 目标{{name}}</view>
+  <view class='bmi-right'>
+    <view wx:if="{{target<0}}" class='mr'>未设置</view>
+    <view wx:else class='mr'>{{target}} {{unit}}</view>
+    <view class="iconfont icon-right" />
+  </view>
+</view>
+<view class='click-item mt'>
+  {{name}}记录
+</view>
+<view class='click-item' wx:for="{{datas}}" wx:key='{{index}}'>
+  <view class='font-min gray-text'>{{item.time}}</view>
+  <view class='font-l '>{{item.y}} {{unit}}</view>
+</view>
+
+
+
+
+<view class="modal-box {{inputHide ?'':'cur'}}">
+  <view class='modal-dialog dialog'>
+    <view class="modal-title">
+      请输入目标{{name}}
+    </view>
+    <form bindsubmit="confirm">
+      <view class='input-panel'>
+        <input class='input' type='digit' name='target' value="{{target<0?'':target}}" />
+        <view>{{unit}}</view>
+      </view>
+      <button class='submit' hover-class='submit-hover' form-type='submit'>保存</button>
+      <view class='cancel' bindtap='cancel'>取消</view>
+    </form>
+  </view>
+</view>
