@@ -1,0 +1,3 @@
+<scroll-view scroll-x class='charts'>
+  <ff-canvas id="line-dom" canvas-id="line" opts="{{ opts }}"></ff-canvas>
+</scroll-view>
