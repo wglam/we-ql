@@ -19,6 +19,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    touchmove: {
+      type: Boolean,
+      value: false
+    },
+    tabColor: {
+      type: String,
+      value: "white"
+    },
     tabs: Array,
     normal: {
       type: String,
@@ -55,6 +63,9 @@ Component({
       });
       var item = this.data.tabs[i];
       this.triggerEvent('Tab', item);
+    },
+    stopTouchMove: function() {
+      return false;
     }
   }
 })

@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#584F60",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "chats": "/common/mydata/mydata"
+    "chats": "/common/mydata/mydata",
+    "tab": "../components/tab/tab"
   }
 }

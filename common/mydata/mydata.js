@@ -158,7 +158,11 @@ Component({
    */
   properties: {
     unit: String,
-    name: String
+    name: String,
+    target: {
+      type: Number,
+      value: -1
+    }
   },
 
   /**
@@ -169,7 +173,7 @@ Component({
     opts: {
       onInit: initChars
     },
-    target: -1,
+
     datas: [
 
       {

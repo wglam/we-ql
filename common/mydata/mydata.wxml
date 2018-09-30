@@ -17,9 +17,6 @@
   <view class='font-l '>{{item.y}} {{unit}}</view>
 </view>
 
-
-
-
 <view class="modal-box {{inputHide ?'':'cur'}}">
   <view class='modal-dialog dialog'>
     <view class="modal-title">
