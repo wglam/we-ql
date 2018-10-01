@@ -1,0 +1,88 @@
+/* pages/my/vip/vip.wxss */
+
+.bg {
+  height: 40%;
+}
+
+.top {
+  /* background: #584F60; */
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 40%;
+  background-color: white;
+}
+
+.vip-name {
+  font-size: 2em;
+}
+
+.h-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.daka {
+  position: fixed;
+  right: 0;
+  background: #ffcc5f;
+  border-top-left-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
+  color: white;
+  font-size: 24rpx;
+  padding: 6rpx 12rpx;
+  letter-spacing: 4rpx;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  top: 36rpx;
+}
+
+.vip-time {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+}
+
+.radius-btn {
+  width: 6em;
+  padding: 6rpx 24rpx;
+  border-radius: 2em;
+  border-width: 2rpx;
+  border-style: solid;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  margin-right: 24rpx;
+}
+
+.upgrade {
+  color: #39f;
+  border-color: #39f;
+}
+
+.renew {
+  color: #ff7e00;
+  border-color: #ff7e00;
+}
+
+.refund {
+  color: #f33;
+  border-color: #f33;
+}
+.menoy{
+  color: #f33;
+  text-align: end;
+}
+.cml{
+  margin-left: 12rpx;
+}

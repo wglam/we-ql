@@ -1,0 +1,34 @@
+<!--pages/my/vip/vip.wxml-->
+<view class='bg'>
+  <image class='bg-img' src='/img/bg.jpg' mode='aspectFill' />
+</view>
+<view class='top'>
+  <view class='h-between'>
+    <view class='vip-name'>{{vipname}}</view>
+    <view class='daka shadow'>剩余{{days}}天</view>
+  </view>
+  <view class='vip-time'>
+    {{start}}~{{end}}
+  </view>
+  <view class='flex'>
+    <view class='radius-btn renew shadow-alice'>续费</view>
+    <view class='radius-btn upgrade shadow-alice'>升级</view>
+    <view class='radius-btn refund shadow-alice'>退款</view>
+
+  </view>
+</view>
+
+<view class='item-h'>充值记录</view>
+<view class='body pl' wx:for="{{vips}}" wx:key="{{index}}">
+  <view class='item-h pl pr'>
+    <view class='flex' style='align-items: center;'>
+      <image src="{{item.vip?'vip':'normal'}}.png" style='width:84rpx;height:84rpx;' mode='widthFix' />
+      <view class='cml'>{{item.name}}</view>
+      <view class='item-min cml'>{{item.time}}</view>
+    </view>
+    <view class='flex'>
+      <view class='item-min mr'>{{item.date}}</view>
+      <view class='menoy'>￥{{item.menoy}}</view>
+    </view>
+  </view>
+</view>

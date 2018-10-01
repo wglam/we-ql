@@ -365,3 +365,9 @@
 .btn-hover {
   background: #d86e04;
 }
+.item-min{
+  font-size: 24rpx;
+  color: #999999;
+  display: inline-flex;
+  align-items: center;
+}

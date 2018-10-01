@@ -1,4 +1,4 @@
-<bottom>
+<bottom bottom='96'>
   <view slot='content'>
     <view wx:for='123456789qwertyuiopasdfghjk' wx:key='{{index}}'>
       {{item}}</view>

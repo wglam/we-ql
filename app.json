@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/my/my",
     "pages/eating/eating",
     "pages/home/home",
@@ -13,7 +14,8 @@
     "pages/my/body/body",
     "pages/my/add/add",
     "pages/my/set/set",
-    "pages/my/photo/photo"
+    "pages/my/photo/photo",
+    "pages/my/vip/vip"
   ],
   "window": {
     "backgroundTextStyle": "light",
