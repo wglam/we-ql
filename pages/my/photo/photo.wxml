@@ -1,0 +1,8 @@
+<view class='timeline'>
+  <block wx:for="{{photos}}" wx:key="{{index}}">
+    <view class='timeline-time'>{{item.time}}</view>
+    <view class='timeline-item {{index==0?"cur":""}}'>
+      <image class='timeline-card' src="{{item.photo}}" mode='aspectFill' />
+    </view>
+  </block>
+</view>

@@ -10,7 +10,6 @@
       {{user.flag}}
     </navigator>
   </view>
-
 </view>
 
 <navigator url='body/body' class="click-item mt">
@@ -23,7 +22,7 @@
     <view class="iconfont icon-right" />
   </view>
 </navigator>
-<navigator class="click-item">
+<navigator url="photo/photo" class="click-item">
   <view> 饮食相册</view>
   <view class="iconfont icon-right" />
 </navigator>

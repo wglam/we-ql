@@ -354,8 +354,8 @@
   border-radius: 2em;
   display: inline-flex;
   height: 84rpx;
-  width: 80%;
-  margin: 10%;
+  width: 88%;
+  margin: 10% 6%;
   font-size: 28rpx;
   justify-content: center;
   align-items: center;
