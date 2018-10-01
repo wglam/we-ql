@@ -1,0 +1,13 @@
+<view class='content'>
+  <view class='qr-card '>
+    <view class='flex'>
+      <image class='user-avatar' src='{{avatar}}' mode='aspectFill' />
+      <view class='name'>
+        {{name}}
+      </view>
+    </view>
+    <image src='{{qr}}' mode='widthFix' />
+  </view>
+
+  <button class='bottom-btn' hover-class='btn-hover'> 保存到相册</button>
+</view>
