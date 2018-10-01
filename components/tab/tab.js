@@ -35,6 +35,10 @@ Component({
     active: {
       type: String,
       value: '#e88b12'
+    },
+    current: {
+      type: Number,
+      value: 0
     }
   },
 
@@ -42,7 +46,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    current: 0
+
   },
 
   /**

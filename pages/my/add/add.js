@@ -25,7 +25,14 @@ Page({
     }, {
       name: "BMI",
       target: -1
-    }]
+    }],
+    current: 0
+  },
+  onLoad(options) {
+    var that = this;
+    that.setData({
+      current: options.tab
+    });
   },
 
   onReady() {}

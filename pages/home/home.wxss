@@ -7,14 +7,7 @@
   
 }
 
-.user-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  border-radius: 50%;
-  border-width: 2rpx;
-  border-color: #eee;
-  border-style: solid;
-}
+
 .video-play {
   position: absolute;
   top: 50%;

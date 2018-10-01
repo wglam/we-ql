@@ -1,6 +1,6 @@
-<view class="font-min ml mt text-center">建议在每天清晨空腹情况下进行指标测量</view>
+<view class="font-min ml mt ">建议在每天清晨空腹情况下进行指标测量</view>
 
-<navigator class="click-item mt">
+<navigator url='/pages/my/add/add?tab=0' class="click-item mt">
   <view> 体重</view>
   <view class='bmi-right'>
     <view wx:if="{{weight==0}}" class='mr'>--</view>
@@ -9,7 +9,7 @@
   </view>
 </navigator>
 
-<navigator class="click-item">
+<navigator url='/pages/my/add/add?tab=4' class="click-item">
   <view> 身高</view>
   <view class='bmi-right'>
     <view wx:if="{{height==0}}" class='mr'>--</view>
@@ -18,7 +18,7 @@
   </view>
 </navigator>
 
-<navigator url='body/body' class="click-item">
+<navigator url='/pages/my/add/add?tab=5' class="click-item">
   <view> BMI</view>
   <view class='bmi-right'>
     <view class='badge-item mr' style='background:#FF9900;'>{{bmiName}}</view>
@@ -27,7 +27,7 @@
   </view>
 </navigator>
 
-<navigator class="click-item">
+<navigator url='/pages/my/add/add?tab=1' class="click-item">
   <view> 胸围</view>
   <view class='bmi-right'>
     <view wx:if="{{xiongwei==0}}" class='mr'>--</view>
@@ -36,7 +36,7 @@
   </view>
 </navigator>
 
-<navigator class="click-item">
+<navigator url='/pages/my/add/add?tab=2' class="click-item">
   <view> 腰围</view>
   <view class='bmi-right'>
     <view wx:if="{{yaowei==0}}" class='mr'>--</view>
@@ -46,8 +46,8 @@
 </navigator>
 
 
-<navigator class="click-item">
-  <view> 腿围</view>
+<navigator url='/pages/my/add/add?tab=3' class="click-item">
+  <view> 臀围</view>
   <view class='bmi-right'>
     <view wx:if="{{tuiwei==0}}" class='mr'>--</view>
     <view wx:else class='mr'>{{tuiwei}} cm</view>

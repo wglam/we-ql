@@ -1,7 +1,7 @@
 @import 'style/colorui.wxss';
-@import 'style/ql.wxss';
 @import '/style/coloricon.wxss';
 @import 'style/icon.wxss';
+@import 'style/ql.wxss';
 /* reset */
 
 page {

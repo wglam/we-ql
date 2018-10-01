@@ -1,3 +1,4 @@
-<tab tabs='{{tabs}}' tabColor="#584F60" normal='#726C7A' active='white' >
-  <chats wx:for="{{chats}}" wx:key="*this" slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" />
+<tab tabs='{{tabs}}' tabColor="#584F60" normal='#726C7A' active='white' current="{{current}}">
+  <chats wx:for="{{chats}}" wx:key="{{index}}" 
+  slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" />
 </tab>
