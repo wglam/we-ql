@@ -371,3 +371,7 @@
   display: inline-flex;
   align-items: center;
 }
+
+.border-top {
+  border-top: 1rpx solid #eee;
+}

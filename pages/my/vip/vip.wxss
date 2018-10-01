@@ -6,12 +6,9 @@
 
 .top {
   /* background: #584F60; */
-  padding: 24rpx;
   display: flex;
   flex-direction: column;
-  position: fixed;
   width: 100%;
-  top: 0;
   height: 40%;
   background-color: white;
 }
@@ -27,17 +24,18 @@
 }
 
 .daka {
-  position: fixed;
+  position: relative;
   right: 0;
   background: #ffcc5f;
   border-top-left-radius: 6rpx;
   border-bottom-left-radius: 6rpx;
   color: white;
   font-size: 24rpx;
-  padding: 6rpx 12rpx;
+  padding: 6rpx 24rpx;
   letter-spacing: 4rpx;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  top: 36rpx;
+  height: 2em;
+  top: 18rpx;
 }
 
 .vip-time {
@@ -79,10 +77,12 @@
   color: #f33;
   border-color: #f33;
 }
-.menoy{
+
+.menoy {
   color: #f33;
   text-align: end;
 }
-.cml{
+
+.cml {
   margin-left: 12rpx;
 }

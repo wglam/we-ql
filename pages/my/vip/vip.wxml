@@ -1,16 +1,16 @@
 <!--pages/my/vip/vip.wxml-->
-<view class='bg'>
+<!-- <view class='bg'>
   <image class='bg-img' src='/img/bg.jpg' mode='aspectFill' />
-</view>
-<view class='top'>
-  <view class='h-between'>
+</view> -->
+<view class='top border-top pt pb'>
+  <view class='h-between pl'>
     <view class='vip-name'>{{vipname}}</view>
     <view class='daka shadow'>剩余{{days}}天</view>
   </view>
-  <view class='vip-time'>
+  <view class='vip-time pl pr'>
     {{start}}~{{end}}
   </view>
-  <view class='flex'>
+  <view class='flex pl pr'>
     <view class='radius-btn renew shadow-alice'>续费</view>
     <view class='radius-btn upgrade shadow-alice'>升级</view>
     <view class='radius-btn refund shadow-alice'>退款</view>
@@ -18,7 +18,7 @@
   </view>
 </view>
 
-<view class='item-h'>充值记录</view>
+<view class='item-h mt'>充值记录</view>
 <view class='body pl' wx:for="{{vips}}" wx:key="{{index}}">
   <view class='item-h pl pr'>
     <view class='flex' style='align-items: center;'>
