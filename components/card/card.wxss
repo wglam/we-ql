@@ -23,7 +23,7 @@
 
 .card-info {
   position: absolute;
-  top: 0rpx;
+  top: 12rpx;
   width: 100%;
   line-height:1.2em;
 }
@@ -45,7 +45,7 @@
 }
 
 .progress-shew {
-  background: #e6e6e680;
+  background: rgba(238, 238, 238, 0.4);
   transform: skew(-15deg);
   height: 16rpx;
 }

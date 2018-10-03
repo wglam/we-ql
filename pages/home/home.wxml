@@ -34,9 +34,9 @@
   </swiper>
 </view>
 
-<card url="/pages/vip/info/info" bg='{{image}}' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
-<card url="" bg='{{image}}' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
-<card url="" bg='{{image}}' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='60' />
-<card url="" bg='{{image}}' btn='饮食打卡' title='饮食计划' info='Eating plan' />
-<!--  -->
-<view style='height:24rpx;'/>
+<card url="/pages/vip/info/info" bg='/img/bg.jpg' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
+<card url="" bg='/img/2.png' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
+<card url="" bg='/img/3.png' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='60' />
+<card url="" bg='/img/4.png' btn='饮食打卡' title='饮食计划' info='Eating plan' />
+
+<view style='height:24rpx;' />
