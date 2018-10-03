@@ -25,7 +25,7 @@
 .daka {
   position: fixed;
   right: 0;
-  background: #ffcc5f;
+  background: #FFB130;
   border-top-left-radius: 6rpx;
   border-bottom-left-radius: 6rpx;
   color: white;

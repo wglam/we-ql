@@ -375,3 +375,29 @@
 .border-top {
   border-top: 1rpx solid #eee;
 }
+
+.item-title-5 {
+  width: 5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 24rpx;
+}
+
+.btn-2 {
+  background: #39f;
+  color: white;
+  border-radius: 2em;
+  display: inline-flex;
+  height: 84rpx;
+  width: 88%;
+  margin: 6% 6%;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 6rpx;
+}
+
+.btn-hover-2 {
+  background: rgb(24, 135, 247);
+}

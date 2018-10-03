@@ -1,11 +1,9 @@
 {
   "pages": [
-    
- 
+    "pages/fitness/plan/plan",
     "pages/my/my",
     "pages/eating/eating",
     "pages/home/home",
-    "pages/fitness/plan/plan",
     "pages/vip/info/info",
     "pages/vip/customplan/index",
     "pages/fitness/schedule/index",
@@ -17,7 +15,8 @@
     "pages/my/set/set",
     "pages/my/photo/photo",
     "pages/my/vip/vip",
-    "pages/my/coach/coach"
+    "pages/my/coach/coach",
+    "pages/my/youhuiquan/youhuiquan"
   ],
   "window": {
     "backgroundTextStyle": "light",

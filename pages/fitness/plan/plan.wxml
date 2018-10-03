@@ -1,2 +1,109 @@
-<!--pages/training/plan/plan.wxml-->
-<text>pages/training/plan/plan.wxml</text>
+<scroll-view class='tab body' scroll-x>
+  <view wx:for="{{items}}" wx:key="{{index}}" class="scroll-item {{top==index?'cur':''}}">{{item.name}}</view>
+</scroll-view>
+<view style='height:1rpx;' />
+
+<block wx:for="{{items}}" wx:for-index="topindex" wx:key="{{topindex}}">
+  <view class='timeline'>
+    <view class='timeline-time {{top==topindex?"active":""}}'>{{item.name}} </view>
+    <block wx:for="{{item.items}}" wx:key="{{index}}">
+      <view class='timeline-item {{(top==topindex&&current==index)?"cur":""}}'>
+        <view class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
+          <view class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
+          <view class='flex' wx:if="{{item.target}}">
+            <view class='item-title-5'>
+              训练目标：
+            </view>
+            <view>
+              {{item.target}}</view>
+          </view>
+
+          <view class='flex'>
+            <view class='item-title-5'>
+              训练动作：
+            </view>
+            <view>
+              {{item.name}}</view>
+            <view class='iconfont icon-play ml' hidden='{{!item.video}}' />
+          </view>
+          <view class='flex' wx:if="{{item.zushu}}">
+            <view class='item-title-5'>
+              <p>组</p>
+              <p>数：</p>
+            </view>
+            <view>
+              {{item.zushu}}组</view>
+          </view>
+
+          <view class='flex' wx:if="{{item.cishu}}">
+            <view class='item-title-5'>
+              <p>次</p>
+              <p>数：</p>
+            </view>
+            <view wx:if="{{item.cishu>=1}}">
+              {{item.cishu}}次</view>
+            <view wx:else>力竭</view>
+          </view>
+
+          <view class='flex' wx:if="{{item.rest}}">
+            <view class='item-title-5'>
+              组间休息：
+            </view>
+            <view>
+              {{item.rest}}</view>
+          </view>
+
+          <view class='flex' wx:if="{{item.time}}">
+            <view class='item-title-5'>
+              <p>时</p>
+              <p>间：</p>
+            </view>
+            <view>
+              {{item.time}}</view>
+          </view>
+
+          <view class='flex' wx:if="{{item.xinlv}}">
+            <view class='item-title-5'>
+              <p>心</p>
+              <p>率：</p>
+            </view>
+            <view>
+              {{item.xinlv}}</view>
+          </view>
+
+          <view class='flex' wx:if="{{item.strong}}">
+            <view class='item-title-5'>
+              <p>强</p>
+              <p>度：</p>
+            </view>
+            <view>
+              {{item.strong}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+
+<button class='btn-2' hover-class='btn-hover-2'> 训练完成-提交给教练</button>
+
+
+
+<view class="modal-box {{inputHide ?'':'cur'}}" bindtap='cancel'>
+  <view class='modal-dialog dialog' catchtap='empty' hover-stop-propagation>
+
+    <view class='item-h'>
+      <view class="dialog-title">
+        完成情况
+      </view>
+      <view class="iconfont icon-close close" catchtap='cancel' />
+    </view>
+    <form bindsubmit="confirm">
+      <view class='dmt'>
+        <slider name="slider" value='{{slider.value}}' block-color="#ffb130" activeColor="#ffb130" block-size='16' bindchange="sliderChange" min="0" max="{{slider.max}}" />
+        <view class='slider-value'>{{slider.value}}/{{slider.max}}{{slider.unit}}</view>
+      </view>
+      <button class='submit dmb' hover-class='submit-hover' form-type='submit'>确定</button>
+    </form>
+  </view>
+</view>
