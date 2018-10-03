@@ -392,9 +392,6 @@
   color: white;
   border-radius: 2em;
   display: inline-flex;
-  height: 84rpx;
-  width: 88%;
-  margin: 6% 6%;
   font-size: 28rpx;
   justify-content: center;
   align-items: center;

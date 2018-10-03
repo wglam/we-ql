@@ -91,7 +91,7 @@
   </view>
 </block>
 
-<button class='btn-2' hover-class='btn-hover-2'> 训练完成-提交给教练</button>
+<button class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2'> 训练完成-提交给教练</button>
 
 
 
