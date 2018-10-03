@@ -1,13 +1,13 @@
 <tab tabs='{{tabs}}' bindTab='tabChange' touchmove sliderTrans>
   <buyvip wx:for="{{tabs}}" wx:key="*this" slot='{{index}}' name='{{item}}' />
   <view class='bottom' slot='bottom'>
-    <navigator class='image-btn' url='/pages/vip/group/group' style='width:25%;' hover-start-time='10'>
+    <navigator class='image-btn' url='/pages/vip/group/group' style='width:30%;' hover-start-time='10'>
       <image class='image-btn-icon' src="/img/pintuan.png" mode='widthFix' />
       <view>
         拼团
       </view>
     </navigator>
-    <navigator class='image-btn' url='' hover-start-time='10' style='width:75%;'>
+    <navigator class='image-btn' url='' hover-start-time='10' style='width:70%;'>
       <image class='image-btn-icon' src="/img/ptbuy.png" style='width:70%' mode='widthFix' />
     </navigator>
   </view>
