@@ -1,14 +1,22 @@
-<block wx:for="{{items}}" wx:key="{{index}}">
-  <view class='card-title ml mr' style="color:{{colors[index%colors.length]}};">
-    {{item.title}}</view>
-  <view class='card shadow ml mr mb flex'>
-    <view style='width:18rpx;background:{{colors[index%colors.length]}};'>
-    </view>
-    <view class='flex-col pt pb pr flex-1'>
-      <view class='content title'>{{item.ttips}}</view>
-      <view class='content'>{{item.tips}}</view>
-      <view class='content title'>{{item.texamples}}</view>
-      <view class='content'>{{item.examples}}</view>
-    </view>
+<bottom bottom='96'>
+  <view slot="content">
+
+    <block wx:for="{{items}}" wx:key="{{index}}">
+      <view class='card-title ml mr' style="color:{{colors[index%colors.length]}};">
+        {{item.title}}</view>
+      <view class='card shadow ml mr mb flex'>
+        <view style='width:18rpx;background:{{colors[index%colors.length]}};'>
+        </view>
+        <view class='flex-col pt pb pr flex-1'>
+          <view class='content title'>{{item.ttips}}</view>
+          <view class='content'>{{item.tips}}</view>
+          <view class='content title'>{{item.texamples}}</view>
+          <view class='content'>{{item.examples}}</view>
+        </view>
+      </view>
+    </block>
   </view>
-</block>
+  <view class='bottom' slot="bottom">
+    <image class='bottom' src='/img/daka.png' mode='aspectFill' />
+  </view>
+</bottom>

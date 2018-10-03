@@ -1,9 +1,9 @@
 <!--  -->
 <form bindsubmit='formSubmit'>
   <scroll-view scroll-y scroll-x style='height:90%;'>
-    <view wx:for="11111111111111111111111111111111111111111111111111111">
+    <!-- <view wx:for="11111111111111111111111111111111111111111111111111111">
       {{item}}
-    </view>
+    </view> -->
 
   </scroll-view>
 

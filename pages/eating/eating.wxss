@@ -21,3 +21,12 @@
   color: #999;
 }
 
+.bottom {
+  height: 100%;
+  width: 100%;
+}
+
+.bottom-img {
+  width: 80%;
+  height: 100%;
+}

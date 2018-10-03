@@ -14,7 +14,11 @@ Component({
       value:-1
     },
     progressName:String,
-    bottom:Boolean
+    bottom:Boolean,
+    openType:{
+      type:String,
+      value:"navigate"
+    }
   },
 
   /**

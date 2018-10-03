@@ -1,4 +1,4 @@
-<navigator url='{{url}}' class="body radius card-shadow {{bottom?'m':'ml mr mt'}}" hover-class='hover card-hover' hover-start-time='10'>
+<navigator url='{{url}}' open-type="{{openType}}" class="body radius card-shadow {{bottom?'m':'ml mr mt'}}" hover-class='hover card-hover' hover-start-time='10'>
   <view class='card radius'>
     <image class='card-img radius-top' src='{{bg}}' mode="aspectFill" />
     <view class="card-info pl pt">
