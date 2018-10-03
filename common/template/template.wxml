@@ -1,7 +1,7 @@
 <template name="picker-single">
   <view class='form-item'>
     <view class="form-title {{cur?'cur':''}}">
-      {{title}}
+      <p wx:for="{{title}}" wx:key="{{index}}">{{item}}</p>
     </view>
     <picker name='{{form}}' value="{{value}}" range="{{range}}">
       <view class="picker">
@@ -14,7 +14,7 @@
 <template name="single">
   <view class='form-item'>
     <view class="form-title {{cur?'cur':''}}">
-      {{title}}
+      <p wx:for="{{title}}" wx:key="{{index}}">{{item}}</p>
     </view>
     <input type="{{type?type:'text'}}" placeholder="{{holder}}" class='form-input' name='{{form}}' maxlength="{{maxlength?maxlength:-1}}" />
     <view wx:if="{{unit}}" style='margin-right: 20rpx;'>{{unit}}</view>
@@ -24,7 +24,7 @@
 <template name="textarea">
   <view class='form-col'>
     <view class="form-col-title {{cur?'cur':''}}">
-      {{title}}
+      <p wx:for="{{title}}" wx:key="{{index}}">{{item}}</p>
     </view>
     <textarea auto-height placeholder="{{holder}}" style='min-height:3em;background:#f8f8f8;' name='{{form}}' />
   </view>

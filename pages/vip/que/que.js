@@ -10,7 +10,7 @@ Form({
     current: 10,
     sum: 10,
     forms: [
-      [{
+      {
         template: 'single',
         title: '姓名',
         holder: '请输入姓名',
@@ -43,8 +43,7 @@ Form({
         holder: '请输入城市',
         form: 'city',
         cur: true,
-      }],
-      [{
+      },{
         template: 'single',
         title: '身高',
         holder: '请输入身高',
@@ -84,7 +83,7 @@ Form({
         cur: true,
         type: 'digit',
         unit: 'cm'
-      }]
+      }
     ],
     form: {
       name: 'xxx1',

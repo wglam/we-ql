@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "问卷调查",
   "usingComponents": {
-    "xform": "../common/xform/xform"
+    "bottom": "../components/bottom/index"
   }
 }

@@ -32,13 +32,6 @@
   content: "\e6d3";
 }
 
-.bottom {
-  white-space: nowrap;
-  background: white;
-  padding-left: 24rpx;
-  padding-right: 24rpx;
-}
-
 .progress-bar {
   height: 8rpx;
   border-radius: 4rpx;
@@ -79,4 +72,10 @@
 
 .item-hover {
   color: #c5740b;
+}
+.bottom {
+  width: 100%;
+  background: white;
+  display: flex;
+  height: 100%;
 }
