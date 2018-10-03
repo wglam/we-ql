@@ -1,18 +1,23 @@
-<bottom bottom='96'>
-  <view slot='content'>
-    <view wx:for='123456789qwertyuiopasdfghjk' wx:key='{{index}}'>
-      {{item}}</view>
-  </view>
+<bottom bottom='108'>
   <view class='bottom' slot="bottom">
-    <view class='bottom-text' style='width:25%' hover-class='hover' hover-start-time='10'>
-      咨询
+    <view class='image-btn' style='width:25%' hover-class='hover' hover-start-time='10'>
+      <image class='image-btn-icon' src="/img/kefu.png" mode='widthFix' />
+      <view>
+        咨询
+      </view>
     </view>
     <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%' hover-class='hover' hover-start-time='10'>
-      <view style='line-height:1.2em;'>获取健身</view>
-      <view style='line-height:1.2em;'>饮食计划</view>
+      <view class='image-btn'>
+        <image class='image-btn-icon' src="/img/jihua.png" mode='widthFix' />
+        <view>
+          获取健身饮食计划
+        </view>
+      </view>
     </navigator>
-    <navigator url='/pages/vip/buy/buy' class='bottom-text' style='width:40%' hover-class='hover' hover-start-time='10'>
-      立即购买
+    <navigator url='/pages/vip/buy/buy'  style='width:40%;' hover-class='hover' hover-start-time='10'>
+      <view class='image-btn'>
+        <image class='image-btn-icon' src="/img/buy.png" style='width:80%' mode='widthFix' />
+      </view>
     </navigator>
   </view>
 </bottom>

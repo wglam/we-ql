@@ -7,14 +7,32 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    bottom:Number
+    bottom: Number
   },
 
   /**
    * 组件的初始数据
    */
   data: {
+    content: 0
+  },
+  pageLifetimes: {
 
+    show: function() {
+      console.log("show");
+    },
+  },
+  ready: function() {
+    var that = this
+    var query = wx.createSelectorQuery().in(this);
+    query.select('#bottom').boundingClientRect()
+    query.exec((res) => {
+      var listHeight = res[0].height;;
+      let content = wx.getSystemInfoSync().windowHeight - res["0"].height
+      that.setData({
+        content
+      })
+    })
   },
 
   /**

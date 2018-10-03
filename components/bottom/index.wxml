@@ -1,10 +1,7 @@
-<!-- <view style="width:100%; height:100%; display: flex;flex-direction:column;">
+<scroll-view scroll-y style="height:{{content}}px;">
+  <slot name='content' />
+</scroll-view>
 
-</view> -->
-
-<slot name='content' />
-<view style="height:{{bottom}}rpx;" class='mt' />
-
-<view class='b' style="height:{{bottom}}rpx;">
+<view id='bottom' class='b' style="height:{{bottom}}rpx;">
   <slot name='bottom' />
 </view>

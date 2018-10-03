@@ -415,3 +415,21 @@
   min-height: 84rpx;
   border-top: 1rpx solid #eee;
 }
+
+.image-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 2rpx solid #eee;
+  border-top: 2rpx solid #eee;
+  height: 100%;
+  font-size: 24rpx;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+}
+
+.image-btn-icon {
+  width: 52rpx;
+  height: 52rpx;
+}

@@ -10,13 +10,15 @@
       <view class='form-box'>
         <view class='form-item'>
           <view class='form-title cur'>
-            姓名
+            <p>姓</p>
+            <p>名</p>
           </view>
           <input type="text" placeholder="请输入姓名" class='form-input' name='name' />
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
-            性别
+            <p>性</p>
+            <p>别</p>
           </view>
           <picker name='gender' value="{{gender}}" range="{{genders}}">
             <view class="picker">
@@ -26,27 +28,33 @@
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
-            手机号
+            <p>手</p>
+            <p>机</p>
+            <p>号</p>
           </view>
           <input type="number" placeholder="请输入手机号" class='form-input' name='phone' maxlength='11' />
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
-            微信号
+            <p>微</p>
+            <p>信</p>
+            <p>号</p>
           </view>
           <input type="text" placeholder="请输入微信号" class='form-input' name='wx' />
         </view>
 
         <view class='form-item'>
           <view class='form-title cur'>
-            身高
+            <p>身</p>
+            <p>高</p>
           </view>
           <input type="digit" placeholder="请输入身高" class='form-input' name='tops' />
           <view>cm</view>
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
-            体重
+            <p>体</p>
+            <p>重</p>
           </view>
           <input type="digit" placeholder="请输入当前体重" class='form-input' name='weight' confirm-type='done' />
           <view>kg</view>
@@ -55,12 +63,13 @@
 
       <!--  -->
     </view>
+
     <view class='bottom' slot="bottom">
-      <button style='width:50%' hover-class='hover' hover-start-time='10'>
-        咨询
+      <button class='image-btn body' style='width:50%;' hover-class='hover' hover-start-time='10'>
+        <image class='image-btn-icon' src="/img/zixun.png" mode='widthFix' />
       </button>
-      <button style='width:50%' hover-class='hover' hover-start-time='10' formType="submit">
-        提交
+      <button class='image-btn body' style='width:50%;' hover-class='hover' hover-start-time='10' formType="submit">
+        <image class='image-btn-icon' src="/img/submit1.png" mode='widthFix' />
       </button>
     </view>
   </bottom>
