@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的数据",
   "usingComponents": {
-    "tab": "../components/tab/tab",
-    "buyvip": "../common/buyvip/buyvip"
+    "tab": "/components/tab/tab",
+    "buyvip": "/common/buyvip/buyvip"
   }
 }

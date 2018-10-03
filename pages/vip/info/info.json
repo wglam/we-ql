@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "会员",
   "usingComponents": {
-    "bottom": "../components/bottom/index"
+    "bottom": "/components/bottom/index"
   }
 }

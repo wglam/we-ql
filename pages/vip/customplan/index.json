@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "定制计划",
   "usingComponents": {
-    "bottom": "../components/bottom/index"
+    "bottom": "/components/bottom/index"
   }
 }

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "问卷调查",
   "usingComponents": {
-    "bottom": "../components/bottom/index"
+    "bottom": "/components/bottom/index"
   }
 }
