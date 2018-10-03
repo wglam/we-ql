@@ -177,7 +177,6 @@
 }
 .top-text{
   font-size: 1.2em;
-  background: white;
 }
 .icon-text{
   font-size: 1.8em;

@@ -1,7 +1,7 @@
-<view class='item-h'>
+<view class='item-h' style='align-items: center;'>
   <view class='top-text'>
     {{title}}</view>
-  <navigator url='../schedule/index' class="icon-text iconfont icon-formfill" />
+  <navigator url='../schedule/index' class="icon-text iconfont icon-rili" />
 </view>
 <view style='height:1rpx;' />
 <scroll-view class='tab body' scroll-x scroll-into-view="item_{{top}}">
