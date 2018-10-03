@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:"训练主题：胸+背+肩",
+    title: "训练主题：胸+背+肩",
     top: 0,
     current: 0,
     items: [{
@@ -18,8 +18,9 @@ Page({
         video: 'xxx',
         rest: "15s",
         value: 0,
-        dzyl:"核心收紧，不要塌腰，感受胸部发力",
-        hxyl:"核心收紧，不要塌腰，感受胸部发力"
+        dzyl: "核心收紧，不要塌腰，感受胸部发力",
+        hxyl: "核心收紧，不要塌腰，感受胸部发力",
+        unit: "组"
       }]
     }, {
       name: '训练',
@@ -32,7 +33,8 @@ Page({
         rest: "30s",
         value: 0,
         dzyl: "核心收紧，不要塌腰，感受胸部发力",
-        hxyl: "核心收紧，不要塌腰，感受胸部发力"
+        hxyl: "核心收紧，不要塌腰，感受胸部发力",
+        unit: "组"
       }, {
 
         target: '肩部',
@@ -40,7 +42,8 @@ Page({
         zushu: 4,
         cishu: 20,
         rest: "30s",
-        value: 0
+        value: 0,
+        unit: "组"
       }]
     }, {
       name: '有氧',
@@ -49,7 +52,8 @@ Page({
         time: "40分钟",
         xinlv: "130次/分",
         strong: 1,
-        value: 0
+        value: 0,
+        unit: "分钟"
       }]
     }, {
       name: '拉伸',
@@ -58,7 +62,8 @@ Page({
         name: '四头肌拉伸',
         zushu: 3,
         time: "30s",
-        value: 0
+        value: 0,
+        unit: "分钟"
       }]
     }],
     inputHide: true,
@@ -76,6 +81,7 @@ Page({
     val.value = e.currentTarget.dataset.item.value
     val.top = e.currentTarget.dataset.top
     val.index = e.currentTarget.dataset.index
+    val.unit = e.currentTarget.dataset.item.unit
     that.setData({
       slider: val,
       inputHide: false
