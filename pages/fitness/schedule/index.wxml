@@ -1,1 +1,23 @@
-<calendar weeks-type="cn" cell-size="30" next prev show-more-days="{{true}}" calendar-style="demo4-calendar" header-style="demo4-header" board-style="demo4-board" days-color="{{demo4_days_style}}" />
+<view class='page'>
+  <view class='bg'>
+    <view class='top-bg'>
+      <view style='font-size:3em;'>18</view>
+      <view>累计训练/天</view>
+    </view>
+    <view class='my-calendar shadow-lg'>
+      <calendar weeks-type="cn" cell-size="30" next prev show-more-days="{{true}}" calendar-style="demo4-calendar" header-style="demo4-header" board-style="demo4-board" days-color="{{days_style}}" binddayClick="dayClick" bindprevMonth="prev" bindnextMonth="next" end-date="{{endDate}}"
+      />
+    </view>
+  </view>
+
+  <view class='content'>
+    <view>训练主题</view>
+    <view>胸+背+肩</view>
+    <view>完成情况</view>
+    <view class="progress-shew mt">
+      <view class="progress-bar" style="width:{{progress}}%;" />
+    </view>
+    <view class='pro-text mt'>{{progress}}%</view>
+  </view>
+
+</view>

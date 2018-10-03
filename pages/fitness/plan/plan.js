@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title:"训练主题：胸+背+肩",
     top: 0,
     current: 0,
     items: [{
@@ -14,9 +15,11 @@ Page({
         name: '开合跳',
         zushu: 10,
         cishu: 15,
-        video: 'xxxx',
+        video: 'xxx',
         rest: "15s",
-        value: 0
+        value: 0,
+        dzyl:"核心收紧，不要塌腰，感受胸部发力",
+        hxyl:"核心收紧，不要塌腰，感受胸部发力"
       }]
     }, {
       name: '训练',
@@ -27,7 +30,9 @@ Page({
         zushu: 10,
         cishu: -1,
         rest: "30s",
-        value: 0
+        value: 0,
+        dzyl: "核心收紧，不要塌腰，感受胸部发力",
+        hxyl: "核心收紧，不要塌腰，感受胸部发力"
       }, {
 
         target: '肩部',

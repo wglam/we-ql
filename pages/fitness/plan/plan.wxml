@@ -1,5 +1,11 @@
-<scroll-view class='tab body' scroll-x>
-  <view wx:for="{{items}}" wx:key="{{index}}" class="scroll-item {{top==index?'cur':''}}">{{item.name}}</view>
+<view class='item-h'>
+  <view class='top-text'>
+    {{title}}</view>
+  <navigator url='../schedule/index' class="icon-text iconfont icon-formfill" />
+</view>
+<view style='height:1rpx;' />
+<scroll-view class='tab body' scroll-x scroll-into-view="item_{{top}}">
+  <view id="item_{{index}}" wx:for="{{items}}" wx:key="{{index}}" class="scroll-item {{top==index?'cur':''}}">{{item.name}}</view>
 </scroll-view>
 <view style='height:1rpx;' />
 
@@ -8,7 +14,7 @@
     <view class='timeline-time {{top==topindex?"active":""}}'>{{item.name}} </view>
     <block wx:for="{{item.items}}" wx:key="{{index}}">
       <view class='timeline-item {{(top==topindex&&current==index)?"cur":""}}'>
-        <view class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
+        <navigator url='../info/info?title={{item.name}}&video={{item.video}}&dzyl={{item.dzyl}}&hxyl={{item.hxyl}}' class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
           <view class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
           <view class='flex' wx:if="{{item.target}}">
             <view class='item-title-5'>
@@ -79,7 +85,7 @@
             <view>
               {{item.strong}}</view>
           </view>
-        </view>
+        </navigator>
       </view>
     </block>
   </view>

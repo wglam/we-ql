@@ -175,3 +175,12 @@
   padding-right: 24rpx;
   font-size: 24rpx;
 }
+.top-text{
+  font-size: 1.2em;
+  background: white;
+}
+.icon-text{
+  font-size: 1.8em;
+  background: white;
+  color: #ffb130;
+}

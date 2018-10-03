@@ -6,7 +6,6 @@
     "pages/home/home",
     "pages/vip/info/info",
     "pages/vip/customplan/index",
-    "pages/fitness/schedule/index",
     "pages/vip/buy/buy",
     "pages/vip/group/group",
     "pages/vip/que/que",
@@ -16,12 +15,14 @@
     "pages/my/photo/photo",
     "pages/my/vip/vip",
     "pages/my/coach/coach",
-    "pages/my/youhuiquan/youhuiquan"
+    "pages/my/youhuiquan/youhuiquan",
+    "pages/fitness/schedule/index",
+    "pages/fitness/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "xx",
+    "navigationBarTitleText": "氢练",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

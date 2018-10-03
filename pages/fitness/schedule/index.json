@@ -1,6 +1,6 @@
 {
+  "navigationBarTitleText": "训练日历",
   "usingComponents": {
     "calendar": "../components/calendar/calendar"
   }
-
 }
