@@ -83,8 +83,8 @@ Page({
   },
 
   join: function() {
-    wx.showToast({
-      title: 'join',
-    })
+    // wx.showToast({
+    //   title: 'join',
+    // })
   }
 })
