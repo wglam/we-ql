@@ -13,7 +13,7 @@
     </view>
   </view>
 
-  <view style='background-color:{{normal}};'>
+  <view style="background-color:{{sliderTrans?'transparent':normal}};">
     <view class="tab-slider" style="background-color:{{active}}; width: {{100/tabs.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
   </view>
 

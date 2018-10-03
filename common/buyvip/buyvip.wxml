@@ -11,4 +11,4 @@
     </view>
   </block>
 </scroll-view>
-<vipinfo infos='{{vipinfos}}'/>
+<vipinfo infos='{{vipinfos}}' />

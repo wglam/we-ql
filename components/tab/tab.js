@@ -19,6 +19,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    sliderTrans: {
+      type: Boolean,
+      value: false
+    },
     touchmove: {
       type: Boolean,
       value: false
