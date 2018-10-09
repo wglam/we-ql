@@ -1,0 +1,12 @@
+<!--pages/shouquan/shouquan.wxml-->
+<view class="container backF">
+  <view class="userinfo wd100">
+    <image src="{{imgURL+logoImg}}" style='width:200rpx; height:200rpx; border-radius:50%;margin:80rpx auto 20rpx auto'></image>
+    <view class='textC font16 fontB marT20'>{{routineName}}申请获取一下权限</view>
+    <view class='color6 font16 marTB10' >获取您的公开信息（名称、头像等）</view>
+     <!-- <view class='color6 font16 marTB10' wx:if="{{hasUserInfo==true && phone==''}}">获取您微信绑定的手机号</view> -->
+    <button  class='sqButton' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"> 确认授权 </button>
+    <!-- <button class="sqButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{hasUserInfo==true && phone==''}}">同意获取</button> -->
+  </view>
+
+</view>

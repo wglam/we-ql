@@ -1,14 +1,9 @@
+import Api from '/utils/Api'
+
 //app.js
 App({
   onLaunch: function() {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    var that = this;
-    that.getUserInfo(function(info) {
-      console.log(info);
-    });
+
   },
   getUserInfo: function(cb) {
     var that = this;
@@ -31,5 +26,8 @@ App({
   },
   globalData: {
     userInfo: null,
+    api: new Api({
+      baseURL: 'https://xcx.jetem.cn/',
+    })
   }
 })

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/shouquan/shouquan",
     "pages/home/home",
     "pages/fitness/plan/plan",
     "pages/my/my",
@@ -54,5 +55,11 @@
         "selectedIconPath": "img/my-active.png"
       }
     ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
   }
 }

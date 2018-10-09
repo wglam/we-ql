@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
 	"appid": "wx46319d8e331ea07a",
-	"projectname": "ql",
+	"projectname": "we-ql",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
