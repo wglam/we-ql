@@ -3,7 +3,11 @@
   border-radius: 24rpx;
   color: #333;
 }
-
+.card-left {
+  border-top-left-radius: 24rpx;
+  border-bottom-left-radius: 24rpx;
+  width:18rpx;
+}
 .card-title {
   font-size: 28rpx;
   padding-left: 1em;

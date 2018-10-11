@@ -5,7 +5,7 @@
       <view class='card-title ml mr' style="color:{{colors[index%colors.length]}};">
         {{item.title}}</view>
       <view class='card shadow ml mr mb flex'>
-        <view style='width:18rpx;background:{{colors[index%colors.length]}};'>
+        <view class='card-left' style='background:{{colors[index%colors.length]}};'>
         </view>
         <view class='flex-col pt pb pr flex-1'>
           <view class='content title'>{{item.ttips}}</view>
