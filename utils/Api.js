@@ -23,6 +23,7 @@ class Api extends WxRequest {
       checkMemberAnswer: "ht/wechat/checkMemberAnswer", //检查问卷
       addMemberAnswer: "ht/wechat/addMemberAnswer", //提交问卷
       getMemberAnswer: "ht/wechat/getMemberAnswer", //获取问卷
+      updateMember: "ht/wechat/updateMember", //修改个人信息
     }
     this.$$const = {
       memberCard: null
@@ -227,6 +228,9 @@ class Api extends WxRequest {
   getMemberAnswer(param) {
     return this.getRequest(this.$$path.getMemberAnswer, param)
   }
+  updateMember(param) {
+    return this.getRequest(this.$$path.updateMember, param)
+  }
 
   //inner
   _convertDateFromString(dateString) {
@@ -251,7 +255,7 @@ class Api extends WxRequest {
               .then(res => {
                 console.log(res)
               })
-              .catch(res=>{
+              .catch(res => {
                 _error()
               })
           }

@@ -10,7 +10,7 @@ Page({
     avatar: "",
     vip: false,
     vipname: '普通会员',
-    signature: "一句话表达自己的健身宣言",
+    signature: "一句话讲述自己的健身宣言",
     day: 0,
     bmi: 0
   },

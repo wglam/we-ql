@@ -4,8 +4,8 @@
     <image class='user-avatar' src="{{portrait}}" mode='widthFix' />
   </navigator>
 
-  <view class='info'>
-    <view class='name'>{{memberName}}</view>
+  <view class='info' >
+    <view class='name '>{{memberName}}</view>
     <navigator url='/pages/my/set/set' class='flag'>
       {{signature}}
     </navigator>

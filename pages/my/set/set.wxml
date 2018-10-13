@@ -1,59 +1,62 @@
-<view class='item-h'>
-  <view class='item-title'>
-    <p>头</p>
-    <p>像</p>
-  </view>
-  <image class='user-avatar mr' src='{{avatar}}' mode='aspectFill' />
-</view>
-<view class='item-h'>
-  <view class='item-title'>
-    <p>姓</p>
-    <p>名</p>
-  </view>
-  <input type='text' name='name' value='{{name}}' class='form-input' />
-</view>
-
-<view class='item-h'>
-  <view class='item-title'>
-    <p>性</p>
-    <p>别</p>
-  </view>
-  <picker class='flex-1' name='gender' value="{{gender}}" range="{{genders}}">
-    <view class='picker'>
-      <view class='mr'>
-        {{genders[gender]}}
-      </view>
-      <view class="iconfont icon-right" />
+<form bindsubmit="formSubmit">
+  <view class='item-h' style='align-items: center;'>
+    <view class='item-title'>
+      <p>头</p>
+      <p>像</p>
     </view>
-  </picker>
-</view>
-
-<view class='item-h'>
-  <view class='item-title'>
-    <p>手</p>
-    <p>机</p>
-    <p>号</p>
+    <image class='user-avatar mr' src='{{portrait}}' mode='aspectFill' />
   </view>
-  <input type='number' name='phone' value='{{phone}}' class='form-input' />
-</view>
-
-<view class='item-h'>
-  <view class='item-title'>
-    <p>会</p>
-    <p>员</p>
-    <p>信</p>
-    <p>息</p>
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>姓</p>
+      <p>名</p>
+    </view>
+    <input type='text' name='memberName' value='{{memberName}}' class='form-input' />
   </view>
-  <view class="iconfont icon-right" />
-</view>
-<view class='item-h'>
-  <view class='item-title'>
-    <p>健</p>
-    <p>身</p>
-    <p>宣</p>
-    <p>言</p>
-  </view>
-  <input type='text' name='flag' placeholder="一句话讲述自己的健身宣言" value='{{flag}}' class='form-input' />
-</view>
 
-<button class='bottom-btn' hover-class='btn-hover'> 保存</button>
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>性</p>
+      <p>别</p>
+    </view>
+    <picker class='flex-1' name='memberSex' value="{{memberSex}}" range="{{genders}}" bindchange='bindSexChange'>
+      <view class='picker'>
+        <view class='mr'>
+          {{genders[memberSex]}}
+        </view>
+        <view class="iconfont icon-right" />
+      </view>
+    </picker>
+  </view>
+
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>手</p>
+      <p>机</p>
+      <p>号</p>
+    </view>
+    <input type='number' name='memberPhone' value='{{memberPhone}}' class='form-input' />
+  </view>
+
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>会</p>
+      <p>员</p>
+      <p>信</p>
+      <p>息</p>
+    </view>
+    <view class="iconfont icon-right" />
+  </view>
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>健</p>
+      <p>身</p>
+      <p>宣</p>
+      <p>言</p>
+    </view>
+    <input type='text' name='signature' placeholder="一句话讲述自己的健身宣言" value='{{signature}}' class='form-input' />
+  </view>
+  <input hidden='true' name='portrait' value='{{portrait}}' />
+  <input hidden='true' name='memberId' value='{{memberId}}' />
+  <button class='bottom-btn' hover-class='btn-hover' formType="submit"> 保存</button>
+</form>

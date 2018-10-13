@@ -180,7 +180,7 @@
         <view class="lattice-image">
           <view wx:for="{{images}}" wx:key="{{index}}">
             <image src='{{item}}' mode='aspectFill' />
-            <view class='iconfont icon-close' data-index='{{index}}' data-item='{{item}}' bindtap='delImage'/>
+            <view class='iconfont icon-close' data-index='{{index}}' data-item='{{item}}' bindtap='delImage' />
           </view>
           <view class='lattice-btn' bindtap='addImage'>
             <text class='iconfont icon-cameraadd'></text>

@@ -30,7 +30,7 @@ Form({
     birthDay: '1996-01-01',
     region: ['--', '--', '--'],
     memberSex: 0,
-    genders: ['男', '女'],
+    genders: ['--','男', '女'],
     ydtime: 0,
     ydtimes: ['早餐前或后', '中餐前或后', '晚餐前或后'],
     images: [],
@@ -51,7 +51,6 @@ Form({
     wx.showLoading({
       title: '正在提交',
     })
-    params.memberSex++;
     params.images = that.data.images
     g.api.addMemberAnswer({
         data: {
@@ -146,13 +145,11 @@ Form({
         } else {
           val = g.userInfo
         }
-        val.memberSex--;
         that.setData(val)
       })
       .catch(res => {
         wx.hideLoading()
         var val = g.userInfo
-        val.memberSex--;
         that.setData(val)
       })
   },
