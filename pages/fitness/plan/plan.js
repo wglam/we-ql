@@ -95,80 +95,16 @@ Page({
         data
       })
       .then(res => {
-        // var data = {
-        //   title: "训练主题：胸+背+肩",
-        //   top: 0,
-        //   current: 0,
-        //   items: [{
-        //     name: '热身',
-        //     items: [{
-        //       target: '热身动作',
-        //       name: '开合跳',
-        //       zushu: 10,
-        //       cishu: 15,
-        //       video: 'xxx',
-        //       rest: "15s",
-        //       value: 0,
-        //       dzyl: "核心收紧，不要塌腰，感受胸部发力",
-        //       hxyl: "核心收紧，不要塌腰，感受胸部发力",
-        //       unit: "组",
-        //       max: 10
-        //     }]
-        //   }, {
-        //     name: '训练',
-        //     items: [{
-        //       target: '胸部',
-        //       name: '跪姿俯卧撑',
-        //       zushu: 10,
-        //       cishu: -1,
-        //       rest: "30s",
-        //       value: 0,
-        //       dzyl: "核心收紧，不要塌腰，感受胸部发力",
-        //       hxyl: "核心收紧，不要塌腰，感受胸部发力",
-        //       unit: "组",
-        //       max: 10
-        //     }, {
-
-        //       target: '肩部',
-        //       name: '哑铃侧平举',
-        //       zushu: 4,
-        //       cishu: 20,
-        //       rest: "30s",
-        //       value: 0,
-        //       unit: "组",
-        //       max: 4
-        //     }]
-        //   }, {
-        //     name: '有氧',
-        //     items: [{
-        //       name: '快走',
-        //       time: "40分钟",
-        //       xinlv: "130次/分",
-        //       strong: 1,
-        //       value: 0,
-        //       unit: "分钟",
-        //       max: 40
-        //     }]
-        //   }, {
-        //     name: '拉伸',
-        //     items: [{
-        //       target: "拉伸",
-        //       name: '四头肌拉伸',
-        //       zushu: 3,
-        //       time: "15分钟",
-        //       value: 0,
-        //       unit: "分钟",
-        //       max: 45
-        //     }]
-        //   }]
-        // };
-
         if (res.data.retCode == '0000') {
-          var val = res.data.retVal.planContent
+          var s = res.data.retVal.planContent.replace(/\s+/g, '');
+          var val = JSON.parse(s)
           val.complete = val.completeRate >= 1
           that.setData(val)
         }
 
+        wx.hideLoading()
+      })
+      .catch(res => {
         wx.hideLoading()
       })
   },
@@ -224,12 +160,12 @@ Page({
         }
       })
       .then(res => {
-          that.setData({
-            top: -1,
-            current: -1,
-            complete: true
-          })
-          wx.hideLoading()
+        that.setData({
+          top: -1,
+          current: -1,
+          complete: true
         })
+        wx.hideLoading()
+      })
   }
 })

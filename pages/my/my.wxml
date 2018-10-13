@@ -1,13 +1,13 @@
 <view class='top'>
-  <view class='daka shadow'>累计打卡{{user.day}}天</view>
+  <view class='daka shadow'>累计打卡{{dietNum}}天</view>
   <navigator url='/pages/my/set/set'>
-    <image class='user-avatar' src="{{user.avatar}}" mode='widthFix' />
+    <image class='user-avatar' src="{{portrait}}" mode='widthFix' />
   </navigator>
 
   <view class='info'>
-    <view class='name'>{{user.name}}</view>
+    <view class='name'>{{memberName}}</view>
     <navigator url='/pages/my/set/set' class='flag'>
-      {{user.flag}}
+      {{signature}}
     </navigator>
   </view>
 </view>
@@ -15,9 +15,9 @@
 <navigator url='body/body' class="click-item mt">
   <view> 身体数据</view>
   <view class='bmi-right'>
-    <view class='badge secondary capsule-badge mr' style='background:#00CC99;'>
-      <text>BMI {{user.bmi}}</text>
-      <text>{{user.bmiName}}</text>
+    <view wx:if='{{BMI>=1}}' class='badge secondary capsule-badge mr' style='background:{{bmiStatus.color}};'>
+      <text>BMI {{BMI}}</text>
+      <text>{{bmiStatus.name}}</text>
     </view>
     <view class="iconfont icon-right" />
   </view>
@@ -27,7 +27,7 @@
   <view class="iconfont icon-right" />
 </navigator>
 <navigator url="vip/vip" class="click-item mt">
-  <view> {{user.vip?'会员信息':'成为会员'}}</view>
+  <view> {{vip?'会员信息':'成为会员'}}</view>
   <view class="iconfont icon-right" />
 </navigator>
 <navigator url="coach/coach" class="click-item">

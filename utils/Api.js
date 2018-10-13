@@ -39,6 +39,26 @@ class Api extends WxRequest {
       fail: _fail
     })
   }
+  getBmiStatus(staus) {
+    var bmi = {}
+    if (staus == 1) {
+      bmi.name = '过轻'
+      bmi.color = '#6699FF';
+    } else if (staus == 2) {
+      bmi.name = '正常'
+      bmi.color = '#00CC99';
+    } else if (staus == 3) {
+      bmi.name = '过重'
+      bmi.color = '#FF9900';
+    } else if (staus == 4) {
+      bmi.name = '肥胖'
+      bmi.color = '#FF6600';
+    } else if (staus == 5) {
+      bmi.name = '非常肥胖'
+      bmi.color = '#FF0000';
+    }
+    return bmi
+  }
   login(param) {
     var that = this;
     wx.showLoading({

@@ -1,20 +1,18 @@
-// pages/my/my.js
+var g = getApp().globalData
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "张三丰",
-      avatar: "http://image.weilanwl.com/img/square-4.jpg",
-      vip: true,
-      vipname: '普通会员',
-      flag: "自我打败是最可悲的失败，自我战胜是最可贵的胜利。",
-      day:20,
-      bmi:21,
-      bmiName: "正常",
-    }
+    name: "",
+    avatar: "",
+    vip: true,
+    vipname: '普通会员',
+    signature: "一句话表达自己的健身宣言",
+    day: 0,
+    bmi: 0
   },
 
   /**
@@ -31,11 +29,32 @@ Page({
 
   },
 
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    if (g.userInfo != null) {
+      var that = this;
+      var user = g.userInfo;
+      
+      user.bmiStatus = g.api.getBmiStatus(user.bodyStatus)
+      console.log(user)
+      that.setData(user)
 
+      g.api.getMemberCard(g.userInfo.memberId)
+        .then(res => {
+          var data = res.data.retVal;
+          if (data.cardId) {
+            var val = {}
+            val.vip = false;
+            val.vipname = data.cardCategoryName;
+            val.vipIcon = data.cardImg
+            that.setData(val);
+          }
+        })
+
+    }
   },
 
   /**

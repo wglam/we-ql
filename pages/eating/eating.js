@@ -37,40 +37,17 @@ Page({
       .then(
         res => {
           if (res.data.retCode == '0000') {
-            var val = res.data.retVal.planContent
+            var s = res.data.retVal.planContent.replace(/\s+/g, '');
+            var val = {}
+            val.items = JSON.parse(s)
             that.setData(val)
           }
-          // var val = {
-          //   items: [{
-          //     title: "补水情况",
-          //     ttips: "运动中补水：",
-          //     tips: "可以随时小口补水，但是不要一下子喝太多;",
-          //     texamples: "平时补水：",
-          //     examples: "每天8杯水为好，大概在1.5-2升，一天均匀补水"
-          //   }, {
-          //     title: "早餐推荐",
-          //     ttips: "饮食结构：",
-          //     tips: "鸡蛋白1-2个 脂肪 坚果20g 小番茄5个",
-          //     texamples: "搭配示例：",
-          //     examples: "鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个"
-          //   }, {
-          //     title: "中餐推荐",
-          //     ttips: "饮食结构：",
-          //     tips: "碳水 米饭（糙米100克或红薯拳头大小 ）蛋白质 120g即食鸡胸肉（牛肉或者去皮鸡腿肉）",
-          //     texamples: "搭配示例：",
-          //     examples: "鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个"
-          //   }, {
-          //     title: " 晚餐推荐",
-          //     ttips: "饮食结构：",
-          //     tips: "鸡蛋白1-2个 脂肪 坚果20g 小番茄5个",
-          //     texamples: "搭配示例：",
-          //     examples: "鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个鸡蛋白1-2个脂肪坚果20g小番茄5个"
-          //   }]
-          // }
-          // that.setData(val)
           wx.hideLoading()
         }
       )
+      .catch(res => {
+        wx.hideLoading()
+      })
   },
   submitDiet: function() {
     var that = this;
