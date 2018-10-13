@@ -19,7 +19,8 @@
     "pages/my/youhuiquan/youhuiquan",
     "pages/fitness/schedule/index",
     "pages/fitness/info/info",
-    "pages/shouquan/shouquan"
+    "pages/shouquan/shouquan",
+    "pages/vip/queinfo/queinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

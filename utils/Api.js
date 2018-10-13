@@ -251,6 +251,9 @@ class Api extends WxRequest {
               .then(res => {
                 console.log(res)
               })
+              .catch(res=>{
+                _error()
+              })
           }
         })
       }

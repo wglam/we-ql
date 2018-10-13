@@ -22,14 +22,14 @@ Page({
       image: '/img/4.png'
     }],
     process: 0,
-    step: 0
+    step: 0,
+    isque: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
@@ -61,19 +61,40 @@ Page({
           var data = res.data.retVal;
           if (data.cardId) {
             var val = {}
-            val.vip = false;
+            val.vip = true;
             val.vipname = data.cardCategoryName;
             val.vipIcon = data.cardImg
             that.setData(val);
+            if (val.vip) {
+              that._checkMemberAnswer()
+            }
           }
         })
 
       // g.api.getStep(res => {
-
+      //   console.log(res)
       // }, fail => {
 
       // })
+
     }
+  },
+  _checkMemberAnswer() {
+    var that = this;
+    g.api.checkMemberAnswer({
+        data: {
+          memberId: g.userInfo.memberId
+        }
+      })
+      .then(res => {
+        var val = res.data.retCode == '2222'
+        that.setData({
+          isque: val
+        });
+      })
+      .catch(res => {
+
+      })
   },
 
   /**

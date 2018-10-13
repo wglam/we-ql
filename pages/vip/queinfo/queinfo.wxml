@@ -1,0 +1,179 @@
+<!-- <form bindsubmit='formSubmit'>
+  <scroll-view scroll-y scroll-x style='height:90%;'>
+
+  </scroll-view>
+
+  <view class='body pl pr flex-col' style='height:10%'>
+    <view class='progress-bar' style='width:{{current/sum*100}}%' />
+    <view class='b-page'>
+      <view wx:if="{{current<=1}}" />
+      <view wx:else class='pre' hover-class='item-hover' />
+      <view>{{current}}/{{sum}}</view>
+      <view wx:if="{{current<sum}}" class='next' hover-class='item-hover' />
+      <button wx:else class='submit' hover-class='item-hover' form-type='submit'>
+        提交</button>
+    </view>
+  </view>
+</form> -->
+
+<import src='/common/template/template.wxml' />
+
+<view class='form-box' slot='content'>
+  <view class='form-box'>
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>姓</p>
+        <p>名</p>
+      </view>
+      <view type="text" placeholder="请输入姓名" value='{{memberName}}' class='form-input' name='memberName' />
+    </view>
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>性</p>
+        <p>别</p>
+      </view>
+
+      <view class="picker">
+        {{genders[memberSex]}}
+      </view>
+
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>城</p>
+        <p>市</p>
+      </view>
+      <view class="picker">
+        {{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>出</p>
+        <p>生</p>
+        <p>日</p>
+        <p>期</p>
+      </view>
+
+      <view class="picker">
+        {{birthDay}}
+      </view>
+
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>手</p>
+        <p>机</p>
+        <p>号</p>
+      </view>
+      <view type="number" placeholder="请输入手机号" class='form-input' value='{{memberPhone}}' name='memberPhone' maxlength='11' />
+    </view>
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>微</p>
+        <p>信</p>
+        <p>号</p>
+      </view>
+      <view type="text" placeholder="请输入微信号" class='form-input' value='{{wechatNo}}' name='wechatNo' />
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>身</p>
+        <p>高</p>
+      </view>
+      <view type="digit" placeholder="请输入身高" class='form-input' value='{{height}}' name='height' />
+      <view>cm</view>
+    </view>
+    <view class='form-item'>
+      <view class='form-title cur'>
+        <p>体</p>
+        <p>重</p>
+      </view>
+      <view type="digit" placeholder="请输入当前体重" class='form-input' value='{{weight}}' name='weight' confirm-type='done' />
+      <view>kg</view>
+    </view>
+  </view>
+
+  <view class='form-item'>
+    <view class='form-title cur'>
+      <p>胸</p>
+      <p>围</p>
+    </view>
+    <view type="digit" placeholder="请输入胸围" class='form-input' value='{{bust}}' name='bust' />
+    <view>cm</view>
+  </view>
+
+  <view class='form-item'>
+    <view class='form-title cur'>
+      <p>腰</p>
+      <p>围</p>
+    </view>
+    <view type="digit" placeholder="请输入腰围" class='form-input' value='{{waist}}' name='waist' />
+    <view>cm</view>
+  </view>
+  <view class='form-item'>
+    <view class='form-title cur'>
+      <p>腿</p>
+      <p>围</p>
+    </view>
+    <view type="digit" placeholder="请输入腿围" class='form-input' value='{{thigh}}' name='thigh' />
+    <view>cm</view>
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>你之前有锻炼基础吗？坚持运动多久了？</view>
+    <view class='c-input' value='{{jichu}}' name='jichu' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>你通常几点起床？几点睡觉？</view>
+    <view class='c-input' value='{{sleep}}' name='sleep' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>对于健身的目标是什么？想做哪些改变？是否有什么特殊情况需要对教练说？（例如身体哪些疾病）</view>
+    <view class='c-input' value='{{target}}' name='target' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>你计划每周健身几次？家庭还是健身房？</view>
+    <view class='c-input' value='{{place}}' name='place' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>如果你在家肌健身，现在有哪些器材？如果没有器材，是否愿意再在教练的指导下采购？</view>
+    <view class='c-input' value='{{caigou}}' name='caigou' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>你期望自己的运动时间段？（大约45～90分钟左右）</view>
+    <view class="click-item">
+      <view>
+        {{ydtimes[ydtime]}}
+      </view>
+    </view>
+  </view>
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>你是怎么了解到我们的？为什么会选择我们？</view>
+    <view class='c-input' value='{{getUs}}' name='getUs' />
+  </view>
+
+  <view class='form-item-c'>
+    <view class='form-title-c cur'>我的健身宣言（例如：要么瘦，要么死）</view>
+    <view class='c-input' value='{{signature}}' name='signature' />
+  </view>
+  <view class='form-item-c'>
+    <view class='form-title-c'>
+      附上几张自己的照片（正面、侧面、背面、可不露脸），如果不方便可以先提交给你的教练
+    </view>
+    <view class="lattice-image">
+      <view wx:for="{{images}}" wx:key="{{index}}">
+        <image src='{{item}}' mode='aspectFill' />
+      </view>
+    </view>
+  </view>
+</view>
