@@ -15,7 +15,7 @@
     <block wx:for="{{item.items}}" wx:key="{{index}}">
       <view class='timeline-item {{(top==topindex&&current==index)?"cur":""}}'>
         <navigator url='../info/info?title={{item.name}}&video={{item.video}}&dzyl={{item.dzyl}}&hxyl={{item.hxyl}}' class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
-          <view class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
+          <view wx:if='{{!complete}}' class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
           <view class='flex' wx:if="{{item.target}}">
             <view class='item-title-5'>
               训练目标：
@@ -91,7 +91,7 @@
   </view>
 </block>
 
-<button class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2'> 训练完成-提交给教练</button>
+<button wx:if='{{!complete}}' class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2' bindtap='submit' > 训练完成-提交给教练</button>
 
 
 

@@ -15,6 +15,7 @@ class Api extends WxRequest {
       getMemberByOpenid: "/ht/wechat/getMemberByOpenid", //会员信息
       getMemberCard: "/ht/wechat/getMemberCard", //会员卡信息
       getMemberJsPlan: "/ht/wechat/getMemberJsPlan", //健身计划
+      addMemberJsPlan: "/ht/wechat/addMemberJsPlan", //提交健身计划
     }
     this.$$const = {
       memberCard: null
@@ -157,6 +158,10 @@ class Api extends WxRequest {
     var days = now.getTime() - sdate.getTime();　　
     var day = parseInt(days / (1000 * 60 * 60 * 24));　　
     return day;
+  }
+
+  addMemberJsPlan(param) {
+    return this.getRequest(this.$$path.addMemberJsPlan, param)
   }
 
   //inner
