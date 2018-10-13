@@ -7,20 +7,20 @@ export function Form(sfc) {
   }
   // 验证字段的规则
   sfc.rules = {
-    name: {
+    memberName: {
       required: true
     },
-    gender: {
+    memberSex: {
       required: true,
     },
-    phone: {
+    memberPhone: {
       required: true,
       tel: true,
     },
-    wx: {
+    wechatNo: {
       required: true
     },
-    tops: {
+    height: {
       required: true
     },
     weight: {
@@ -28,20 +28,20 @@ export function Form(sfc) {
     }
   }
   sfc.messages = {
-    name: {
+    memberName: {
       required: '请输入姓名',
     },
-    gender: {
+    memberSex: {
       required: '请选择性别',
     },
-    phone: {
+    memberPhone: {
       required: '请输入手机号',
       tel: '请输入正确的手机号',
     },
-    wx: {
+    wechatNo: {
       required: '请输入微信号',
     },
-    tops: {
+    height: {
       required: '请输入身高',
       minlength: '密码长度不少于6位',
       maxlength: '密码长度不多于15位',

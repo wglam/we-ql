@@ -8,7 +8,7 @@ Page({
   data: {
     name: "",
     avatar: "",
-    vip: true,
+    vip: false,
     vipname: '普通会员',
     signature: "一句话表达自己的健身宣言",
     day: 0,
@@ -23,35 +23,34 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     if (g.userInfo != null) {
       var that = this;
       var user = g.userInfo;
-      
       user.bmiStatus = g.api.getBmiStatus(user.bodyStatus)
-      console.log(user)
+      user.vip = false
       that.setData(user)
 
       g.api.getMemberCard(g.userInfo.memberId)
         .then(res => {
-          var data = res.data.retVal;
+          var data = res.data.retVal
           if (data.cardId) {
-            var val = {}
-            val.vip = false;
-            val.vipname = data.cardCategoryName;
-            val.vipIcon = data.cardImg
-            that.setData(val);
+            that.setData({
+              vip: true
+            })
+          } else {
+            that.setData({
+              vip: false
+            })
           }
+        })
+        .catch(res => {
+
+          that.setData({
+            vip: false
+          })
         })
 
     }

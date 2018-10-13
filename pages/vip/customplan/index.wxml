@@ -13,14 +13,14 @@
             <p>姓</p>
             <p>名</p>
           </view>
-          <input type="text" placeholder="请输入姓名" class='form-input' name='name' />
+          <input type="text" placeholder="请输入姓名" class='form-input' name='memberName' />
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
             <p>性</p>
             <p>别</p>
           </view>
-          <picker name='gender' value="{{gender}}" range="{{genders}}">
+          <picker name='memberSex' value="{{gender}}" range="{{genders}}">
             <view class="picker">
               {{genders[gender]}}
             </view>
@@ -32,7 +32,7 @@
             <p>机</p>
             <p>号</p>
           </view>
-          <input type="number" placeholder="请输入手机号" class='form-input' name='phone' maxlength='11' />
+          <input type="number" placeholder="请输入手机号" class='form-input' name='memberPhone' maxlength='11' />
         </view>
         <view class='form-item'>
           <view class='form-title cur'>
@@ -40,7 +40,7 @@
             <p>信</p>
             <p>号</p>
           </view>
-          <input type="text" placeholder="请输入微信号" class='form-input' name='wx' />
+          <input type="text" placeholder="请输入微信号" class='form-input' name='wechatNo' />
         </view>
 
         <view class='form-item'>
@@ -48,7 +48,7 @@
             <p>身</p>
             <p>高</p>
           </view>
-          <input type="digit" placeholder="请输入身高" class='form-input' name='tops' />
+          <input type="digit" placeholder="请输入身高" class='form-input' name='height' />
           <view>cm</view>
         </view>
         <view class='form-item'>

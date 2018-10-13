@@ -101,7 +101,6 @@ Page({
           val.complete = val.completeRate >= 1
           that.setData(val)
         }
-
         wx.hideLoading()
       })
       .catch(res => {
