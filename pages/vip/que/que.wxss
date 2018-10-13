@@ -73,9 +73,23 @@
 .item-hover {
   color: #c5740b;
 }
+
 .bottom {
   width: 100%;
   background: white;
   display: flex;
   height: 100%;
+}
+
+.c-input {
+  min-height: 64rpx;
+}
+
+.click-item {
+  background: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56rpx;
 }

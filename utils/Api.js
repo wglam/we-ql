@@ -20,6 +20,9 @@ class Api extends WxRequest {
       addMemberDietPlan: "ht/wechat/addMemberDietPlan", //饮食打卡
       addCustomPlan: "ht/wechat/addCustomPlan", //定制计划
       getCustomPlan: "ht/wechat/getCustomPlan", //获取定制计划
+      checkMemberAnswer: "ht/wechat/checkMemberAnswer", //检查问卷
+      addMemberAnswer: "ht/wechat/addMemberAnswer", //提交问卷
+      getMemberAnswer: "ht/wechat/getMemberAnswer", //获取问卷
     }
     this.$$const = {
       memberCard: null
@@ -189,11 +192,11 @@ class Api extends WxRequest {
     return this.getRequest(this.$$path.getMemberJsPlan, param)
   }
 
-  getJsDays() {　
-    var sdate = this._convertDateFromString(getApp().globalData.userInfo.createTime);　　
-    var now = new Date();　　
-    var days = now.getTime() - sdate.getTime();　　
-    var day = parseInt(days / (1000 * 60 * 60 * 24));　　
+  getJsDays() {
+    var sdate = this._convertDateFromString(getApp().globalData.userInfo.createTime);
+    var now = new Date();
+    var days = now.getTime() - sdate.getTime();
+    var day = parseInt(days / (1000 * 60 * 60 * 24));
     return day;
   }
 
@@ -212,6 +215,19 @@ class Api extends WxRequest {
   getCustomPlan(param) {
     return this.getRequest(this.$$path.getCustomPlan, param)
   }
+
+  checkMemberAnswer(param) {
+    return this.getRequest(this.$$path.checkMemberAnswer, param)
+  }
+
+  addMemberAnswer(param) {
+    return this.getRequest(this.$$path.addMemberAnswer, param)
+  }
+
+  getMemberAnswer(param) {
+    return this.getRequest(this.$$path.getMemberAnswer, param)
+  }
+
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {

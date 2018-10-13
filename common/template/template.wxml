@@ -10,6 +10,18 @@
     </picker>
   </view>
 </template>
+<template name="picker-region">
+  <view class='form-item'>
+    <view class="form-title {{cur?'cur':''}}">
+      <p wx:for="{{title}}" wx:key="{{index}}">{{item}}</p>
+    </view>
+    <picker name='{{form}}' mode="region" bindchange="{{bindchange}}" value="{{value}}" custom-item="--">
+      <view class="picker">
+        {{value[0]}}，{{value[1]}}，{{value[2]}}
+      </view>
+    </picker>
+  </view>
+</template>
 
 <template name="single">
   <view class='form-item'>

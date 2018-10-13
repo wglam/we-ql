@@ -20,7 +20,7 @@
             <p>性</p>
             <p>别</p>
           </view>
-          <picker name='memberSex' value="{{memberSex}}" range="{{genders}}">
+          <picker name='memberSex' value="{{memberSex}}" range="{{genders}}" bindchange='bindSexChange'>
             <view class="picker">
               {{genders[memberSex]}}
             </view>

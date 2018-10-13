@@ -35,7 +35,7 @@
 </view>
 
 <card wx:if='{{!vip}}' url="/pages/vip/info/info" bg='/img/bg.jpg' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
-<card wx:if='{{vip}}' url="/pages/vip/que/que" bg='/img/2.png' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
+<card  url="/pages/vip/que/que" bg='/img/2.png' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
 <card wx:if='{{vip}}' url="/pages/fitness/plan/plan" openType="switchTab" bg='/img/3.png' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='{{process}}' />
 <card wx:if='{{vip}}' url="/pages/eating/eating" openType="switchTab" bg='/img/4.png' btn='饮食打卡' title='饮食计划' info='Eating plan' />
 

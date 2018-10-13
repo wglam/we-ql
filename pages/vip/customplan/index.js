@@ -31,8 +31,8 @@ Form({
       title: '正在提交',
     })
     var _data = e.detail.value;
-    _data.memberSex++
-      _data.memberId = g.userInfo.memberId
+    _data.memberSex++;
+    _data.memberId = g.userInfo.memberId
     g.api.addCustomPlan({
         data: {
           customPlan: _data
@@ -83,5 +83,11 @@ Form({
       .catch(res => {
         wx.hideLoading()
       })
+  },
+  bindSexChange: function(e) {
+    var that = this
+    this.setData({
+      memberSex: e.detail.value
+    })
   }
 })

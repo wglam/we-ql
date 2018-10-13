@@ -430,3 +430,19 @@
   width: 52rpx;
   height: 52rpx;
 }
+
+.form-item-c {
+  padding: 20rpx;
+  min-height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.form-title-c {
+  text-align: justify;
+  font-size: 30rpx;
+}
+
+.form-title-c.cur::after {
+  color: #da0000;
+  content: "*";
+}
