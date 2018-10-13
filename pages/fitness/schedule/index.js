@@ -159,8 +159,6 @@ Page({
         }
         that.setData(_val)
         wx.hideLoading()
-      }, fail => {
-        wx.hideLoading()
       })
   }
 })

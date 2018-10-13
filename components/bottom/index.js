@@ -19,7 +19,7 @@ Component({
   pageLifetimes: {
 
     show: function() {
-      console.log("show");
+      
     },
   },
   ready: function() {

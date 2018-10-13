@@ -9,19 +9,36 @@ class Api extends WxRequest {
     // `$$prefix` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL
     // this.$$prefix = ''
     this.$$path = {
-      uploadFile: '/ht/wechat/baseS/uploadFile',
-      decodeUserInfo: "/ht/wechat/decodeUserInfo",
-      searchConfig: "/ht/wechat/searchConfig",
-      getMemberByOpenid: "/ht/wechat/getMemberByOpenid", //会员信息
-      getMemberCard: "/ht/wechat/getMemberCard", //会员卡信息
-      getMemberJsPlan: "/ht/wechat/getMemberJsPlan", //健身计划
-      addMemberJsPlan: "/ht/wechat/addMemberJsPlan", //提交健身计划
+      uploadFile: 'ht/baseS/uploadFile',
+      decodeUserInfo: "ht/wechat/decodeUserInfo",
+      searchConfig: "ht/wechat/searchConfig",
+      getMemberByOpenid: "ht/wechat/getMemberByOpenid", //会员信息
+      getMemberCard: "ht/wechat/getMemberCard", //会员卡信息
+      getMemberJsPlan: "ht/wechat/getMemberJsPlan", //健身计划
+      addMemberJsPlan: "ht/wechat/addMemberJsPlan", //提交健身计划
+      getDietPlan: "ht/wechat/getDietPlan", //获取饮食计划
+      addMemberDietPlan: "ht/wechat/addMemberDietPlan", //饮食打卡
     }
     this.$$const = {
       memberCard: null
     }
   }
-
+  uploadFile(path, _success, _fail) {
+    wx.uploadFile({
+      url: this.defaults.baseURL + this.$$path.uploadFile,
+      filePath: path,
+      name: 'file',
+      formData: {
+        'imgIndex': 0
+      },
+      header: {
+        'Accept': 'application/json',
+        "Content-Type": "multipart/form-data"
+      },
+      success: _success,
+      fail: _fail
+    })
+  }
   login(param) {
     var that = this;
     wx.showLoading({
@@ -43,35 +60,38 @@ class Api extends WxRequest {
                 wx.setStorageSync('openId', openId);
 
                 that.getRequest(that.$$path.getMemberByOpenid, {
-                  data: {
-                    openid: openId
-                  }
-                }).then(res => {
-                  var data = res.data;
-                  if (data.retCode == "0000") {
-                    getApp().globalData.userInfo = data.retVal
-                    wx.setStorageSync('userInfo', data.retVal);
-                    wx.navigateBack({
-                      delta: 1
-                    })
-                  } else {
-                    wx.showToast({
-                      title: data.retDesc,
-                    })
-                  }
-
-                }, fail => {
-                  wx.showToast({
-                    title: '登陆失败',
+                    data: {
+                      openid: openId
+                    }
                   })
-                })
-                wx.hideLoading();
+                  .then(res => {
+                    var data = res.data;
+                    if (data.retCode == "0000") {
+                      getApp().globalData.userInfo = data.retVal
+                      wx.setStorageSync('userInfo', data.retVal);
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    } else {
+                      wx.showToast({
+                        title: data.retDesc,
+                      })
+                    }
+                    wx.hideLoading();
+                  })
+                  .catch(res => {
+                    wx.hideLoading();
+                  })
+
               } else {
                 wx.showToast({
                   title: '解密失败',
                 })
                 wx.hideLoading();
               }
+            })
+            .catch(res => {
+              wx.hideLoading();
             })
         } else {
           wx.showToast({
@@ -92,9 +112,7 @@ class Api extends WxRequest {
   getFile(url) {
     return Utils.combineURLs(this.defaults.baseURL + 'uploadFile', url);
   }
-  uploadFile(params) {
-    return this.postRequest(this.$$path.uploadFile, params)
-  }
+
   searchConfig() {
     return this.getRequest(this.$$path.searchConfig, {})
   }
@@ -124,9 +142,6 @@ class Api extends WxRequest {
         } else {
           error()
         }
-
-      }, fail => {
-        error()
       })
     }
   }
@@ -162,6 +177,12 @@ class Api extends WxRequest {
 
   addMemberJsPlan(param) {
     return this.getRequest(this.$$path.addMemberJsPlan, param)
+  }
+  getDietPlan(param) {
+    return this.getRequest(this.$$path.getDietPlan, param)
+  }
+  addMemberDietPlan(param) {
+    return this.getRequest(this.$$path.addMemberDietPlan, param)
   }
 
   //inner

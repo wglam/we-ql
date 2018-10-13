@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/fitness/plan/plan",
+   
     "pages/home/home",
-    "pages/my/my",
     "pages/eating/eating",
+    "pages/fitness/plan/plan",
+    "pages/my/my",
     "pages/vip/info/info",
     "pages/vip/customplan/index",
     "pages/vip/buy/buy",

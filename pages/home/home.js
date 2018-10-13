@@ -66,8 +66,6 @@ Page({
             val.vipIcon = data.cardImg
             that.setData(val);
           }
-        }, fail => {
-
         })
 
       // g.api.getStep(res => {

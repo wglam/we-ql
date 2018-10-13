@@ -109,8 +109,6 @@ Page({
           })
           .then(res => {
             console.log(res);
-          }, fail => {
-
           })
       },
       fail(val) {

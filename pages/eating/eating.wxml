@@ -16,7 +16,7 @@
       </view>
     </block>
   </view>
-  <view class='btn-2 i-btn ' hover-class='btn-hover-2' slot="bottom">
+  <view wx:if="{{items}}" class='btn-2 i-btn ' hover-class='btn-hover-2' slot="bottom" bindtap='submitDiet'>
     <view class='iconfont icon-add' style='font-size: 42rpx;margin-right:6rpx;' />
     <view> 饮食打卡</view>
   </view>

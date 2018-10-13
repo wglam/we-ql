@@ -170,8 +170,6 @@ Page({
         }
 
         wx.hideLoading()
-      }, fail => {
-        wx.hideLoading()
       })
   },
   submit: function() {
@@ -231,9 +229,6 @@ Page({
             current: -1,
             complete: true
           })
-          wx.hideLoading()
-        },
-        fail => {
           wx.hideLoading()
         })
   }
