@@ -1,9 +1,15 @@
 import WxValidate from 'WxValidate'
 
 export function Form(sfc) {
-
-  sfc.onLoad = function() {
-    this.initValidate();
+  if (sfc.pageLoad) {
+    sfc.onLoad = function(op) {
+      this.initValidate()
+      sfc.pageLoad(op)
+    };
+  }else{
+    sfc.onLoad = function (op) {
+      this.initValidate()
+    };
   }
   // 验证字段的规则
   sfc.rules = {

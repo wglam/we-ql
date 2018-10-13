@@ -6,13 +6,15 @@ import {
 var g = getApp().globalData
 
 Form({
-
+  onReady: function() {
+    this.loadCustomPlan()
+  },
   /**
    * 页面的初始数据
    */
   data: {
     image: '/img/bg.jpg',
-    gender: 0,
+    memberSex: 0,
     genders: ['男', '女']
   },
   formSubmit: function(e) {
@@ -40,7 +42,10 @@ Form({
         wx.hideLoading()
         if (res.data.retCode == '0000') {
           wx.showToast({
-            title: '提交成功',
+            title: '提交成功'
+          })
+          wx.navigateBack({
+            delta: 1
           })
         } else {
           wx.showToast({
@@ -58,6 +63,25 @@ Form({
       })
   },
   loadCustomPlan() {
-
+    wx.showLoading({
+      title: '加载中',
+    })
+    var that = this
+    g.api.getCustomPlan({
+        data: {
+          memberId: g.userInfo.memberId
+        }
+      })
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          var val = res.data.retVal
+          val.memberSex--
+            that.setData(val)
+        }
+      })
+      .catch(res => {
+        wx.hideLoading()
+      })
   }
 })

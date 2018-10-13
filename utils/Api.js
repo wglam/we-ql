@@ -19,6 +19,7 @@ class Api extends WxRequest {
       getDietPlan: "ht/wechat/getDietPlan", //获取饮食计划
       addMemberDietPlan: "ht/wechat/addMemberDietPlan", //饮食打卡
       addCustomPlan: "ht/wechat/addCustomPlan", //定制计划
+      getCustomPlan: "ht/wechat/getCustomPlan", //获取定制计划
     }
     this.$$const = {
       memberCard: null
@@ -207,6 +208,9 @@ class Api extends WxRequest {
   }
   addCustomPlan(param) {
     return this.getRequest(this.$$path.addCustomPlan, param)
+  }
+  getCustomPlan(param) {
+    return this.getRequest(this.$$path.getCustomPlan, param)
   }
   //inner
   _convertDateFromString(dateString) {
