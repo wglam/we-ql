@@ -32,7 +32,9 @@ Form({
     _data.memberSex++
       _data.memberId = g.userInfo.memberId
     g.api.addCustomPlan({
-        data: _data
+        data: {
+          customPlan: _data
+        }
       })
       .then(res => {
         wx.hideLoading()
@@ -54,5 +56,8 @@ Form({
           icon: 'none'
         })
       })
+  },
+  loadCustomPlan() {
+
   }
 })
