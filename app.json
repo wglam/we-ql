@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/shouquan/shouquan",
     "pages/home/home",
     "pages/fitness/plan/plan",
     "pages/my/my",
@@ -18,7 +17,8 @@
     "pages/my/coach/coach",
     "pages/my/youhuiquan/youhuiquan",
     "pages/fitness/schedule/index",
-    "pages/fitness/info/info"
+    "pages/fitness/info/info",
+    "pages/shouquan/shouquan"
   ],
   "window": {
     "backgroundTextStyle": "light",

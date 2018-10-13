@@ -1,12 +1,8 @@
-
-
 .user-info {
   position: absolute;
   top: 0rpx;
   width: 100%;
-  
 }
-
 
 .video-play {
   position: absolute;
@@ -40,7 +36,7 @@
 .user-step {
   width: 100%;
   height: 60rpx;
-  background: linear-gradient(180deg,#EEDECF, #E5CFCB);
+  background: linear-gradient(180deg, #eedecf, #e5cfcb);
   border-top-left-radius: 2em;
   border-bottom-left-radius: 2em;
   text-align: center;
@@ -60,4 +56,9 @@
 .align {
   width: 100%;
   text-align: center;
+}
+
+.vip-icon {
+  width: 28rpx;
+  height: 28rpx;
 }

@@ -1,16 +1,16 @@
 // pages/index/index.js
+var g = getApp().globalData;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "张三丰",
-      avatarUrl: "http://image.weilanwl.com/img/square-3.jpg",
-      vip: true,
-      vipname: '普通会员'
-    },
+    name: "",
+    avatar: "",
+    vip: false,
+    vipname: '',
+    vipIcon: '',
     swiper: [{
       video: 'https://pic.ibaotu.com/00/78/86/31w888piC8Pc.mp4',
       image: '/img/bg.jpg'
@@ -21,9 +21,8 @@ Page({
     }, {
       image: '/img/4.png'
     }],
-    process: 60,
-    image: 'http://image.weilanwl.com/img/4x3-1.jpg',
-    step: 313245
+    process: 0,
+    step: 0
   },
 
   /**
@@ -31,6 +30,11 @@ Page({
    */
   onLoad: function(options) {
 
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+    }
   },
 
   /**
@@ -44,7 +48,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    if (g.userInfo != null) {
+      var val = {}
+      val.name = g.userInfo.memberName
+      val.avatar = g.userInfo.portrait
+      var that = this;
+      that.setData(val)
 
+      var that = this;
+      g.api.getMemberCard(g.userInfo.memberId)
+        .then(res => {
+          var data = res.data.retVal;
+          if (data.cardId) {
+            var val = {}
+            val.vip = false;
+            val.vipname = data.cardCategoryName;
+            val.vipIcon = data.cardImg
+            that.setData(val);
+          }
+        }, fail => {
+
+        })
+
+      // g.api.getStep(res => {
+
+      // }, fail => {
+
+      // })
+    }
   },
 
   /**

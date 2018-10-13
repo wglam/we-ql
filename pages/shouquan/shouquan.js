@@ -1,10 +1,4 @@
-// pages/shouquan/shouquan.js
-// const app = getApp();
-// var commonURL = app.globalData.commonURL;
-// var imgURL = app.globalData.imgURL;
-// var util = require('../../utils/util.js');
-
-var qlApi = getApp().globalData.api;
+var g = getApp().globalData;
 
 Page({
 
@@ -21,97 +15,21 @@ Page({
     phone: '',
   },
   bindGetUserInfo: function(event) {
-    wx.showLoading({
-      title: '加载中',
-    })
-    // console.log(event.detail.encryptedData)
-    // console.log(event.detail.iv)
-    // console.log(event.detail.rawData)
-    // console.log(event.detail.signature)
-    console.log(event.detail.userInfo)
     var param = {};
-
     param.encryptedData = event.detail.encryptedData;
     param.iv = event.detail.iv;
-
-    var that = this;
-    console.log(that)
-    var shareId = wx.getStorageSync('shareId');
-    param.offerOpenid = shareId;
-    //使用
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-
-
-    //     } else {
-    //       console.log('获取用户信息失败')
-    //       wx.hideLoading();
-    //     }
-    //   }
-    // })
-
-    wx.login({
-      success: function(res) {
-        var code = res.code; //登录凭证
-        if (code) {
-          param.code = code;
-          console.log(param)
-          qlApi.decodeUserInfo({
-              data: param
-            })
-            .then(data => {
-              if (data.data.status == 1) {
-                var userInfo = data.data.userInfo;
-                console.log(userInfo)
-                that.setData({
-                  userInfo: data.data.userInfo,
-                  hasUserInfo: true
-                });
-                var openId = userInfo.openId; //返回openid
-
-                wx.setStorageSync('openId', openId);
-                that.setData({
-                  openId: openId
-                });
-                wx.navigateBack({
-                  delta: 1
-                })
-                console.log('that.data')
-                console.log(that.data)
-              } else {
-                console.log('解密失败')
-              }
-              wx.hideLoading();
-            }, fail => {
-              console.log(fail)
-              wx.hideLoading();
-            });
-
-        } else {
-          console.log('获取用户登录态失败！' + r.errMsg)
-          wx.hideLoading();
-        }
-      },
-      fail: function() {
-        console.log('登陆失败')
-        wx.hideLoading();
-      }
-    })
-
+    g.api.login(param);
   },
-
   /*小程序的logo名称和图片 */
   searchConfig: function() {
-    qlApi.searchConfig()
+    g.api.searchConfig()
       .then(res => {
         if (res.data.retCode == "0000") {
           if (res.data.list.length > 0) {
             var val = {};
             for (let i = 0; i < res.data.list.length; i++) {
               if (res.data.list[i].configType == "logoImg") {
-                val.logoImg = qlApi.getPic(res.data.list[i].configVal)
+                val.logoImg = g.api.getFile(res.data.list[i].configVal)
               }
               if (res.data.list[i].configType == "routineName") {
                 val.routineName = res.data.list[i].configVal
@@ -179,5 +97,26 @@ Page({
   onLoad: function(options) {
     this.searchConfig();
   },
+  getWeRunData: function(code) {
+    wx.getWeRunData({
+      success(resRun) {
+        g.api.decodeUserInfo({
+            data: {
+              encryptedData: resRun.encryptedData,
+              iv: resRun.iv,
+              code: code
+            }
+          })
+          .then(res => {
+            console.log(res);
+          }, fail => {
 
+          })
+      },
+      fail(val) {
+
+      }
+    })
+
+  }
 })

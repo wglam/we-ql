@@ -1,4 +1,6 @@
 // pages/training/plan/plan.js
+var g = getApp().globalData
+
 Page({
 
   /**
@@ -86,9 +88,6 @@ Page({
       slider: val,
       inputHide: false
     });
-
-    // console.log(e.currentTarget.dataset.top);
-    // console.log(e.currentTarget.dataset.index);
     console.log(that.data.sliderItem);
   },
   _hideInput: function() {

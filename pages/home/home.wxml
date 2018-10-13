@@ -2,16 +2,16 @@
   <image style='width:100%;height:100%;' src='top.png' mode="aspectFill" />
   <view class='flex flex-c dpt dpb' style='position: absolute;top: 0rpx;  width: 100%;'>
     <view class='flex flex-v flex-2'>
-      <image class="ml user-avatar" src="{{user.avatarUrl}}" mode="widthFix" />
+      <image wx:if='{{avatar}}' class="ml user-avatar" src="{{avatar}}" mode="widthFix" />
       <view class='flex-col flex-h ml'>
-        <view class='text-b flex-1 font-l'>{{user.name}}</view>
+        <view wx:if='{{name}}' class='text-b flex-1 font-l'>{{name}}</view>
         <view class='flex flex-wrap align-end'>
-          <view class='iconfont icon-vip ' style="{{(user.vip?'color:#FF9900;':'color:#3366FF;') +'font-size: 28rpx;'}}" />
-          <view class='white-text font-min' style=' margin-left: 6rpx;'> {{user.vipname}}</view>
+          <image wx:if='{{vipIcon}}' class='vip-icon' src='{{vipIcon}}' />
+          <view wx:if='{{vipname}}' class='white-text font-min' style=' margin-left: 6rpx;'> {{vipname}}</view>
         </view>
       </view>
     </view>
-    <view class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
+    <view wx:if='{{step>=1}}' class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
       <view class='user-step-icon'>
         <view class='iconfont icon-zuji align' style='font-size: 42rpx;' />
       </view>
@@ -25,7 +25,7 @@
 
 <view class='banner pl pr pb'>
   <swiper class='banner-shadow radius' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-    <block wx:for="{{swiper}}" wx:key="*this">
+    <block wx:for="{{swiper}}" wx:key="{{index}}">
       <swiper-item>
         <view class='iconfont icon-play video-play' hidden='{{!item.video}}' />
         <image class='martch-parent radius' src='{{item.image}}' mode='aspectFill' />
@@ -34,9 +34,9 @@
   </swiper>
 </view>
 
-<card url="/pages/vip/info/info" bg='/img/bg.jpg' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
-<card url="/pages/vip/que/que"  bg='/img/2.png' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
-<card url="/pages/fitness/plan/plan" openType="switchTab" bg='/img/3.png' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='60' />
-<card url="/pages/eating/eating" openType="switchTab" bg='/img/4.png' btn='饮食打卡' title='饮食计划' info='Eating plan' />
+<card wx:if='{{!vip}}' url="/pages/vip/info/info" bg='/img/bg.jpg' btn='即刻加入' title='成为会员' info='Member' bindClick="join" />
+<card wx:if='{{vip}}' url="/pages/vip/que/que" bg='/img/2.png' btn='立即前往' title='会员问卷' info='Member of questionnaire' />
+<card wx:if='{{vip}}' url="/pages/fitness/plan/plan" openType="switchTab" bg='/img/3.png' btn='记录运动' title='健身计划' info='Fitness plan' progressName='完成进度' progress='{{process}}' />
+<card wx:if='{{vip}}' url="/pages/eating/eating" openType="switchTab" bg='/img/4.png' btn='饮食打卡' title='饮食计划' info='Eating plan' />
 
 <view style='height:24rpx;' />
