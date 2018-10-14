@@ -73,8 +73,10 @@ Page({
           var pic = val.list[0]
           g.api.addMemberDietPlan({
               data: {
-                imgStr: pic,
-                memberId: g.userInfo.memberId
+                memberDietPlan:{
+                  imgStr: pic,
+                  memberId: g.userInfo.memberId
+                }
               }
             })
             .then(res => {

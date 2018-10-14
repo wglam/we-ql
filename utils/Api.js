@@ -29,6 +29,7 @@ class Api extends WxRequest {
       searchBody: "ht/wechat/searchBody", //查询身体数据
       setBodyTarget: "ht/wechat/setBodyTarget", //设置身体目标数据
       addMemberBody: "ht/wechat/addMemberBody", //设置身体当前数据
+      searchMemberDietPlan: "ht/wechat/searchMemberDietPlan", //饮食打卡相册
     }
     this.$$const = {
       memberCard: null
@@ -143,7 +144,9 @@ class Api extends WxRequest {
   getFile(url) {
     return Utils.combineURLs(this.defaults.baseURL + 'uploadFile', url);
   }
-
+  getFileBase() {
+    return Utils.combineURLs(this.defaults.baseURL, 'uploadFile');
+  }
   searchConfig() {
     return this.getRequest(this.$$path.searchConfig, {})
   }
@@ -302,6 +305,9 @@ class Api extends WxRequest {
   }
   setBodyTarget(param) {
     return this.getRequest(this.$$path.setBodyTarget, param)
+  }
+  searchMemberDietPlan(param) {
+    return this.getRequest(this.$$path.searchMemberDietPlan, param)
   }
 
   //inner
