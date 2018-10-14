@@ -69,7 +69,9 @@ Component({
       this.setData({
         current: i
       });
-      var item = this.data.tabs[i];
+      var item = {};
+      item.name = this.data.tabs[i];
+      item.current = i
       this.triggerEvent('Tab', item);
     },
     stopTouchMove: function() {

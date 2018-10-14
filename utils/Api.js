@@ -25,6 +25,8 @@ class Api extends WxRequest {
       getMemberAnswer: "ht/wechat/getMemberAnswer", //获取问卷
       updateMember: "ht/wechat/updateMember", //修改个人信息
       getBody: "ht/wechat/getBody", //身体信息查询
+      getBodyTarget: "ht/wechat/getBodyTarget", //身体目标信息查询
+      searchBody: "ht/wechat/searchBody", //查询身体数据
     }
     this.$$const = {
       memberCard: null
@@ -242,14 +244,45 @@ class Api extends WxRequest {
         if (res.data.retCode == '0000') {
           var item = res.data.retVal
           var user = getApp().globalData.userInfo;
-          user.memberName = item.memberName
-          user.height = item.height
-          user.weight = item.weight
-          user.BMI = item.BMI
-          user.bust = item.bust
-          user.waist = item.waist
-          user.thigh = item.thigh
-          user.bodyStatus = item.bodyStatus
+          if (item.memberName) user.memberName = item.memberName
+          if (item.height) user.height = item.height
+          if (item.weight) user.weight = item.weight
+          if (item.BMI) user.BMI = item.BMI
+          if (item.bust) user.bust = item.bust
+          if (item.waist) user.waist = item.waist
+          if (item.thigh) user.thigh = item.thigh
+          if (item.bodyStatus) user.bodyStatus = item.bodyStatus
+          wx.setStorageSync("userInfo", user)
+          success(res)
+        } else {
+          fail(res)
+        }
+      })
+      .catch(res => {
+        fail(res)
+      })
+
+  }
+
+  getBodyTarget(memberId, success, fail) {
+    this.getRequest(this.$$path.getBodyTarget, {
+        data: {
+          memberId: memberId
+        }
+      })
+      .then(res => {
+        if (res.data.retCode == '0000') {
+          var item = res.data.retVal
+          var user = getApp().globalData.userInfo;
+          if (item.memberName) user.memberName = item.memberName
+          if (item.height) user.toheight = item.height
+          if (item.weight) user.toweight = item.weight
+          if (item.BMI) user.toBMI = item.BMI
+          if (item.bust) user.tobust = item.bust
+          if (item.waist) user.towaist = item.waist
+          if (item.thigh) user.tothigh = item.thigh
+          wx.setStorageSync("userInfo", user)
+
           success(res)
         } else {
           fail(res)
@@ -259,6 +292,10 @@ class Api extends WxRequest {
         fail(res)
       })
   }
+  searchBody(param) {
+    return this.getRequest(this.$$path.searchBody, param)
+  }
+
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {

@@ -10,10 +10,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  onShow: function() {
     if (g.userInfo != null) {
       var that = this;
       var loadDefault = function() {
@@ -23,12 +20,5 @@ Page({
       }
       g.api.getBody(g.userInfo.memberId, loadDefault, loadDefault)
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
+  }
 })
