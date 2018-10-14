@@ -19,23 +19,23 @@
     <view class='font-min gray-text'>{{item.time}}</view>
     <view class='font-l'>{{item.y}} {{unit}}</view>
   </view>
-  <view class='loading-ing' hidden='{{!isLoading}}'>
-    <view class='iconfont icon-loading iconfont-spin' hidden='{{nodata}}' />
-    <view style='padding-left:6rpx; padding-right:6rpx;'>{{nodata?'没有了':'加载中...'}}</view>
+  <view class='loading-ing' hidden='{{!isLoading||nodata}}'>
+    <view class='iconfont icon-loading iconfont-spin' />
+    <view style='padding-left:6rpx; padding-right:6rpx;'>加载中...</view>
   </view>
   <view style="height:300rpx;" />
 </scroll-view>
-<view class='btn_bottom' hover-class='submit-hover'>
+<view class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
   记录{{name}}
 </view>
 <view class="modal-box {{inputHide ?'':'cur'}}">
   <view class='modal-dialog dialog'>
     <view class="modal-title">
-      请输入目标{{name}}
+      请输入{{now?'当前':'目标'}}{{name}}
     </view>
     <form bindsubmit="confirm">
       <view class='input-panel'>
-        <input class='input' type='digit' name='target' value="{{target<0?'':target}}" />
+        <input class='input' type='digit' name='value' value="{{(now||target<0)?'':target}}" />
         <view>{{unit}}</view>
       </view>
       <button class='submit' hover-class='submit-hover' form-type='submit'>保存</button>

@@ -27,6 +27,8 @@ class Api extends WxRequest {
       getBody: "ht/wechat/getBody", //身体信息查询
       getBodyTarget: "ht/wechat/getBodyTarget", //身体目标信息查询
       searchBody: "ht/wechat/searchBody", //查询身体数据
+      setBodyTarget: "ht/wechat/setBodyTarget", //设置身体目标数据
+      addMemberBody: "ht/wechat/addMemberBody", //设置身体当前数据
     }
     this.$$const = {
       memberCard: null
@@ -294,6 +296,12 @@ class Api extends WxRequest {
   }
   searchBody(param) {
     return this.getRequest(this.$$path.searchBody, param)
+  }
+  addMemberBody(param) {
+    return this.getRequest(this.$$path.addMemberBody, param)
+  }
+  setBodyTarget(param) {
+    return this.getRequest(this.$$path.setBodyTarget, param)
   }
 
   //inner

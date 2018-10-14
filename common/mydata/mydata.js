@@ -57,9 +57,7 @@ Component({
   data: {
     inputHide: true,
     opts: {
-
       lazyLoad: true,
-
     },
     btnHide: false,
     isLoading: false,
@@ -71,6 +69,7 @@ Component({
     maxx: 0,
     miny: 0,
     maxy: 0,
+    now: false,
   },
 
   /**
@@ -79,7 +78,7 @@ Component({
   methods: {
     _searchBody: function() {
       var that = this;
-      if (that.data.isLoading || that.data.nodata) {
+      if (that.data.page >= 1 && (that.data.isLoading || that.data.nodata)) {
         return
       }
 
@@ -94,25 +93,30 @@ Component({
         })
         .then(res => {
           var data = res.data
-          data = {
-            retCode: "0000",
-            retDesc: "查询成功",
-            totalrecords: "1",
-            list: [{
-              xVal: "165",
-              yVal: "2018-10-08"
-            }, {
-              xVal: "172",
-              yVal: "2018-06-07"
-            }],
-            pageCount: "1", //总页数
-            total: 1 //总条数
-          }
+          // data = {
+          //   retCode: "0000",
+          //   retDesc: "查询成功",
+          //   totalrecords: "1",
+          //   list: [{
+          //     xVal: "165",
+          //     yVal: "2018-10-08"
+          //   }, {
+          //     xVal: "172",
+          //     yVal: "2018-06-07"
+          //   }],
+          //   pageCount: "1", //总页数
+          //   total: 1 //总条数
+          // }
 
           if (data.retCode == '0000') {
 
             var opts = {}
-            opts.charts = that.data.charts
+            if (that.data.page == 0) {
+              opts.charts = []
+            } else {
+              opts.charts = that.data.charts
+            }
+
             opts.minx = that.data.minx
             opts.maxx = that.data.maxx
             opts.miny = that.data.miny
@@ -136,7 +140,8 @@ Component({
             that.setData({
               opts,
               isLoading: true,
-              nodata: true,
+              nodata: (data.pageCount == param.page),
+              page: param.page
             })
             that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
             that.chartComponent.init((canvas, width, height) => {
@@ -151,6 +156,17 @@ Component({
           console.log(res)
           that._hideLoading()
         })
+    },
+    redrawcharts(target) {
+      var that = this
+      var opts = this.data.opts
+      if (opts.charts.length < 1) {
+        return
+      }
+      that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
+      that.chartComponent.init((canvas, width, height) => {
+        return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
+      })
     },
     compare(obj1, obj2) {
       var val1 = obj1.x;
@@ -185,6 +201,7 @@ Component({
     showInput: function() {
       var that = this;
       that.setData({
+        now: false,
         inputHide: false
       });
     },
@@ -286,5 +303,129 @@ Component({
       chart.render();
       return chart;
     },
+    btnNow: function(e) {
+      var that = this
+      that.setData({
+        now: true,
+        inputHide: false
+      })
+    },
+    confirm: function(e) {
+      console.log(e.detail.value);
+      var i = parseFloat(e.detail.value.value)
+      if (i && i > 0) {
+        wx.showLoading({
+          title: '正在提交',
+        })
+        var that = this
+        if (that.data.now) {
+          g.api.addMemberBody({
+              data: {
+                memberBody: {
+                  memberId: g.userInfo.memberId,
+                  bodyType: that.data.bodyType,
+                  valStrt: i
+                }
+              }
+            })
+            .then(res => {
+              wx.hideLoading()
+              if (res.data.retCode == "0000") {
+                wx.showToast({
+                  title: '提交成功',
+                })
+                that.setData({
+                  page: 0,
+                  inputHide: true
+                })
+                that._searchBody()
+              } else {
+                wx.showToast({
+                  title: res.data.retDesc,
+                  icon: "none"
+                })
+              }
+            })
+            .catch(res => {
+              wx.hideLoading()
+              console.log(res)
+              wx.showToast({
+                title: '提交失败',
+                icon: "none"
+              })
+
+            })
+        } else {
+          var param = {}
+          param.memberId = g.userInfo.memberId
+          param.toheight = g.userInfo.toheight
+          param.toweight = g.userInfo.toweight
+          param.toBIM = g.userInfo.toBIM
+          param.tobust = g.userInfo.tobust
+          param.towaist = g.userInfo.towaist
+          param.tothigh = g.userInfo.tothigh
+          //身体数据类型：1（体重）；2（身高）；3（BMI计算值不用传）；4（胸围）；5（腰围）；6（腿围）
+          switch (that.data.bodyType) {
+            case 1:
+              param.toweight = i
+              break;
+            case 2:
+              param.height = i
+              break;
+            case 3:
+              param.toBIM = i
+              break;
+
+            case 4:
+              param.tobust = i
+              break;
+            case 5:
+              param.towaist = i
+              break;
+            case 6:
+              param.tothigh = i
+              break;
+          }
+
+          g.api.setBodyTarget({
+              data: {
+                memberInfo: param
+              }
+            })
+            .then(res => {
+              wx.hideLoading()
+              if (res.data.retCode == "0000") {
+                wx.showToast({
+                  title: '提交成功',
+                })
+                that.setData({
+                  target: i,
+                  inputHide: true
+                })
+                that.redrawcharts(i)
+              } else {
+                wx.showToast({
+                  title: res.data.retDesc,
+                  icon: "none"
+                })
+              }
+            })
+            .catch(res => {
+              wx.hideLoading()
+              console.log(res)
+              wx.showToast({
+                title: '提交失败',
+                icon: "none"
+              })
+            })
+
+        }
+      } else {
+        wx.showToast({
+          title: '请输入',
+          icon: 'none'
+        })
+      }
+    }
   }
 })
