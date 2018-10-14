@@ -21,8 +21,9 @@
 <navigator url='/pages/my/add/add?tab=5' class="click-item">
   <view> BMI</view>
   <view class='bmi-right'>
-    <view class='badge-item mr' style='background:#FF9900;'>{{bmiName}}</view>
-    <text class='mr'>{{bmi}}</text>
+    <view class='badge-item mr' style='background:{{bmiStatus.color}};'>{{bmiStatus.name}}</view>
+    <view wx:if="{{BMI==0}}" class='mr'>--</view>
+    <view wx:else class='mr'>{{BMI}}</view>
     <view class="iconfont icon-right" />
   </view>
 </navigator>
@@ -30,8 +31,8 @@
 <navigator url='/pages/my/add/add?tab=1' class="click-item">
   <view> 胸围</view>
   <view class='bmi-right'>
-    <view wx:if="{{xiongwei==0}}" class='mr'>--</view>
-    <view wx:else class='mr'>{{xiongwei}} cm</view>
+    <view wx:if="{{bust==0}}" class='mr'>--</view>
+    <view wx:else class='mr'>{{bust}} cm</view>
     <view class="iconfont icon-right" />
   </view>
 </navigator>
@@ -39,8 +40,8 @@
 <navigator url='/pages/my/add/add?tab=2' class="click-item">
   <view> 腰围</view>
   <view class='bmi-right'>
-    <view wx:if="{{yaowei==0}}" class='mr'>--</view>
-    <view wx:else class='mr'>{{yaowei}} cm</view>
+    <view wx:if="{{waist==0}}" class='mr'>--</view>
+    <view wx:else class='mr'>{{waist}} cm</view>
     <view class="iconfont icon-right" />
   </view>
 </navigator>
@@ -49,8 +50,8 @@
 <navigator url='/pages/my/add/add?tab=3' class="click-item">
   <view> 臀围</view>
   <view class='bmi-right'>
-    <view wx:if="{{tuiwei==0}}" class='mr'>--</view>
-    <view wx:else class='mr'>{{tuiwei}} cm</view>
+    <view wx:if="{{thigh==0}}" class='mr'>--</view>
+    <view wx:else class='mr'>{{thigh}} cm</view>
     <view class="iconfont icon-right" />
   </view>
 </navigator>

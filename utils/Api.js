@@ -24,6 +24,7 @@ class Api extends WxRequest {
       addMemberAnswer: "ht/wechat/addMemberAnswer", //提交问卷
       getMemberAnswer: "ht/wechat/getMemberAnswer", //获取问卷
       updateMember: "ht/wechat/updateMember", //修改个人信息
+      getBody: "ht/wechat/getBody", //身体信息查询
     }
     this.$$const = {
       memberCard: null
@@ -231,7 +232,33 @@ class Api extends WxRequest {
   updateMember(param) {
     return this.getRequest(this.$$path.updateMember, param)
   }
-
+  getBody(memberId, success, fail) {
+    this.getRequest(this.$$path.getBody, {
+        data: {
+          memberId: memberId
+        }
+      })
+      .then(res => {
+        if (res.data.retCode == '0000') {
+          var item = res.data.retVal
+          var user = getApp().globalData.userInfo;
+          user.memberName = item.memberName
+          user.height = item.height
+          user.weight = item.weight
+          user.BMI = item.BMI
+          user.bust = item.bust
+          user.waist = item.waist
+          user.thigh = item.thigh
+          user.bodyStatus = item.bodyStatus
+          success(res)
+        } else {
+          fail(res)
+        }
+      })
+      .catch(res => {
+        fail(res)
+      })
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
