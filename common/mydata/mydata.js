@@ -122,7 +122,7 @@ Component({
 
             for (var it of data.list) {
               it.x = new Date(it.yVal.replace(/-/g, "/")).getTime()
-              it.y = it.xVal
+              it.y = parseFloat(it.xVal)
               it.time = it.yVal
               delete it.xVal
               delete it.yVal
@@ -256,7 +256,7 @@ Component({
           max: maxx
         },
         y: {
-          tickCount: 4,
+          ticks: yticks,
           formatter(val) {
             console.log("yformatter", val, unit)
             return val + unit;
