@@ -30,6 +30,8 @@ class Api extends WxRequest {
       setBodyTarget: "ht/wechat/setBodyTarget", //设置身体目标数据
       addMemberBody: "ht/wechat/addMemberBody", //设置身体当前数据
       searchMemberDietPlan: "ht/wechat/searchMemberDietPlan", //饮食打卡相册
+      getMember: "ht/wechat/getMember", //获取绑定账户信息
+      bindMember: "ht/wechat/bindMember", //绑定账户
     }
     this.$$const = {
       memberCard: null
@@ -70,6 +72,82 @@ class Api extends WxRequest {
       bmi.color = '#FF0000';
     }
     return bmi
+  }
+
+  bind(param) {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    this._wxlogin(
+      code => {
+        var shareId = wx.getStorageSync('shareId');
+        param.offerOpenid = shareId;
+        if (code) {
+          param.code = code;
+          that.getRequest(that.$$path.decodeUserInfo, {
+              data: param
+            })
+            .then(data => {
+              if (data.data.status == 1) {
+                var userInfo = data.data.userInfo;
+                param.openId = userInfo.openId; //返回openid
+                wx.setStorageSync('openId', openId);
+
+                delete param.encryptedData
+                delete param.iv
+                delete param.code
+
+                that.getRequest(that.$$path.bindMember, {
+                    data: {
+                      memberInfo: param
+                    }
+                  })
+                  .then(res => {
+                    var data = res.data;
+                    if (data.retCode == "0000") {
+                      getApp().globalData.userInfo = data.retVal
+                      wx.setStorageSync('userInfo', data.retVal);
+                      
+                      wx.switchTab({
+                        url: '/pages/home/home',
+                      })
+                    } else {
+                      wx.showToast({
+                        title: data.retDesc,
+                      })
+                    }
+                    wx.hideLoading();
+                  })
+                  .catch(res => {
+                    wx.hideLoading();
+                  })
+
+              } else {
+                wx.showToast({
+                  title: '解密失败',
+                })
+                wx.hideLoading();
+              }
+            })
+            .catch(res => {
+              wx.hideLoading();
+            })
+        } else {
+          wx.showToast({
+            title: '微信登陆失败',
+          })
+          wx.hideLoading();
+        }
+      },
+      fail => {
+        wx.showToast({
+          title: '微信登陆失败',
+        })
+        wx.hideLoading();
+      }
+    );
+
   }
   login(param) {
     var that = this;
@@ -309,7 +387,9 @@ class Api extends WxRequest {
   searchMemberDietPlan(param) {
     return this.getRequest(this.$$path.searchMemberDietPlan, param)
   }
-
+  getMember(param) {
+    return this.getRequest(this.$$path.getMember, param)
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {

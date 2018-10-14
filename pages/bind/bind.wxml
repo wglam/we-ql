@@ -1,0 +1,49 @@
+<view class='item-h' style='align-items: center;'>
+  <view class='item-title'>
+    <p>头</p>
+    <p>像</p>
+  </view>
+  <image class='user-avatar mr' src='{{portrait}}' mode='aspectFill' />
+</view>
+<view class='item-h'>
+  <view class='item-title'>
+    <p>姓</p>
+    <p>名</p>
+  </view>
+  <view class='form-input'>{{memberName}}</view>
+</view>
+
+<view class='item-h'>
+  <view class='item-title'>
+    <p>性</p>
+    <p>别</p>
+  </view>
+
+  <view class='picker flex-1'>
+    <view class='mr'>
+      {{genders[memberSex]}}
+    </view>
+  </view>
+
+</view>
+
+<view class='item-h'>
+  <view class='item-title'>
+    <p>手</p>
+    <p>机</p>
+    <p>号</p>
+  </view>
+  <view class='form-input'>{{memberPhone}}</view>
+</view>
+
+<view class='item-h'>
+  <view class='item-title'>
+    <p>健</p>
+    <p>身</p>
+    <p>宣</p>
+    <p>言</p>
+  </view>
+  <view class='form-input'>
+    {{signature}}</view>
+</view>
+<button hidden='{{binded}}' class='bottom-btn' hover-class='btn-hover' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"> 绑定</button>
