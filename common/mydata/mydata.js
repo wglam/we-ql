@@ -202,7 +202,6 @@ Component({
       this._searchBody()
     },
     initCharts: function(canvas, width, height, minx, maxx, miny, maxy, target, unit, charts) {
-      console.log("initCharts", minx, maxx, miny, maxy, target, unit, charts)
       var that = this
 
       var chart = new F2.Chart({
@@ -243,7 +242,6 @@ Component({
         yticks.push(target)
         yticks.push(maxy)
       }
-      console.log(yticks)
 
       chart.source(charts, {
         x: {
@@ -258,7 +256,6 @@ Component({
         y: {
           ticks: yticks,
           formatter(val) {
-            console.log("yformatter", val, unit)
             return val + unit;
           }
         }
