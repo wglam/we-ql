@@ -32,6 +32,7 @@ class Api extends WxRequest {
       searchMemberDietPlan: "ht/wechat/searchMemberDietPlan", //饮食打卡相册
       getMember: "ht/wechat/getMember", //获取绑定账户信息
       bindMember: "ht/wechat/bindMember", //绑定账户
+      searchCardCategory: "ht/wechat/searchCardCategory", //获取所有会员卡信息
     }
     this.$$const = {
       memberCard: null
@@ -108,7 +109,7 @@ class Api extends WxRequest {
                     if (data.retCode == "0000") {
                       getApp().globalData.userInfo = data.retVal
                       wx.setStorageSync('userInfo', data.retVal);
-                      
+
                       wx.switchTab({
                         url: '/pages/home/home',
                       })
@@ -390,6 +391,10 @@ class Api extends WxRequest {
   getMember(param) {
     return this.getRequest(this.$$path.getMember, param)
   }
+  searchCardCategory() {
+    return this.getRequest(this.$$path.searchCardCategory, {})
+  }
+
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {

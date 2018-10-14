@@ -1,14 +1,15 @@
-<view class='title'>{{name}}</view>
+<view class='title'>{{info.cardCategoryName}}</view>
 <scroll-view scroll-x="true" class='info-panel'>
-  <block wx:for="{{infos}}" wx:key="*this">
+  <block wx:for="{{info.cardInfos}}" wx:key="{{index}}">
     <view class='info' style="border-color:{{index==current?'#e88b12':''}}" bindtap='infoTab' data-index='{{index}}' data-item='{{item}}'>
       <view style=' font-size: 1.5em;'>
-        {{item.period}}
+        {{item.cardName}}
       </view>
       <view style='mar'>
-        {{item.money}}元
+        {{item.cardPrice}}元
       </view>
     </view>
   </block>
 </scroll-view>
-<vipinfo infos='{{vipinfos}}' />
+<view class='title'>服务内容</view>
+<image wx:if="{{info.cardInfos[current].cardImg}}" style='width:100%;' src="{{baseFile+'/'+info.cardInfos[current].cardImg}}" mode='widthFix' />

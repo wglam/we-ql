@@ -1,5 +1,5 @@
 <tab tabs='{{tabs}}' bindTab='tabChange' touchmove sliderTrans>
-  <buyvip wx:for="{{tabs}}" wx:key="*this" slot='{{index}}' name='{{item}}' />
+  <buyvip wx:for="{{list}}" wx:key="{{index}}" slot='{{index}}' info='{{item}}' bindItemClick='itemClick'/>
   <view class='bottom' slot='bottom'>
     <navigator class='image-btn' url='/pages/vip/group/group' style='width:30%;' hover-start-time='10'>
       <image class='image-btn-icon' src="/img/pintuan.png" mode='widthFix' />
