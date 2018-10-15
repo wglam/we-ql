@@ -10,52 +10,60 @@ Page({
     pageCount: "",
     currentPage: 1,
     couponList: [],
-    imgURL: ''
+    imgURL: '',
+    itType: '',
+    price: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
-    this.setData({
+  onLoad: function(options) {
+    var val = {
       pageCount: "",
       currentPage: 1,
       couponList: [{
-        couponId: "5",
-        couponName: "国庆大放送",
-        couponPrice: "100.00",
+        couponId: "50",
+        couponName: "满50减10",
+        couponPrice: "10.00",
         reductionPrice: "50.00",
         albDay: "30",
-        isUsed: "1",  //使用状态：1（未使用）；2（已使用）
+        isUsed: "1", //使用状态：1（未使用）；2（已使用）
         createTime: "2018-07-26"
       }, {
-          couponId: "5",
-          couponName: "国庆大放送",
-          couponPrice: "100.00",
-          reductionPrice: "50.00",
-          albDay: "30",
-          isUsed: "1",  //使用状态：1（未使用）；2（已使用）
-          createTime: "2018-07-26"
-        }],
-    })
+        couponId: "60",
+        couponName: "满60减20",
+        couponPrice: "20.00",
+        reductionPrice: "60.00",
+        albDay: "30",
+        isUsed: "1", //使用状态：1（未使用）；2（已使用）
+        createTime: "2018-07-26"
+      }],
+    }
+    if (options.itType) {
+      val.itType = options.itType
+    }
+    if (options.price) {
+      val.price = options.price
+    }
+    this.setData(val)
     // this.searchMemberCoupon();
   },
   //列表信息
-  searchMemberCoupon: function () {
+  searchMemberCoupon: function() {
     var that = this;
     wx.request({
-      url:  '/wechat/searchMemberCoupon',
+      url: '/wechat/searchMemberCoupon',
       method: 'GET',
       data: {
-        openid:util.getOpenId(),
+        openid: util.getOpenId(),
         page: that.data.currentPage,
         size: 20,
       },
       header: {
         'Accept': 'application/json',
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.retCode == "0000") {
           var couponList = that.data.couponList;
           for (let i = 0; i < res.data.list.length; i++) {
@@ -84,7 +92,7 @@ Page({
       }
     })
   },
-  loadMore: function () {
+  loadMore: function() {
     var that = this;
     // 当前页是最后一页
     if (that.data.currentPage == that.data.pageCount) {
@@ -94,7 +102,7 @@ Page({
       })
       return;
     }
-    setTimeout(function () {
+    setTimeout(function() {
       that.searchMemberCoupon();
       var tempCurrentPage = that.data.currentPage;
       tempCurrentPage = tempCurrentPage + 1;
@@ -106,7 +114,7 @@ Page({
     }, 300);
   },
 
-  addMemberCoupon: function (e) {
+  addMemberCoupon: function(e) {
     //先判断有没有授权。如果没有授权要先跳到授权页面
     var openId = wx.getStorageSync('openId');
     if (openId == "" || openId == undefined || openId == null) {
@@ -127,7 +135,7 @@ Page({
       header: {
         'Accept': 'application/json',
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.retCode == "0000") {
           wx.showToast({
             title: '领取成功',
@@ -147,57 +155,42 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  // onShareAppMessage: function () {
-
-  // }
   /*跳到首页 */
-  goToHome: function () {
+  goToHome: function() {
     wx.switchTab({
       url: '/pages/home/home',
     })
   },
+  useClick: function(e) {
+    var self = this
+    if (self.data.itType === 'chose') {
+      var pages = getCurrentPages();
+      var currPage = pages[pages.length - 1]; //当前页面
+      var prevPage = pages[pages.length - 2]; //上一个页面
+      var item = e.currentTarget.dataset.item
+      var tp = self.data.price - item.couponPrice
+      tp = tp <= 0 ? 0 : tp
+      prevPage.setData({
+        tprice: tp,
+        youhui: item
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+    console.log(e.currentTarget.dataset.item);
+  }
 })

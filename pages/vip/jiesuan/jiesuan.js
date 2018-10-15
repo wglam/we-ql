@@ -11,7 +11,7 @@ Page({
     price: 0,
     logo: '',
     category: '普通会员',
-    youhui:'满100减5',
+    youhui:{},
     tprice:5,
   },
 

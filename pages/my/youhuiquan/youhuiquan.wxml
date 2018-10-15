@@ -17,7 +17,7 @@
       </view>
     </view>
     <view class='wd30 content_c ' style='position:absolute;top:0;right:0rpx;height:178rpx;'>
-      <view class='btn'>去使用</view>
+      <view class='btn' bindtap='useClick' data-item='{{item}}'>去使用</view>
     </view>
   </view>
 
