@@ -12,7 +12,7 @@ Page({
     vipname: '',
     vipIcon: '',
     swiper: [{
-      video: 'https://pic.ibaotu.com/00/78/86/31w888piC8Pc.mp4',
+      video: 'http://1257742881.vod2.myqcloud.com/68edbcccvodgzp1257742881/d27560385285890782277992702/xB0Gtc1ECj0A.mp4',
       image: '/img/bg.jpg'
     }, {
       image: '/img/2.png'

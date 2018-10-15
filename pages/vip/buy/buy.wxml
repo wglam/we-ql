@@ -7,8 +7,8 @@
         拼团
       </view>
     </navigator>
-    <navigator class='image-btn' url='' hover-start-time='10' style='width:70%;'>
+    <view class='image-btn'  hover-start-time='10' style='width:70%;' bindtap='btnBuy'>
       <image class='image-btn-icon' src="/img/ptbuy.png" style='width:70%' mode='widthFix' />
-    </navigator>
+    </view>
   </view>
 </tab>

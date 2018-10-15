@@ -1,0 +1,14 @@
+<view class='panel p'>
+  <view class='left'>
+    <image src='{{logo}}' mode='widthFix' />
+    <view class='flex-col ml right'>
+      <view class='category '>{{category}}</view>
+      <view class='name '>有效期:{{name}}</view>
+    </view>
+  </view>
+  <view class='price'>{{price}}元</view>
+</view>
+<view class='panel p' style='margin-top:1rpx;'>
+  <view>优惠卷</view>
+  <view></view>
+</view>

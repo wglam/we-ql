@@ -1,5 +1,7 @@
 {
   "pages": [
+        "pages/my/youhuiquan/youhuiquan",
+    "pages/vip/jiesuan/jiesuan",
     "pages/home/home",
     "pages/eating/eating",
     "pages/fitness/plan/plan",
@@ -15,12 +17,13 @@
     "pages/my/photo/photo",
     "pages/my/vip/vip",
     "pages/my/coach/coach",
-    "pages/my/youhuiquan/youhuiquan",
+
     "pages/fitness/schedule/index",
     "pages/fitness/info/info",
     "pages/shouquan/shouquan",
     "pages/vip/queinfo/queinfo",
     "pages/bind/bind"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

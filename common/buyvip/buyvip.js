@@ -25,7 +25,7 @@ Component({
       that.setData({
         current: e.currentTarget.dataset.index
       });
-      that.triggerEvent('ItemClick', e.currentTarget.dataset.item);
+      that.triggerEvent('ItemClick', e.currentTarget.dataset.index);
     }
   }
 })

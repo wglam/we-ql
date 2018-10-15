@@ -446,3 +446,68 @@
   color: #da0000;
   content: "*";
 }
+
+.marLR10 {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.font12 {
+  font-size: 24rpx;
+}
+
+.wd70 {
+  width: 70%;
+}
+
+.marTB5 {
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.padTB10 {
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.pad10 {
+  padding: 10rpx;
+}
+
+.wd30 {
+  width: 30%;
+}
+
+.backF {
+  background: #fff;
+}
+
+.wd100 {
+  width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+.textC {
+  text-align: center;
+  vertical-align: middle;
+}
+.flex-hv-c {
+  align-items: center;
+  justify-content: center;
+}
+.content_c{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

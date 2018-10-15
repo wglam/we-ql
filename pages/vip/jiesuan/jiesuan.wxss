@@ -1,0 +1,38 @@
+.panel {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  background-color: white;
+  align-items: center;
+}
+
+image {
+  width: 192rpx;
+  height: 192rpx;
+}
+
+.right {
+  height: 144rpx;
+}
+
+.category {
+  flex: 1;
+  font-size: 48rpx;
+}
+
+.name {
+  flex: 1;
+  color: #666;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.price {
+  color: red;
+  font-size: 48rpx;
+}

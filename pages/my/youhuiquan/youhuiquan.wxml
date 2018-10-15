@@ -1,0 +1,33 @@
+<!--pages/youhuiquanMy/youhuiquanMy.wxml-->
+
+<view wx:if="{{couponList.length==0}}">暂无优惠券~</view>
+<view wx:else>
+  <view class='mt ml mr' style='position:relative; height:178rpx;' wx:for-items="{{couponList}}" wx:key="{{item.id}}">
+    <image src='/img/ycard.png' style='width:100%; height:100%;' mode="aspectFit" />
+
+    <view class='wd70 flex flex-hv-c' style='position: absolute;top:0;height:100%;color:#ff5d02;'>
+      <view class='flex flex-hv-c'>
+        ￥
+        <view class='colorR' style='font-size:46rpx;'>{{item.couponPrice}}</view>
+      </view>
+      <view class='font12 ml'>
+        <view wx:if="{{item.reductionPrice>0}}">满{{item.reductionPrice}}可用</view>
+        <view wx:else>无金额限制</view>
+        <view>有效期 {{item.albDay}}天内有效</view>
+      </view>
+    </view>
+    <view class='wd30 content_c ' style='position:absolute;top:0;right:0rpx;height:178rpx;'>
+      <view class='btn'>去使用</view>
+    </view>
+  </view>
+
+  <view wx:if="{{isMore}}" class='textC padTB10 color9 font12'>
+    <view>{{loadMoreData}}</view>
+  </view>
+
+</view>
+
+
+<!-- <view style='position:fixed;right:0rpx; top:80%;z-index:99999' bindtap='goToHome'>
+  <image src='../../images/shouye.png' style='width:100rpx;height:67rpx;'></image>
+</view> -->

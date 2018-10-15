@@ -8,17 +8,23 @@ Page({
    */
   data: {
     tabs: [],
-    vipkey: 0
+    list: [],
+    tabIndex: 0,
+    itemIndexs: []
   },
   tabChange: function(e) {
     const that = this;
     that.setData({
-      vipkey: e.detail
+      tabIndex: e.detail.current
     });
-    console.log(e)
   },
-  itemClick:function(e){
-    console.log(e)
+  itemClick: function(e) {
+    const that = this;
+    var val = that.data.itemIndexs
+    val[that.data.tabIndex] = e.detail
+    that.setData({
+      itemIndexs: val
+    });
   },
   onReady() {
     wx.showLoading({
@@ -31,8 +37,10 @@ Page({
         if (res.data.retCode == '0000') {
           var val = {}
           val.tabs = []
+          val.itemIndexs = []
           for (var it of res.data.list) {
             val.tabs.push(it.cardCategoryName)
+            val.itemIndexs.push(0)
           }
           val.list = res.data.list
           self.setData(val)
@@ -42,5 +50,16 @@ Page({
         wx.hideLoading()
         console.log(e)
       })
+  },
+  btnBuy(e) {
+    var self = this
+
+    var category = self.data.list[self.data.tabIndex]
+    var itemIndex = self.data.itemIndexs[self.data.tabIndex]
+    var item = category.cardInfos[itemIndex]
+    console.log(item)
+    wx.redirectTo({
+      url: '/pages/vip/jiesuan/jiesuan?id=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&price=' + item.cardPrice,
+    })
   }
 })
