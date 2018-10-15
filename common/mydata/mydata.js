@@ -139,8 +139,8 @@ Component({
 
             that.setData({
               opts,
-              isLoading: true,
-              nodata: (data.pageCount == param.page),
+              isLoading: false,
+              nodata: (data.list.length < param.pageSize),
               page: param.page
             })
             that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
@@ -324,7 +324,7 @@ Component({
                 memberBody: {
                   memberId: g.userInfo.memberId,
                   bodyType: that.data.bodyType,
-                  valStrt: i
+                  valStr: i
                 }
               }
             })
