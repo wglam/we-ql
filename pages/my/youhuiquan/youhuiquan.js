@@ -11,8 +11,8 @@ Page({
     currentPage: 1,
     couponList: [],
     imgURL: '',
-    itType: '',
-    price: 0,
+
+    price: -1,
   },
 
   /**
@@ -40,9 +40,7 @@ Page({
         createTime: "2018-07-26"
       }],
     }
-    if (options.itType) {
-      val.itType = options.itType
-    }
+
     if (options.price) {
       val.price = options.price
     }
@@ -176,7 +174,7 @@ Page({
   },
   useClick: function(e) {
     var self = this
-    if (self.data.itType === 'chose') {
+    if (self.data.price >= 1) {
       var pages = getCurrentPages();
       var currPage = pages[pages.length - 1]; //当前页面
       var prevPage = pages[pages.length - 2]; //上一个页面
@@ -190,6 +188,8 @@ Page({
       wx.navigateBack({
         delta: 1
       })
+    } else {
+
     }
     console.log(e.currentTarget.dataset.item);
   }

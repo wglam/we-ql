@@ -11,8 +11,8 @@ Page({
     price: 0,
     logo: '',
     category: '普通会员',
-    youhui:{},
-    tprice:5,
+    youhui: {},
+    tprice: 0,
   },
 
   /**
@@ -34,6 +34,7 @@ Page({
     }
     if (options.price) {
       val.price = options.price
+      val.tprice = val.price
     }
 
     var that = this

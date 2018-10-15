@@ -8,7 +8,7 @@
   </view>
   <view class='price'>{{price}}元</view>
 </view>
-<navigator url='/pages/my/youhuiquan/youhuiquan?itType=chose&price={{price}}' class='panel p' style='margin-top:1rpx;'>
+<navigator url='/pages/my/youhuiquan/youhuiquan?price={{price}}' class='panel p' style='margin-top:1rpx;'>
   <view>优惠卷</view>
   <view class='flex'>
     <view class='mr' style='color:red'>{{youhui.couponName}}</view>
