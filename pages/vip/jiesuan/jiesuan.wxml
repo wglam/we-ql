@@ -10,5 +10,16 @@
 </view>
 <view class='panel p' style='margin-top:1rpx;'>
   <view>优惠卷</view>
-  <view></view>
+  <view class='flex'>
+    <view class='mr' style='color:red'>{{youhui}}</view>
+    <view class="iconfont icon-right" />
+  </view>
+</view>
+
+<view class='flex body flex-c' style='width:100%;height:84rpx;position:fixed;bottom:0rpx;'>
+  <view class='flex ml flex-v' style='width:60%;height:100%;'>
+    <view class='content_c' style='height:100%;'>实付款:</view>
+    <view class='content_c' style='height:100%;font-size:1.3em;color:red'>￥{{tprice}}</view>
+  </view>
+  <view class='bottom-btn' hover-class='btn-hover' style='border-radius: 0rpx;width:40%;margin:0rpx;'>立即支付</view>
 </view>
