@@ -155,7 +155,7 @@
 
       <view class='form-item-c'>
         <view class='form-title-c cur'>你期望自己的运动时间段？（大约45～90分钟左右）</view>
-        <picker name='memberSex' value="{{ydtime}}" range="{{ydtimes}}" bindchange='bindYdTimesChange'>
+        <picker name='ydtime' value="{{ydtime}}" range="{{ydtimes}}" bindchange='bindYdTimesChange'>
           <view class="click-item">
             <view>
               {{ydtimes[ydtime]}}
