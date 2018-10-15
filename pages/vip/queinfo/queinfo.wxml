@@ -8,7 +8,7 @@
         <p>姓</p>
         <p>名</p>
       </view>
-      <view type="text" placeholder="请输入姓名" value='{{memberName}}' class='form-input' name='memberName' />
+      <view>{{memberName}}</view>
     </view>
     <view class='form-item'>
       <view class='form-title cur'>
@@ -27,21 +27,19 @@
         <p>城</p>
         <p>市</p>
       </view>
-      <view class="picker">
+      <view>
         {{region[0]}}，{{region[1]}}，{{region[2]}}
       </view>
     </view>
 
     <view class='form-item'>
       <view class='form-title cur'>
-        <p>出</p>
-        <p>生</p>
-        <p>日</p>
-        <p>期</p>
+        <p>年</p>
+        <p>龄</p>
       </view>
 
-      <view class="picker">
-        {{birthDay}}
+      <view>
+        {{age}}
       </view>
 
     </view>
@@ -52,7 +50,7 @@
         <p>机</p>
         <p>号</p>
       </view>
-      <view type="number" placeholder="请输入手机号" class='form-input' value='{{memberPhone}}' name='memberPhone' maxlength='11' />
+      <view>{{memberPhone}}</view>
     </view>
     <view class='form-item'>
       <view class='form-title cur'>
@@ -60,7 +58,7 @@
         <p>信</p>
         <p>号</p>
       </view>
-      <view type="text" placeholder="请输入微信号" class='form-input' value='{{wechatNo}}' name='wechatNo' />
+      <view>{{wechatNo}}</view>
     </view>
 
     <view class='form-item'>
@@ -68,7 +66,7 @@
         <p>身</p>
         <p>高</p>
       </view>
-      <view type="digit" placeholder="请输入身高" class='form-input' value='{{height}}' name='height' />
+      <view>{{height}}</view>
       <view>cm</view>
     </view>
     <view class='form-item'>
@@ -76,7 +74,7 @@
         <p>体</p>
         <p>重</p>
       </view>
-      <view type="digit" placeholder="请输入当前体重" class='form-input' value='{{weight}}' name='weight' confirm-type='done' />
+      <view>{{weight}}</view>
       <view>kg</view>
     </view>
   </view>
@@ -86,7 +84,7 @@
       <p>胸</p>
       <p>围</p>
     </view>
-    <view type="digit" placeholder="请输入胸围" class='form-input' value='{{bust}}' name='bust' />
+    <view>{{bust}}</view>
     <view>cm</view>
   </view>
 
@@ -95,7 +93,7 @@
       <p>腰</p>
       <p>围</p>
     </view>
-    <view type="digit" placeholder="请输入腰围" class='form-input' value='{{waist}}' name='waist' />
+    <view>{{waist}}</view>
     <view>cm</view>
   </view>
   <view class='form-item'>
@@ -103,33 +101,33 @@
       <p>腿</p>
       <p>围</p>
     </view>
-    <view type="digit" placeholder="请输入腿围" class='form-input' value='{{thigh}}' name='thigh' />
+    <view>{{thigh}}</view>
     <view>cm</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>你之前有锻炼基础吗？坚持运动多久了？</view>
-    <view class='c-input' value='{{jichu}}' name='jichu' />
+    <view>{{jichu}}</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>你通常几点起床？几点睡觉？</view>
-    <view class='c-input' value='{{sleep}}' name='sleep' />
+    <view>{{sleep}}</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>对于健身的目标是什么？想做哪些改变？是否有什么特殊情况需要对教练说？（例如身体哪些疾病）</view>
-    <view class='c-input' value='{{target}}' name='target' />
+    <view>target</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>你计划每周健身几次？家庭还是健身房？</view>
-    <view class='c-input' value='{{place}}' name='place' />
+    <view>{{place}}</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>如果你在家肌健身，现在有哪些器材？如果没有器材，是否愿意再在教练的指导下采购？</view>
-    <view class='c-input' value='{{caigou}}' name='caigou' />
+    <view>{{caigou}}</view>
   </view>
 
   <view class='form-item-c'>
@@ -142,12 +140,12 @@
   </view>
   <view class='form-item-c'>
     <view class='form-title-c cur'>你是怎么了解到我们的？为什么会选择我们？</view>
-    <view class='c-input' value='{{getUs}}' name='getUs' />
+    <view>{{getUs}}</view>
   </view>
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>我的健身宣言（例如：要么瘦，要么死）</view>
-    <view class='c-input' value='{{signature}}' name='signature' />
+    <view>{{signature}}</view>
   </view>
   <view class='form-item-c'>
     <view class='form-title-c'>
