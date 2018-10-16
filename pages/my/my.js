@@ -25,9 +25,13 @@ Page({
   onShow: function() {
     if (g.userInfo != null) {
       var that = this;
-      var user = g.userInfo;
-      user.bmiStatus = g.api.getBmiStatus(user.bodyStatus)
-      that.setData(user)
+      var val = {}
+      val.dietNum = g.userInfo.dietNum
+      val.portrait = g.userInfo.portrait
+      val.memberName = g.userInfo.memberName
+      val.BMI = g.userInfo.BMI
+      val.bmiStatus = g.api.getBmiStatus(g.userInfo.bodyStatus)
+      that.setData(val)
 
       g.api.checkMemberCard(g.userInfo.memberId)
         .then(res => {
