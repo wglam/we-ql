@@ -23,6 +23,7 @@ Page({
     total: 0,
     groups: [],
     currentTime: 0,
+    modal: false
   },
   startInterval: function() {
     var that = this;
@@ -89,6 +90,73 @@ Page({
         wx.hideLoading()
         if (res.data.retCode == '0000') {
           var list = res.data.list
+          // list = [{
+          //   memberName: 'z11111',
+          //   portrait: g.userInfo.portrait,
+          //   cgSeconds: 569,
+          //   diffNum: 1, collageMemberId: 1,
+          // }, {
+          //   memberName: 'z11112',
+          //   portrait: g.userInfo.portrait,
+          //   cgSeconds: 56900,
+          //     diffNum: 1, collageMemberId: 1,
+          // }, {
+          //   memberName: 'z11113',
+          //   portrait: g.userInfo.portrait,
+          //   cgSeconds: 569,
+          //   diffNum: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1, collageMemberId: 1,
+          //   }, {
+          //     memberName: 'z11113',
+          //     portrait: g.userInfo.portrait,
+          //     cgSeconds: 569,
+          //     diffNum: 1,
+          //     collageMemberId:1,
+          //   }]
           var groups = []
           if (list && list.length >= 1) {
             var temp
@@ -108,7 +176,7 @@ Page({
             console.log(groups)
             self.setData({
               groups,
-              total: list.length
+              total: res.data.total
             })
           }
         }
@@ -122,7 +190,7 @@ Page({
     console.log(e)
     var self = this
     var item = self.data.card
-    var collageMemberId = e.currentTarget.dataset.collageMemberId
+    var collageMemberId = e.currentTarget.dataset.collagememberid
     var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
       '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator
     if (collageMemberId) {
@@ -132,4 +200,14 @@ Page({
       url: _url,
     })
   },
+  moreClick(e) {
+    this.setData({
+      modal: true
+    })
+  },
+  closeModal: function(e) {
+    this.setData({
+      modal: false
+    })
+  }
 })

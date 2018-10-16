@@ -29,7 +29,7 @@
       <view style='flex:1;'>
         {{total}}人在拼单，可直接参与
       </view>
-      <view class='more'>查看更多</view>
+      <view class='more' bindtap='moreClick'>查看更多</view>
     </view>
     <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
 </scroll-view> -->
@@ -61,3 +61,36 @@
     </view>
   </view>
 </bottom>
+
+<view class='flex flex-c' style='position: fixed; top: 0;  background: rgba(0, 0, 0, 0.6); height:100%;width:100%;' hidden='{{!modal}}'>
+  <view class='modal-dialog' style='height:70%;'>
+    <view class="content_c body" style='width:100%;height:12%; font-size:32rpx;'>
+      <text>正在拼单</text>
+      <view class='bar-close badge danger round' bindtap='closeModal'>
+        <text class='iconfont icon-close'></text>
+      </view>
+    </view>
+    <scroll-view class='body pl pr' scroll-y style='height:80%;'>
+      <block wx:for="{{groups}}" wx:key="{{index}}" wx:for-item="its">
+        <view class='item body' wx:for="{{its}}" wx:key='{{item}}'>
+          <view class='flex-v flex-2'>
+            <image class='avatar' src='{{item.portrait}}' mode='widthFix' />
+            <view class='ml'>{{item.memberName}}</view>
+          </view>
+          <view class='font-min flex-1'>
+            <view class='num'>{{item.diffNum}}人</view>
+            <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
+          </view>
+          <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collagememberid='{{item.collageMemberId}}' data-price='{{card.collagePrice}}'>去拼单</view>
+        </view>
+      </block>
+    </scroll-view>
+
+    <view class='content_c body' style='width:100%;height:8%;font-size:24rpx;color:#666;'>
+      仅显示{{total}}个正在拼单的人
+    </view>
+  </view>
+</view>
+<!-- <view class="modal-box {{modal?'cur':''}}" style='overflow-y: hidden; '>
+ 
+</view> -->
