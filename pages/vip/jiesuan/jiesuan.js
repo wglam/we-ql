@@ -50,7 +50,7 @@ Page({
     })
     var self = this
     var param = {}
-    prarm.memberId = g.userInfo.memberId
+    param.memberId = g.userInfo.memberId
     param.openid = g.userInfo.openid
     param.cardCategoryId = self.data.categoryId
     param.couponId = self.data.youhui.couponId
