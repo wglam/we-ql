@@ -1,6 +1,7 @@
 <view class='item-h' style='align-items: center;'>
-  <view class='top-text'>
-    {{title}}</view>
+  <view wx:if='{{title}}' class='top-text'>
+    训练主题:{{title}}</view>
+  <view wx:else class='top-text'>休息一会吧~</view>
   <navigator url='../schedule/index' class="icon-text iconfont icon-rili" />
 </view>
 <view style='height:1rpx;' />
@@ -91,7 +92,7 @@
   </view>
 </block>
 
-<button wx:if='{{!complete}}' class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2' bindtap='submit' > 训练完成-提交给教练</button>
+<button wx:if='{{!complete}}' class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2' bindtap='submit'> 训练完成-提交给教练</button>
 
 
 
