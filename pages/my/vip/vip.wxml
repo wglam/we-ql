@@ -11,7 +11,7 @@
     {{card.beginTime}}~{{card.endTime}}
   </view>
   <view class='flex pl pr'>
-    <view class='radius-btn renew shadow-alice'>续费</view>
+    <view class='radius-btn renew shadow-alice' bindtap='renewOrder'>续费</view>
     <view class='radius-btn upgrade shadow-alice'>升级</view>
     <view class='radius-btn refund shadow-alice'>退款</view>
   </view>

@@ -74,5 +74,35 @@ Page({
   },
   onReachBottom() {
     this.searchOrder()
+  },
+  renewOrder(e) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var self = this
+    g.api.getCard(self.data.card.cardId)
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          var item = res.data.retVal
+          wx.redirectTo({
+            url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + 'orderType=renew',
+          })
+        } else {
+          wx.showToast({
+            title: res.data.retDesc,
+            icon: 'none'
+          })
+        }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载会员卡信息失败',
+          icon: 'none'
+        })
+      })
+
+
   }
 })

@@ -7,9 +7,9 @@ App({
     if (user != '') {
       this.globalData.userInfo = user;
     }
-    console.log(user)
   },
   globalData: {
+    test:'renew',
     userInfo: null,
     api: new Api({
       baseURL: 'https://xcx.jetem.cn/',

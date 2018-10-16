@@ -51,7 +51,7 @@ Page({
   },
   addOrder: function(e) {
     var that = this
-    if ("renew" == that.data.orderType) {
+    if (that.data.orderType == "renew") {
 
     } else {
       that.addNewOrder()
@@ -70,8 +70,8 @@ Page({
     param.cardId = self.data.cardid
     param.orderPrice = self.data.price
     param.couponPay = self.data.youhui.couponPrice
-    param.payment = self.data.payment
-
+    // param.payment = self.data.payment
+    param.payment = 0.001
     console.log(param)
     g.api.addOrder({
         data: {

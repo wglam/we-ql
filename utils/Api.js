@@ -39,6 +39,8 @@ class Api extends WxRequest {
       searchOrderCoupon: 'ht/wechat/searchOrderCoupon', //订单可使用优惠券信息查询
       addOrder: "ht/wechat/addOrder", //生成订单
       wechatPay: "ht/wechat/wechatPay", //订单微信支付
+      decodeRunData: 'ht/wechat/decodeRunData', //解析微信步数
+      getCard: 'ht/wechat/getCard', //获取会员卡信息
     }
     this.$$const = {
       memberCard: null
@@ -421,10 +423,19 @@ class Api extends WxRequest {
     return this.getRequest(this.$$path.addOrder, param)
   }
 
-  wechatPay(id) {
+  wechatPay(id, _openid) {
     return this.getRequest(this.$$path.wechatPay, {
       data: {
-        orderCode: id
+        orderCode: id,
+        openid: _openid
+      }
+    })
+  }
+
+  getCard(id) {
+    return this.getRequest(this.$$path.getCard, {
+      data: {
+        cardId: id
       }
     })
   }
@@ -445,7 +456,7 @@ class Api extends WxRequest {
             param.code = res.code
             param.encryptedData = _res.encryptedData
             param.iv = _res.iv
-            this.getRequest(this.$$path.decodeUserInfo, {
+            this.getRequest(this.$$path.decodeRunData, {
                 data: param
               })
               .then(res => {

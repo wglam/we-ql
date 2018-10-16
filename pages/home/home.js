@@ -72,11 +72,11 @@ Page({
         })
 
 
-      g.api.getStep(res => {
-        console.log(res)
-      }, fail => {
+      // g.api.getStep(res => {
+      //   console.log(res)
+      // }, fail => {
 
-      })
+      // })
 
     }
   },
