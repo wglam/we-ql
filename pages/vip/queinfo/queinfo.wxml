@@ -16,7 +16,7 @@
         <p>别</p>
       </view>
 
-      <view class="picker">
+      <view>
         {{genders[memberSex]}}
       </view>
 
@@ -117,7 +117,7 @@
 
   <view class='form-item-c'>
     <view class='form-title-c cur'>对于健身的目标是什么？想做哪些改变？是否有什么特殊情况需要对教练说？（例如身体哪些疾病）</view>
-    <view>target</view>
+    <view>{{target}}</view>
   </view>
 
   <view class='form-item-c'>

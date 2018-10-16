@@ -53,18 +53,12 @@
           </picker>
         </view>
 
-        <view class='form-item'>
+           <view class='form-item'>
           <view class='form-title cur'>
-            <p>出</p>
-            <p>生</p>
-            <p>日</p>
-            <p>期</p>
+            <p>年</p>
+            <p>龄</p>
           </view>
-          <picker mode="date" value="{{birthDay}}" name='birthDay' start="1900-01-01" end="{{end}}" bindchange="bindDateChange">
-            <view class="picker">
-              {{birthDay}}
-            </view>
-          </picker>
+          <input type="text" placeholder="请输入年龄" value='{{age}}' class='form-input' name='age' />
         </view>
 
         <view class='form-item'>

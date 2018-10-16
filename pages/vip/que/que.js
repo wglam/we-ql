@@ -2,21 +2,6 @@ import {
   Form
 } from '../../../utils/form'
 
-Date.prototype.Format = function(fmt) {
-  var o = {
-    "M+": this.getMonth() + 1, //月份 
-    "d+": this.getDate(), //日 
-    "h+": this.getHours(), //小时 
-    "m+": this.getMinutes(), //分 
-    "s+": this.getSeconds(), //秒 
-    "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-    "S": this.getMilliseconds() //毫秒 
-  };
-  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-  for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-  return fmt;
-}
 var g = getApp().globalData
 Form({
   onReady: function() {
@@ -26,11 +11,9 @@ Form({
    * 页面的初始数据
    */
   data: {
-    end: new Date().Format('yyyy-MM-dd'),
-    birthDay: '1996-01-01',
     region: ['--', '--', '--'],
     memberSex: 0,
-    genders: ['--','男', '女'],
+    genders: ['--', '男', '女'],
     ydtime: 0,
     ydtimes: ['早餐前或后', '中餐前或后', '晚餐前或后'],
     images: [],
@@ -51,15 +34,64 @@ Form({
     wx.showLoading({
       title: '正在提交',
     })
-    params.images = that.data.images
-    g.api.addMemberAnswer({
+    var paths = that.data.images
+    if (paths && paths.length >= 1) {
+      params.images = []
+      var i = 0
+      that.uploadFile(paths, i, params.images, res => {
+        that.addMemberAnswer({
+          data: {
+            memberId: g.userInfo.memberId,
+            answerContent: params
+          }
+        })
+      })
+    } else {
+      that.addMemberAnswer({
         data: {
           memberId: g.userInfo.memberId,
           answerContent: params
         }
-      }).then(res => {
+      })
+    }
+
+  },
+  uploadFile(paths, i, images, success) {
+    var self = this
+
+    g.api.uploadFile(paths[i], res => {
+      var val = JSON.parse(res.data)
+      if (val.retCode == '0000') {
+        images.push(g.api.getFile(val.list["0"]))
+        i++
+        if (i <= paths.length - 1) {
+          self.uploadFile(paths, i, images, success)
+        } else {
+          success(images)
+        }
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: val.retDesc,
+          icon: 'none'
+        })
+      }
+    }, e => {
+      wx.hideLoading()
+      console.log(e)
+      wx.showToast({
+        title: '上传图片失败',
+        icon: 'none'
+      })
+    })
+  },
+  addMemberAnswer(param) {
+    g.api.addMemberAnswer(param).then(res => {
         wx.hideLoading()
         if (res.data.retCode == '0000') {
+          wx.navigateBack({
+            delta: 1
+          })
           wx.showToast({
             title: '提交成功',
           })
@@ -77,7 +109,6 @@ Form({
           icon: 'none'
         })
       })
-
   },
   bindSexChange: function(e) {
     var that = this
