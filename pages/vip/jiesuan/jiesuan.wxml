@@ -19,7 +19,7 @@
 <view class='flex body flex-c' style='width:100%;height:84rpx;position:fixed;bottom:0rpx;'>
   <view class='flex ml flex-v' style='width:60%;height:100%;'>
     <view class='content_c' style='height:100%;'>实付款:</view>
-    <view class='content_c' style='height:100%;font-size:1.3em;color:red'>￥{{tprice}}</view>
+    <view class='content_c' style='height:100%;font-size:1.3em;color:red'>￥{{payment}}</view>
   </view>
-  <view class='bottom-btn' hover-class='btn-hover' style='border-radius: 0rpx;width:40%;margin:0rpx;'>立即支付</view>
+  <view class='bottom-btn' hover-class='btn-hover' style='border-radius: 0rpx;width:40%;margin:0rpx;' bindtap='addOrder'>立即支付</view>
 </view>

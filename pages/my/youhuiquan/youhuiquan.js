@@ -175,7 +175,7 @@ Page({
       var tp = self.data.price - item.couponPrice
       tp = tp <= 0 ? 0 : tp
       prevPage.setData({
-        tprice: tp,
+        payment: tp,
         youhui: item
       })
       wx.navigateBack({

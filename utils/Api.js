@@ -37,6 +37,8 @@ class Api extends WxRequest {
       checkMemberCard: "ht/wechat/checkMemberCard", //检查是否是会员
       searchMemberCoupon: 'ht/wechat/searchMemberCoupon', //优惠券信息
       searchOrderCoupon: 'ht/wechat/searchOrderCoupon', //订单可使用优惠券信息查询
+      addOrder: "ht/wechat/addOrder", //生成订单
+      wechatPay: "ht/wechat/wechatPay", //订单微信支付
     }
     this.$$const = {
       memberCard: null
@@ -413,6 +415,18 @@ class Api extends WxRequest {
   }
   searchOrderCoupon(param) {
     return this.getRequest(this.$$path.searchOrderCoupon, param)
+  }
+
+  addOrder(param) {
+    return this.getRequest(this.$$path.addOrder, param)
+  }
+
+  wechatPay(id) {
+    return this.getRequest(this.$$path.wechatPay, {
+      data: {
+        orderCode: id
+      }
+    })
   }
   //inner
   _convertDateFromString(dateString) {

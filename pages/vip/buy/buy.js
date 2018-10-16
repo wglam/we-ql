@@ -59,7 +59,7 @@ Page({
     var item = category.cardInfos[itemIndex]
     console.log(item)
     wx.redirectTo({
-      url: '/pages/vip/jiesuan/jiesuan?id=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&price=' + item.cardPrice,
+      url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + category.cardCategoryId,
     })
   }
 })
