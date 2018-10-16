@@ -14,6 +14,9 @@ Page({
     nodata: false,
     vips: []
   },
+  onLoad(options) {
+    this.searchOrder()
+  },
   onShow: function() {
     wx.showLoading({
       title: '加载中...',
@@ -23,9 +26,18 @@ Page({
       g.api.getMemberCard(g.userInfo.memberId)
         .then(res => {
           wx.hideLoading()
-          that.setData({
-            card: data
-          })
+          if (res.data.retCode == '0000') {
+            var item = res.data.retVal
+            if (item.beginTime) {
+              item.beginTime = item.beginTime.substring(0, 10)
+            }
+            if (item.endTime) {
+              item.endTime = item.endTime.substring(0, 10)
+            }
+            that.setData({
+              card: item
+            })
+          }
         })
         .catch(res => {
           wx.hideLoading()
@@ -40,6 +52,7 @@ Page({
       nodata: false,
     })
     var param = {}
+    param.openid = g.userInfo.openid
     param.page = self.data.page + 1
     param.size = self.data.pageSize
     param.openid = g.userInfo.openid
@@ -52,21 +65,23 @@ Page({
       .then(res => {
         var vips = self.data.vips
         if (param.page == 1) {
-          vips = {}
+          vips = []
         }
         if (res.data.list) {
           for (var it of res.data.list) {
             vips.push(it)
           }
         }
+
         self.setData({
           vips,
           isLoading: false,
-          nodata: (data.list.length < param.size),
+          nodata: (res.data.list.length < param.size),
           page: param.page
         })
       })
       .catch(e => {
+        console.log(e)
         self.setData({
           isLoading: false,
         })
@@ -86,7 +101,7 @@ Page({
         if (res.data.retCode == '0000') {
           var item = res.data.retVal
           wx.redirectTo({
-            url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + 'orderType=renew',
+            url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + '&orderType=renew',
           })
         } else {
           wx.showToast({

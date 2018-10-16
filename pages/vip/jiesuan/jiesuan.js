@@ -52,10 +52,49 @@ Page({
   addOrder: function(e) {
     var that = this
     if (that.data.orderType == "renew") {
-
+      that.renewOrder()
     } else {
       that.addNewOrder()
     }
+  },
+  renewOrder: function() {
+    wx.showLoading({
+      title: '正在提交',
+    })
+    var self = this
+    var param = {}
+    param.memberId = g.userInfo.memberId
+    param.openid = g.userInfo.openid
+    param.cardCategoryId = self.data.categoryid
+    param.couponId = self.data.youhui.couponId
+    param.cardId = self.data.cardid
+    param.orderPrice = self.data.price
+    param.couponPay = self.data.youhui.couponPrice
+    param.payment = self.data.payment
+    console.log(param)
+    g.api.renewOrder({
+      data: {
+        memberOrder: param
+      }
+    })
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          self.orderPay(res.data.retVal)
+        } else {
+          wx.showToast({
+            title: res.data.retDesc,
+            icon: 'none'
+          })
+        }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '生成订单失败',
+          icon: 'none'
+        })
+      })
   },
   addNewOrder: function() {
     wx.showLoading({
@@ -70,8 +109,7 @@ Page({
     param.cardId = self.data.cardid
     param.orderPrice = self.data.price
     param.couponPay = self.data.youhui.couponPrice
-    // param.payment = self.data.payment
-    param.payment = 0.001
+    param.payment = self.data.payment
     console.log(param)
     g.api.addOrder({
         data: {
