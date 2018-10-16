@@ -100,7 +100,7 @@ Page({
         wx.hideLoading()
         if (res.data.retCode == '0000') {
           var item = res.data.retVal
-          wx.redirectTo({
+          wx.navigateTo({
             url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + '&orderType=renew',
           })
         } else {
@@ -120,7 +120,7 @@ Page({
   },
   upgradeOrder(e) {
     var that = this
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/vip/buy/buy?sort=' + that.data.card.sort,
     })
   }

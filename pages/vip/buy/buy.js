@@ -122,7 +122,7 @@ Page({
           wx.hideLoading()
           if (res.data.retCode == '0000') {
             _url += '&price=' + res.data.retVal
-            wx.redirectTo({
+            wx.navigateTo({
               url: _url,
             })
           } else {
@@ -143,7 +143,7 @@ Page({
 
     } else {
       _url += '&price=' + item.cardPrice
-      wx.redirectTo({
+      wx.navigateTo({
         url: _url,
       })
     }

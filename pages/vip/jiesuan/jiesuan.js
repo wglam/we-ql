@@ -201,8 +201,11 @@ Page({
               str = res;
               console.log(res);
 
-              wx.switchTab({
-                url: '/pages/home/home',
+              // wx.switchTab({
+              //   url: '/pages/home/home',
+              // })
+              wx.navigateBack({
+                delta: 1
               })
               wx.showToast({
                 title: "支付成功！",

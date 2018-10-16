@@ -6,10 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: "",
-    avatar: "",
     vip: false,
-    vipname: '普通会员',
     signature: "一句话讲述自己的健身宣言",
     day: 0,
     bmi: 0
@@ -39,9 +36,8 @@ Page({
           })
         })
         .catch(res => {
-
           that.setData({
-            vip: true
+            vip: false
           })
         })
 
