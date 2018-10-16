@@ -1,17 +1,17 @@
 // pages/youhuiquanMy/youhuiquanMy.js
 const app = getApp();
-
+var g = getApp().globalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pageCount: "",
-    currentPage: 1,
+    page: 0,
+    pageSize: 10,
+    isLoading: false,
+    nodata: false,
     couponList: [],
-    imgURL: '',
-
     price: -1,
   },
 
@@ -22,23 +22,6 @@ Page({
     var val = {
       pageCount: "",
       currentPage: 1,
-      couponList: [{
-        couponId: "50",
-        couponName: "满50减10",
-        couponPrice: "10.00",
-        reductionPrice: "50.00",
-        albDay: "30",
-        isUsed: "1", //使用状态：1（未使用）；2（已使用）
-        createTime: "2018-07-26"
-      }, {
-        couponId: "60",
-        couponName: "满60减20",
-        couponPrice: "20.00",
-        reductionPrice: "60.00",
-        albDay: "30",
-        isUsed: "1", //使用状态：1（未使用）；2（已使用）
-        createTime: "2018-07-26"
-      }],
     }
 
     if (options.price) {
@@ -47,111 +30,125 @@ Page({
     this.setData(val)
     // this.searchMemberCoupon();
   },
+  loadCoupon() {
+    console.log("loadCoupon")
+    var self = this;
+    if (self.data.price >= 1) {
+      self.searchOrderCoupon();
+    } else {
+      self.searchMemberCoupon();
+    }
+  },
   //列表信息
   searchMemberCoupon: function() {
-    var that = this;
-    wx.request({
-      url: '/wechat/searchMemberCoupon',
-      method: 'GET',
-      data: {
-        openid: util.getOpenId(),
-        page: that.data.currentPage,
-        size: 20,
-      },
-      header: {
-        'Accept': 'application/json',
-      },
-      success: function(res) {
-        if (res.data.retCode == "0000") {
-          var couponList = that.data.couponList;
-          for (let i = 0; i < res.data.list.length; i++) {
-            couponList.push(res.data.list[i])
-          }
-          that.setData({
-            couponList: couponList,
-            pageCount: res.data.pageCount
-          })
-          if (that.data.currentPage == that.data.pageCount) {
-            that.setData({
-              loadMoreData: '没有数据了',
-              isMore: true
-            })
-          }
-        } else {
-          wx.showToast({
-            title: res.data.retDesc,
-            icon: 'none',
-            duration: 2000
-          })
-          that.setData({
-            couponList: []
-          })
-        }
-      }
+
+    var self = this;
+    self.setData({
+      isLoading: true,
+      nodata: false,
     })
-  },
-  loadMore: function() {
-    var that = this;
-    // 当前页是最后一页
-    if (that.data.currentPage == that.data.pageCount) {
-      that.setData({
-        loadMoreData: '已经到底了',
-        isMore: true
-      })
-      return;
-    }
-    setTimeout(function() {
-      that.searchMemberCoupon();
-      var tempCurrentPage = that.data.currentPage;
-      tempCurrentPage = tempCurrentPage + 1;
-      that.setData({
-        currentPage: tempCurrentPage,
-        isMore: false
-      })
+    var param = {}
+    param.page = self.data.page + 1
+    param.size = self.data.pageSize
+    param.openid = g.userInfo.openid
 
-    }, 300);
-  },
-
-  addMemberCoupon: function(e) {
-    //先判断有没有授权。如果没有授权要先跳到授权页面
-    var openId = wx.getStorageSync('openId');
-    if (openId == "" || openId == undefined || openId == null) {
-      wx.navigateTo({
-        url: '/pages/shouquan/shouquan',
+    g.api.searchMemberCoupon({
+        data: param
       })
-      return;
-    }
-    var couponId = e.currentTarget.dataset.couponid;
-    var that = this;
-    wx.request({
-      url: commonURL + '/wechat/addMemberCoupon',
-      method: 'GET',
-      data: {
-        openid: util.getOpenId(),
-        couponId: couponId,
-      },
-      header: {
-        'Accept': 'application/json',
-      },
-      success: function(res) {
+      .then(res => {
         if (res.data.retCode == "0000") {
-          wx.showToast({
-            title: '领取成功',
-            icon: 'none',
-            duration: 2000
+          var couponList = self.data.couponList
+          if (param.page == 1) {
+            vcouponListips = {}
+          }
+          if (res.data.list) {
+            for (var it of res.data.list) {
+              couponList.push(it)
+            }
+          }
+          self.setData({
+            couponList,
+            isLoading: false,
+            nodata: (data.list.length < param.size),
+            page: param.page
           })
         } else {
+          self.setData({
+            isLoading: false,
+            nodata: false,
+          })
           wx.showToast({
             title: res.data.retDesc,
             icon: 'none',
             duration: 2000
           })
         }
-      }
-    })
-
+      })
+      .catch(e => {
+        self.setData({
+          isLoading: false,
+        })
+      })
   },
+  searchOrderCoupon: function() {
 
+    var self = this;
+    self.setData({
+      isLoading: true,
+      nodata: false,
+    })
+    var param = {}
+    param.page = self.data.page + 1
+    param.size = self.data.pageSize
+    param.openid = g.userInfo.openid
+    param.orderPrice = self.data.price
+
+    g.api.searchOrderCoupon({
+        data: param
+      })
+      .then(res => {
+        if (res.data.retCode == "0000") {
+          var couponList = self.data.couponList
+          if (param.page == 1) {
+            vcouponListips = {}
+          }
+          if (res.data.list) {
+            for (var it of res.data.list) {
+              couponList.push(it)
+            }
+          }
+          self.setData({
+            couponList,
+            isLoading: false,
+            nodata: (data.list.length < param.size),
+            page: param.page
+          })
+        } else {
+          self.setData({
+            isLoading: false,
+            nodata: false,
+          })
+          wx.showToast({
+            title: res.data.retDesc,
+            icon: 'none',
+            duration: 2000
+          })
+          // setTimeout(function() {
+          //   wx.navigateBack({
+          //     delta: 1
+          //   })
+          // }, 1000)
+        }
+      })
+      .catch(e => {
+        self.setData({
+          isLoading: false,
+        })
+      })
+  },
+  onReady: function() {
+    this.loadCoupon();
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -163,7 +160,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.loadCoupon();
   },
 
   /*跳到首页 */

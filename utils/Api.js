@@ -35,6 +35,8 @@ class Api extends WxRequest {
       searchCardCategory: "ht/wechat/searchCardCategory", //获取所有会员卡信息
       searchOrder: "ht/wechat/searchOrder", //查询订单
       checkMemberCard: "ht/wechat/checkMemberCard", //检查是否是会员
+      searchMemberCoupon: 'ht/wechat/searchMemberCoupon', //优惠券信息
+      searchOrderCoupon: 'ht/wechat/searchOrderCoupon', //订单可使用优惠券信息查询
     }
     this.$$const = {
       memberCard: null
@@ -406,7 +408,12 @@ class Api extends WxRequest {
       }
     })
   }
-
+  searchMemberCoupon(param) {
+    return this.getRequest(this.$$path.searchMemberCoupon, param)
+  }
+  searchOrderCoupon(param) {
+    return this.getRequest(this.$$path.searchOrderCoupon, param)
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
