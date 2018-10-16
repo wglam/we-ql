@@ -94,35 +94,45 @@ Page({
       .then(res => {
         wx.hideLoading()
         // if (res.data.retCode == '0000') {
-          var list = res.data.list
-          list = [{
-            memberName: 'z1111',
+        var list = res.data.list
+        list = [{
+          memberName: 'z11111',
+          portrait: g.userInfo.portrait,
+          cgSeconds: 569,
+          diffNum: 1,
+        }, {
+            memberName: 'z11112',
+            portrait: g.userInfo.portrait,
+            cgSeconds: 56900,
+            diffNum: 1,
+          }, {
+            memberName: 'z11113',
             portrait: g.userInfo.portrait,
             cgSeconds: 569,
             diffNum: 1,
           }]
-          var groups = []
-          if (list && list.length >= 1) {
-            var temp
-            var it
-            for (var i = 0; i <= list.length - 1; i++) {
-              it = list[i]
-              it.minSeconds = it.cgSeconds * 1000
-              it.portrait = it.portrait
-              if (i % 2 == 0) {
-                temp = []
-                temp.push(it)
-              } else {
-                temp.push(it)
-                groups.push(temp)
-              }
+        var groups = []
+        if (list && list.length >= 1) {
+          var temp
+          var it
+          for (var i = 0; i <= list.length - 1; i++) {
+            it = list[i]
+            it.minSeconds = it.cgSeconds * 1000
+            it.portrait = it.portrait
+            if (i % 2 == 0) {
+              temp = []
+              groups.push(temp)
+              temp.push(it)
+            } else {
+              temp.push(it)
             }
-            console.log(groups)
-            self.setData({
-              groups,
-              total: res.data.total
-            })
           }
+          console.log(groups)
+          self.setData({
+            groups,
+            total: list.length
+          })
+        }
         // }
       })
       .catch(e => {

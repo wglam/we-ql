@@ -31,11 +31,10 @@
       </view>
       <view class='more'>查看更多</view>
     </view>
-    <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
-
-
+<!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
 </scroll-view> -->
-    <swiper class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+
+    <swiper hidden='{{total==0}}' class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
       <block wx:for="{{groups}}" wx:key="{{index}}" wx:for-item="its">
         <swiper-item class='swiperitem'>
           <view class='item' wx:for="{{its}}" wx:key='{{item}}'>
