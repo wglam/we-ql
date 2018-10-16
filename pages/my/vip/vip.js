@@ -117,7 +117,11 @@ Page({
           icon: 'none'
         })
       })
-
-
+  },
+  upgradeOrder(e) {
+    var that = this
+    wx.redirectTo({
+      url: '/pages/vip/buy/buy?sort=' + that.data.card.sort,
+    })
   }
 })

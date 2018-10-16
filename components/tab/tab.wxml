@@ -7,13 +7,13 @@
     </block>
   </view> -->
 
-  <view class="tab" style='background-color: {{tabColor}};'>
+  <view wx:if="{{isTabs}}" class="tab" style='background-color: {{tabColor}};'>
     <view wx:for="{{tabs}}" wx:key="*this" id='{{index}}' class='tab-item' bindtap="tabClick" style="color:{{current==index?active:normal}};">
       {{item}}
     </view>
   </view>
 
-  <view style="background-color:{{sliderTrans?'transparent':normal}};">
+  <view wx:if="{{isTabs}}" style="background-color:{{sliderTrans?'transparent':normal}};">
     <view class="tab-slider" style="background-color:{{active}}; width: {{100/tabs.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
   </view>
 

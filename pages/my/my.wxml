@@ -31,7 +31,7 @@
   <view class="iconfont icon-right" />
 </navigator>
 <navigator wx:if='{{vip}}' url="coach/coach" class="click-item">
-  <view> 专属教练</view>
+  <view>专属教练</view>
   <view class="iconfont icon-right" />
 </navigator>
 <navigator url='/pages/my/youhuiquan/youhuiquan' class="click-item">

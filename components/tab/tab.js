@@ -43,6 +43,10 @@ Component({
     current: {
       type: Number,
       value: 0
+    },
+    isTabs: {
+      type: Boolean,
+      value: true
     }
   },
 

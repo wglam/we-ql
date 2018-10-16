@@ -42,6 +42,8 @@ class Api extends WxRequest {
       decodeRunData: 'ht/wechat/decodeRunData', //解析微信步数
       getCard: 'ht/wechat/getCard', //获取会员卡信息
       renewOrder: 'ht/wechat/renewOrder', //会员升级生成订单
+      searchUpgradeCard: 'ht/wechat/searchUpgradeCard', //会员当前会员卡排序值
+      getUpgradePrice: 'ht/wechat/getUpgradePrice', // 获取升级支付金额
     }
     this.$$const = {
       memberCard: null
@@ -448,6 +450,14 @@ class Api extends WxRequest {
   renewOrder(param) {
     return this.getRequest(this.$$path.renewOrder, param)
   }
+
+  searchUpgradeCard(param) {
+    return this.getRequest(this.$$path.searchUpgradeCard, param)
+  }
+  getUpgradePrice(param) {
+    return this.getRequest(this.$$path.getUpgradePrice, param)
+  }
+
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
