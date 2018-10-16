@@ -114,7 +114,7 @@ Page({
       })
       g.api.getUpgradePrice({
           data: {
-            openid: g.userInfo.openid,
+            memberId: g.userInfo.memberId,
             cardPrice: item.cardPrice
           }
         })
