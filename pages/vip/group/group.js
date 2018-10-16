@@ -1,67 +1,30 @@
 // pages/vip/group/group.js
+var g = getApp().globalData
 Page({
 
+  onLoad(options) {
+    var self = this
+    if (options.id) {
+      self.setData({
+        cardId: options.id
+      })
+    }
+  },
+  onReady() {
+    var self = this
+    self.loadData()
+  },
   /**
    * 页面的初始数据
    */
   data: {
+    cardId: 0,
     nowDate: new Date(),
-    swiper: [{
-      video: 'https://pic.ibaotu.com/00/78/86/31w888piC8Pc.mp4',
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537262844254&di=78e033e0836ad431ead59adb7e5a6464&imgtype=0&src=http%3A%2F%2Fpic.35pic.com%2Fnormal%2F08%2F35%2F11%2F3637404_163333224000_2.jpg'
-    }, {
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537262844254&di=04ec763529a73d671aa03ab32730372d&imgtype=0&src=http%3A%2F%2Fwww.jituwang.com%2Fuploads%2Fallimg%2F121027%2F234808-12102H3453020.jpg'
-    }, {
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537262844252&di=82d6f27ffb69e501cab25eb1473caf8a&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F161216%2F102-161216112014531.jpg'
-    }, {
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537262850940&di=19c04f38fb61236f689b6d7b9b120574&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fproducts%2F20150425%2Ftooopen_89347611.jpg'
-    }],
-    price: 15.8,
-    selfPrice:25.8,
-    srcPrice: 128,
-    tips: '已拼457815件',
     title: '普通会员 1个月',
-    groupnum: 44,
-    groups: [{
-        name: "张三丰",
-        avatar: "http://image.weilanwl.com/img/square-3.jpg",
-        sum: 2,
-        current: 1,
-        deadline: 1538222566000,
-        color: '#f0f'
-      },
-      {
-        name: "张三丰2",
-        avatar: "http://image.weilanwl.com/img/square-3.jpg",
-        sum: 2,
-        current: 1,
-        deadline: 1538222566000,
-        color: '#f0f'
-      }, {
-        name: "张三丰3",
-        avatar: "http://image.weilanwl.com/img/square-3.jpg",
-        sum: 2,
-        current: 1,
-        deadline: 1538222566000,
-        color: '#f0f'
-      }, {
-        name: "张三丰4",
-        avatar: "http://image.weilanwl.com/img/square-3.jpg",
-        sum: 2,
-        current: 1,
-        deadline: 1538222566000,
-        color: '#f0f'
-      }, {
-        name: "张三丰5",
-        avatar: "http://image.weilanwl.com/img/square-3.jpg",
-        sum: 2,
-        current: 1,
-        deadline: 1538222566000,
-        color: '#f0f'
-      }
-    ],
+    total: 0,
+    groups: [],
     currentTime: 0,
-    
+
   },
   startInterval: function() {
     var that = this;
@@ -87,5 +50,84 @@ Page({
   onHide: function() {
     varthat = this;
     clearInterval(that.data.setInter)
+  },
+  loadData() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var self = this
+    g.api.getCard(self.data.cardId)
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          var card = res.data.retVal
+          if (card.rightsContent) {
+            card.images = []
+            for (var it of card.rightsContent.split(',')) {
+              card.images.push(g.api.getFile(it))
+            }
+          }
+          self.setData({
+            card
+          })
+          self.loadGroup()
+        }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        console.log(e)
+      })
+  },
+  loadGroup() {
+    var self = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    g.api.searchCollageInitiator({
+        data: {
+          cardCategoryId: self.data.card.cardCategoryId,
+          cardId: self.data.card.cardId,
+          page: 1,
+          size: 10
+        }
+      })
+      .then(res => {
+        wx.hideLoading()
+        // if (res.data.retCode == '0000') {
+          var list = res.data.list
+          list = [{
+            memberName: 'z1111',
+            portrait: g.userInfo.portrait,
+            cgSeconds: 569,
+            diffNum: 1,
+          }]
+          var groups = []
+          if (list && list.length >= 1) {
+            var temp
+            var it
+            for (var i = 0; i <= list.length - 1; i++) {
+              it = list[i]
+              it.minSeconds = it.cgSeconds * 1000
+              it.portrait = it.portrait
+              if (i % 2 == 0) {
+                temp = []
+                temp.push(it)
+              } else {
+                temp.push(it)
+                groups.push(temp)
+              }
+            }
+            console.log(groups)
+            self.setData({
+              groups,
+              total: res.data.total
+            })
+          }
+        // }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        console.log(e)
+      })
   }
 })

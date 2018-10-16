@@ -128,7 +128,7 @@ swiper {
 
 .self {
   display: inline-flex;
-  min-height: 96rpx;
+  min-height: 118rpx;
   justify-content: center;
   align-items: center;
   border-right: 2rpx solid #f8f8f8;
@@ -158,4 +158,8 @@ swiper {
 
 .pin::after {
   content: '发起拼单';
+}
+.content_end{
+  display: inline-flex;
+  align-items: flex-end;
 }

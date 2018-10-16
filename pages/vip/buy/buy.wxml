@@ -1,12 +1,12 @@
-<tab tabs='{{tabs}}' bindTab='tabChange' touchmove sliderTrans isTabs="{{isTabs}}" >
-  <buyvip wx:for="{{list}}" wx:key="{{index}}" slot='{{index}}' info='{{item}}' bindItemClick='itemClick'  />
+<tab tabs='{{tabs}}' bindTab='tabChange' touchmove sliderTrans isTabs="{{isTabs}}">
+  <buyvip wx:for="{{list}}" wx:key="{{index}}" slot='{{index}}' info='{{item}}' bindItemClick='itemClick' />
   <view class='bottom' slot='bottom'>
-    <navigator class='image-btn' url='/pages/vip/group/group' style='width:30%;' hover-start-time='10'>
+    <view class='image-btn' style='width:30%;' hover-start-time='10' bindtap='jumpGroup'>
       <image class='image-btn-icon' src="/img/pintuan.png" mode='widthFix' />
       <view>
         拼团
       </view>
-    </navigator>
+    </view>
     <view class='image-btn' hover-start-time='10' style='width:70%;' bindtap='btnBuy'>
       <image class='image-btn-icon' src="/img/ptbuy.png" style='width:70%' mode='widthFix' />
     </view>

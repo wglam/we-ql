@@ -1,7 +1,7 @@
-<bottom>
+<bottom bottom='118'>
   <view slot='content'>
     <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-      <block wx:for="{{swiper}}" wx:key="{{index}}">
+      <block wx:for="{{card.images}}" wx:key="{{index}}">
         <swiper-item>
           <image class='martch-parent' src='{{item.image}}' mode='aspectFill' />
         </swiper-item>
@@ -10,22 +10,24 @@
     <view class='body flex'>
       <view class='flex-1 pl'>
         <view class='price'>
-          ￥{{price}}
+          ￥{{card.collagePrice}}
         </view>
         <view class='src_price'>
-          ￥{{srcPrice}}
+          ￥{{card.cardPrice}}
         </view>
       </view>
-      <view class='tips flex-1  h-end pr'>
-        {{tips}}
+      <view wx:if="{{card.collageNum>=1}}" class='tips flex-1  h-end pr'>
+        已拼{{card.collageNum}}件
       </view>
     </view>
-    <view class='body pl pr pb'>
-      {{title}}
+    <view class='body pl pr pb flex '>
+      <view style='font-size:1.2em;margin-left:6rpx;color:#333;'>{{card.cardCategoryName}}</view>
+      <view class='content_end' style='font-size:24rpx;margin-left:12rpx;color:#666;'>{{card.cardName}}</view>
     </view>
-    <view class='body pl pr flex hmt hp-v'>
+    <view style='height:12rpx;'></view>
+    <view hidden='{{total<=2}}' class='body pl pr flex hp-v'>
       <view style='flex:1;'>
-        {{groupnum}}人在拼单，可直接参与
+        {{total}}人在拼单，可直接参与
       </view>
       <view class='more'>查看更多</view>
     </view>
@@ -34,41 +36,29 @@
 
 </scroll-view> -->
     <swiper class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-      <block wx:for="{{groups}}" wx:key="{{index}}">
-        <swiper-item wx:if="{{index%2==0}}" class='swiperitem'>
-          <view class='item'>
+      <block wx:for="{{groups}}" wx:key="{{index}}" wx:for-item="its">
+        <swiper-item class='swiperitem'>
+          <view class='item' wx:for="{{its}}" wx:key='{{item}}'>
             <view class='flex-v flex-2'>
-              <image class='avatar' src='{{item.avatar}}' mode='widthFix' />
-              <view class='ml'>{{item.name}}</view>
+              <image class='avatar' src='{{item.portrait}}' mode='widthFix' />
+              <view class='ml'>{{item.memberName}}</view>
             </view>
             <view class='font-min flex-1'>
-              <view class='num'>{{item.sum-item.current}}人</view>
-              <timer before='剩余' time='{{item.deadline>=currentTime?item.deadline-currentTime:0}}' />
-            </view>
-            <view class='btn' hover-class='btn-hover'>去拼单</view>
-          </view>
-          <view class='item' wx:if="{{(index+1)<groups.length}}">
-            <view class='flex-v flex-2'>
-              <image class='avatar' src='{{groups[index+1].avatar}}' mode='widthFix' />
-              <view class='ml'>{{groups[index+1].name}}</view>
-            </view>
-            <view class='font-min flex-1'>
-              <view class='num'>{{groups[index+1].sum-groups[index+1].current}}人</view>
-              <timer before='剩余' time='{{groups[index+1].deadline>=currentTime?groups[index+1].deadline-currentTime:0}}' />
+              <view class='num'>{{item.diffNum}}人</view>
+              <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
             </view>
             <view class='btn' hover-class='btn-hover'>去拼单</view>
           </view>
         </swiper-item>
       </block>
     </swiper>
-
   </view>
   <view class='bottom' slot="bottom">
     <view class='self' hover-class='hover' hover-start-time='10'>
-      ￥{{selfPrice}}
+      ￥{{card.cardPrice}}
     </view>
     <navigator class='pin' hover-class='hover' hover-start-time='10'>
-      ￥{{price}}
+      ￥{{card.collagePrice}}
     </navigator>
   </view>
 </bottom>

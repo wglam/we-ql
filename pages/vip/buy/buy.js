@@ -147,5 +147,16 @@ Page({
         url: _url,
       })
     }
+  },
+  jumpGroup(e) {
+ 
+    var self = this
+    var category = self.data.list[self.data.tabIndex]
+    var itemIndex = self.data.itemIndexs[self.data.tabIndex]
+    var item = category.cardInfos[itemIndex]
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/vip/group/group?id=' + item.cardId,
+    })
   }
 })

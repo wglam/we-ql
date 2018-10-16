@@ -93,20 +93,6 @@ Component({
         })
         .then(res => {
           var data = res.data
-          // data = {
-          //   retCode: "0000",
-          //   retDesc: "查询成功",
-          //   totalrecords: "1",
-          //   list: [{
-          //     xVal: "165",
-          //     yVal: "2018-10-08"
-          //   }, {
-          //     xVal: "172",
-          //     yVal: "2018-06-07"
-          //   }],
-          //   pageCount: "1", //总页数
-          //   total: 1 //总条数
-          // }
 
           if (data.retCode == '0000') {
 

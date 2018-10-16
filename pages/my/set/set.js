@@ -42,7 +42,6 @@ Page({
       title: '正在保存',
     })
     const params = e.detail.value
-
     g.api.updateMember({
         data: {
           memberInfo: params
