@@ -1,13 +1,13 @@
 <bottom bottom='108'>
-  <rich-text nodes="{{html}}"  slot="content" />
+  <rich-text nodes="{{html}}" slot="content" />
 
   <view class='bottom' slot="bottom">
-    <view class='image-btn' style='width:25%' hover-class='hover' hover-start-time='10'>
+    <button open-type='contact' class='image-btn' style='width:25%;padding:0rpx;line-height:1.6;height:108rpx;' hover-class='hover' hover-start-time='10'>
       <image class='image-btn-icon' src="/img/kefu.png" mode='widthFix' />
       <view>
         咨询
       </view>
-    </view>
+    </button>
     <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%' hover-class='hover' hover-start-time='10'>
       <view class='image-btn'>
         <image class='image-btn-icon' src="/img/jihua.png" mode='widthFix' />
