@@ -240,8 +240,8 @@ class Api extends WxRequest {
   getFileBase() {
     return Utils.combineURLs(this.defaults.baseURL, 'uploadFile');
   }
-  searchConfig() {
-    return this.getRequest(this.$$path.searchConfig, {})
+  searchConfig(param) {
+    return this.getRequest(this.$$path.searchConfig, param)
   }
 
   getMemberCard(id) {

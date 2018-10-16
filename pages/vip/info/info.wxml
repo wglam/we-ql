@@ -1,4 +1,6 @@
 <bottom bottom='108'>
+  <rich-text nodes="{{html}}" bindtap="tap" slot="content" />
+
   <view class='bottom' slot="bottom">
     <view class='image-btn' style='width:25%' hover-class='hover' hover-start-time='10'>
       <image class='image-btn-icon' src="/img/kefu.png" mode='widthFix' />

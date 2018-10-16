@@ -5,9 +5,9 @@
       <image wx:if='{{avatar}}' class="ml user-avatar" src="{{avatar}}" mode="widthFix" />
       <view class='flex-col flex-h ml'>
         <view wx:if='{{name}}' class='text-b flex-1 font-l'>{{name}}</view>
-        <view class='flex flex-wrap align-end'>
-          <image wx:if='{{vipIcon}}' class='vip-icon' src='{{vipIcon}}' />
-          <view wx:if='{{vipname}}' class='white-text font-min' style=' margin-left: 6rpx;'> {{vipname}}</view>
+        <view class='flex flex-wrap align-end flex-v'>
+          <image wx:if='{{vipIcon}}' class='vip-icon ' src='{{vipIcon}}' />
+          <view wx:if='{{vipname}}' class='white-text font-min' style=' margin-left: 6rpx; line-height:1em;'> {{vipname}}</view>
         </view>
       </view>
     </view>
