@@ -44,7 +44,12 @@ Page({
       val.price = options.price
       val.payment = val.price
     }
-
+    if (options.isInitiator) {
+      val.isInitiator = options.isInitiator
+    }
+    if (options.collageMemberId) {
+      val.collageMemberId = options.collageMemberId
+    }
     var that = this
     that.setData(val)
     console.log(val)
@@ -55,9 +60,54 @@ Page({
       that.renewOrder()
     } else if (that.data.orderType == "upgrade") {
       that.upgradeOrder()
+    } else if (that.data.orderType == "group") {
+      that.groupOrder()
     } else {
       that.addNewOrder()
     }
+  },
+  groupOrder: function() {
+    wx.showLoading({
+      title: '正在提交',
+    })
+    var self = this
+    var param = {}
+    param.memberId = g.userInfo.memberId
+    param.openid = g.userInfo.openid
+    param.cardCategoryId = self.data.categoryid
+    param.couponId = self.data.youhui.couponId
+    param.cardId = self.data.cardid
+    param.orderPrice = self.data.price
+    param.couponPay = self.data.youhui.couponPrice
+    param.payment = self.data.payment
+    param.isInitiator = self.data.isInitiator
+    if (self.data.collageMemberId) {
+      param.collageMemberId = self.data.collageMemberId
+    }
+    console.log(param)
+    g.api.collageOrder({
+        data: {
+          memberOrder: param
+        }
+      })
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          self.orderPay(res.data.retVal)
+        } else {
+          wx.showToast({
+            title: res.data.retDesc,
+            icon: 'none'
+          })
+        }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '生成订单失败',
+          icon: 'none'
+        })
+      })
   },
   upgradeOrder: function() {
     wx.showLoading({

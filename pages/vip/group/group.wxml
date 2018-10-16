@@ -1,4 +1,4 @@
-<bottom bottom='118'>
+<bottom bottom='84'>
   <view slot='content'>
     <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
       <block wx:for="{{card.images}}" wx:key="{{index}}">
@@ -31,7 +31,7 @@
       </view>
       <view class='more'>查看更多</view>
     </view>
-<!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
+    <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
 </scroll-view> -->
 
     <swiper hidden='{{total==0}}' class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
@@ -46,18 +46,18 @@
               <view class='num'>{{item.diffNum}}人</view>
               <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
             </view>
-            <view class='btn' hover-class='btn-hover'>去拼单</view>
+            <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collageMemberId='{{item.collageMemberId}}' data-price='{{card.collagePrice}}'>去拼单</view>
           </view>
         </swiper-item>
       </block>
     </swiper>
   </view>
   <view class='bottom' slot="bottom">
-    <view class='self' hover-class='hover' hover-start-time='10'>
+    <view class='self' hover-class='hover' hover-start-time='10' bindtap='btnBuy' data-isinitiator='1' data-price='{{card.cardPrice}}'>
       ￥{{card.cardPrice}}
     </view>
-    <navigator class='pin' hover-class='hover' hover-start-time='10'>
+    <view class='pin' hover-start-time='10' hover-class='btn-hover' bindtap='btnBuy' data-isinitiator='2' data-price='{{card.collagePrice}}'>
       ￥{{card.collagePrice}}
-    </navigator>
+    </view>
   </view>
 </bottom>

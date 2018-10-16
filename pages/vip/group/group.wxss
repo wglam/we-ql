@@ -105,17 +105,17 @@ swiper {
 }
 
 .btn {
-  background: #fa9614;
   border-radius: 2rpx;
   border-color: transparent;
   color: white;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  background-color: #fa9614;
 }
 
 .btn-hover {
-  background: #e88b12;
+  background-color: #e88b12;
 }
 
 .bottom {
@@ -128,7 +128,7 @@ swiper {
 
 .self {
   display: inline-flex;
-  min-height: 118rpx;
+  height: 84rpx;
   justify-content: center;
   align-items: center;
   border-right: 2rpx solid #f8f8f8;
@@ -145,7 +145,7 @@ swiper {
 
 .pin {
   display: inline-flex;
-  min-height: 96rpx;
+  height: 84rpx;
   justify-content: center;
   align-items: center;
   border-right: 2rpx solid #f8f8f8;
@@ -154,12 +154,15 @@ swiper {
   flex-direction: column;
   line-height: 1.2em;
   flex: 1;
+  background-color: #ff7e00;
+  color: white;
 }
 
 .pin::after {
   content: '发起拼单';
 }
-.content_end{
+
+.content_end {
   display: inline-flex;
   align-items: flex-end;
 }

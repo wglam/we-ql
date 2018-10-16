@@ -19,25 +19,19 @@ Page({
    */
   data: {
     cardId: 0,
-    nowDate: new Date(),
     title: '普通会员 1个月',
     total: 0,
     groups: [],
     currentTime: 0,
-
   },
   startInterval: function() {
     var that = this;
-    var numtime = new Date().getTime();
-    that.setData({
-      currentTime: numtime
-    });
     that.data.setInter = setInterval(function() {
-      var numVal = new Date().getTime();
+      var numVal = that.data.currentTime + 500;
       that.setData({
         currentTime: numVal
       });
-    }, 199);
+    }, 500);
   },
   endSetInter: function() {
     varthat = this;
@@ -48,7 +42,7 @@ Page({
     that.startInterval();
   },
   onHide: function() {
-    varthat = this;
+    var that = this;
     clearInterval(that.data.setInter)
   },
   loadData() {
@@ -93,51 +87,49 @@ Page({
       })
       .then(res => {
         wx.hideLoading()
-        // if (res.data.retCode == '0000') {
-        var list = res.data.list
-        list = [{
-          memberName: 'z11111',
-          portrait: g.userInfo.portrait,
-          cgSeconds: 569,
-          diffNum: 1,
-        }, {
-            memberName: 'z11112',
-            portrait: g.userInfo.portrait,
-            cgSeconds: 56900,
-            diffNum: 1,
-          }, {
-            memberName: 'z11113',
-            portrait: g.userInfo.portrait,
-            cgSeconds: 569,
-            diffNum: 1,
-          }]
-        var groups = []
-        if (list && list.length >= 1) {
-          var temp
-          var it
-          for (var i = 0; i <= list.length - 1; i++) {
-            it = list[i]
-            it.minSeconds = it.cgSeconds * 1000
-            it.portrait = it.portrait
-            if (i % 2 == 0) {
-              temp = []
-              groups.push(temp)
-              temp.push(it)
-            } else {
-              temp.push(it)
+        if (res.data.retCode == '0000') {
+          var list = res.data.list
+          var groups = []
+          if (list && list.length >= 1) {
+            var temp
+            var it
+            for (var i = 0; i <= list.length - 1; i++) {
+              it = list[i]
+              it.minSeconds = it.cgSeconds * 1000
+              it.portrait = it.portrait
+              if (i % 2 == 0) {
+                temp = []
+                groups.push(temp)
+                temp.push(it)
+              } else {
+                temp.push(it)
+              }
             }
+            console.log(groups)
+            self.setData({
+              groups,
+              total: list.length
+            })
           }
-          console.log(groups)
-          self.setData({
-            groups,
-            total: list.length
-          })
         }
-        // }
       })
       .catch(e => {
         wx.hideLoading()
         console.log(e)
       })
-  }
+  },
+  btnBuy(e) {
+    console.log(e)
+    var self = this
+    var item = self.data.card
+    var collageMemberId = e.currentTarget.dataset.collageMemberId
+    var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
+      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator
+    if (collageMemberId) {
+      _url += "&collageMemberId=" + collageMemberId
+    }
+    wx.navigateTo({
+      url: _url,
+    })
+  },
 })

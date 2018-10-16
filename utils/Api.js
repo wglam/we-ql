@@ -45,7 +45,8 @@ class Api extends WxRequest {
       searchUpgradeCard: 'ht/wechat/searchUpgradeCard', //会员当前会员卡排序值
       getUpgradePrice: 'ht/wechat/getUpgradePrice', // 获取升级支付金额
       upgradeOrder: 'ht/wechat/upgradeOrder', //会员升级订单生成
-      searchCollageInitiator: 'ht/wechat/searchCollageInitiator' //团购人员查询
+      searchCollageInitiator: 'ht/wechat/searchCollageInitiator', //团购人员查询
+      collageOrder: 'ht/wechat/collageOrder', //团购订单
     }
     this.$$const = {
       memberCard: null
@@ -462,12 +463,14 @@ class Api extends WxRequest {
   upgradeOrder(param) {
     return this.getRequest(this.$$path.upgradeOrder, param)
   }
-  
+
   searchCollageInitiator(param) {
     return this.getRequest(this.$$path.searchCollageInitiator, param)
   }
 
-
+  collageOrder(param) {
+    return this.getRequest(this.$$path.collageOrder, param)
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
