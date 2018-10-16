@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    orderType: '',
     cardid: '',
     name: '一个月',
     price: 0,
@@ -21,6 +22,9 @@ Page({
    */
   onLoad: function(options) {
     var val = {}
+    if (options.orderType) {
+      val.orderType = options.orderType
+    }
     if (options.cardid) {
       val.cardid = options.cardid
     }
@@ -43,8 +47,17 @@ Page({
 
     var that = this
     that.setData(val)
+    console.log(val)
   },
   addOrder: function(e) {
+    var that = this
+    if ("renew" == that.data.orderType) {
+
+    } else {
+      that.addNewOrder()
+    }
+  },
+  addNewOrder: function() {
     wx.showLoading({
       title: '正在提交',
     })
@@ -52,12 +65,14 @@ Page({
     var param = {}
     param.memberId = g.userInfo.memberId
     param.openid = g.userInfo.openid
-    param.cardCategoryId = self.data.categoryId
+    param.cardCategoryId = self.data.categoryid
     param.couponId = self.data.youhui.couponId
     param.cardId = self.data.cardid
     param.orderPrice = self.data.price
     param.couponPay = self.data.youhui.couponPrice
     param.payment = self.data.payment
+
+    console.log(param)
     g.api.addOrder({
         data: {
           memberOrder: param
@@ -86,7 +101,7 @@ Page({
     wx.showLoading({
       title: '正在提交',
     })
-    g.api.wechatPay(order.orderCode)
+    g.api.wechatPay(order.orderCode, g.userInfo.openid)
       .then(res => {
         wx.hideLoading()
         if (res.data.retCode == '0000') {
