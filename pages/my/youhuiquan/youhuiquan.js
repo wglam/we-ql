@@ -75,13 +75,9 @@ Page({
         } else {
           self.setData({
             isLoading: false,
-            nodata: false,
+            nodata: true,
           })
-          wx.showToast({
-            title: res.data.retDesc,
-            icon: 'none',
-            duration: 2000
-          })
+     
         }
       })
       .catch(e => {
@@ -126,13 +122,13 @@ Page({
         } else {
           self.setData({
             isLoading: false,
-            nodata: false,
+            nodata: true,
           })
-          wx.showToast({
-            title: res.data.retDesc,
-            icon: 'none',
-            duration: 2000
-          })
+          // wx.showToast({
+          //   title: res.data.retDesc,
+          //   icon: 'none',
+          //   duration: 2000
+          // })
           // setTimeout(function() {
           //   wx.navigateBack({
           //     delta: 1
