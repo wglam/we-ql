@@ -1,13 +1,13 @@
 <view class='content'>
   <view class='qr-card '>
     <view class='flex'>
-      <image class='user-avatar' src='{{avatar}}' mode='aspectFill' />
+      <image wx:if="{{adminPic}}" class='user-avatar' src='{{adminPic}}' mode='aspectFill' />
       <view class='name'>
-        {{name}}
+        {{trainer}}
       </view>
     </view>
-    <image src='{{qr}}' mode='widthFix' />
+    <image src='{{trainQrcode}}' mode='widthFix' />
   </view>
 
-  <button class='bottom-btn' hover-class='btn-hover'> 保存到相册</button>
+  <button wx:if="{{trainQrcode}}" class='bottom-btn' hover-class='btn-hover' bindtap='downLoadFile'> 保存到相册</button>
 </view>

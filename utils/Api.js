@@ -252,6 +252,7 @@ class Api extends WxRequest {
     })
   }
   getMemberByOpenid(success, error) {
+    var that = this
     var openId = wx.getStorageSync('openId'); //返回openid
     if (openId == '') {
       error(-1)
@@ -267,8 +268,10 @@ class Api extends WxRequest {
           wx.setStorageSync('userInfo', data.retVal);
           success(data.retVal)
         } else {
-          error()
+          error(data.retDesc)
         }
+      }).catch(e => {
+        error(e)
       })
     }
   }
