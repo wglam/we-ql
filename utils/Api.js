@@ -33,6 +33,8 @@ class Api extends WxRequest {
       getMember: "ht/wechat/getMember", //获取绑定账户信息
       bindMember: "ht/wechat/bindMember", //绑定账户
       searchCardCategory: "ht/wechat/searchCardCategory", //获取所有会员卡信息
+      searchOrder: "ht/wechat/searchOrder", //查询订单
+      checkMemberCard: "ht/wechat/checkMemberCard", //检查是否是会员
     }
     this.$$const = {
       memberCard: null
@@ -393,6 +395,16 @@ class Api extends WxRequest {
   }
   searchCardCategory() {
     return this.getRequest(this.$$path.searchCardCategory, {})
+  }
+  searchOrder() {
+    return this.getRequest(this.$$path.searchOrder, {})
+  }
+  checkMemberCard(id) {
+    return this.getRequest(this.$$path.checkMemberCard, {
+      data: {
+        memberId: id
+      }
+    })
   }
 
   //inner

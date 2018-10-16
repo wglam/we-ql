@@ -33,23 +33,16 @@ Page({
       user.vip = false
       that.setData(user)
 
-      g.api.getMemberCard(g.userInfo.memberId)
+      g.api.checkMemberCard(g.userInfo.memberId)
         .then(res => {
-          var data = res.data.retVal
-          if (data.cardId) {
-            that.setData({
-              vip: true
-            })
-          } else {
-            that.setData({
-              vip: false
-            })
-          }
+          that.setData({
+            vip: res.data.retCode == '0000'
+          })
         })
         .catch(res => {
 
           that.setData({
-            vip: false
+            vip: true
           })
         })
 

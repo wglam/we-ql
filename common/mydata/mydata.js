@@ -87,7 +87,7 @@ Component({
       param.memberId = g.userInfo.memberId
       param.bodyType = that.data.bodyType
       param.page = that.data.page + 1
-      param.pageSize = that.data.pageSize
+      param.size = that.data.pageSize
       g.api.searchBody({
           data: param
         })
@@ -140,7 +140,7 @@ Component({
             that.setData({
               opts,
               isLoading: false,
-              nodata: (data.list.length < param.pageSize),
+              nodata: (data.list.length < param.size),
               page: param.page
             })
             that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)

@@ -7,6 +7,7 @@ App({
     if (user != '') {
       this.globalData.userInfo = user;
     }
+    console.log(user)
   },
   globalData: {
     userInfo: null,
