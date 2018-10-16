@@ -160,7 +160,7 @@ Component({
     redrawcharts(target) {
       var that = this
       var opts = this.data.opts
-      if (opts.charts.length < 1) {
+      if (opts && opts.charts && opts.charts.length < 1) {
         return
       }
       that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)

@@ -25,7 +25,7 @@
   </view>
   <view style="height:300rpx;" />
 </scroll-view>
-<view class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
+<view hidden='{{bodyType==3}}' class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
   记录{{name}}
 </view>
 <view class="modal-box {{inputHide ?'':'cur'}}">
