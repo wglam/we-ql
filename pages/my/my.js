@@ -30,7 +30,6 @@ Page({
       var that = this;
       var user = g.userInfo;
       user.bmiStatus = g.api.getBmiStatus(user.bodyStatus)
-      user.vip = false
       that.setData(user)
 
       g.api.checkMemberCard(g.userInfo.memberId)
