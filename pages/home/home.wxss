@@ -62,3 +62,14 @@
   width: 32rpx;
   height: 32rpx;
 }
+
+.jaolian {
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  bottom: 24rpx;
+  right: 24rpx;
+  background: transparent;
+  border-color: transparent;
+  border-radius: 50%;
+}

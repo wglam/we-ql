@@ -40,3 +40,6 @@
 <card wx:if='{{vip&&isque}}' url="/pages/eating/eating" openType="switchTab" bg='/img/4.png' btn='饮食打卡' title='饮食计划' info='Eating plan' />
 
 <view style='height:24rpx;' />
+<button class='image-btn jaolian' open-type='contact'>
+  <image class='jaolian' src="/img/jiaolian.png" mode='aspectFit' />
+</button>
