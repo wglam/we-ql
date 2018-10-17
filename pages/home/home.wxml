@@ -23,12 +23,13 @@
   </view>
 </view>
 
-<view class='banner pl pr pb'>
+<view wx:if="{{sliders&&sliders.length>=1}}" class='banner pl pr pb'>
   <swiper class='banner-shadow radius' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-    <block wx:for="{{swiper}}" wx:key="{{index}}">
+    <block wx:for="{{sliders}}" wx:key="{{index}}">
       <swiper-item>
-        <view class='iconfont icon-play video-play' hidden='{{!item.video}}' />
-        <image class='martch-parent radius' src='{{item.image}}' mode='aspectFill' />
+        <view class='martch-parent radius' bindtap='sliderClick' data-item='{{item}}'>
+          <image class='martch-parent radius' src='{{item.objImg}}' mode='aspectFill' />
+        </view>
       </swiper-item>
     </block>
   </swiper>

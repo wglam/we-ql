@@ -47,6 +47,8 @@ class Api extends WxRequest {
       upgradeOrder: 'ht/wechat/upgradeOrder', //会员升级订单生成
       searchCollageInitiator: 'ht/wechat/searchCollageInitiator', //团购人员查询
       collageOrder: 'ht/wechat/collageOrder', //团购订单
+      searchCarousel: 'ht/wechat/searchCarousel', //首页轮播查询
+      getCarousel: 'ht/wechat/getCarousel', //轮播详情
     }
     this.$$const = {
       memberCard: null
@@ -205,6 +207,7 @@ class Api extends WxRequest {
                     wx.hideLoading();
                   })
                   .catch(res => {
+                    console.log('ql', 'getMemberByOpenid', res)
                     wx.hideLoading();
                   })
 
@@ -217,8 +220,10 @@ class Api extends WxRequest {
             })
             .catch(res => {
               wx.hideLoading();
+              console.log('ql', 'decodeUserInfo', res)
             })
         } else {
+          console.log('wx', 'login', 'code empty')
           wx.showToast({
             title: '微信登陆失败',
           })
@@ -474,6 +479,12 @@ class Api extends WxRequest {
   collageOrder(param) {
     return this.getRequest(this.$$path.collageOrder, param)
   }
+  searchCarousel(param) {
+    return this.getRequest(this.$$path.searchCarousel, param)
+  }
+  getCarousel(param) {
+    return this.getRequest(this.$$path.getCarousel, param)
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
@@ -513,6 +524,7 @@ class Api extends WxRequest {
       },
       fail: res => {
         _fail(res)
+        console.log('wx', 'login', res)
       }
     })
     // wx.checkSession({

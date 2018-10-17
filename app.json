@@ -21,7 +21,8 @@
     "pages/shouquan/shouquan",
     "pages/vip/queinfo/queinfo",
     "pages/bind/bind",
-    "pages/vip/jiesuan/jiesuan"
+    "pages/vip/jiesuan/jiesuan",
+    "pages/sliderinfo/sliderinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

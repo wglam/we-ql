@@ -33,7 +33,7 @@ Page({
         wx.hideLoading()
         if (res.data.retCode) {
           self.setData({
-            html: res.data.list[0].configVal
+            html: res.data.list[0].configVal.replace(/\<img/gi, '< img style="max-width:100%;height:auto" ')
           })
         }
       })

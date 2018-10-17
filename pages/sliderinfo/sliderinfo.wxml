@@ -1,0 +1,7 @@
+<view class='container wd100 backF'>
+
+  <view class='wd100 pad10 backF marT10'>
+    <rich-text nodes="{{objContent}}" />
+  </view>
+
+</view>

@@ -11,16 +11,6 @@ Page({
     vip: false,
     vipname: '',
     vipIcon: '',
-    swiper: [{
-      video: 'http://1257742881.vod2.myqcloud.com/68edbcccvodgzp1257742881/d27560385285890782277992702/xB0Gtc1ECj0A.mp4',
-      image: '/img/bg.jpg'
-    }, {
-      image: '/img/2.png'
-    }, {
-      image: '/img/3.png'
-    }, {
-      image: '/img/4.png'
-    }],
     process: 0,
     step: 0,
     isque: false,
@@ -35,6 +25,23 @@ Page({
         url: '/pages/shouquan/shouquan',
       })
     }
+    var self = this
+    g.api.searchCarousel()
+      .then(res => {
+        if (res.data.retCode == '0000') {
+          var sliders = []
+          for (var it of res.data.list) {
+            it.objImg = g.api.getFile(it.objImg)
+            sliders.push(it)
+          }
+          self.setData({
+            sliders
+          })
+        }
+      })
+      .catch(e => {
+
+      })
   },
 
   /**
@@ -71,13 +78,11 @@ Page({
           }
         })
 
-
       // g.api.getStep(res => {
       //   console.log(res)
       // }, fail => {
 
       // })
-
     }
   },
   _checkMemberAnswer() {
@@ -106,36 +111,16 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
 
   },
 
-  join: function() {
-    // wx.showToast({
-    //   title: 'join',
-    // })
+  sliderClick: function(e) {
+    var item = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: "/pages/sliderinfo/sliderinfo?id=" + item.carouselId,
+    })
   }
 })
