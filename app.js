@@ -9,7 +9,7 @@ App({
     }
   },
   globalData: {
-    test:'renew',
+    test: 'renew',
     userInfo: null,
     api: new Api({
       baseURL: 'https://xcx.jetem.cn/',

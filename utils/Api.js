@@ -506,37 +506,40 @@ class Api extends WxRequest {
     })
   }
   _wxlogin(_success, _fail) {
-    wx.checkSession({
-      success: _res => {
-        var code = wx.getStorageSync('wxcode')
-        if (code && code != '') {
-          _success(code)
-        } else {
-          wx.login({
-            success: res => {
-              var code = res.code; //登录凭证
-              wx.setStorageSync('wxcode', code)
-              _success(code)
-            },
-            fail: res => {
-              _fail(res)
-            }
-          })
-        }
+    wx.login({
+      success: res => {
+        var code = res.code; //登录凭证
+        _success(code)
       },
-      fail: _res => {
-        wx.login({
-          success: res => {
-            var code = res.code; //登录凭证
-            wx.setStorageSync('wxcode', code)
-            _success(code)
-          },
-          fail: res => {
-            _fail(res)
-          }
-        })
+      fail: res => {
+        _fail(res)
       }
     })
+    // wx.checkSession({
+    //   success: _res => {
+
+    //     var code = wx.getStorageSync('wxcode')
+    //     if (code && code != '') {
+    //       _success(code)
+    //     } else {
+
+    //     }
+    //   },
+    //   fail: _res => {
+    //     console.log('checkSession success', _res, new Date())
+    //     wx.login({
+    //       success: res => {
+    //         console.log('login', res)
+    //         var code = res.code; //登录凭证
+    //         wx.setStorageSync('wxcode', code)
+    //         _success(code)
+    //       },
+    //       fail: res => {
+    //         _fail(res)
+    //       }
+    //     })
+    //   }
+    // })
   }
 }
 
