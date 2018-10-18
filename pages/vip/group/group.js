@@ -124,8 +124,16 @@ Page({
   btnBuy(e) {
     console.log(e)
     var self = this
-    var item = self.data.card
     var collageMemberId = e.currentTarget.dataset.collagememberid
+    if (collageMemberId == g.userInfo.memberId){
+      wx.showToast({
+        title: '这是您自己的拼团',
+        icon:'none'
+      })
+      return
+    }
+
+    var item = self.data.card
     var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
       '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator
     if (collageMemberId) {
