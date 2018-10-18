@@ -2,7 +2,7 @@
   <view class='left'>
     <image src='{{logo}}' mode='widthFix' />
     <view class='flex-col ml right'>
-      <view class='category '>{{category}}</view>
+      <view class='category'>{{category}}</view>
       <view class='name '>有效期:{{name}}</view>
     </view>
   </view>
