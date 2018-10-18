@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "vipinfo": "/common/vipinfo/info"
+    
   }
 }
