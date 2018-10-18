@@ -1,0 +1,22 @@
+<form bindsubmit="formSubmit">
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>金</p>
+      <p>额</p>
+    </view>
+    <input type='digit' name='refundPrice' class='form-input' />
+    <view>元</view>
+  </view>
+
+  <view class='item-h'>
+    <view class='item-title'>
+      <p>退</p>
+      <p>款</p>
+      <p>原</p>
+      <p>因</p>
+    </view>
+    <input type='text' name='refundRemark' placeholder="描述申请退款原因" class='form-input' />
+  </view>
+
+  <button class='bottom-btn' hover-class='btn-hover' formType="submit"> 提交</button>
+</form>

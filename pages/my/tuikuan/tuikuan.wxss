@@ -1,0 +1,17 @@
+
+.btn_bottom {
+  position: fixed;
+  bottom: 0;
+  background: #ff7e00;
+  color: white;
+  display: inline-flex;
+  height: 88rpx;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.submit-hover {
+  background: #d86e04;
+}

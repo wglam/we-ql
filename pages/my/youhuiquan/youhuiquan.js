@@ -59,7 +59,7 @@ Page({
         if (res.data.retCode == "0000") {
           var couponList = self.data.couponList
           if (param.page == 1) {
-            vcouponListips = {}
+            couponList = []
           }
           if (res.data.list) {
             for (var it of res.data.list) {
@@ -77,7 +77,7 @@ Page({
             isLoading: false,
             nodata: true,
           })
-     
+
         }
       })
       .catch(e => {
@@ -106,7 +106,7 @@ Page({
         if (res.data.retCode == "0000") {
           var couponList = self.data.couponList
           if (param.page == 1) {
-            vcouponListips = {}
+            couponList = []
           }
           if (res.data.list) {
             for (var it of res.data.list) {

@@ -22,7 +22,9 @@
     "pages/vip/queinfo/queinfo",
     "pages/bind/bind",
     "pages/vip/jiesuan/jiesuan",
-    "pages/sliderinfo/sliderinfo"
+    "pages/sliderinfo/sliderinfo",
+    "pages/my/tuikuan/tuikuan",
+    "pages/my/addtuikuan/addtuikuan"
   ],
   "window": {
     "backgroundTextStyle": "light",

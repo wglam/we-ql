@@ -1,0 +1,17 @@
+<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">
+  暂无退款信息~</view>
+<view class='mt pl pr body' wx:for-items="{{couponList}}" wx:key="{{item}}">
+  <view>退款金额:{{item.refundPrice}}</view>
+  <view>退款原因:{{item.refundRemark}}</view>
+  <view>退款状态:{{item.refundStatus}}</view>
+</view>
+
+<view class='flex m loading-ing' hidden='{{!isLoading}}'>
+  <view class='iconfont icon-loading iconfont-spin' />
+  <view style='padding-left:6rpx; padding-right:6rpx;'>加载中...</view>
+</view>
+<view style='height:88rpx;'>
+</view>
+<navigator url='/pages/my/addtuikuan/addtuikuan' class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
+  申请退款
+</navigator>

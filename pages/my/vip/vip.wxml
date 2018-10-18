@@ -13,7 +13,7 @@
   <view class='flex pl pr'>
     <view class='radius-btn renew shadow-alice' bindtap='renewOrder'>续费</view>
     <view class='radius-btn upgrade shadow-alice' bindtap='upgradeOrder'>升级</view>
-    <view class='radius-btn refund shadow-alice'>退款</view>
+    <navigator url='/pages/my/tuikuan/tuikuan' class='radius-btn refund shadow-alice'>退款</navigator>
   </view>
 </view>
 

@@ -49,6 +49,8 @@ class Api extends WxRequest {
       collageOrder: 'ht/wechat/collageOrder', //团购订单
       searchCarousel: 'ht/wechat/searchCarousel', //首页轮播查询
       getCarousel: 'ht/wechat/getCarousel', //轮播详情
+      searchRefund: 'ht/wechat/searchRefund', //退款记录
+      refund: 'ht/wechat/refund', //提交退款
     }
     this.$$const = {
       memberCard: null
@@ -484,6 +486,12 @@ class Api extends WxRequest {
   }
   getCarousel(param) {
     return this.getRequest(this.$$path.getCarousel, param)
+  }
+  searchRefund(param) {
+    return this.getRequest(this.$$path.searchRefund, param)
+  }
+  refund(param) {
+    return this.getRequest(this.$$path.refund, param)
   }
   //inner
   _convertDateFromString(dateString) {
