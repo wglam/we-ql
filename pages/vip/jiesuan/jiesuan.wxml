@@ -8,6 +8,7 @@
   </view>
   <view class='price'>{{price}}元</view>
 </view>
+
 <navigator url='/pages/my/youhuiquan/youhuiquan?price={{price}}' class='panel p' style='margin-top:1px;'>
   <view>优惠卷</view>
   <view class='flex'>
@@ -15,7 +16,9 @@
     <view class="iconfont icon-right" />
   </view>
 </navigator>
+<image src='{{img}}' style='width:100%; ' mode='widthFix' />
 
+<view style='height:96rpx;' />
 <view class='flex body flex-c' style='width:100%;height:84rpx;position:fixed;bottom:0rpx;'>
   <view class='flex ml flex-v' style='width:60%;height:100%;'>
     <view class='content_c' style='height:100%;'>实付款:</view>

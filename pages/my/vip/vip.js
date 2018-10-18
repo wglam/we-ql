@@ -101,7 +101,7 @@ Page({
         if (res.data.retCode == '0000') {
           var item = res.data.retVal
           wx.navigateTo({
-            url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + '&orderType=renew',
+            url: '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&price=' + item.cardPrice + '&categoryid=' + item.cardCategoryId + '&orderType=renew' + "&img=" + item.cardImg,
           })
         } else {
           wx.showToast({

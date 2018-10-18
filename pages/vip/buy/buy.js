@@ -106,7 +106,7 @@ Page({
     var itemIndex = self.data.itemIndexs[self.data.tabIndex]
     var item = category.cardInfos[itemIndex]
     console.log(item)
-    var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&categoryid=' + category.cardCategoryId
+    var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&categoryid=' + category.cardCategoryId + "&img=" + item.cardImg
     if (self.data.sort != -1) {
       _url += '&orderType=upgrade'
       wx.showLoading({

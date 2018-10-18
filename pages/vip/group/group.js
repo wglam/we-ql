@@ -135,7 +135,7 @@ Page({
 
     var item = self.data.card
     var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
-      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator + '&collageEndTime=' + e.currentTarget.dataset.endtime
+      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator + '&collageEndTime=' + e.currentTarget.dataset.endtime + "&img=" + item.cardImg
     if (collageMemberId) {
       _url += "&collageMemberId=" + collageMemberId
     }

@@ -12,8 +12,8 @@
 }
 
 image {
-  width: 192rpx;
-  height: 192rpx;
+  width: 144rpx;
+  height: 144rpx;
 }
 
 .right {

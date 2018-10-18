@@ -1,4 +1,3 @@
-// pages/vip/jiesuan/jiesuan.js
 var g = getApp().globalData
 Page({
 
@@ -53,6 +52,9 @@ Page({
 
     if (options.collageEndTime) {
       val.collageEndTime = options.collageEndTime
+    }
+    if (options.img) {
+      val.img = g.api.getFile(options.img)
     }
     var that = this
     that.setData(val)
