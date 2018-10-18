@@ -8,7 +8,7 @@ Page({
       wx.setStorageSync('shareId', options.shareId);
     }
     if (options.id) {
-      var id = JSON.parse(options.id);
+      var id = options.id;
       self.setData({
         id
       })

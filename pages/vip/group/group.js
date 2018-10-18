@@ -1,9 +1,17 @@
-// pages/vip/group/group.js
 var g = getApp().globalData
 Page({
 
   onLoad(options) {
     var self = this
+    if (options.shareId) {
+      wx.setStorageSync('shareId', options.shareId);
+    }
+ 
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+    }
     if (options.id) {
       self.setData({
         cardId: options.id
@@ -152,5 +160,21 @@ Page({
     this.setData({
       modal: false
     })
-  }
+  },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function (ops) {
+    var self = this;
+    if (ops.from === 'menu') {
+      var item = self.data.card
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/vip/group/group?id=" + item.cardId + "&shareId=" + g.userInfo.openid,
+        imageUrl: g.api.getFile(item.cardImg),
+        success: function (res) { }
+      }
+      return shareObj;
+    }
+  },
 })
