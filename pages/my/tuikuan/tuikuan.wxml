@@ -1,10 +1,12 @@
 <view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">
   暂无退款信息~</view>
-<view class='mt pl pr body' wx:for-items="{{couponList}}" wx:key="{{item}}">
-  <view>退款金额:{{item.refundPrice}}</view>
-  <view>退款原因:{{item.refundRemark}}</view>
-  <view>退款状态:{{item.refundStatus}}</view>
-</view>
+<block wx:for='{{couponList}}' wx:key="{{index}}">
+  <view class='mt ml mr p body {{item.style}} '>
+    <view>退款金额：{{item.refundPrice}}元</view>
+    <view>退款原因：{{item.refundRemark}}</view>
+    <view>退款状态：{{item.statusName}}</view>
+  </view>
+</block>
 
 <view class='flex m loading-ing' hidden='{{!isLoading}}'>
   <view class='iconfont icon-loading iconfont-spin' />

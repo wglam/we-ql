@@ -69,7 +69,7 @@ Page({
           self.setData({
             couponList,
             isLoading: false,
-            nodata: (data.list.length < param.size),
+            nodata: (res.data.list.length < param.size),
             page: param.page
           })
         } else {
@@ -116,7 +116,7 @@ Page({
           self.setData({
             couponList,
             isLoading: false,
-            nodata: (data.list.length < param.size),
+            nodata: (couponList.length < param.size),
             page: param.page
           })
         } else {

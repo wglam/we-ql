@@ -35,7 +35,6 @@ Page({
 
 
   searchRefund: function() {
-
     var self = this;
     self.setData({
       isLoading: true,
@@ -51,19 +50,32 @@ Page({
       })
       .then(res => {
         if (res.data.retCode == "0000") {
-          var couponList = self.data.list
+          var couponList
           if (param.page == 1) {
             couponList = []
+          } else {
+            couponList = self.data.couponList
           }
           if (res.data.list) {
             for (var it of res.data.list) {
+              if (it.refundStatus == 3) {
+                it.statusName = "审核中"
+                it.style='doing'
+              } else if (it.refundStatus == 4) {
+                it.statusName = "已通过"
+                it.style = 'success'
+              } else if (it.refundStatus == 5) {
+                it.statusName = "失败"
+                it.style = 'fail'
+              }
               couponList.push(it)
             }
           }
+
           self.setData({
             couponList,
             isLoading: false,
-            nodata: (data.list.length < param.size),
+            nodata: (couponList < param.size),
             page: param.page
           })
         } else {
@@ -74,6 +86,7 @@ Page({
         }
       })
       .catch(e => {
+        console.log(e)
         self.setData({
           isLoading: false,
         })

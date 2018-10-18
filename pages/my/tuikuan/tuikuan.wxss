@@ -1,4 +1,3 @@
-
 .btn_bottom {
   position: fixed;
   bottom: 0;
@@ -14,4 +13,16 @@
 
 .submit-hover {
   background: #d86e04;
+}
+
+.success {
+  color: #5BB531;
+}
+
+.doing {
+  color: #ff7e00;
+}
+
+.fail {
+  color: red;
 }
