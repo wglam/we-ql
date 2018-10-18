@@ -4,6 +4,7 @@
     <view class="card-info pl pt">
       <view class='white-text font-l'>{{title}}</view>
       <view class='white-text font-min'>{{info}}</view>
+      <view class='white-text font-min'>{{tips}}</view>
     </view>
     <view class='card-pro dmb' hidden='{{progress<0}}'>
       <view class='flex-col' style='margin-left:2em;margin-right:2em;align-items: flex-end;'>

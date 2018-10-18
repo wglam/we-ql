@@ -14,6 +14,8 @@ Page({
     process: 0,
     step: 0,
     isque: false,
+    isJs: false,
+    iseating: false,
   },
 
   /**
@@ -83,24 +85,68 @@ Page({
       // }, fail => {
 
       // })
+      if (!that.data.isJs) {
+        var data = {}
+        data.memberId = g.userInfo.memberId
+        data.timeStr = new Date().Format("yyyy-MM-dd")
+
+        g.api.getMemberJsPlan({
+            data
+          })
+          .then(res => {
+            if (res.data.retCode == '0000') {
+              that.setData({
+                isJs: true
+              })
+            }
+            wx.hideLoading()
+          })
+          .catch(res => {
+            wx.hideLoading()
+          })
+
+      }
+      if (!that.data.iseating) {
+        g.api.getDietPlan({
+            data: {
+              memberId: g.userInfo.memberId
+            }
+          })
+          .then(
+            res => {
+              if (res.data.retCode == '0000') {
+                that.setData({
+                  iseating: true
+                })
+              }
+              wx.hideLoading()
+            }
+          )
+          .catch(res => {
+            wx.hideLoading()
+          })
+      }
     }
   },
   _checkMemberAnswer() {
     var that = this;
-    g.api.checkMemberAnswer({
-        data: {
-          memberId: g.userInfo.memberId
-        }
-      })
-      .then(res => {
-        var val = res.data.retCode == '2222'
-        that.setData({
-          isque: val
-        });
-      })
-      .catch(res => {
-
-      })
+    if (!that.data.isque) {
+      g.api.checkMemberAnswer({
+          data: {
+            memberId: g.userInfo.memberId
+          }
+        })
+        .then(res => {
+          if (res.data.retCode == '2222') {
+            that.setData({
+              isque: true
+            });
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    }
   },
 
   /**
