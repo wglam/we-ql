@@ -125,17 +125,17 @@ Page({
     console.log(e)
     var self = this
     var collageMemberId = e.currentTarget.dataset.collagememberid
-    if (collageMemberId == g.userInfo.memberId){
+    if (collageMemberId == g.userInfo.memberId) {
       wx.showToast({
         title: '这是您自己的拼团',
-        icon:'none'
+        icon: 'none'
       })
       return
     }
 
     var item = self.data.card
     var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
-      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator
+      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator + '&collageEndTime=' + e.currentTarget.dataset.endtime
     if (collageMemberId) {
       _url += "&collageMemberId=" + collageMemberId
     }

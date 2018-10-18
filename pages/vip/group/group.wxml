@@ -46,7 +46,7 @@
               <view class='num'>{{item.diffNum}}人</view>
               <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
             </view>
-            <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collageMemberId='{{item.collageMemberId}}' data-price='{{card.collagePrice}}'>去拼单</view>
+            <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collageMemberId='{{item.collageMemberId}}' data-price='{{card.collagePrice}}' data-endtime='{{item.collageEndTime}}'>去拼单</view>
           </view>
         </swiper-item>
       </block>

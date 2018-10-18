@@ -50,6 +50,10 @@ Page({
     if (options.collageMemberId) {
       val.collageMemberId = options.collageMemberId
     }
+
+    if (options.collageEndTime) {
+      val.collageEndTime = options.collageEndTime
+    }
     var that = this
     that.setData(val)
     console.log(val)
@@ -80,9 +84,14 @@ Page({
     param.orderPrice = self.data.price
     param.couponPay = self.data.youhui.couponPrice
     param.payment = self.data.payment
+    // param.payment = 0.01
+    // param.orderPrice = 0.01
     param.isInitiator = self.data.isInitiator
     if (self.data.collageMemberId) {
       param.collageMemberId = self.data.collageMemberId
+      param.collageEndTime = self.data.collageEndTime
+    } else {
+      param.collageMemberId = param.memberId
     }
     console.log(param)
     g.api.collageOrder({
