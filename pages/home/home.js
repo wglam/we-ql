@@ -70,7 +70,7 @@ Page({
           var data = res.data.retVal;
           if (data.cardId) {
             var val = {}
-            val.vip = false;
+            val.vip = true;
             val.vipname = data.cardCategoryName;
             val.vipIcon = g.api.getFile(data.cardCategoryLogo)
             that.setData(val);

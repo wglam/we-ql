@@ -1,7 +1,4 @@
-<view class='container wd100 backF'>
-
-  <view class='wd100 pad10 backF marT10'>
-    <rich-text nodes="{{objContent}}" />
-  </view>
-
+<import src="/wxParse/wxParse.wxml" />
+<view class="wxParse">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>

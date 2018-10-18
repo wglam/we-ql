@@ -2,6 +2,7 @@
 @import '/style/coloricon.wxss';
 @import 'style/icon.wxss';
 @import 'style/ql.wxss';
+@import "/wxParse/wxParse.wxss";
 /* reset */
 
 page {

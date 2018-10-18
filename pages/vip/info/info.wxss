@@ -2,6 +2,8 @@
   width: 100%;
   background: white;
   display: flex;
+  position: fixed;
+  bottom: 0;
 }
 
 
