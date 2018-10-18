@@ -4,7 +4,7 @@
 </view> -->
 <view class='top border-top pt pb'>
   <view class='h-between pl'>
-    <view class='vip-name'>{{card.cardName}}</view>
+    <view class='vip-name'>{{card.cardCategoryName}}</view>
     <view wx:if='{{card.diffDay>=1}}' class='daka shadow'>剩余{{card.diffDay}}天</view>
   </view>
   <view class='vip-time pl pr'>

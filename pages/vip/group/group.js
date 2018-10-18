@@ -59,7 +59,9 @@ Page({
           if (card.rightsContent) {
             card.images = []
             for (var it of card.rightsContent.split(',')) {
-              card.images.push(g.api.getFile(it))
+              var img = g.api.getFile(it)
+              console.log(img)
+              card.images.push(img)
             }
           }
           self.setData({
@@ -90,73 +92,6 @@ Page({
         wx.hideLoading()
         if (res.data.retCode == '0000') {
           var list = res.data.list
-          // list = [{
-          //   memberName: 'z11111',
-          //   portrait: g.userInfo.portrait,
-          //   cgSeconds: 569,
-          //   diffNum: 1, collageMemberId: 1,
-          // }, {
-          //   memberName: 'z11112',
-          //   portrait: g.userInfo.portrait,
-          //   cgSeconds: 56900,
-          //     diffNum: 1, collageMemberId: 1,
-          // }, {
-          //   memberName: 'z11113',
-          //   portrait: g.userInfo.portrait,
-          //   cgSeconds: 569,
-          //   diffNum: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1, collageMemberId: 1,
-          //   }, {
-          //     memberName: 'z11113',
-          //     portrait: g.userInfo.portrait,
-          //     cgSeconds: 569,
-          //     diffNum: 1,
-          //     collageMemberId:1,
-          //   }]
           var groups = []
           if (list && list.length >= 1) {
             var temp

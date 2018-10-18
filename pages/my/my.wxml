@@ -26,7 +26,7 @@
   <view> 饮食相册</view>
   <view class="iconfont icon-right" />
 </navigator>
-<navigator url="{{vip?'vip/vip':'/pages/vip/info/info'}}" class="click-item mt">
+<navigator url="{{vip?'/pages/my/vip/vip':'/pages/vip/info/info'}}" class="click-item mt">
   <view> {{vip?'会员信息':'成为会员'}}</view>
   <view class="iconfont icon-right" />
 </navigator>

@@ -3,7 +3,7 @@
     <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
       <block wx:for="{{card.images}}" wx:key="{{index}}">
         <swiper-item>
-          <image class='martch-parent' src='{{item.image}}' mode='aspectFill' />
+          <image class='martch-parent' src='{{item}}' mode='aspectFill' />
         </swiper-item>
       </block>
     </swiper>
