@@ -32,10 +32,19 @@ Page({
     val.index = e.currentTarget.dataset.index
     val.unit = e.currentTarget.dataset.item.unit
     val.max = e.currentTarget.dataset.item.max
-    that.setData({
-      slider: val,
-      inputHide: false
-    });
+
+    if (val.top <= that.data.top && val.index <= that.data.current) {
+      that.setData({
+        slider: val,
+        inputHide: false
+      })
+    } else {
+      wx.showToast({
+        title: '请按步骤训练',
+        icon: 'none'
+      })
+    }
+
     console.log(e.currentTarget.dataset.item);
   },
   _hideInput: function() {
@@ -45,12 +54,31 @@ Page({
     });
   },
   confirm: function(e) {
-    // console.log(e.detail.value);
+    console.log(e.detail.value);
     var that = this;
     var val = {}
     val.current = that.data.current;
     val.top = that.data.top;
+
+    // 修改之前数据不需增加current 和 top , sliderChange已经改变选择的完成情况
+    var slider = that.data.slider
+    if (slider.top < val.top) {
+      that.setData({
+        inputHide: true
+      })
+      return
+    } else if (slider.index < val.current) {
+      that.setData({
+        inputHide: true
+      })
+      return
+    }
+    // 
+
     var items = that.data.items
+    if (val.top >= items.length) {
+      return
+    }
     if (val.current < (items[val.top].items.length - 1)) {
       val.current++
     } else {
@@ -114,6 +142,7 @@ Page({
     param.planContent.title = that.data.title
     param.planContent.items = that.data.items
 
+    // console.log(param.planContent.items );
     var value = 0;
     var max = 0;
     var complete = true;
@@ -153,6 +182,9 @@ Page({
     wx.showLoading({
       title: '提交中',
     })
+    var planContent =JSON.stringify(param.planContent)
+    param.planContent = planContent
+    param.memberId= g.userInfo.memberId
     g.api.addMemberJsPlan({
         data: {
           memberJsPlan: param
