@@ -1,0 +1,19 @@
+{
+训练主题：title
+
+训练项目 items ：[
+
+{
+训练目标： target 
+训练动作： name   视频video
+组数：zushu
+次数：cishu  <1 力竭
+组间休息：rest
+时间：time
+心率：xinlv
+强度：strong
+
+动作要领 ：dzyl
+呼吸要领 ：hxyl}
+]
+}
