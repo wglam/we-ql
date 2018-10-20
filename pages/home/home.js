@@ -95,7 +95,6 @@ Page({
           })
           .then(res => {
             if (res.data.retCode == '0000') {
-
               that.setData({
                 isJs: true,
                 process: res.data.retVal.completeRate

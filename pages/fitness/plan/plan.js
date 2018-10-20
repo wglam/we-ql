@@ -117,7 +117,7 @@ Page({
 
     var data = {}
     data.memberId = g.userInfo.memberId
-    data.timeStr = new Date().Format("yyyy-MM-dd")
+    data.timeStr = new Date().Format("yyyy-MM-dd ")
 
     g.api.getMemberJsPlan({
         data
@@ -127,6 +127,26 @@ Page({
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
           val.complete = val.completeRate >= 1
+
+          val.top = 0;
+          val.current = 0;
+
+          for (var i = 0; i <= val.items.length - 1; i++) {
+            var ic = val.items[i]
+            var itLength = ic.items.length - 1
+            for (var j = 0; j <= itLength; j++) {
+              var item = ic.items[j]
+              if (item.value >= 1) {
+                if (j >= itLength) {
+                  val.top = i + 1;
+                  val.current = 0
+                } else {
+                  val.top = i
+                  val.current = j + 1;
+                }
+              }
+            }
+          }
           that.setData(val)
         }
         wx.hideLoading()
@@ -182,21 +202,26 @@ Page({
     wx.showLoading({
       title: '提交中',
     })
-    var planContent =JSON.stringify(param.planContent)
+    var planContent = JSON.stringify(param.planContent)
     param.planContent = planContent
-    param.memberId= g.userInfo.memberId
+    param.memberId = g.userInfo.memberId
     g.api.addMemberJsPlan({
         data: {
           memberJsPlan: param
         }
       })
       .then(res => {
-        that.setData({
-          top: -1,
-          current: -1,
-          complete: true
-        })
         wx.hideLoading()
+        wx.showToast({
+          title: '提交成功',
+        })
+      })
+      .catch(e=>{
+        wx.hideLoading()
+        wx.showToast({
+          title: '提交失败',
+          icon:'none'
+        })
       })
   }
 })

@@ -129,7 +129,7 @@ Page({
       });
       var date = new Date()
       date.setFullYear(_year)
-      date.setMonth(_month)
+      date.setMonth(_month - 1)
       date.setDate(_day)
       that.loadPlan(date)
     }
@@ -151,7 +151,8 @@ Page({
       .then(res => {
         var _val = {}
         if (res.data.retCode == '0000') {
-          _val.title = res.data.retVal.planContent.title
+          var p = JSON.parse(res.data.retVal.planContent.replace(/\s+/g, ''))
+          _val.title = p.title
           _val.progress = res.data.retVal.completeRate
         } else {
           _val.title = '暂无'
