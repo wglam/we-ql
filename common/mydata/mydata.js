@@ -36,7 +36,7 @@ Component({
       type: Number,
       value: -1,
       observer: function(newVal, oldVal, changedPath) {
-        console.log("target", newVal, oldVal)
+        // console.log("target", newVal, oldVal)
       }
     },
     bodyType: Number,
@@ -44,7 +44,7 @@ Component({
       type: Boolean,
       value: false,
       observer: function(newVal, oldVal, changedPath) {
-        console.log("loadCurrent", newVal, oldVal)
+        // console.log("loadCurrent", newVal, oldVal)
         if (newVal) {
           this._searchBody()
         }
@@ -96,7 +96,6 @@ Component({
           var data = res.data
 
           if (data.retCode == '0000') {
-
             var opts = {}
             if (that.data.page == 0) {
               opts.charts = []
@@ -110,7 +109,6 @@ Component({
             opts.maxy = that.data.maxy
             opts.unit = that.data.unit
             opts.target = that.data.target
-
             for (var it of data.list) {
               it.x = new Date(it.yVal.replace(/-/g, "/")).getTime()
               it.y = parseFloat(it.xVal)
@@ -231,12 +229,12 @@ Component({
         line: null
       });
 
-      console.log("initCharts", target, miny, maxy)
+
       if (target != null && target != -1) {
         miny = Math.min(miny, target)
         maxy = Math.max(maxy, target)
       }
-      console.log("initCharts", target, miny, maxy)
+
       chart.source(charts, {
         x: {
           tickCount: 5,
@@ -290,7 +288,7 @@ Component({
       })
     },
     confirm: function(e) {
-      // console.log(e.detail.value);
+ 
       var i = parseFloat(e.detail.value.value)
       if (i && i > 0) {
         wx.showLoading({
@@ -384,7 +382,7 @@ Component({
                 wx.showToast({
                   title: '提交成功',
                 })
-                console.log('setBodyTarget', i)
+
                 that.redrawcharts(i)
                 that.setData({
                   target: i,
