@@ -35,7 +35,7 @@
       <p>机</p>
       <p>号</p>
     </view>
-    <input type='number' name='memberPhone' value='{{memberPhone}}' class='form-input' />
+    <input type='number' name='memberPhone' value='{{memberPhone}}' maxlength='11' class='form-input' />
   </view>
 
   <view class='item-h'>

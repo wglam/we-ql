@@ -49,7 +49,15 @@ Page({
       })
       .then(res => {
         wx.hideLoading()
-        if (res.data.resCode == '0000') {
+        if (res.data.retCode == '0000') {
+          var user = g.userInfo
+          user.memberName = params.memberName
+          user.signature = params.signature
+          user.portrait = params.portrait
+          user.memberSex = params.memberSex
+          g.userInfo = user
+          wx.setStorageSync('userInfo', user);
+
           wx.showToast({
             title: '保存成功',
           })
@@ -59,7 +67,8 @@ Page({
             icon: 'none'
           })
         }
-      }).catch(res => {
+      }).catch(e => {
+        console.log(e)
         wx.hideLoading()
         wx.showToast({
           title: '保存失败',
