@@ -82,6 +82,9 @@ Page({
             .then(res => {
               wx.hideLoading()
               if (res.data.retCode == '0000') {
+                wx.navigateTo({
+                  url: '/pages/my/photo/photo',
+                })
                 wx.showToast({
                   title: '打卡成功'
                 });
