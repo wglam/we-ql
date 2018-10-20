@@ -33,7 +33,8 @@ Page({
       name: "BMI",
       target: -1,
       bodyType: 3
-    }]
+    }],
+    loadComplete: false
   },
   onLoad(options) {
     var that = this;
@@ -66,14 +67,15 @@ Page({
         if (user.toheight && user.toheight.length >= 1) {
           val[4].target = parseFloat(user.toheight)
         }
-        if (user.toBIM && user.toBIM.length >= 1) {
-          val[5].target = parseFloat(user.toBIM)
+        if (user.toBMI && user.toBMI.length >= 1) {
+          val[5].target = parseFloat(user.toBMI)
         }
-        val[5].target=50
-        that.setData({
-          chats: val
-        })
 
+        that.setData({
+          chats: val,
+          loadComplete: true
+        })
+        console.log(val)
       }
       g.api.getBodyTarget(g.userInfo.memberId, loadDefault, loadDefault)
     }

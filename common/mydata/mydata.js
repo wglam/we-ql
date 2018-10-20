@@ -23,12 +23,6 @@ var g = getApp().globalData
 Component({
 
   attached: function() {
-    // charts = this.data.datas;
-    // minx = 1527401498000;
-    // maxx = 1538287898000;
-
-    // maxy = 61;
-    // miny = 50;
 
   },
   ready: function() {},
@@ -38,12 +32,19 @@ Component({
   properties: {
     unit: String,
     name: String,
-    target: Number,
+    target: {
+      type: Number,
+      value: -1,
+      observer: function(newVal, oldVal, changedPath) {
+        console.log("target", newVal, oldVal)
+      }
+    },
     bodyType: Number,
     loadCurrent: {
       type: Boolean,
       value: false,
       observer: function(newVal, oldVal, changedPath) {
+        console.log("loadCurrent", newVal, oldVal)
         if (newVal) {
           this._searchBody()
         }
@@ -138,14 +139,15 @@ Component({
             that._hideLoading()
           }
         })
-        .catch(res => {
-          console.log(res)
+        .catch(e => {
+          console.log(e)
           that._hideLoading()
         })
     },
     redrawcharts(target) {
       var that = this
       var opts = this.data.opts
+      opts.target = target
       if (opts && opts.charts && opts.charts.length < 1) {
         return
       }
@@ -229,26 +231,15 @@ Component({
         line: null
       });
 
-      var yticks = new Array
-      if (target == null || target < 0 || target == miny || target == maxy) {
-        yticks = [miny, maxy];
-      } else if (target < miny) {
-        yticks.push(target)
-        yticks.push(miny)
-        yticks.push(maxy)
-      } else if (target > maxy) {
-        yticks.push(miny)
-        yticks.push(maxy)
-        yticks.push(target)
-      } else if (target > miny && target < maxy) {
-        yticks.push(miny)
-        yticks.push(target)
-        yticks.push(maxy)
+      console.log("initCharts", target, miny, maxy)
+      if (target != null && target != -1) {
+        miny = Math.min(miny, target)
+        maxy = Math.max(maxy, target)
       }
-
+      console.log("initCharts", target, miny, maxy)
       chart.source(charts, {
         x: {
-          tickCount: 4,
+          tickCount: 5,
           formatter(val) {
             var temp = new Date(val)
             return temp.Format("MM/dd");
@@ -257,10 +248,12 @@ Component({
           max: maxx
         },
         y: {
-          ticks: yticks,
+          tickCount: 3,
           formatter(val) {
             return val + unit;
-          }
+          },
+          min: Math.floor(miny),
+          max: Math.ceil(maxy)
         }
       });
 
@@ -282,7 +275,7 @@ Component({
       //   sortable: false // 数据已在外部排序，提升性能
       // }
       chart.line({
-        sortable: false
+        sortable: true
       }).position('x*y').color('type', (type) => {
         return "#e88b12";
       });
@@ -297,7 +290,7 @@ Component({
       })
     },
     confirm: function(e) {
-      console.log(e.detail.value);
+      // console.log(e.detail.value);
       var i = parseFloat(e.detail.value.value)
       if (i && i > 0) {
         wx.showLoading({
@@ -332,9 +325,9 @@ Component({
                 })
               }
             })
-            .catch(res => {
+            .catch(e => {
               wx.hideLoading()
-              console.log(res)
+              console.log(e)
               wx.showToast({
                 title: '提交失败',
                 icon: "none"
@@ -346,7 +339,7 @@ Component({
           param.memberId = g.userInfo.memberId
           param.toheight = g.userInfo.toheight
           param.toweight = g.userInfo.toweight
-          param.toBIM = g.userInfo.toBIM
+          param.toBMI = g.userInfo.toBMI
           param.tobust = g.userInfo.tobust
           param.towaist = g.userInfo.towaist
           param.tothigh = g.userInfo.tothigh
@@ -356,10 +349,10 @@ Component({
               param.toweight = i
               break;
             case 2:
-              param.height = i
+              param.toheight = i
               break;
             case 3:
-              param.toBIM = i
+              param.toBMI = i
               break;
 
             case 4:
@@ -381,14 +374,23 @@ Component({
             .then(res => {
               wx.hideLoading()
               if (res.data.retCode == "0000") {
+                g.userInfo.toheight = param.toheight
+                g.userInfo.toweight = param.toweight
+                g.userInfo.toBMI = param.toBMI
+                g.userInfo.tobust = param.tobust
+                g.userInfo.towaist = param.towaist
+                g.userInfo.tothigh = param.tothigh
+                wx.setStorageSync('userInfo', g.userInfo);
                 wx.showToast({
                   title: '提交成功',
                 })
+                console.log('setBodyTarget', i)
+                that.redrawcharts(i)
                 that.setData({
                   target: i,
                   inputHide: true
                 })
-                that.redrawcharts(i)
+
               } else {
                 wx.showToast({
                   title: res.data.retDesc,
@@ -396,9 +398,9 @@ Component({
                 })
               }
             })
-            .catch(res => {
+            .catch(e => {
               wx.hideLoading()
-              console.log(res)
+              console.log(e)
               wx.showToast({
                 title: '提交失败',
                 icon: "none"
