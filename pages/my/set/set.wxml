@@ -38,7 +38,7 @@
     <input type='number' name='memberPhone' value='{{memberPhone}}' maxlength='11' class='form-input' />
   </view>
 
-  <view class='item-h'>
+  <navigator class='item-h' url='/pages/my/vip/vip'>
     <view class='item-title'>
       <p>会</p>
       <p>员</p>
@@ -46,7 +46,7 @@
       <p>息</p>
     </view>
     <view class="iconfont icon-right" />
-  </view>
+  </navigator>
   <view class='item-h'>
     <view class='item-title'>
       <p>健</p>
