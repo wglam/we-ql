@@ -3,6 +3,22 @@ var g = getApp().globalData
 
 Page({
 
+  onLoad(opts) {
+    if (g.userInfo != null) {
+      g.api.checkMemberCard(g.userInfo.memberId)
+        .then(res => {
+          that.setData({
+            vip: res.data.retCode == '0000'
+          })
+        })
+        .catch(res => {
+          that.setData({
+            vip: false
+          })
+        })
+    }
+
+  },
   /**
    * 页面的初始数据
    */
