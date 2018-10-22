@@ -22,6 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if (options.shareId) {
+      wx.setStorageSync('shareId', options.shareId);
+    }
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
@@ -44,9 +47,9 @@ Page({
       .catch(e => {
         console.log(e)
       })
-    setTimeout(function(){
+    setTimeout(function() {
       g.api.getMemberByOpenid()
-    },1000)
+    }, 1000)
   },
 
   /**
@@ -163,7 +166,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    var self = this;
+    if (ops.from === 'menu') {
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/home/home?shareId=" + g.userInfo.openid,
+        success: function(res) {}
+      }
+      return shareObj;
+    }
   },
 
   sliderClick: function(e) {

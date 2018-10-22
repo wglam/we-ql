@@ -7,16 +7,16 @@ Page({
     if (options.shareId) {
       wx.setStorageSync('shareId', options.shareId);
     }
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+    }
+
     if (options.id) {
       var id = options.id;
       self.setData({
         id
-      })
-    }
-
-    if (g.userInfo == null) {
-      wx.navigateTo({
-        url: '/pages/shouquan/shouquan',
       })
     }
 
