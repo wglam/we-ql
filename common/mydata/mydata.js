@@ -280,7 +280,29 @@ Component({
 
       chart.point().position('x*y').color("#e88b12").size(2.5)
       chart.render()
+      ///
+      // that._canvasToTempFilePath('line_' + that.data.bodyType, width, height)
       return chart;
+    },
+    _canvasToTempFilePath: function(id, _width, _height) {
+      var that = this
+      console.log("_canvasToTempFilePath",id, _width, _height)
+      setTimeout(function(that, width, height) {
+        wx.canvasToTempFilePath({
+          canvasId: id,
+          width: _width,
+          height: _height,
+          success(res) {
+            console.log("_canvasToTempFilePath", res.tempFilePath)
+            that.setData({
+              tempImg: res.tempFilePath
+            })
+          },
+          fail(e) {
+            console.log("_canvasToTempFilePath", e)
+          }
+        }, this)
+      }, 3000)
     },
     btnNow: function(e) {
       var that = this

@@ -1,7 +1,7 @@
-<view class='charts'>
-  <ff-canvas id="line_{{bodyType}}" canvas-id="line_{{bodyType}}" opts="{{opts}}"  hidden='{{!inputHide}}'/>
-  <image src='{{tempImg}}' hidden='{{inputHide}}'/>
+<view class='charts' hidden='{{!inputHide}}'>
+  <ff-canvas id="line_{{bodyType}}" canvas-id="line_{{bodyType}}" opts="{{opts}}" />
 </view>
+<!-- <image class='charts' src='{{tempImg}}' hidden='{{inputHide}}' /> -->
 <view class="click-item" bindtap="showInput">
   <view> 目标{{name}}</view>
   <view class='bmi-right'>
