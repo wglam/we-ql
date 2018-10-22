@@ -38,7 +38,7 @@
   <view> 优惠券</view>
   <view class="iconfont icon-right" />
 </navigator>
-<navigator class="click-item mt" hidden='true'>
-  <view> 意见反馈</view>
+<button class="click-item mt" open-type='contact'>
+  <view style='font-size: 30rpx; color:#333;'>意见反馈</view>
   <view class="iconfont icon-right" />
-</navigator>
+</button>
