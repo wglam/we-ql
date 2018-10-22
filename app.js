@@ -12,7 +12,7 @@ App({
     test: 'renew',
     userInfo: null,
     api: new Api({
-      baseURL: 'https://xcx.jetem.cn/',
+      baseURL: 'https://www.qingliansports.com/',
     })
   }
 })
