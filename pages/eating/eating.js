@@ -9,6 +9,7 @@ Page({
    */
   data: {
     colors: ["#A6CBA0", "#ebb774", "#FF856E"],
+    nodata: false,
   },
 
   /**
@@ -21,7 +22,20 @@ Page({
       })
       return
     }
-    this._getDietPlan()
+    var that = this
+    g.api.checkMemberCard(g.userInfo.memberId)
+      .then(res => {
+        if (res.data.retCode == '0000') {
+          that._getDietPlan();
+        } else {
+          wx.navigateTo({
+            url: '/pages/vip/info/info',
+          })
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -42,17 +56,25 @@ Page({
       })
       .then(
         res => {
+          wx.hideLoading()
+          var val = {}
           if (res.data.retCode == '0000') {
             var s = res.data.retVal.planContent.replace(/\s+/g, '');
-            var val = {}
             val.items = JSON.parse(s)
-            that.setData(val)
+            val.nodata = false
+
+          } else {
+            val.nodata = true
           }
-          wx.hideLoading()
+          that.setData(val)
+
         }
       )
       .catch(res => {
         wx.hideLoading()
+        that.setData({
+          nodata: true
+        })
       })
   },
   submitDiet: function() {

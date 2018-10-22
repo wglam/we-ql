@@ -19,7 +19,8 @@ Page({
       top: 0,
       index: 0
     },
-    complete: true
+    complete: true,
+    nodata: false
   },
   onLoad(opts) {
     if (g.userInfo == null) {
@@ -28,7 +29,22 @@ Page({
       })
       return
     }
-    this.loadPlan();
+    var that = this
+    g.api.checkMemberCard(g.userInfo.memberId)
+      .then(res => {
+        if (res.data.retCode == '0000') {
+          that.loadPlan();
+        } else {
+          wx.navigateTo({
+            url: '/pages/vip/info/info',
+          })
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      })
+
+
   },
   complete: function(e) {
     var that = this;
@@ -129,6 +145,7 @@ Page({
         data
       })
       .then(res => {
+        wx.hideLoading()
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
@@ -153,12 +170,20 @@ Page({
               }
             }
           }
+          val.nodata = false
           that.setData(val)
+        } else {
+          that.setData({
+            nodata: true
+          })
         }
-        wx.hideLoading()
+
       })
       .catch(res => {
         wx.hideLoading()
+        that.setData({
+          nodata: true
+        })
       })
   },
   submit: function() {

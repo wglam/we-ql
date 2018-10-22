@@ -1,4 +1,6 @@
-<bottom bottom='96'>
+<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">计划正在紧张制作中，请稍后~</view>
+
+<bottom bottom='96' wx:if="{{!nodata}}">
   <view slot="content">
 
     <block wx:for="{{items}}" wx:key="{{index}}">
