@@ -71,20 +71,22 @@ Page({
       that.setData(val)
 
       var that = this;
-      g.api.getMemberCard(g.userInfo.memberId)
-        .then(res => {
-          var data = res.data.retVal;
-          if (data.cardId) {
-            var val = {}
-            val.vip = true;
-            val.vipname = data.cardCategoryName;
-            val.vipIcon = g.api.getFile(data.cardCategoryLogo)
-            that.setData(val);
-            if (val.vip) {
-              that._checkMemberAnswer()
+      if (!that.data.vip) {
+        g.api.getMemberCard(g.userInfo.memberId)
+          .then(res => {
+            var data = res.data.retVal;
+            if (data.cardId) {
+              var val = {}
+              val.vip = true;
+              val.vipname = data.cardCategoryName;
+              val.vipIcon = g.api.getFile(data.cardCategoryLogo)
+              that.setData(val);
+              if (val.vip) {
+                that._checkMemberAnswer()
+              }
             }
-          }
-        })
+          })
+      }
 
       // g.api.getStep(res => {
       //   console.log(res)

@@ -21,7 +21,13 @@ Page({
     },
     complete: true
   },
-  onLoad() {
+  onLoad(opts) {
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+      return
+    }
     this.loadPlan();
   },
   complete: function(e) {
@@ -110,12 +116,7 @@ Page({
     })
   },
   loadPlan() {
-    if (g.userInfo == null) {
-      wx.navigateTo({
-        url: '/pages/shouquan/shouquan',
-      })
-      return
-    }
+
     var that = this
     wx.showLoading({
       title: '加载中',

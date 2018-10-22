@@ -16,8 +16,8 @@
     </view>
 
     <view wx:if='{{tips}}' class="ribbon-lanren-green">
-        <view class="ribbon-green font-min">{{tips}}</view>
-      </view>
+      <view class="ribbon-green font-min">{{tips}}</view>
+    </view>
   </view>
   <view class='btn' bindtap='onClick'>
     <view class='iconfont icon-add' />
