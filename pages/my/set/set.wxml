@@ -54,7 +54,7 @@
       <p>宣</p>
       <p>言</p>
     </view>
-    <input type='text' name='signature' placeholder="一句话讲述自己的健身宣言" value='{{signature}}' class='form-input' />
+    <input type='text' name='signature' placeholder="一句话讲述自己的健身宣言" value='{{signature}}' class='form-input' maxlength='30' />
   </view>
   <input hidden='true' name='portrait' value='{{portrait}}' />
   <input hidden='true' name='memberId' value='{{memberId}}' />
