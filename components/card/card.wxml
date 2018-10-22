@@ -4,7 +4,6 @@
     <view class="card-info pl pt">
       <view class='white-text font-l'>{{title}}</view>
       <view class='white-text font-min'>{{info}}</view>
-      <view class='white-text font-min'>{{tips}}</view>
     </view>
     <view class='card-pro dmb' hidden='{{progress<0}}'>
       <view class='flex-col' style='margin-left:2em;margin-right:2em;align-items: flex-end;'>
@@ -15,6 +14,10 @@
         <view class="progress-bar" style="width:{{progress}}%;" />
       </view>
     </view>
+
+    <view wx:if='{{tips}}' class="ribbon-lanren-green">
+        <view class="ribbon-green font-min">{{tips}}</view>
+      </view>
   </view>
   <view class='btn' bindtap='onClick'>
     <view class='iconfont icon-add' />

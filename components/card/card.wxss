@@ -25,7 +25,7 @@
   position: absolute;
   top: 12rpx;
   width: 100%;
-  line-height:1.2em;
+  line-height: 1.2em;
 }
 
 .card-pro {
@@ -53,4 +53,34 @@
 .progress-bar {
   background: linear-gradient(#ffce76, #ffa000);
   height: 100%;
+}
+
+.ribbon-lanren-green {
+  width: 204rpx;
+  height: 204rpx;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ribbon-green {
+  text-align: center;
+  text-shadow: rgba(255, 255, 255, 0.5) 0 2rpx 0;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 8rpx 0rpx;
+  left: -18rpx;
+  top: 60rpx;
+  width: 288rpx;
+  background-color: #bfdc7a;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bfdc7a), to(#8ebf45));
+  background-image: -webkit-linear-gradient(top, #bfdc7a, #8ebf45);
+  background-image: -moz-linear-gradient(top, #bfdc7a, #8ebf45);
+  background-image: -ms-linear-gradient(top, #bfdc7a, #8ebf45);
+  background-image: -o-linear-gradient(top, #bfdc7a, #8ebf45);
+  color: #6a6340;
+  -webkit-box-shadow: 0rpx 0rpx 6rpx rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0rpx 0rpx 6rpx rgba(0, 0, 0, 0.3);
+  box-shadow: 0rpx 0rpx 6rpx rgba(0, 0, 0, 0.3);
 }
