@@ -110,6 +110,12 @@ Page({
     })
   },
   loadPlan() {
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+      return
+    }
     var that = this
     wx.showLoading({
       title: '加载中',
@@ -215,11 +221,11 @@ Page({
           title: '提交成功',
         })
       })
-      .catch(e=>{
+      .catch(e => {
         wx.hideLoading()
         wx.showToast({
           title: '提交失败',
-          icon:'none'
+          icon: 'none'
         })
       })
   }

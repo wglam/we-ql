@@ -15,6 +15,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+      return
+    }
     this._getDietPlan()
   },
   /**
@@ -73,7 +79,7 @@ Page({
           var pic = val.list[0]
           g.api.addMemberDietPlan({
               data: {
-                memberDietPlan:{
+                memberDietPlan: {
                   imgStr: pic,
                   memberId: g.userInfo.memberId
                 }
