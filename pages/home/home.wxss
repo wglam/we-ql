@@ -14,7 +14,7 @@
 }
 
 .banner {
-  background-color: white;
+
   height: 340rpx;
   align-items: center;
   justify-content: center;
