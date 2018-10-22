@@ -128,11 +128,14 @@ Component({
               nodata: (data.list.length < param.size),
               page: param.page
             })
-            that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
-            that.chartComponent.init((canvas, width, height) => {
-              return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
-            })
 
+            setTimeout(() => {
+              that.redrawcharts(opts.target)
+            }, 500)
+            // that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
+            // that.chartComponent.init((canvas, width, height) => {
+            //   return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
+            // })
           } else {
             that._hideLoading()
           }
@@ -143,12 +146,20 @@ Component({
         })
     },
     redrawcharts(target) {
+
       var that = this
       var opts = this.data.opts
-      opts.target = target
+      console.log(opts)
+      if (!opts) {
+        return
+      }
+      if (!opts.charts) {
+        return
+      }
       if (opts && opts.charts && opts.charts.length < 1) {
         return
       }
+      opts.target = target
       that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
       that.chartComponent.init((canvas, width, height) => {
         return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
@@ -286,7 +297,7 @@ Component({
     },
     _canvasToTempFilePath: function(id, _width, _height) {
       var that = this
-      console.log("_canvasToTempFilePath",id, _width, _height)
+      console.log("_canvasToTempFilePath", id, _width, _height)
       setTimeout(function(that, width, height) {
         wx.canvasToTempFilePath({
           canvasId: id,
