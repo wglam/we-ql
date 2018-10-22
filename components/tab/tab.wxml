@@ -17,7 +17,7 @@
     <view class="tab-slider" style="background-color:{{active}}; width: {{100/tabs.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
   </view>
 
-
+  <slot name='middle' />
   <swiper current='{{current}}' class='tab-content' bindchange='onChange' duration='200'>
     <swiper-item wx:for="{{tabs}}" wx:key="*this" style="{{touchmove?'overflow-y: auto ;':''}}" catchtouchmove="{{touchmove?'':'stopTouchMove'}}">
       <slot name='{{index}}' />

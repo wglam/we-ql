@@ -45,7 +45,7 @@ Component({
       value: false,
       observer: function(newVal, oldVal, changedPath) {
         // console.log("loadCurrent", newVal, oldVal)
-        if (newVal) {
+        if (newVal && this.data.page == 0) {
           this._searchBody()
         }
       }
@@ -276,8 +276,10 @@ Component({
         sortable: true
       }).position('x*y').color('type', (type) => {
         return "#e88b12";
-      });
-      chart.render();
+      })
+
+      chart.point().position('x*y').color("#e88b12").size(2.5)
+      chart.render()
       return chart;
     },
     btnNow: function(e) {
@@ -288,7 +290,7 @@ Component({
       })
     },
     confirm: function(e) {
- 
+
       var i = parseFloat(e.detail.value.value)
       if (i && i > 0) {
         wx.showLoading({

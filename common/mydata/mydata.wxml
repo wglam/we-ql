@@ -1,5 +1,6 @@
 <view class='charts'>
-  <ff-canvas id="line_{{bodyType}}" canvas-id="line_{{bodyType}}" opts="{{opts}}" />
+  <ff-canvas id="line_{{bodyType}}" canvas-id="line_{{bodyType}}" opts="{{opts}}"  hidden='{{!inputHide}}'/>
+  <image src='{{tempImg}}' hidden='{{inputHide}}'/>
 </view>
 <view class="click-item" bindtap="showInput">
   <view> 目标{{name}}</view>

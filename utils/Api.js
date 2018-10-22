@@ -262,7 +262,9 @@ class Api extends WxRequest {
     var that = this
     var openId = wx.getStorageSync('openId'); //返回openid
     if (openId == '') {
-      error(-1)
+      if (typeof error === "function") {
+        error(-1)
+      }
     } else {
       that.getRequest(that.$$path.getMemberByOpenid, {
         data: {
@@ -273,12 +275,18 @@ class Api extends WxRequest {
         if (data.retCode == "0000") {
           getApp().globalData.userInfo = data.retVal
           wx.setStorageSync('userInfo', data.retVal);
-          success(data.retVal)
+          if (typeof error === "function") {
+            success(data.retVal)
+          }
         } else {
-          error(data.retDesc)
+          if (typeof error === "function") {
+            error(data.retDesc)
+          }
         }
       }).catch(e => {
-        error(e)
+        if (typeof error === "function") {
+          error(e)
+        }
       })
     }
   }

@@ -2,6 +2,10 @@ var g = getApp().globalData
 
 Page({
   data: {
+
+    opts: {
+      lazyLoad: true,
+    },
     tabs: ["体重", "胸围", "腰围", "腿围", "身高", "BMI"],
     chats: [{
       name: "体重",

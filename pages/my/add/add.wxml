@@ -1,3 +1,8 @@
 <tab tabs='{{tabs}}' tabColor="#584F60" normal='#726C7A' active='white' current="{{current}}" bind:Tab='onTabChange'>
+  <!-- <view class='charts'  slot='middle'>
+    <ff-canvas id="line" canvas-id="line" opts="{{opts}}" />
+  </view> -->
+
   <chats wx:for="{{chats}}" wx:key="{{index}}" slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" bodyType="{{item.bodyType}}" loadCurrent='{{loadComplete&&(tabIndex==index)}}' />
+
 </tab>
