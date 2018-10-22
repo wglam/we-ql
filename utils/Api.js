@@ -51,6 +51,7 @@ class Api extends WxRequest {
       getCarousel: 'ht/wechat/getCarousel', //轮播详情
       searchRefund: 'ht/wechat/searchRefund', //退款记录
       refund: 'ht/wechat/refund', //提交退款
+      getCardCategory: 'ht/wechat/getCardCategory', //
     }
     this.$$const = {
       memberCard: null
@@ -500,6 +501,9 @@ class Api extends WxRequest {
   }
   refund(param) {
     return this.getRequest(this.$$path.refund, param)
+  }
+  getCardCategory(param) {
+    return this.getRequest(this.$$path.getCardCategory, param)
   }
   //inner
   _convertDateFromString(dateString) {

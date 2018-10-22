@@ -16,11 +16,14 @@ Page({
   },
   onLoad(options) {
     var that = this
+    var val = {}
     if (options.sort) {
-      that.setData({
-        sort: options.sort
-      })
+      val.sort = options.sort
     }
+    if (options.cardCategoryId) {
+      val.cardCategoryId = options.cardCategoryId
+    }
+    that.setData(val)
   },
   tabChange: function(e) {
     const that = this;
@@ -41,6 +44,7 @@ Page({
       title: '加载中',
     })
     var self = this
+
     g.api.searchCardCategory()
       .then(res => {
         wx.hideLoading()
@@ -92,12 +96,46 @@ Page({
         console.log(e)
       })
   },
+  loadCardCategory(_id) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var self = this
+    g.api.getCardCategory({
+        data: {
+          cardCategoryId: _id
+        }
+      })
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          var it = res.data.retVal
+          var val = {}
+          val.tabs = []
+          val.itemIndexs = []
+
+          val.tabs.push(it.cardCategoryName)
+          val.itemIndexs.push(0)
+          val.list = [it]
+
+          val.isTabs = val.tabs.length >= 2
+          self.setData(val)
+        }
+      })
+      .catch(e => {
+        wx.hideLoading()
+        console.log(e)
+      })
+  },
   onReady() {
     var self = this
-    if (self.data.sort == -1) {
-      self.loadData()
-    } else {
+    if (self.data.sort != -1) {
       self.loadSort(self.data.sort)
+
+    } else if (self.data.cardCategoryId) {
+      self.loadCardCategory(self.data.cardCategoryId)
+    } else {
+      self.loadData()
     }
   },
   btnBuy(e) {
@@ -141,6 +179,11 @@ Page({
           })
         })
 
+    } else if (self.data.cardCategoryId) {
+      _url += '&orderType=renew&price=' + item.cardPrice
+      wx.navigateTo({
+        url: _url,
+      })
     } else {
       _url += '&price=' + item.cardPrice
       wx.navigateTo({
@@ -149,7 +192,7 @@ Page({
     }
   },
   jumpGroup(e) {
- 
+
     var self = this
     var category = self.data.list[self.data.tabIndex]
     var itemIndex = self.data.itemIndexs[self.data.tabIndex]
