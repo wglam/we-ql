@@ -55,6 +55,7 @@ Page({
           user.signature = params.signature
           user.portrait = params.portrait
           user.memberSex = params.memberSex
+          user.memberPhone = params.memberPhone
           g.userInfo = user
           wx.setStorageSync('userInfo', user);
 

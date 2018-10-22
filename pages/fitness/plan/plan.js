@@ -117,8 +117,6 @@ Page({
 
     var data = {}
     data.memberId = g.userInfo.memberId
-    data.timeStr = new Date().Format("yyyy-MM-dd ")
-
     g.api.getMemberJsPlan({
         data
       })

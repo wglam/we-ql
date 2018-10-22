@@ -42,8 +42,11 @@ Page({
         }
       })
       .catch(e => {
-
+        console.log(e)
       })
+    setTimeout(function(){
+      g.api.getMemberByOpenid()
+    },1000)
   },
 
   /**
@@ -88,8 +91,6 @@ Page({
       if (!that.data.isJs) {
         var data = {}
         data.memberId = g.userInfo.memberId
-        data.timeStr = new Date().Format("yyyy-MM-dd")
-
         g.api.getMemberJsPlan({
             data
           })
