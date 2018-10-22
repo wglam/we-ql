@@ -35,7 +35,7 @@ Page({
       val.memberName = g.userInfo.memberName
       val.BMI = g.userInfo.BMI
       val.bmiStatus = g.api.getBmiStatus(g.userInfo.bodyStatus)
-    
+
       if (g.userInfo.signature && g.userInfo.signature != '') {
         val.signature = g.userInfo.signature
       }

@@ -6,7 +6,7 @@ Page({
     if (options.shareId) {
       wx.setStorageSync('shareId', options.shareId);
     }
- 
+
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
@@ -162,9 +162,9 @@ Page({
     })
   },
   /**
- * 用户点击右上角分享
- */
-  onShareAppMessage: function (ops) {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(ops) {
     var self = this;
     if (ops.from === 'menu') {
       var item = self.data.card
@@ -172,7 +172,7 @@ Page({
         title: '氢练',
         path: "/pages/vip/group/group?id=" + item.cardId + "&shareId=" + g.userInfo.openid,
         imageUrl: g.api.getFile(item.cardImg),
-        success: function (res) { }
+        success: function(res) {}
       }
       return shareObj;
     }
