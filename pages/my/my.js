@@ -54,6 +54,10 @@ Page({
           })
         })
 
+    } else {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
     }
   },
 

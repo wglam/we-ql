@@ -22,7 +22,7 @@ Page({
     complete: true,
     nodata: false
   },
-  onLoad(opts) {
+  onShow: function() {
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
@@ -30,21 +30,21 @@ Page({
       return
     }
     var that = this
-    g.api.checkMemberCard(g.userInfo.memberId)
-      .then(res => {
-        if (res.data.retCode == '0000') {
-          that.loadPlan();
-        } else {
-          wx.navigateTo({
-            url: '/pages/vip/info/info',
-          })
-        }
-      })
-      .catch(e => {
-        console.log(e)
-      })
-
-
+    if (!(that.data.items && that.data.items.length >= 1)) {
+      g.api.checkMemberCard(g.userInfo.memberId)
+        .then(res => {
+          if (res.data.retCode == '0000') {
+            that.loadPlan();
+          } else {
+            wx.navigateTo({
+              url: '/pages/vip/info/info',
+            })
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    }
   },
   complete: function(e) {
     var that = this;

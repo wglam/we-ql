@@ -25,11 +25,7 @@ Page({
     if (options.shareId) {
       wx.setStorageSync('shareId', options.shareId);
     }
-    if (g.userInfo == null) {
-      wx.navigateTo({
-        url: '/pages/shouquan/shouquan',
-      })
-    }
+
     var self = this
     g.api.searchCarousel()
       .then(res => {
@@ -63,6 +59,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
     if (g.userInfo != null) {
       var val = {}
       val.name = g.userInfo.memberName
@@ -134,6 +131,10 @@ Page({
             wx.hideLoading()
           })
       }
+    } else {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
     }
   },
   _checkMemberAnswer() {

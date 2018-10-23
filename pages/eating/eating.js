@@ -16,6 +16,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
@@ -23,25 +29,21 @@ Page({
       return
     }
     var that = this
-    g.api.checkMemberCard(g.userInfo.memberId)
-      .then(res => {
-        if (res.data.retCode == '0000') {
-          that._getDietPlan();
-        } else {
-          wx.navigateTo({
-            url: '/pages/vip/info/info',
-          })
-        }
-      })
-      .catch(e => {
-        console.log(e)
-      })
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
+    if (!(that.data.items && that.data.items.length >= 1)) {
+      g.api.checkMemberCard(g.userInfo.memberId)
+        .then(res => {
+          if (res.data.retCode == '0000') {
+            that._getDietPlan();
+          } else {
+            wx.navigateTo({
+              url: '/pages/vip/info/info',
+            })
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    }
   },
 
   _getDietPlan: function() {
