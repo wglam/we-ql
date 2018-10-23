@@ -63,6 +63,7 @@ Page({
           if (res.data.retCode == '0000') {
             var s = res.data.retVal.planContent.replace(/\s+/g, '');
             val.items = JSON.parse(s)
+            console.log(val.items)
             val.nodata = false
 
           } else {

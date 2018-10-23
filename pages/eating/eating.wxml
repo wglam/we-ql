@@ -13,7 +13,10 @@
           <view class='content title'>{{item.ttips}}</view>
           <view class='content'>{{item.tips}}</view>
           <view class='content title'>{{item.texamples}}</view>
-          <view class='content'>{{item.examples}}</view>
+           <view class='content title'>{{item.examples}}</view>
+          <!-- <view class='content' wx:for="{{item.examples}}" wx:for-item='it' wx:key='{{it}}'>
+            {{it}}
+          </view> -->
         </view>
       </view>
     </block>
