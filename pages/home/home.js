@@ -83,6 +83,8 @@ Page({
               }
             }
           })
+      } else {
+        that._checkMemberAnswer()
       }
 
       // g.api.getStep(res => {
@@ -109,7 +111,6 @@ Page({
           .catch(res => {
             wx.hideLoading()
           })
-
       }
       if (!that.data.iseating) {
         g.api.getDietPlan({
