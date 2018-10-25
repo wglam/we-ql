@@ -1,6 +1,6 @@
 <view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">计划正在紧张制作中，请稍后~</view>
 
-<view wx:if="{{!nodata}}" class='item-h' style='align-items: center;' >
+<view wx:if="{{!nodata}}" class='item-h' style='align-items: center;'>
   <view wx:if='{{title}}' class='top-text'>
     训练主题:{{title}}</view>
   <view wx:else class='top-text'>休息一会吧~</view>
@@ -21,7 +21,10 @@
           <view wx:if='{{!complete}}' class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
           <view class='flex' wx:if="{{item.target}}">
             <view class='item-title-5'>
-              训练目标：
+              <p>训</p>
+              <p>练</p>
+              <p>目</p>
+              <p>标：</p>
             </view>
             <view>
               {{item.target}}</view>
@@ -29,7 +32,10 @@
 
           <view class='flex'>
             <view class='item-title-5'>
-              训练动作：
+              <p>训</p>
+              <p>练</p>
+              <p>动</p>
+              <p>作：</p>
             </view>
             <view>
               {{item.name}}</view>
@@ -56,7 +62,10 @@
 
           <view class='flex' wx:if="{{item.rest}}">
             <view class='item-title-5'>
-              组间休息：
+              <p>组</p>
+              <p>间</p>
+              <p>休</p>
+              <p>息：</p>
             </view>
             <view>
               {{item.rest}}</view>
@@ -94,7 +103,8 @@
   </view>
 </block>
 
-<button wx:if='{{!nodata}}' class='btn-2' style='height: 84rpx;width: 88%;margin: 6%;' hover-class='btn-hover-2' bindtap='submit'> 训练完成-提交给教练</button>
+<button wx:if='{{!nodata}}' class="btn-2 {{complete?'gray':''}}" style='height: 84rpx;width: 88%;margin: 6%;' hover-class="{{complete?'':'btn-hover-2'}}" bindtap='submit'>
+  {{complete?'今日已完成训练':'训练完成-提交给教练'}}</button>
 
 
 

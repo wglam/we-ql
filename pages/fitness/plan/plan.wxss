@@ -183,3 +183,7 @@
   background: white;
   color: #ffb130;
 }
+.gray{
+  background: #CCCCCC;
+  color: #666666;
+}

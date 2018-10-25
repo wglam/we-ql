@@ -515,7 +515,6 @@ class Api extends WxRequest {
   _getWeRunData(_success, _error) {
     wx.getWeRunData({
       success: _res => {
-        console.log(_res)
         wx.login({
           success: res => {
             var param = {}
@@ -526,9 +525,10 @@ class Api extends WxRequest {
                 data: param
               })
               .then(res => {
-                console.log(res)
+                _success(res)
               })
               .catch(res => {
+                console.log(res)
                 _error()
               })
           }

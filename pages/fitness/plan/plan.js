@@ -149,27 +149,32 @@ Page({
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
-          val.complete = val.completeRate >= 1
-
-          val.top = 0;
-          val.current = 0;
-
-          for (var i = 0; i <= val.items.length - 1; i++) {
-            var ic = val.items[i]
-            var itLength = ic.items.length - 1
-            for (var j = 0; j <= itLength; j++) {
-              var item = ic.items[j]
-              if (item.value >= 1) {
-                if (j >= itLength) {
-                  val.top = i + 1;
-                  val.current = 0
-                } else {
-                  val.top = i
-                  val.current = j + 1;
-                }
-              }
-            }
+          console.log(val)
+          val.complete = res.data.retVal.completeRate >= 1
+          if (val.complete) {
+            val.top = -1;
+            val.current = -1;
           }
+
+          // val.top = 0;
+          // val.current = 0;
+
+          // for (var i = 0; i <= val.items.length - 1; i++) {
+          //   var ic = val.items[i]
+          //   var itLength = ic.items.length - 1
+          //   for (var j = 0; j <= itLength; j++) {
+          //     var item = ic.items[j]
+          //     if (item.value >= 1) {
+          //       if (j >= itLength) {
+          //         val.top = i + 1;
+          //         val.current = 0
+          //       } else {
+          //         val.top = i
+          //         val.current = j + 1;
+          //       }
+          //     }
+          //   }
+          // }
           val.nodata = false
           that.setData(val)
         } else {
@@ -188,6 +193,13 @@ Page({
   },
   submit: function() {
     var that = this;
+    if (that.data.complete) {
+      wx.showToast({
+        title: '今日健身进度已提交，不可重复提交',
+        icon: 'none'
+      })
+      return
+    }
     var param = {}
     param.planContent = {}
     param.planContent.title = that.data.title

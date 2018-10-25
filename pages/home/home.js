@@ -87,11 +87,18 @@ Page({
         that._checkMemberAnswer()
       }
 
-      // g.api.getStep(res => {
-      //   console.log(res)
-      // }, fail => {
+      g.api.getStep(res => {
+        if (res.data.stepInfoList) {
+          var list = res.data.stepInfoList.myArrayList
+          if (list && list.length >= 1) {
+            that.setData({
+              step: list.pop().map.step
+            })
+          }
+        }
+      }, fail => {
 
-      // })
+      })
       if (!that.data.isJs) {
         var data = {}
         data.memberId = g.userInfo.memberId
