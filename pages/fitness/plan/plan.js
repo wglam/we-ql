@@ -67,7 +67,6 @@ Page({
       })
     }
 
-    console.log(e.currentTarget.dataset.item);
   },
   _hideInput: function() {
     var that = this;
@@ -76,7 +75,7 @@ Page({
     });
   },
   confirm: function(e) {
-    console.log(e.detail.value);
+
     var that = this;
     var val = {}
     val.current = that.data.current;
@@ -149,7 +148,7 @@ Page({
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
-          console.log(val)
+   
           val.complete = res.data.retVal.completeRate >= 1
           if (val.complete) {
             val.top = -1;
@@ -223,7 +222,7 @@ Page({
     }
     param.completeRate = 100 * value / max;
 
-    console.log(param);
+
     if (complete) {
       that._addMemberJsPlan(param)
     } else {
