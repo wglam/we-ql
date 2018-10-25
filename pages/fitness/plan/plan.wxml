@@ -1,112 +1,111 @@
 <view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">计划正在紧张制作中，请稍后~</view>
 
-<view wx:if="{{!nodata}}" class='item-h' style='align-items: center;'>
-  <view wx:if='{{title}}' class='top-text'>
-    训练主题:{{title}}</view>
-  <view wx:else class='top-text'>休息一会吧~</view>
-  <navigator url='../schedule/index' class="icon-text iconfont icon-rili" />
-</view>
-<view style='height:1rpx;' />
-<scroll-view wx:if="{{!nodata}}" class='tab body' scroll-x scroll-into-view="item_{{top}}">
-  <view id="item_{{index}}" wx:for="{{items}}" wx:key="{{index}}" class="scroll-item {{top==index?'cur':''}}">{{item.name}}</view>
-</scroll-view>
-<view wx:if="{{!nodata}}" style='height:1rpx;' />
-
-<block wx:if="{{!nodata}}" wx:for="{{items}}" wx:for-index="topindex" wx:key="{{topindex}}">
-  <view class='timeline'>
-    <view class='timeline-time {{top==topindex?"active":""}}'>{{item.name}} </view>
-    <block wx:for="{{item.items}}" wx:key="{{index}}">
-      <view class='timeline-item {{(top==topindex&&current==index)?"cur":""}}'>
-        <navigator url='../info/info?title={{item.name}}&video={{item.video}}&dzyl={{item.dzyl}}&hxyl={{item.hxyl}}' class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
-          <view wx:if='{{!complete}}' class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
-          <view class='flex' wx:if="{{item.target}}">
-            <view class='item-title-5'>
-              <p>训</p>
-              <p>练</p>
-              <p>目</p>
-              <p>标：</p>
-            </view>
-            <view>
-              {{item.target}}</view>
-          </view>
-
-          <view class='flex'>
-            <view class='item-title-5'>
-              <p>训</p>
-              <p>练</p>
-              <p>动</p>
-              <p>作：</p>
-            </view>
-            <view>
-              {{item.name}}</view>
-            <view class='iconfont icon-play ml' hidden='{{!item.video}}' />
-          </view>
-          <view class='flex' wx:if="{{item.zushu}}">
-            <view class='item-title-5'>
-              <p>组</p>
-              <p>数：</p>
-            </view>
-            <view>
-              {{item.zushu}}组</view>
-          </view>
-
-          <view class='flex' wx:if="{{item.cishu}}">
-            <view class='item-title-5'>
-              <p>次</p>
-              <p>数：</p>
-            </view>
-            <view wx:if="{{item.cishu>=1}}">
-              {{item.cishu}}次</view>
-            <view wx:else>力竭</view>
-          </view>
-
-          <view class='flex' wx:if="{{item.rest}}">
-            <view class='item-title-5'>
-              <p>组</p>
-              <p>间</p>
-              <p>休</p>
-              <p>息：</p>
-            </view>
-            <view>
-              {{item.rest}}</view>
-          </view>
-
-          <view class='flex' wx:if="{{item.time}}">
-            <view class='item-title-5'>
-              <p>时</p>
-              <p>间：</p>
-            </view>
-            <view>
-              {{item.time}}</view>
-          </view>
-
-          <view class='flex' wx:if="{{item.xinlv}}">
-            <view class='item-title-5'>
-              <p>心</p>
-              <p>率：</p>
-            </view>
-            <view>
-              {{item.xinlv}}</view>
-          </view>
-
-          <view class='flex' wx:if="{{item.strong}}">
-            <view class='item-title-5'>
-              <p>强</p>
-              <p>度：</p>
-            </view>
-            <view>
-              {{item.strong}}</view>
-          </view>
-        </navigator>
-      </view>
-    </block>
+<view wx:if="{{!nodata}}" class='flex-col martch-parent'>
+  <view class='item-h' style='align-items: center;height:13%;'>
+    <view wx:if='{{title}}' class='top-text'>
+      训练主题:{{title}}</view>
+    <view wx:else class='top-text'>休息一会吧~</view>
+    <navigator url='../schedule/index' class="icon-text iconfont icon-rili" />
   </view>
-</block>
 
-<button wx:if='{{!nodata}}' class="btn-2 {{complete?'gray':''}}" style='height: 84rpx;width: 88%;margin: 6%;' hover-class="{{complete?'':'btn-hover-2'}}" bindtap='submit'>
-  {{complete?'今日已完成训练':'训练完成-提交给教练'}}</button>
+  <scroll-view class='tab body' scroll-x scroll-into-view="item_{{top}}">
+    <view id="item_{{index}}" wx:for="{{items}}" wx:key="{{index}}" class="scroll-item {{select==index?'select':''}} {{top==index?'cur':''}}" bindtap='tabClick' data-index='{{index}}'>{{item.name}}</view>
+  </scroll-view>
 
+  <scroll-view scroll-y scroll-into-view="line_{{select}}" style='height:80%;' scroll-with-animation>
+    <view id="line_{{topindex}}" class='timeline' wx:for="{{items}}" wx:for-index="topindex" wx:key="{{topindex}}">
+      <view class='timeline-time {{select==topindex?"select":""}} {{top==topindex?"active":""}} '>{{item.name}} </view>
+      <block wx:for="{{item.items}}" wx:key="{{index}}">
+        <view class='timeline-item {{(top==topindex&&current==index)?"cur":""}}'>
+          <navigator url='../info/info?title={{item.name}}&video={{item.video}}&dzyl={{item.dzyl}}&hxyl={{item.hxyl}}' class='{{(top==topindex&&current==index)?"timeline-card-cur":"timeline-card"}}' hover-class='card-hover' hover-stop-propagation>
+            <view wx:if='{{!complete}}' class='btn-item shadow' hover-class='btn-hover' catchtap="complete" data-top='{{topindex}}' data-index="{{index}}" data-item='{{item}}' hover-stop-propagation>完成情况</view>
+            <view class='flex' wx:if="{{item.target}}">
+              <view class='item-title-5'>
+                <p>训</p>
+                <p>练</p>
+                <p>目</p>
+                <p>标：</p>
+              </view>
+              <view>
+                {{item.target}}</view>
+            </view>
 
+            <view class='flex'>
+              <view class='item-title-5'>
+                <p>训</p>
+                <p>练</p>
+                <p>动</p>
+                <p>作：</p>
+              </view>
+              <view>
+                {{item.name}}</view>
+              <view class='iconfont icon-play ml' hidden='{{!item.video}}' />
+            </view>
+            <view class='flex' wx:if="{{item.zushu}}">
+              <view class='item-title-5'>
+                <p>组</p>
+                <p>数：</p>
+              </view>
+              <view>
+                {{item.zushu}}组</view>
+            </view>
+
+            <view class='flex' wx:if="{{item.cishu}}">
+              <view class='item-title-5'>
+                <p>次</p>
+                <p>数：</p>
+              </view>
+              <view wx:if="{{item.cishu>=1}}">
+                {{item.cishu}}次</view>
+              <view wx:else>力竭</view>
+            </view>
+
+            <view class='flex' wx:if="{{item.rest}}">
+              <view class='item-title-5'>
+                <p>组</p>
+                <p>间</p>
+                <p>休</p>
+                <p>息：</p>
+              </view>
+              <view>
+                {{item.rest}}</view>
+            </view>
+
+            <view class='flex' wx:if="{{item.time}}">
+              <view class='item-title-5'>
+                <p>时</p>
+                <p>间：</p>
+              </view>
+              <view>
+                {{item.time}}</view>
+            </view>
+
+            <view class='flex' wx:if="{{item.xinlv}}">
+              <view class='item-title-5'>
+                <p>心</p>
+                <p>率：</p>
+              </view>
+              <view>
+                {{item.xinlv}}</view>
+            </view>
+
+            <view class='flex' wx:if="{{item.strong}}">
+              <view class='item-title-5'>
+                <p>强</p>
+                <p>度：</p>
+              </view>
+              <view>
+                {{item.strong}}</view>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </view>
+
+    <button class="btn-2 {{complete?'gray':''}}" style='height: 84rpx;width: 88%;margin: 6%;' hover-class="{{complete?'':'btn-hover-2'}}" bindtap='submit'>
+      {{complete?'今日已完成训练':'训练完成-提交给教练'}}</button>
+  </scroll-view>
+</view>
 
 <view class="modal-box {{inputHide ?'':'cur'}}" bindtap='cancel'>
   <view class='modal-dialog dialog' catchtap='empty' hover-stop-propagation>

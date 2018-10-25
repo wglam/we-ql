@@ -20,7 +20,8 @@ Page({
       index: 0
     },
     complete: true,
-    nodata: false
+    nodata: false,
+    select: 0,
   },
   onShow: function() {
     if (g.userInfo == null) {
@@ -148,7 +149,6 @@ Page({
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
-   
           val.complete = res.data.retVal.completeRate >= 1
           if (val.complete) {
             val.top = -1;
@@ -265,5 +265,11 @@ Page({
           icon: 'none'
         })
       })
+  }
+  , tabClick(e){
+    this.setData({
+      select: e.currentTarget.dataset.index
+    })
+    console.log(this.data.select)
   }
 })
