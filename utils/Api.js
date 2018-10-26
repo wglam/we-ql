@@ -315,10 +315,13 @@ class Api extends WxRequest {
 
   getJsDays() {
     var sdate = this._convertDateFromString(getApp().globalData.userInfo.createTime);
+    if (!sdate) {
+      return 0
+    }
     var now = new Date();
     var days = now.getTime() - sdate.getTime();
     var day = Math.ceil(days / (1000 * 60 * 60 * 24));
-    return day;
+    return day
   }
 
   addMemberJsPlan(param) {
