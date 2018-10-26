@@ -161,9 +161,6 @@ Page({
           _val.title = '当天没有训练哦！'
           _val.progress = -1
         }
-        if (!_val.days) {
-          _val.days = 0
-        }
         that.setData(_val)
         wx.hideLoading()
       })

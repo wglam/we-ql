@@ -12,6 +12,7 @@ Page({
     current: 0,
     items: [],
     inputHide: true,
+    shareui: true,
     slider: {
       unit: "组",
       max: 10,
@@ -77,7 +78,7 @@ Page({
   _hideInput: function() {
     var that = this;
     that.setData({
-      inputHide: true
+      inputHide: true,
     });
   },
   confirm: function(e) {
@@ -116,7 +117,10 @@ Page({
     that.setData(val);
   },
   cancel: function(e) {
-    this._hideInput();
+    this.setData({
+      inputHide: true,
+      shareui: true
+    });
   },
   empty: function(e) {
 
@@ -155,6 +159,7 @@ Page({
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
           // val.complete = res.data.retVal.completeRate >= 1
+          console.log(val)
           if (val.self) {
             val.top = -1
             val.current = -1
@@ -181,7 +186,7 @@ Page({
             }
           }
 
-
+          console.log(val)
           val.nodata = false
           that.setData(val)
         } else {
@@ -253,7 +258,9 @@ Page({
     wx.showLoading({
       title: '提交中',
     })
+
     var planContent = JSON.stringify(param.planContent)
+    console.log(param)
     param.planContent = planContent
     param.memberId = g.userInfo.memberId
     g.api.addMemberJsPlan({
@@ -263,12 +270,13 @@ Page({
       })
       .then(res => {
         wx.hideLoading()
-        that.setData({
-          complete: true
-        })
         if (!hidden) {
-          wx.showToast({
-            title: '提交成功',
+          that.setData({
+            complete: true,
+            self: true,
+            shareui: false,
+            top: -1,
+            current: -1
           })
         }
       })
@@ -290,6 +298,9 @@ Page({
   },
   onHide() {
     var that = this;
+    if (that.data.self) {
+      return
+    }
     var param = {}
     param.planContent = {}
     param.planContent.title = that.data.title
@@ -311,5 +322,30 @@ Page({
       that._addMemberJsPlan(param, true)
     }
     console.log(param.completeRate)
-  }
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(ops) {
+    var self = this;
+    if (ops.from === 'menu') {
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/home/home?shareId=" + g.userInfo.openid,
+        imageUrl: '/img/bg.jpg'
+      }
+      return shareObj;
+    } else if (ops.from === 'button') {
+      var _title = '跟着教练的计划健身第' + g.api.getJsDays() + '天，今天完成了（' + self.data.title + '）'
+      var shareObj = {
+        title: _title,
+        path: "/pages/home/home?shareId=" + g.userInfo.openid,
+        imageUrl: '/img/bg.jpg'
+      }
+      self.setData({
+        shareui: true,
+      })
+      return shareObj;
+    }
+  },
 })

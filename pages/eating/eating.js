@@ -149,5 +149,16 @@ Page({
           title: '打卡失败，请重试'
         });
       })
+  },
+  onShareAppMessage: function(ops) {
+    var self = this;
+    if (ops.from === 'menu') {
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/home/home?shareId=" + g.userInfo.openid,
+        imageUrl: '/img/bg.jpg'
+      }
+      return shareObj;
+    }
   }
 })

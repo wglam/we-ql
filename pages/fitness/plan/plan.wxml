@@ -127,3 +127,17 @@
     </form>
   </view>
 </view>
+
+<view class="modal-box {{shareui ?'':'cur'}}" bindtap='cancel'>
+  <view class='modal-dialog dialog' catchtap='empty' hover-stop-propagation>
+    <view class='item-v'>
+      <view class='item-h'>
+        <view />
+        <view class="iconfont icon-close close" catchtap='cancel' />
+      </view>
+      <view class='mb'>训练完成了,分享一下吧!</view>
+      <button class='submit mt mb' hover-class='submit-hover' open-type='share'>分享</button>
+    </view>
+  </view>
+
+</view>

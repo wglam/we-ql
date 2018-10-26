@@ -317,7 +317,7 @@ class Api extends WxRequest {
     var sdate = this._convertDateFromString(getApp().globalData.userInfo.createTime);
     var now = new Date();
     var days = now.getTime() - sdate.getTime();
-    var day = parseInt(days / (1000 * 60 * 60 * 24));
+    var day = Math.ceil(days / (1000 * 60 * 60 * 24));
     return day;
   }
 
