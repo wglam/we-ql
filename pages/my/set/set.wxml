@@ -40,7 +40,7 @@
 
   <navigator class='item-h' url="{{vip?'/pages/my/vip/vip':'/pages/vip/info/info'}}">
     <view class='item-title'>
-      <block wx:for="{{vip?'会员信息':'成为会员'}}" wx:key="{{key}}">
+      <block wx:for="{{vip?'会员信息':'成为会员'}}" wx:key="{{index}}">
         <p>{{item}}</p>
       </block>
     </view>
