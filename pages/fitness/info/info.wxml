@@ -2,12 +2,12 @@
   <video wx:if="{{video}}" style='width:100%;' src="{{video}}" />
 </view>
 
-<view class='item-h' style='justify-content: flex-start;'>
+<view wx:if="{{dzyl}}" class='item-h' style='justify-content: flex-start;'>
   <view class='item-title-5'>动作要领：</view>
   <view>{{dzyl}}</view>
 </view>
 
-<view class='item-h' style='justify-content: flex-start;'>
+<view wx:if="{{hxyl}}" class='item-h' style='justify-content: flex-start;'>
   <view class='item-title-5'>呼吸要领：</view>
   <view>{{hxyl}}</view>
 </view>

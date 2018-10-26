@@ -3,8 +3,10 @@
 <view wx:if="{{!nodata}}" class='flex-col martch-parent'>
   <view class='item-h' style='align-items: center;height:13%;'>
     <view wx:if='{{title}}' class='top-text'>
-      训练主题:{{title}}</view>
-    <view wx:else class='top-text'>休息一会吧~</view>
+      <view>训练主题</view>
+      <view>{{title}}</view>
+    </view>
+    <view wx:else class='top-text'>今天没有训练哦！</view>
     <navigator url='../schedule/index' class="icon-text iconfont icon-rili" />
   </view>
 
