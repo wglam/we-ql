@@ -4,19 +4,7 @@ var g = getApp().globalData
 Page({
 
   onLoad(opts) {
-    if (g.userInfo != null) {
-      g.api.checkMemberCard(g.userInfo.memberId)
-        .then(res => {
-          that.setData({
-            vip: res.data.retCode == '0000'
-          })
-        })
-        .catch(res => {
-          that.setData({
-            vip: false
-          })
-        })
-    }
+
 
   },
   /**
@@ -31,8 +19,17 @@ Page({
   onShow: function() {
     if (g.userInfo != null) {
       var that = this;
-      var user = g.userInfo;
-      that.setData(user)
+      var val = g.userInfo;
+      // that.setData(user)
+      g.api.checkMemberCard(g.userInfo.memberId)
+        .then(res => {
+          val.vip = res.data.retCode == '0000'
+          that.setData(val)
+        })
+        .catch(res => {
+          val.vip = false
+          that.setData(val)
+        })
     }
   },
   bindSexChange: function(e) {
