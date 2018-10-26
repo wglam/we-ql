@@ -107,7 +107,10 @@ Page({
     _year = item.year
     _month = item.month
     _day = item.day
+    if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
 
+      return
+    }
 
     let days_style = new Array
     days_style.push({
@@ -117,22 +120,22 @@ Page({
       background: '#ff7e00'
     });
     let progress = new Object
-    if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
-      that.setData({
-        days_style,
-        title: '暂无',
-        progress: -1
-      });
-    } else {
-      that.setData({
-        days_style
-      });
-      var date = new Date()
-      date.setFullYear(_year)
-      date.setMonth(_month - 1)
-      date.setDate(_day)
-      that.loadPlan(date)
-    }
+    // if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
+    //   // that.setData({
+    //   //   days_style,
+    //   //   title: '暂无',
+    //   //   progress: -1
+    //   // });
+    // } else {
+    that.setData({
+      days_style
+    });
+    var date = new Date()
+    date.setFullYear(_year)
+    date.setMonth(_month - 1)
+    date.setDate(_day)
+    that.loadPlan(date)
+    // }
 
   },
   loadPlan(date) {
@@ -155,8 +158,11 @@ Page({
           _val.title = p.title
           _val.progress = res.data.retVal.completeRate
         } else {
-          _val.title = '暂无'
+          _val.title = '当天没有训练哦！'
           _val.progress = -1
+        }
+        if (!_val.days) {
+          _val.days = 0
         }
         that.setData(_val)
         wx.hideLoading()
