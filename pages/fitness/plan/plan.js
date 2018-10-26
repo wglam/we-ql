@@ -56,7 +56,12 @@ Page({
     val.unit = e.currentTarget.dataset.item.unit
     val.max = e.currentTarget.dataset.item.max
 
-    if (val.top <= that.data.top && val.index <= that.data.current) {
+    if (val.top <= that.data.top) {
+      that.setData({
+        slider: val,
+        inputHide: false
+      })
+    } else if (val.index <= that.data.current) {
       that.setData({
         slider: val,
         inputHide: false
@@ -149,31 +154,34 @@ Page({
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
           var val = JSON.parse(s)
-          val.complete = res.data.retVal.completeRate >= 1
-          if (val.complete) {
-            val.top = -1;
-            val.current = -1;
+          // val.complete = res.data.retVal.completeRate >= 1
+          if (val.self) {
+            val.top = -1
+            val.current = -1
+            val.complete = true
+          } else {
+            val.top = 0
+            val.current = 0
+            val.complete = false
+            for (var i = 0; i <= val.items.length - 1; i++) {
+              var ic = val.items[i]
+              var itLength = ic.items.length - 1
+              for (var j = 0; j <= itLength; j++) {
+                var item = ic.items[j]
+                if (item.value >= 1) {
+                  if (j >= itLength) {
+                    val.top = i + 1;
+                    val.current = 0
+                  } else {
+                    val.top = i
+                    val.current = j + 1;
+                  }
+                }
+              }
+            }
           }
 
-          // val.top = 0;
-          // val.current = 0;
 
-          // for (var i = 0; i <= val.items.length - 1; i++) {
-          //   var ic = val.items[i]
-          //   var itLength = ic.items.length - 1
-          //   for (var j = 0; j <= itLength; j++) {
-          //     var item = ic.items[j]
-          //     if (item.value >= 1) {
-          //       if (j >= itLength) {
-          //         val.top = i + 1;
-          //         val.current = 0
-          //       } else {
-          //         val.top = i
-          //         val.current = j + 1;
-          //       }
-          //     }
-          //   }
-          // }
           val.nodata = false
           that.setData(val)
         } else {
@@ -203,6 +211,7 @@ Page({
     param.planContent = {}
     param.planContent.title = that.data.title
     param.planContent.items = that.data.items
+    param.planContent.self = true
 
     // console.log(param.planContent.items );
     var value = 0;
@@ -239,7 +248,7 @@ Page({
       })
     }
   },
-  _addMemberJsPlan(param) {
+  _addMemberJsPlan(param, hidden) {
     var that = this
     wx.showLoading({
       title: '提交中',
@@ -254,22 +263,53 @@ Page({
       })
       .then(res => {
         wx.hideLoading()
-        wx.showToast({
-          title: '提交成功',
+        that.setData({
+          complete: true
         })
+        if (!hidden) {
+          wx.showToast({
+            title: '提交成功',
+          })
+        }
       })
       .catch(e => {
         wx.hideLoading()
-        wx.showToast({
-          title: '提交失败',
-          icon: 'none'
-        })
+        if (!hidden) {
+          wx.showToast({
+            title: '提交失败',
+            icon: 'none'
+          })
+        }
       })
-  }
-  , tabClick(e){
+  },
+  tabClick(e) {
     this.setData({
       select: e.currentTarget.dataset.index
     })
     console.log(this.data.select)
+  },
+  onHide() {
+    var that = this;
+    var param = {}
+    param.planContent = {}
+    param.planContent.title = that.data.title
+    param.planContent.items = that.data.items
+    var value = 0;
+    var max = 0;
+
+    for (var i = 0; i <= param.planContent.items.length - 1; i++) {
+      var ic = param.planContent.items[i]
+      for (var j = 0; j <= ic.items.length - 1; j++) {
+        var item = ic.items[j]
+        value += 100 * item.value / item.max
+        max += 100;
+        // item.value = 0
+      }
+    }
+    param.completeRate = 100 * value / max;
+    if (param.completeRate >= 1) {
+      that._addMemberJsPlan(param, true)
+    }
+    console.log(param.completeRate)
   }
 })

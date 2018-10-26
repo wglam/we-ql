@@ -86,19 +86,20 @@ Page({
       } else {
         that._checkMemberAnswer()
       }
-
-      g.api.getStep(res => {
-        if (res.data.stepInfoList) {
-          var list = res.data.stepInfoList.myArrayList
-          if (list && list.length >= 1) {
-            that.setData({
-              step: list.pop().map.step
-            })
+      if (that.data.step == 0) {
+        g.api.getStep(res => {
+          if (res.data.stepInfoList) {
+            var list = res.data.stepInfoList.myArrayList
+            if (list && list.length >= 1) {
+              that.setData({
+                step: list.pop().map.step
+              })
+            }
           }
-        }
-      }, fail => {
+        }, fail => {
 
-      })
+        })
+      }
       if (!that.data.isJs) {
         var data = {}
         data.memberId = g.userInfo.memberId
