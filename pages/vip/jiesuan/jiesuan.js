@@ -266,7 +266,7 @@ Page({
               //   url: '/pages/home/home',
               // })
               wx.navigateBack({
-                delta: 1
+                delta: 2
               })
               wx.showToast({
                 title: "支付成功！",
