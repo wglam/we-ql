@@ -11,6 +11,9 @@ Page({
     photos: []
   },
   onReady(options) {
+    this.loadData()
+  },
+  loadData() {
     wx.showLoading({
       title: '加载中',
     })
@@ -34,7 +37,7 @@ Page({
         wx.hideLoading()
       })
   },
-  submitDiet: function () {
+  submitDiet: function() {
     var that = this;
     wx.chooseImage({
       count: 1,
@@ -46,7 +49,7 @@ Page({
       }
     })
   },
-  uploadDietFile: function (f) {
+  uploadDietFile: function(f) {
     wx.showLoading({
       title: '正在提交',
     })
@@ -57,19 +60,17 @@ Page({
         if (val.retCode == "0000") {
           var pic = val.list[0]
           g.api.addMemberDietPlan({
-            data: {
-              memberDietPlan: {
-                imgStr: pic,
-                memberId: g.userInfo.memberId
+              data: {
+                memberDietPlan: {
+                  imgStr: pic,
+                  memberId: g.userInfo.memberId
+                }
               }
-            }
-          })
+            })
             .then(res => {
               wx.hideLoading()
               if (res.data.retCode == '0000') {
-                wx.navigateTo({
-                  url: '/pages/my/photo/photo',
-                })
+                this.loadData()
                 wx.showToast({
                   title: '打卡成功'
                 });
