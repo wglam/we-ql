@@ -88,4 +88,6 @@ page {
   border-radius: 0rpx;
   font-size: 36rpx;
   letter-spacing: 3rpx;
+  margin: 0rpx;
+  z-index: 9999;
 }

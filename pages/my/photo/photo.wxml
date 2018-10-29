@@ -12,6 +12,7 @@
   </block>
 </view>
 
+<view style='width:100%; height: 96rpx;'></view>
 <view wx:if="{{photos.length>=1}}" class='btn-2 bottom-btn ' hover-class='btn-hover-2' bindtap='submitDiet'>
   <view class='iconfont icon-add' style='font-size: 42rpx;margin-right:6rpx;' />
   <view> 饮食打卡</view>
