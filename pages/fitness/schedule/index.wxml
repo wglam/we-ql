@@ -13,12 +13,13 @@
   </view>
 
   <view class='content'>
-    <view>{{title}}</view>
-    <view wx:if="{{progress>=0}}">完成情况</view>
-    <view wx:if="{{progress>=0}}" class="progress-shew mt">
-      <view class="progress-bar" style="width:{{progress}}%;" />
+    <view>{{progress
+      <=0? "当天没有训练哦！":title}}</view>
+        <view wx:if="{{progress>0}}">完成情况</view>
+        <view wx:if="{{progress>0}}" class="progress-shew mt">
+          <view class="progress-bar" style="width:{{progress}}%;" />
+        </view>
+        <view wx:if="{{progress>0}}" class='pro-text mt'>{{progress}}%</view>
     </view>
-    <view wx:if="{{progress>=0}}" class='pro-text mt'>{{progress}}%</view>
-  </view>
 
-</view>
+  </view>

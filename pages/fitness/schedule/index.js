@@ -71,18 +71,39 @@ Page({
     this.loadCalendar(item.currentYear, item.currentMonth)
   },
   dayClick: function(e) {
-    console.log(e.detail)
     var item = e.detail
     var that = this;
-
-
     _year = item.year
     _month = item.month
     _day = item.day
-    if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
+    // if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
 
+    //   return
+    // }
+
+    if (item.background.indexOf("#b7e7d8") == -1) {
+      let days_style = []
+      if (that.data.days_style) {
+        for (var it of that.data.days_style) {
+          if (it.background != '#ff7e00') {
+            days_style.push(it)
+          }
+        }
+      }
+      days_style.push({
+        month: 'current',
+        day: _day,
+        color: 'white',
+        background: '#ff7e00'
+      });
+
+      that.setData({
+        days_style,
+        progress: 0,
+      });
       return
     }
+
 
     let days_style = []
     if (this.data.days_style) {
@@ -98,7 +119,7 @@ Page({
       color: 'white',
       background: '#ff7e00'
     });
-    let progress = new Object
+    // let progress = new Object
     // if (item.year >= that.data.year && item.month >= that.data.month && item.day > that.data.day) {
     //   // that.setData({
     //   //   days_style,
