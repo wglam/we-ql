@@ -46,57 +46,29 @@ Page({
     _month = this.data.month
     _day = this.data.day
 
-    let days_style = new Array;
+    // let days_style = new Array;
 
-    days_style.push({
-      month: 'current',
-      day: _day,
-      color: 'white',
-      background: '#ff7e00'
-    });
+    // days_style.push({
+    //   month: 'current',
+    //   day: _day,
+    //   color: 'white',
+    //   background: '#ff7e00'
+    // });
 
     var _days = g.api.getJsDays()
     this.setData({
-      days_style,
       days: _days
     });
-
+    this.loadCalendar(_year, _month)
     this.loadPlan(new Date())
   },
   next: function(e) {
     var item = e.detail
-
-    let days_style = new Array;
-    if (_year == item.currentYear && _month == item.currentMonth) {
-      days_style.push({
-        month: 'current',
-        day: _day,
-        color: 'white',
-        background: '#ff7e00'
-      });
-    }
-
-    this.setData({
-      days_style
-    });
-
+    this.loadCalendar(item.currentYear, item.currentMonth)
   },
   prev: function(e) {
     var item = e.detail
-
-    let days_style = new Array;
-    if (_year == item.currentYear && _month == item.currentMonth) {
-      days_style.push({
-        month: 'current',
-        day: _day,
-        color: 'white',
-        background: '#ff7e00'
-      });
-    }
-
-    this.setData({
-      days_style
-    });
+    this.loadCalendar(item.currentYear, item.currentMonth)
   },
   dayClick: function(e) {
     console.log(e.detail)
@@ -112,7 +84,14 @@ Page({
       return
     }
 
-    let days_style = new Array
+    let days_style = []
+    if (this.data.days_style) {
+      for (var it of this.data.days_style) {
+        if (it.background != '#ff7e00') {
+          days_style.push(it)
+        }
+      }
+    }
     days_style.push({
       month: 'current',
       day: _day,
@@ -163,6 +142,44 @@ Page({
         }
         that.setData(_val)
         wx.hideLoading()
+      })
+  },
+  loadCalendar(year, month) {
+    var val = {}
+    val.memberId = g.userInfo.memberId
+    val.timeStr = year + "-" + month
+    g.api.searchMemberJsPlan({
+        data: val
+      })
+      .then(res => {
+        console.log(res.data.list)
+        let days_style = new Array;
+        if (res.data.list) {
+          for (var it of res.data.list) {
+            var date = new Date(it)
+            days_style.push({
+              month: 'current',
+              day: date.getDate(),
+              color: 'white',
+              background: '#b7e7d8'
+            });
+          }
+        }
+        if (_year == year && _month == month) {
+          days_style.push({
+            month: 'current',
+            day: _day,
+            color: 'white',
+            background: '#ff7e00'
+          });
+        }
+
+        this.setData({
+          days_style
+        });
+      })
+      .catch(e => {
+        console.log(e)
       })
   }
 })
