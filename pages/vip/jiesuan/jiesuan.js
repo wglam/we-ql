@@ -267,15 +267,15 @@ Page({
               str = res;
               // console.log(res);
 
-              if (that.data.isHome == '1') {
+              if (that.data.home == '1') {
                 wx.switchTab({
                   url: '/pages/home/home',
                 })
-              } else if (that.data.isHome == '2') {
+              } else if (that.data.home == '2') {
                 wx.switchTab({
                   url: '/pages/fitness/plan/plan',
                 })
-              } else if (that.data.isHome == '3') {
+              } else if (that.data.home == '3') {
                 wx.switchTab({
                   url: '/pages/eating/eating',
                 })
