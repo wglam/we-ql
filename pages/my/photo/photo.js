@@ -11,25 +11,38 @@ Page({
     photos: [],
   },
   onLoad(options) {
+
+    var val = {}
+    if (options.id) {
+      val.id = options.id
+      val.isShare = g.userInfo ? (val.id != g.userInfo.memberId) : true
+      if (val.isShare && options.title) {
+        val.title = options.title
+        wx.setNavigationBarTitle({
+          title: options.title
+        })
+      }
+    }
+    this.setData(val)
+
     if (g.userInfo == null) {
       wx.navigateTo({
         url: '/pages/shouquan/shouquan',
       })
-      return
     }
-    if (options.title) {
-      wx.setNavigationBarTitle({
-        title: options.title
-      })
-    }
+  },
+  onReady() {
     var _id = null
-    if (options.id) {
-      _id = options.id
-      this.setData({
-        isShare: true
-      })
+    var that = this;
+    if (that.data.id) {
+      _id = that.data.id
     }
-    this.loadData(_id)
+    if (!_id && g.userInfo != null) {
+      _id = g.userInfo.memberId
+    }
+    if (_id) {
+      this.loadData(_id)
+    }
   },
   loadData(_id) {
     wx.showLoading({
