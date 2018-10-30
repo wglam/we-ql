@@ -1,0 +1,14 @@
+<view class='content'>
+  <view class='qr-card '>
+    <view class='flex'>
+      <image wx:if="{{adminPic}}" class='user-avatar' src='{{adminPic}}' mode='aspectFill' />
+      <view class='name'>
+        {{trainer}}
+      </view>
+    </view>
+    <image src='{{trainQrcode}}' mode='widthFix' />
+    <view class='mr ml' style='color:#666;font-size:24rpx;'>恭喜您成为氢练会员，请添加专属客服微信号，获取更多健身帮助</view>
+  </view>
+
+  <button wx:if="{{trainQrcode}}" class='bottom-btn' hover-class='btn-hover' bindtap='downLoadFile'> 保存到相册</button>
+</view>

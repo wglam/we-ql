@@ -268,11 +268,13 @@ Page({
               wx.navigateBack({
                 delta: 2
               })
+              wx.navigateTo({
+                url: '/pages/coach/coach',
+              })
               wx.showToast({
                 title: "支付成功！",
                 icon: 'none',
               })
-
             },
             fail: function(res) {
               var str = ""

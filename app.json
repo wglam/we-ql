@@ -24,7 +24,8 @@
     "pages/vip/jiesuan/jiesuan",
     "pages/sliderinfo/sliderinfo",
     "pages/my/tuikuan/tuikuan",
-    "pages/my/addtuikuan/addtuikuan"
+    "pages/my/addtuikuan/addtuikuan",
+    "pages/coach/coach"
   ],
   "window": {
     "backgroundTextStyle": "light",
