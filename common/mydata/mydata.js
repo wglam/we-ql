@@ -49,6 +49,18 @@ Component({
           this._searchBody()
         }
       }
+    },
+    memberid: String,
+    isshare: Boolean,
+    refresh: {
+      type: Boolean,
+      value: false,
+      observer: function(newVal, oldVal, changedPath) {
+        if (this.data.loadCurrent && this.data.isshare) {
+          this.data.page = 0
+          this._searchBody()
+        }
+      }
     }
   },
 
@@ -72,7 +84,6 @@ Component({
     maxy: 0,
     now: false,
   },
-
   /**
    * 组件的方法列表
    */
@@ -85,10 +96,11 @@ Component({
 
       that._showLoading(false)
       var param = {}
-      param.memberId = g.userInfo.memberId
+      param.memberId = that.data.memberid ? that.data.memberid : g.userInfo.memberId
       param.bodyType = that.data.bodyType
       param.page = that.data.page + 1
       param.size = that.data.pageSize
+      console.log("_searchBody", param)
       g.api.searchBody({
           data: param
         })
@@ -149,7 +161,7 @@ Component({
 
       var that = this
       var opts = this.data.opts
-      console.log(opts)
+      console.log("redrawcharts", opts)
       if (!opts) {
         return
       }
@@ -293,6 +305,7 @@ Component({
       chart.render()
       ///
       // that._canvasToTempFilePath('line_' + that.data.bodyType, width, height)
+      console.log("initCharts", charts);
       return chart;
     },
     _canvasToTempFilePath: function(id, _width, _height) {

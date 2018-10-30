@@ -3,6 +3,6 @@
     <ff-canvas id="line" canvas-id="line" opts="{{opts}}" />
   </view> -->
 
-  <chats wx:for="{{chats}}" wx:key="{{index}}" slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" bodyType="{{item.bodyType}}" loadCurrent='{{loadComplete&&(tabIndex==index)}}' />
+  <chats id='chart_{{index}}' wx:for="{{chats}}" wx:key="{{index}}" slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" bodyType="{{item.bodyType}}" loadCurrent='{{loadComplete&&(tabIndex==index)}}' memberid="{{id}}" isshare="{{isShare}}" refresh="{{refresh}}" />
 
 </tab>

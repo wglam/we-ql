@@ -41,18 +41,46 @@ Page({
     loadComplete: false
   },
   onLoad(options) {
-    var that = this;
-    that.setData({
-      current: options.tab,
-      tabIndex: options.tab
-    });
+
+    var val = {}
+
+    if (options.id) {
+      val.id = options.id
+      val.isShare = g.userInfo ? (val.id != g.userInfo.memberId) : true
+      if (val.isShare && options.title) {
+        val.title = options.title
+        wx.setNavigationBarTitle({
+          title: options.title
+        })
+      }
+    }
+    if (options.tab) {
+      val.current = options.tab
+      val.tabIndex = val.current
+    } else {
+      val.current = 0
+      val.tabIndex = 0
+    }
+    this.setData(val)
+    console.log(val)
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+    }
   },
 
   onReady() {
-    if (g.userInfo != null) {
-      var that = this;
-      var loadDefault = function() {
-        var user = g.userInfo
+    var _id = null
+    var that = this;
+    if (that.data.id) {
+      _id = that.data.id
+    }
+    if (!_id && g.userInfo != null) {
+      _id = g.userInfo.memberId
+    }
+    if (_id) {
+      var loadDefault = function(user) {
         var val = that.data.chats
         if (user.toweight && user.toweight.length >= 1) {
           val[0].target = parseFloat(user.toweight)
@@ -81,7 +109,33 @@ Page({
         })
         console.log(val)
       }
-      g.api.getBodyTarget(g.userInfo.memberId, loadDefault, loadDefault)
+      g.api.getBodyTarget(_id)
+        .then(res => {
+          if (res.data.retCode == '0000') {
+            var item = res.data.retVal
+            var user;
+            if (that.data.isShare) {
+              user = {}
+            } else {
+              user = g.userInfo;
+            }
+            if (item.memberName) user.memberName = item.memberName
+            if (item.height) user.toheight = item.height
+            if (item.weight) user.toweight = item.weight
+            if (item.BMI) user.toBMI = item.BMI
+            if (item.bust) user.tobust = item.bust
+            if (item.waist) user.towaist = item.waist
+            if (item.thigh) user.tothigh = item.thigh
+            if (!that.data.isShare) wx.setStorageSync("userInfo", user)
+            loadDefault(user)
+          } else {
+            loadDefault(g.userInfo)
+          }
+        })
+        .catch(e => {
+          console.log(e)
+          loadDefault(g.userInfo)
+        })
     }
   },
   onTabChange: function(e) {
@@ -96,10 +150,15 @@ Page({
     if (ops.from === 'menu') {
       var shareObj = {
         title: '氢练',
-        path: "/pages/home/home?shareId=" + g.userInfo.openid,
-        imageUrl: '/img/bg.jpg'
+        path: "/pages/my/add/add?shareId=" + g.userInfo.openid + "&title=" + g.userInfo.memberName + "的数据&id=" + g.userInfo.memberId + "&tab=" + self.data.current,
       }
       return shareObj;
     }
+  },
+  onShow: function() {
+    this.setData({
+      refresh: !this.data.refresh
+    })
   }
+
 });

@@ -3,12 +3,12 @@
 </view>
 <!-- <image class='charts' src='{{tempImg}}' hidden='{{inputHide}}' /> -->
 <view class='charts' hidden='{{inputHide}}' />
-<view class="click-item" bindtap="showInput">
+<view class="click-item" bindtap="{{isshare?'':'showInput'}}">
   <view> 目标{{name}}</view>
   <view class='bmi-right'>
     <view wx:if="{{target<0}}" class='mr'>未设置</view>
     <view wx:else class='mr'>{{target}} {{unit}}</view>
-    <view class="iconfont icon-right" />
+    <view hidden="{{isshare}}" class="iconfont icon-right" />
   </view>
 </view>
 <view class='click-item mt'>
@@ -27,7 +27,7 @@
   </view>
   <view style="height:300rpx;" />
 </scroll-view>
-<view hidden='{{bodyType==3}}' class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
+<view hidden='{{bodyType==3||isshare}}' class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
   记录{{name}}
 </view>
 <view class="modal-box {{inputHide ?'':'cur'}}">

@@ -355,63 +355,19 @@ class Api extends WxRequest {
   updateMember(param) {
     return this.getRequest(this.$$path.updateMember, param)
   }
-  getBody(memberId, success, fail) {
-    this.getRequest(this.$$path.getBody, {
-        data: {
-          memberId: memberId
-        }
-      })
-      .then(res => {
-        if (res.data.retCode == '0000') {
-          var item = res.data.retVal
-          var user = getApp().globalData.userInfo;
-          if (item.memberName) user.memberName = item.memberName
-          if (item.height) user.height = item.height
-          if (item.weight) user.weight = item.weight
-          if (item.BMI) user.BMI = item.BMI
-          if (item.bust) user.bust = item.bust
-          if (item.waist) user.waist = item.waist
-          if (item.thigh) user.thigh = item.thigh
-          if (item.bodyStatus) user.bodyStatus = item.bodyStatus
-          wx.setStorageSync("userInfo", user)
-          success(res)
-        } else {
-          fail(res)
-        }
-      })
-      .catch(res => {
-        fail(res)
-      })
-
+  getBody(memberId) {
+    return this.getRequest(this.$$path.getBody, {
+      data: {
+        memberId: memberId
+      }
+    })
   }
-
-  getBodyTarget(memberId, success, fail) {
-    this.getRequest(this.$$path.getBodyTarget, {
-        data: {
-          memberId: memberId
-        }
-      })
-      .then(res => {
-        if (res.data.retCode == '0000') {
-          var item = res.data.retVal
-          var user = getApp().globalData.userInfo;
-          if (item.memberName) user.memberName = item.memberName
-          if (item.height) user.toheight = item.height
-          if (item.weight) user.toweight = item.weight
-          if (item.BMI) user.toBMI = item.BMI
-          if (item.bust) user.tobust = item.bust
-          if (item.waist) user.towaist = item.waist
-          if (item.thigh) user.tothigh = item.thigh
-          wx.setStorageSync("userInfo", user)
-
-          success(res)
-        } else {
-          fail(res)
-        }
-      })
-      .catch(res => {
-        fail(res)
-      })
+  getBodyTarget(memberId) {
+    return this.getRequest(this.$$path.getBodyTarget, {
+      data: {
+        memberId: memberId
+      }
+    });
   }
   searchBody(param) {
     return this.getRequest(this.$$path.searchBody, param)
