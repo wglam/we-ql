@@ -14,7 +14,7 @@ Page({
     categoryid: '',
     youhui: {},
     payment: 0,
-    isHome: 'false'
+    home: 0
   },
 
   /**
@@ -58,7 +58,7 @@ Page({
       val.img = g.api.getFile(options.img)
     }
     if (options.home) {
-      val.isHome = options.home
+      val.home = options.home
     }
     var that = this
     that.setData(val)
@@ -267,9 +267,17 @@ Page({
               str = res;
               // console.log(res);
 
-              if (that.data.isHome == 'true') {
+              if (that.data.isHome == '1') {
                 wx.switchTab({
                   url: '/pages/home/home',
+                })
+              } else if (that.data.isHome == '2') {
+                wx.switchTab({
+                  url: '/pages/fitness/plan/plan',
+                })
+              } else if (that.data.isHome == '3') {
+                wx.switchTab({
+                  url: '/pages/eating/eating',
                 })
               } else {
                 wx.navigateBack({

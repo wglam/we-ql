@@ -145,5 +145,5 @@
 
 <view wx:if="{{!vip}}" class='nodata'>
   <view class='m textC' style='color:#666;font-size:24rpx;'>您还不是会员~</view>
-  <navigator url="/pages/vip/info/info" class='go-btn' hover-class='btn-hover'>成为会员</navigator>
+  <navigator url="/pages/vip/info/info?home=2" class='go-btn' hover-class='btn-hover'>成为会员</navigator>
 </view>

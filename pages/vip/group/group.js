@@ -17,7 +17,7 @@ Page({
       val.cardId = options.id
     }
     if (options.home) {
-      val.isHome = options.home
+      val.home = options.home
     }
     self.setData(val)
   },
@@ -35,7 +35,7 @@ Page({
     groups: [],
     currentTime: 0,
     modal: false,
-    isHome: false
+    home: 0
   },
   startInterval: function() {
     var that = this;

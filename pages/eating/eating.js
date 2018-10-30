@@ -41,7 +41,7 @@ Page({
           val.vip = false
           if (that.data.isfirst) {
             wx.navigateTo({
-              url: '/pages/vip/info/info',
+              url: '/pages/vip/info/info?home=3',
             })
             val.isfirst = false
           }

@@ -8,7 +8,7 @@ Page({
    */
   data: {
     html: '',
-    isHome: false
+    home: 0
   },
 
   /**
@@ -54,7 +54,7 @@ Page({
     }
     if (options.home) {
       this.setData({
-        isHome: options.home
+        home: options.home
       })
     }
   },
@@ -87,7 +87,7 @@ Page({
     if (ops.from === 'menu') {
       var shareObj = {
         title: '氢练',
-        path: "/pages/vip/info/info?shareId=" + g.userInfo.openid,
+        path: "/pages/vip/info/info?shareId=" + g.userInfo.openid + "&home=1",
       }
       return shareObj;
     }
