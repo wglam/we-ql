@@ -18,7 +18,7 @@
       </view>
     </view>
   </navigator>
-  <navigator url='/pages/vip/buy/buy' style='width:40%;' hover-class='hover' hover-start-time='10'>
+  <navigator url='/pages/vip/buy/buy?home={{isHome}}' style='width:40%;' hover-class='hover' hover-start-time='10'>
     <view class='image-btn'>
       <image class='image-btn-icon' src="/img/buy.png" style='width:80%' mode='widthFix' />
     </view>

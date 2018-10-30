@@ -10,6 +10,8 @@ Page({
   data: {
     colors: ["#A6CBA0", "#ebb774", "#FF856E"],
     nodata: false,
+    vip: false,
+    isfirst: true,
   },
 
   /**
@@ -29,21 +31,29 @@ Page({
       return
     }
     var that = this
-    if (!(that.data.items && that.data.items.length >= 1)) {
-      g.api.checkMemberCard(g.userInfo.memberId)
-        .then(res => {
-          if (res.data.retCode == '0000') {
-            that._getDietPlan();
-          } else {
+    g.api.checkMemberCard(g.userInfo.memberId)
+      .then(res => {
+        var val = {}
+        if (res.data.retCode == '0000') {
+          val.vip = true
+          that._getDietPlan();
+        } else {
+          val.vip = false
+          if (that.data.isfirst) {
             wx.navigateTo({
               url: '/pages/vip/info/info',
             })
+            val.isfirst = false
           }
+        }
+        that.setData(val)
+      })
+      .catch(e => {
+        that.setData({
+          isfirst: false
         })
-        .catch(e => {
-          console.log(e)
-        })
-    }
+        console.log(e)
+      })
   },
 
   _getDietPlan: function() {

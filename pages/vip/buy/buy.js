@@ -12,7 +12,8 @@ Page({
     list: [],
     tabIndex: 0,
     itemIndexs: [],
-    sort: -1
+    sort: -1,
+    isHome: false
   },
   onLoad(options) {
     var that = this
@@ -22,6 +23,9 @@ Page({
     }
     if (options.cardCategoryId) {
       val.cardCategoryId = options.cardCategoryId
+    }
+    if (options.home) {
+      val.isHome = options.home
     }
     that.setData(val)
   },
@@ -144,7 +148,7 @@ Page({
     var itemIndex = self.data.itemIndexs[self.data.tabIndex]
     var item = category.cardInfos[itemIndex]
     console.log(item)
-    var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&categoryid=' + category.cardCategoryId + "&img=" + item.cardImg
+    var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + category.cardCategoryLogo + '&category=' + category.cardCategoryName + '&categoryid=' + category.cardCategoryId + "&img=" + item.cardImg + "&home=" + self.data.isHome
     if (self.data.sort != -1) {
       _url += '&orderType=upgrade'
       wx.showLoading({
@@ -199,7 +203,7 @@ Page({
     var item = category.cardInfos[itemIndex]
     console.log(e)
     wx.navigateTo({
-      url: '/pages/vip/group/group?id=' + item.cardId,
+      url: '/pages/vip/group/group?id=' + item.cardId + "&home=" + self.data.isHome,
     })
   }
 })

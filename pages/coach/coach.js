@@ -33,7 +33,7 @@ Page({
           }
         }
       })
-      .coach(e => {
+      .catch(e => {
         wx.hideLoading()
         console.log(e)
       })

@@ -12,11 +12,14 @@ Page({
         url: '/pages/shouquan/shouquan',
       })
     }
+    var val = {}
     if (options.id) {
-      self.setData({
-        cardId: options.id
-      })
+      val.cardId = options.id
     }
+    if (options.home) {
+      val.isHome = options.home
+    }
+    self.setData(val)
   },
   onReady() {
     var self = this
@@ -31,7 +34,8 @@ Page({
     total: 0,
     groups: [],
     currentTime: 0,
-    modal: false
+    modal: false,
+    isHome: false
   },
   startInterval: function() {
     var that = this;
@@ -143,7 +147,7 @@ Page({
 
     var item = self.data.card
     var _url = '/pages/vip/jiesuan/jiesuan?cardid=' + item.cardId + '&name=' + item.cardName + '&logo=' + item.cardCategoryLogo + '&category=' + item.cardCategoryName + '&categoryid=' + item.cardCategoryId + '&price=' + e.currentTarget.dataset.price +
-      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator + '&collageEndTime=' + e.currentTarget.dataset.endtime + "&img=" + item.cardImg
+      '&orderType=group&isInitiator=' + e.currentTarget.dataset.isinitiator + '&collageEndTime=' + e.currentTarget.dataset.endtime + "&img=" + item.cardImg + "&home=" + self.data.isHome
     if (collageMemberId) {
       _url += "&collageMemberId=" + collageMemberId
     }

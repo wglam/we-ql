@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    html: ''
+    html: '',
+    isHome: false
   },
 
   /**
@@ -15,8 +16,8 @@ Page({
    */
   onLoad: function(options) {
     /**
-      * 初始化emoji设置
-      */
+     * 初始化emoji设置
+     */
     WxParse.emojisInit('[]', "/wxParse/emojis/", {
       "00": "00.gif",
       "01": "01.gif",
@@ -42,7 +43,21 @@ Page({
     })
 
   },
-
+  onLoad: function(options) {
+    if (options.shareId) {
+      wx.setStorageSync('shareId', options.shareId);
+    }
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+    }
+    if (options.home) {
+      this.setData({
+        isHome: options.home
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,4 +82,14 @@ Page({
         wx.hideLoading()
       })
   },
+  onShareAppMessage: function(ops) {
+    var self = this;
+    if (ops.from === 'menu') {
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/vip/info/info?shareId=" + g.userInfo.openid,
+      }
+      return shareObj;
+    }
+  }
 })

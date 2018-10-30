@@ -90,5 +90,16 @@ Page({
     that.setData({
       tabIndex: e.detail.current
     });
+  },
+  onShareAppMessage: function(ops) {
+    var self = this;
+    if (ops.from === 'menu') {
+      var shareObj = {
+        title: '氢练',
+        path: "/pages/home/home?shareId=" + g.userInfo.openid,
+        imageUrl: '/img/bg.jpg'
+      }
+      return shareObj;
+    }
   }
 });

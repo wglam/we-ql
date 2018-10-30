@@ -1,6 +1,6 @@
-<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">计划正在紧张制作中，请稍后~</view>
+<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{vip&&nodata}}">计划正在紧张制作中，请稍后~</view>
 
-<view wx:if="{{!nodata}}" class='flex-col martch-parent'>
+<view wx:if="{{vip&&!nodata}}" class='flex-col martch-parent'>
   <view class='item-h' style='align-items: center;height:13%;'>
     <view wx:if='{{title}}' class='top-text'>
       <view>训练主题</view>
@@ -140,4 +140,10 @@
     </view>
   </view>
 
+</view>
+
+
+<view wx:if="{{!vip}}" class='nodata'>
+  <view class='m textC' style='color:#666;font-size:24rpx;'>您还不是会员~</view>
+  <navigator url="/pages/vip/info/info" class='go-btn' hover-class='btn-hover'>成为会员</navigator>
 </view>

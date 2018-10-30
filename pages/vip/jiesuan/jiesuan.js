@@ -14,6 +14,7 @@ Page({
     categoryid: '',
     youhui: {},
     payment: 0,
+    isHome: 'false'
   },
 
   /**
@@ -55,6 +56,9 @@ Page({
     }
     if (options.img) {
       val.img = g.api.getFile(options.img)
+    }
+    if (options.home) {
+      val.isHome = options.home
     }
     var that = this
     that.setData(val)
@@ -241,6 +245,7 @@ Page({
     wx.showLoading({
       title: '正在提交',
     })
+    var that = this
     g.api.wechatPay(order.orderCode, g.userInfo.openid)
       .then(res => {
         wx.hideLoading()
@@ -260,14 +265,17 @@ Page({
             'success': function(res) {
               var str = ""
               str = res;
-              console.log(res);
+              // console.log(res);
 
-              // wx.switchTab({
-              //   url: '/pages/home/home',
-              // })
-              wx.navigateBack({
-                delta: 2
-              })
+              if (that.data.isHome == 'true') {
+                wx.switchTab({
+                  url: '/pages/home/home',
+                })
+              } else {
+                wx.navigateBack({
+                  delta: 2
+                })
+              }
               wx.navigateTo({
                 url: '/pages/coach/coach',
               })
