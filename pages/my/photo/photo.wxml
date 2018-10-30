@@ -1,4 +1,4 @@
-<view wx:if="{{photos.length<=0}}" class='nodata'>
+<view wx:if="{{photos.length<=0&&!isShare}}" class='nodata'>
   <view class='m textC' style='color:#666;font-size:24rpx;'>您可以在饮食打卡时上传照片~</view>
   <navigator url="/pages/eating/eating" openType="switchTab" class='go-btn' hover-class='btn-hover'>去打卡</navigator>
 </view>

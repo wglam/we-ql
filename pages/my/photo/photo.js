@@ -8,19 +8,40 @@ Page({
    */
   data: {
     baseUrl: '',
-    photos: []
+    photos: [],
   },
-  onReady(options) {
-    this.loadData()
+  onLoad(options) {
+    if (g.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/shouquan/shouquan',
+      })
+      return
+    }
+    if (options.title) {
+      wx.setNavigationBarTitle({
+        title: options.title
+      })
+    }
+    var _id = null
+    if (options.id) {
+      _id = options.id
+      this.setData({
+        isShare: true
+      })
+    }
+    this.loadData(_id)
   },
-  loadData() {
+  loadData(_id) {
     wx.showLoading({
       title: '加载中',
     })
     var that = this
+    if (!_id) {
+      _id = g.userInfo.memberId
+    }
     g.api.searchMemberDietPlan({
         data: {
-          memberId: g.userInfo.memberId
+          memberId: _id
         }
       })
       .then(res => {
@@ -110,8 +131,8 @@ Page({
     if (ops.from === 'menu') {
       var shareObj = {
         title: '氢练',
-        path: "/pages/home/home?shareId=" + g.userInfo.openid,
-        imageUrl: '/img/bg.jpg'
+        path: "/pages/my/photo/photo?shareId=" + g.userInfo.openid +
+          "&title=" + g.userInfo.memberName + "的相册&id=" + g.userInfo.memberId
       }
       return shareObj;
     }
