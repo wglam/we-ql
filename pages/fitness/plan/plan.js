@@ -42,7 +42,7 @@ Page({
         var val = {}
         if (res.data.retCode == '0000') {
           val.vip = true
-          that._getDietPlan();
+          that.loadPlan();
         } else {
           val.vip = false
           if (that.data.isfirst) {
