@@ -1,0 +1,39 @@
+<view class="tab" style='background-color: #584F60;'>
+  <view wx:for="{{chats}}" wx:key="*this" id='{{index}}' class='tab-item' bindtap="tabClick" style="color:{{current==index?active:normal}};">
+    {{item.name}}
+  </view>
+</view>
+
+<view style="background-color:{{normal}};">
+  <view class="tab-slider" style="background-color:{{active}}; width: {{100/chats.length}}%; transform: translateX(100%); -webkit-transform: translateX({{current*100}}%);"></view>
+</view>
+
+<view class='charts' hidden='{{chartsHide}}'>
+  <ff-canvas id="line" canvas-id="line_canvas" opts="{{opts}}" />
+</view>
+<view class='charts' hidden='{{!chartsHide}}' />
+
+<view wx:for="1234567891001110111x">
+  {{item}}
+</view>
+
+<view style='height: 88rpx;'>
+</view>
+<view class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
+  记录{{name}}
+</view>
+<view class="modal-box {{inputHide ?'cur':''}}">
+  <view class='modal-dialog dialog'>
+    <view class="modal-title">
+      请输入{{now?'当前':'目标'}}{{name}}
+    </view>
+    <form bindsubmit="confirm">
+      <view class='input-panel'>
+        <input class='input' type='digit' name='value' value="{{(now||target<0)?'':target}}" />
+        <view>{{unit}}</view>
+      </view>
+      <button class='submit' hover-class='submit-hover' form-type='submit'>保存</button>
+      <view class='cancel' bindtap='cancel'>取消</view>
+    </form>
+  </view>
+</view>

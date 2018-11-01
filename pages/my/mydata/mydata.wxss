@@ -1,0 +1,36 @@
+.tab {
+  width: 100%;
+  height: 84rpx;
+  display: flex;
+}
+
+.tab-item {
+  flex: 1;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-slider {
+  height: 2rpx;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+}
+.charts {
+  width: 100%;
+  height: 40%;
+  background: #584f60;
+}
+.btn_bottom {
+  position: fixed;
+  bottom: 0;
+  background: #ff7e00;
+  color: white;
+  display: inline-flex;
+  height: 88rpx;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
