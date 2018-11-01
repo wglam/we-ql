@@ -1,6 +1,6 @@
 <!--pages/youhuiquanMy/youhuiquanMy.wxml-->
 
-<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{nodata}}">暂无优惠券~</view>
+<view wx:if="{{couponList.length<=0}}" class='m textC' style='color:#666;font-size:24rpx;' >暂无优惠券~</view>
 <view class='mt ml mr' style='position:relative; height:178rpx;' wx:for="{{couponList}}" wx:key="{{item.id}}">
   <image src='/img/ycard.png' style='width:100%; height:100%;' mode="aspectFit" />
 
