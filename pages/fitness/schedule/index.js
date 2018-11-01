@@ -55,10 +55,10 @@ Page({
     //   background: '#ff7e00'
     // });
 
-    var _days = g.api.getJsDays()
-    this.setData({
-      days: _days
-    });
+    // var _days = g.api.getJsDays()
+    // this.setData({
+    //   days: _days
+    // });
     this.loadCalendar(_year, _month)
     this.loadPlan(new Date())
   },
@@ -160,6 +160,11 @@ Page({
         } else {
           _val.title = '当天没有训练哦！'
           _val.progress = -1
+        }
+        if (res.data.retVal.diffDay) {
+          _val.days = res.data.retVal.diffDay
+        } else {
+          _val.days = 0
         }
         that.setData(_val)
         wx.hideLoading()

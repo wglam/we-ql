@@ -25,6 +25,7 @@ Page({
     select: 0,
     vip: false,
     isfirst: true,
+    jsdays:0,
   },
   onLoad: function(opts) {
  
@@ -198,7 +199,12 @@ Page({
               }
             }
           }
-
+          if (res.data.retVal.diffDay) {
+            val.jsdays = res.data.retVal.diffDay
+          } else {
+            val.jsdays = 0
+          }
+          
           console.log(val)
           val.nodata = false
           that.setData(val)
