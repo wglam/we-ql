@@ -161,7 +161,7 @@ Page({
   },
   useClick: function(e) {
     var self = this
-    if (self.data.price >= 1) {
+    if (self.data.price > 0) {
       var pages = getCurrentPages();
       var currPage = pages[pages.length - 1]; //当前页面
       var prevPage = pages[pages.length - 2]; //上一个页面
@@ -176,7 +176,9 @@ Page({
         delta: 1
       })
     } else {
-
+      wx.navigateTo({
+        url: '/pages/vip/buy/buy',
+      })
     }
     console.log(e.currentTarget.dataset.item);
   }
