@@ -91,5 +91,15 @@ Page({
       }
       return shareObj;
     }
+  },
+  getYsPlan: function() {
+    wx.navigateTo({
+      url: '/pages/vip/customplan/index',
+    })
+  },
+  buyVip: function() {
+    wx.navigateTo({
+      url: '/pages/vip/buy/buy?home=' + this.data.home,
+    })
   }
 })

@@ -9,17 +9,13 @@
       咨询
     </view>
   </button>
-  <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%;height:108rpx;' hover-class='hover' hover-start-time='10'>
-    <view class='image-btn'>
-      <image class='image-btn-icon' src="/img/jihua.png" mode='widthFix' />
-      <view>
-        获取健身饮食计划
-      </view>
+  <button  class='image-btn' style='width:35%;padding:0rpx;line-height:1.6;height:108rpx;' hover-class='hover' hover-start-time='10' bindtap='getYsPlan'>
+    <image class='image-btn-icon' src="/img/jihua.png" mode='widthFix' />
+    <view>
+      获取健身饮食计划
     </view>
-  </navigator>
-  <navigator url='/pages/vip/buy/buy?home={{home}}' style='width:40%;height:108rpx;' hover-class='hover' hover-start-time='10'>
-    <view class='image-btn'>
-      <image class='image-btn-icon' src="/img/buy.png" style='width:80%' mode='widthFix' />
-    </view>
-  </navigator>
+  </button>
+  <button class='image-btn' style='width:40%;padding:0rpx;line-height:1.6;height:108rpx;' hover-class='hover' hover-start-time='10' bindtap='buyVip'>
+    <image class='image-btn-icon' src="/img/buy.png" style='width:80%' mode='widthFix' />
+  </button>
 </view>
