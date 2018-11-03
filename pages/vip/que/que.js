@@ -174,13 +174,15 @@ Form({
         if (res.data.retCode == '0000') {
           val = res.data.retVal
         } else {
-          val = g.userInfo
+          val = JSON.parse(JSON.stringify(g.userInfo))
+          val.memberName = ''
         }
         that.setData(val)
       })
       .catch(res => {
         wx.hideLoading()
-        var val = g.userInfo
+        var val = JSON.parse(JSON.stringify(g.userInfo))
+        val.memberName = ''
         that.setData(val)
       })
   },
