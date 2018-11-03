@@ -13,7 +13,8 @@ Page({
     tabIndex: 0,
     itemIndexs: [],
     sort: -1,
-    home: 0
+    home: 0,
+    upgrade: 0,
   },
   onLoad(options) {
     var that = this
@@ -27,6 +28,10 @@ Page({
     if (options.home) {
       val.home = options.home
     }
+    if (options.upgrade) {
+      val.upgrade = options.upgrade
+    }
+
     that.setData(val)
   },
   tabChange: function(e) {

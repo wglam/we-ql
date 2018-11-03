@@ -127,7 +127,7 @@ Page({
   upgradeOrder(e) {
     var self = this
     wx.navigateTo({
-      url: '/pages/vip/buy/buy?sort=' + self.data.card.sort,
+      url: '/pages/vip/buy/buy?sort=' + self.data.card.sort + "&upgrade=1",
     })
   }
 })
