@@ -2,13 +2,15 @@
   <image style='width:100%;height:100%;' src='top.png' mode="aspectFill" />
   <view class='flex flex-c dpt dpb' style='position: absolute;top: 0rpx;  width: 100%;'>
     <view class='flex flex-v flex-2'>
-      <image wx:if='{{avatar}}' class="ml user-avatar" src="{{avatar}}" mode="widthFix" />
+      <navigator url='/pages/my/my' openType="switchTab">
+        <image wx:if='{{avatar}}' class="ml user-avatar" src="{{avatar}}" mode="widthFix" />
+      </navigator>
       <view class='flex-col flex-h ml'>
         <view wx:if='{{name}}' class='text-b flex-1 font-l white-text'>{{name}}</view>
-        <view class='flex flex-wrap align-end flex-v'>
+        <navigator url="{{vip?'/pages/my/vip/vip':'/pages/vip/info/info'}}" class='flex flex-wrap align-end flex-v'>
           <image wx:if='{{vipIcon}}' class='vip-icon ' src='{{vipIcon}}' />
           <view wx:if='{{vipname}}' class='white-text font-min' style=' margin-left: 6rpx; line-height:1em;'> {{vipname}}</view>
-        </view>
+        </navigator>
       </view>
     </view>
     <view wx:if='{{step>=1}}' class='flex flex-1 user-step flex-c pr' style='padding-left:30rpx;'>
