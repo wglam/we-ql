@@ -1,8 +1,9 @@
-<tab tabs='{{tabs}}' tabColor="#584F60" normal='#726C7A' active='white' current="{{current}}" bind:Tab='onTabChange'>
-  <!-- <view class='charts'  slot='middle'>
-    <ff-canvas id="line" canvas-id="line" opts="{{opts}}" />
-  </view> -->
+<xtab tabs='{{tabs}}' tabColor="#584F60" normal='#726C7A' active='white' current="{{current}}" bind:Tab='onTabChange' height='8%' />
 
-  <chats id='chart_{{index}}' wx:for="{{chats}}" wx:key="{{index}}" slot='{{index}}' unit='{{item.unit}}' name="{{item.name}}" target="{{item.target}}" bodyType="{{item.bodyType}}" loadCurrent='{{loadComplete&&(tabIndex==index)}}' memberid="{{id}}" isshare="{{isShare}}" refresh="{{refresh}}" />
+<!-- <swiper current='{{current}}' class='tab-content' >
+  <swiper-item wx:for="{{chats}}" wx:key="{{index}}" catchtouchmove="stopTouchMove">
 
-</tab>
+  </swiper-item>
+</swiper> -->
+
+    <chats class='tab-content' id='chart_{{index}}' unit='{{chats[current].unit}}' name="{{chats[current].name}}" target="{{chats[current].target}}" bodyType="{{chats[current].bodyType}}" loadCurrent='{{loadComplete}}' memberid="{{id}}" isshare="{{isShare}}" refresh="{{refresh}}" reachbottom='{{reachbottom}}'/>

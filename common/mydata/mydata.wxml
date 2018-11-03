@@ -1,5 +1,5 @@
 <view class='charts' hidden='{{!inputHide}}'>
-  <ff-canvas id="line_{{bodyType}}" canvas-id="line_{{bodyType}}" opts="{{opts}}" />
+  <ff-canvas id="line" canvas-id="line" opts="{{opts}}" />
 </view>
 <!-- <image class='charts' src='{{tempImg}}' hidden='{{inputHide}}' /> -->
 <view class='charts' hidden='{{inputHide}}' />
@@ -16,17 +16,18 @@
 </view>
 
 
-<scroll-view scroll-y style="height:60%;" bindscrolltolower='scrollLower'>
-  <view class='click-item' wx:for="{{opts.charts}}" wx:key='{{index}}'>
-    <view class='font-min gray-text'>{{item.time}}</view>
-    <view class='font-l'>{{item.y}} {{unit}}</view>
-  </view>
-  <view class='loading-ing' hidden='{{!isLoading||nodata}}'>
-    <view class='iconfont icon-loading iconfont-spin' />
-    <view style='padding-left:6rpx; padding-right:6rpx;'>加载中...</view>
-  </view>
-  <view style="height:300rpx;" />
-</scroll-view>
+<!-- <scroll-view scroll-y style="height:60%;" bindscrolltolower='scrollLower'> -->
+<view class='click-item' wx:for="{{opts.charts}}" wx:key='{{index}}'>
+  <view class='font-min gray-text'>{{item.time}}</view>
+  <view class='font-l'>{{item.y}} {{unit}}</view>
+</view>
+<view class='loading-ing' hidden='{{!isLoading||nodata}}'>
+  <view class='iconfont icon-loading iconfont-spin' />
+  <view style='padding-left:6rpx; padding-right:6rpx;'>加载中...</view>
+</view>
+<view style="height:24rpx;" />
+<view hidden='{{bodyType==3||isshare}}' style="height:88rpx;" />
+<!-- </scroll-view> -->
 <view hidden='{{bodyType==3||isshare}}' class='btn_bottom' hover-class='submit-hover' bindtap='btnNow'>
   记录{{name}}
 </view>

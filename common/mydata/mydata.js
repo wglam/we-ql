@@ -39,12 +39,25 @@ Component({
         // console.log("target", newVal, oldVal)
       }
     },
-    bodyType: Number,
+    bodyType: {
+      type: Number,
+      value: 0,
+      observer: function(newVal, oldVal, changedPath) {
+        if (this.data.loadCurrent) {
+          this.data.page = 0
+          this.data.opts.charts = []
+          this.data.opts.minx = 0
+          this.data.opts.maxx = 0
+          this.data.opts.miny = 0
+          this.data.opts.maxy = 0
+          this._searchBody()
+        }
+      }
+    },
     loadCurrent: {
       type: Boolean,
       value: false,
       observer: function(newVal, oldVal, changedPath) {
-        // console.log("loadCurrent", newVal, oldVal)
         if (newVal && this.data.page == 0) {
           this._searchBody()
         }
@@ -61,6 +74,15 @@ Component({
           this._searchBody()
         }
       }
+    },
+    reachbottom: {
+      type: Boolean,
+      value: false,
+      observer: function(newVal, oldVal, changedPath) {
+        if (this.data.loadCurrent) {
+          this._searchBody()
+        }
+      }
     }
   },
 
@@ -71,17 +93,17 @@ Component({
     inputHide: true,
     opts: {
       lazyLoad: true,
+      charts: [],
+      minx: 0,
+      maxx: 0,
+      miny: 0,
+      maxy: 0,
     },
     btnHide: false,
     isLoading: false,
     nodata: false,
     page: 0,
     pageSize: 10,
-    charts: [],
-    minx: 0,
-    maxx: 0,
-    miny: 0,
-    maxy: 0,
     now: false,
   },
   /**
@@ -112,13 +134,13 @@ Component({
             if (that.data.page == 0) {
               opts.charts = []
             } else {
-              opts.charts = that.data.charts
+              opts.charts = that.data.opts.charts
             }
 
-            opts.minx = that.data.minx
-            opts.maxx = that.data.maxx
-            opts.miny = that.data.miny
-            opts.maxy = that.data.maxy
+            opts.minx = that.data.opts.minx
+            opts.maxx = that.data.opts.maxx
+            opts.miny = that.data.opts.miny
+            opts.maxy = that.data.opts.maxy
             opts.unit = that.data.unit
             opts.target = that.data.target
             for (var it of data.list) {
@@ -144,10 +166,6 @@ Component({
             setTimeout(() => {
               that.redrawcharts(opts.target)
             }, 500)
-            // that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
-            // that.chartComponent.init((canvas, width, height) => {
-            //   return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
-            // })
           } else {
             that._hideLoading()
           }
@@ -172,7 +190,7 @@ Component({
         return
       }
       opts.target = target
-      that.chartComponent = that.selectComponent('#line_' + that.data.bodyType)
+      that.chartComponent = that.selectComponent('#line')
       that.chartComponent.init((canvas, width, height) => {
         return that.initCharts(canvas, width, height, opts.minx, opts.maxx, opts.miny, opts.maxy, opts.target, opts.unit, opts.charts)
       })

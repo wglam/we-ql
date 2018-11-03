@@ -66,7 +66,7 @@ Page({
       var shareObj = {
         title: '氢练',
         path: "/pages/home/home?shareId=" + g.userInfo.openid,
-        imageUrl: '/img/bg.jpg'
+        imageUrl: '/img/share.jpg'
       }
       return shareObj;
     }

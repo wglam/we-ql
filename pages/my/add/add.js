@@ -56,10 +56,8 @@ Page({
     }
     if (options.tab) {
       val.current = options.tab
-      val.tabIndex = val.current
     } else {
       val.current = 0
-      val.tabIndex = 0
     }
     this.setData(val)
     console.log(val)
@@ -142,7 +140,7 @@ Page({
 
     var that = this;
     that.setData({
-      tabIndex: e.detail.current
+      current: e.detail.current,
     });
   },
   onShareAppMessage: function(ops) {
@@ -158,6 +156,14 @@ Page({
   onShow: function() {
     this.setData({
       refresh: !this.data.refresh
+    })
+  },
+  stopTouchMove: function() {
+    return false;
+  },
+  onReachBottom: function() {
+    this.setData({
+      reachbottom: !this.data.reachbottom
     })
   }
 

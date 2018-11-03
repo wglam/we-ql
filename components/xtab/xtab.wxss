@@ -1,0 +1,27 @@
+/* common/tab/tab.wxss */
+
+.tab {
+  width: 100%;
+  display: flex;
+}
+
+.tab-item {
+  flex: 1;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-slider {
+  height: 2rpx;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+}
+
+.tab-content {
+  width: 100%;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}

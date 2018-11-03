@@ -4,6 +4,6 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "chats": "/common/mydata/mydata",
-    "tab": "/components/tab/tab"
+    "xtab": "/components/xtab/xtab"
   }
 }
