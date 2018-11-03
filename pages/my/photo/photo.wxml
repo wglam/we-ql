@@ -8,7 +8,7 @@
     <view class='timeline-time'>{{item.createTime}}</view>
     <view class='timeline-item {{index==0?"cur":""}}'>
       <image class='timeline-card' src="{{baseUrl+'/'+item.imgStr}}" mode='aspectFill' />
-      <view  wx:if='{{item.commentStr}}' class='timeline-card p mt' >{{item.commentStr}}</view>
+      <view wx:if='{{item.commentStr}}' class='timeline-card p mt'>{{item.commentStr}}</view>
     </view>
   </block>
 </view>

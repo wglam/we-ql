@@ -1,6 +1,6 @@
-<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{vip&&nodata}}">计划正在紧张制作中，请稍后~</view>
+<view class='m textC' style='color:#666;font-size:24rpx;' wx:if="{{vip&&isque&&nodata}}">计划正在紧张制作中，请稍后~</view>
 
-<bottom bottom='96' wx:if="{{vip&&!nodata}}">
+<bottom bottom='96' wx:if="{{vip&&isque&&!nodata}}">
   <view slot="content">
 
     <block wx:for="{{items}}" wx:key="{{index}}">
@@ -30,4 +30,9 @@
 <view wx:if="{{!vip}}" class='nodata'>
   <view class='m textC' style='color:#666;font-size:24rpx;'>您还不是会员~</view>
   <navigator url="/pages/vip/info/info?home=3"  class='go-btn' hover-class='btn-hover'>成为会员</navigator>
+</view>
+
+<view wx:if="{{vip&&!isque}}" class='nodata'>
+  <view class='m textC' style='color:#666;font-size:24rpx;'>您还没有填写问卷~</view>
+  <navigator url="/pages/vip/que/que" class='go-btn' hover-class='btn-hover'>填写问卷</navigator>
 </view>

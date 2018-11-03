@@ -25,10 +25,11 @@ Page({
     select: 0,
     vip: false,
     isfirst: true,
-    jsdays:0,
+    jsdays: 0,
+    isque: false,
   },
   onLoad: function(opts) {
- 
+
   },
   onShow: function() {
     if (g.userInfo == null) {
@@ -43,7 +44,7 @@ Page({
         var val = {}
         if (res.data.retCode == '0000') {
           val.vip = true
-          that.loadPlan();
+          that._checkMemberAnswer()
         } else {
           val.vip = false
           if (that.data.isfirst) {
@@ -204,7 +205,7 @@ Page({
           } else {
             val.jsdays = 0
           }
-          
+
           console.log(val)
           val.nodata = false
           that.setData(val)
@@ -367,4 +368,25 @@ Page({
       return shareObj;
     }
   },
+  _checkMemberAnswer() {
+    var that = this;
+    if (!that.data.isque) {
+      g.api.checkMemberAnswer({
+          data: {
+            memberId: g.userInfo.memberId
+          }
+        })
+        .then(res => {
+          if (res.data.retCode == '2222') {
+            that.setData({
+              isque: true
+            });
+            that.loadPlan();
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    }
+  }
 })

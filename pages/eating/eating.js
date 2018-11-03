@@ -12,6 +12,7 @@ Page({
     nodata: false,
     vip: false,
     isfirst: true,
+    isque: false,
   },
 
   /**
@@ -36,7 +37,7 @@ Page({
         var val = {}
         if (res.data.retCode == '0000') {
           val.vip = true
-          that._getDietPlan();
+          that._checkMemberAnswer();
         } else {
           val.vip = false
           if (that.data.isfirst) {
@@ -169,6 +170,27 @@ Page({
         imageUrl: '/img/share.jpg'
       }
       return shareObj;
+    }
+  },
+  _checkMemberAnswer() {
+    var that = this;
+    if (!that.data.isque) {
+      g.api.checkMemberAnswer({
+          data: {
+            memberId: g.userInfo.memberId
+          }
+        })
+        .then(res => {
+          if (res.data.retCode == '2222') {
+            that.setData({
+              isque: true
+            });
+            that._getDietPlan();
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        })
     }
   }
 })
