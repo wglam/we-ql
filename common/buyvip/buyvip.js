@@ -5,7 +5,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    info: null
+    info: {
+      type: null,
+      observer: function(newVal, oldVal, changedPath) {
+        this.setData({
+          current: 0,
+        })
+      }
+    }
   },
 
   /**

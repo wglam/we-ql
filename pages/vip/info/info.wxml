@@ -1,8 +1,7 @@
 <import src="../../../wxParse/wxParse.wxml" />
-<view class="wxParse">
+<view class="wxParse" style='margin-bottom:108rpx;'>
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>
-<view style="height:108rpx;" />
 <view class='bottom'>
   <button open-type='contact' class='image-btn' style='width:25%;padding:0rpx;line-height:1.6;height:108rpx;' hover-class='hover' hover-start-time='10'>
     <image class='image-btn-icon' src="/img/kefu.png" mode='widthFix' />
@@ -10,7 +9,7 @@
       咨询
     </view>
   </button>
-  <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%' hover-class='hover' hover-start-time='10'>
+  <navigator url='/pages/vip/customplan/index' class='flex-col bottom-text' style='width:35%;height:108rpx;' hover-class='hover' hover-start-time='10'>
     <view class='image-btn'>
       <image class='image-btn-icon' src="/img/jihua.png" mode='widthFix' />
       <view>
@@ -18,7 +17,7 @@
       </view>
     </view>
   </navigator>
-  <navigator url='/pages/vip/buy/buy?home={{home}}' style='width:40%;' hover-class='hover' hover-start-time='10'>
+  <navigator url='/pages/vip/buy/buy?home={{home}}' style='width:40%;height:108rpx;' hover-class='hover' hover-start-time='10'>
     <view class='image-btn'>
       <image class='image-btn-icon' src="/img/buy.png" style='width:80%' mode='widthFix' />
     </view>

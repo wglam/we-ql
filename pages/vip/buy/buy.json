@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "会员",
   "usingComponents": {
-    "tab": "/components/tab/tab",
+    "xtab": "/components/xtab/xtab",
     "buyvip": "/common/buyvip/buyvip"
   }
 }
