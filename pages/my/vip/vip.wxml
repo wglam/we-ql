@@ -21,7 +21,7 @@
 <view class='body pl' wx:for="{{vips}}" wx:key="{{index}}">
   <view class='item-h pl pr' style='align-items: center;'>
     <view class='flex' style='align-items: center;'>
-      <image src="{{item.vip?'vip':'normal'}}.png" style='width:84rpx;height:84rpx;' mode='widthFix' />
+      <image src="{{item.cardCategoryLogo}}" style='width:84rpx;height:84rpx;' mode='widthFix' />
       <view class='cml'>{{item.cardCategoryName}}</view>
       <view class='item-min cml'>{{item.createTime}}</view>
     </view>

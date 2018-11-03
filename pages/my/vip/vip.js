@@ -68,7 +68,9 @@ Page({
           vips = []
         }
         if (res.data.list) {
+          console.log(res.data.list)
           for (var it of res.data.list) {
+            it.cardCategoryLogo = g.api.getFile(it.cardCategoryLogo)
             vips.push(it)
           }
         }
