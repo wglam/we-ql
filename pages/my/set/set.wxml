@@ -6,7 +6,7 @@
     </view>
     <image class='user-avatar mr' src='{{portrait}}' mode='aspectFill' />
   </view>
-  <view class='item-h'>
+  <view class='item-h' style='align-items: center;'>
     <view class='item-title'>
       <p>姓</p>
       <p>名</p>
@@ -14,7 +14,7 @@
     <input type='text' name='memberName' value='{{memberName}}' class='form-input' />
   </view>
 
-  <view class='item-h'>
+  <view class='item-h' style='align-items: center;'>
     <view class='item-title'>
       <p>性</p>
       <p>别</p>
@@ -29,7 +29,7 @@
     </picker>
   </view>
 
-  <view class='item-h'>
+  <view class='item-h' style='align-items: center;'>
     <view class='item-title'>
       <p>手</p>
       <p>机</p>
@@ -38,7 +38,7 @@
     <input type='number' name='memberPhone' value='{{memberPhone}}' maxlength='11' class='form-input' />
   </view>
 
-  <navigator class='item-h' url="{{vip?'/pages/my/vip/vip':'/pages/vip/info/info'}}">
+  <navigator class='item-h ' url="{{vip?'/pages/my/vip/vip':'/pages/vip/info/info'}}">
     <view class='item-title'>
       <block wx:for="{{vip?'会员信息':'成为会员'}}" wx:key="{{index}}">
         <p>{{item}}</p>
@@ -46,14 +46,14 @@
     </view>
     <view class="iconfont icon-right" />
   </navigator>
-  <view class='item-h'>
+  <view class='item-h' style='align-items: center;'>
     <view class='item-title'>
       <p>健</p>
       <p>身</p>
       <p>宣</p>
       <p>言</p>
     </view>
-    <input type='text' name='signature' placeholder="一句话讲述自己的健身宣言" value='{{signature}}' class='form-input' maxlength='30' />
+    <textarea auto-height type='text' name='signature' placeholder="一句话讲述自己的健身宣言" value='{{signature}}' maxlength='30' />
   </view>
   <input hidden='true' name='portrait' value='{{portrait}}' />
   <input hidden='true' name='memberId' value='{{memberId}}' />
