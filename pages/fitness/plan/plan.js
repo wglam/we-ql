@@ -172,9 +172,48 @@ Page({
         wx.hideLoading()
         if (res.data.retCode == '0000') {
           var s = res.data.retVal.planContent.replace(/\s+/g, '');
+          // s = '[{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"热身","target":"热身动作","name":"开合跳","video":0,"time":"30秒","zushu":10,"rest":"10~20秒","value":0,"dzyl":"核心收紧，不要塌腰，感受胸部发力","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"组","max":10},{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"训练","target":"胸部","name":"跪姿俯卧撑","video":0,"zushu":4,"cishu":-1,"rest":"30秒","value":0,"dzyl":"核心收紧，不要塌腰，感受胸部发力","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"组","max":4},{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"训练","target":"肩部","name":"哑铃侧平举","video":0,"zushu":4,"cishu":20,"rest":"30秒","value":0,"dzyl":"身体保持稳定，沉肩，微微向内旋转，肩带动大臂，大臂带动小臂，小臂带动哑铃","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"组","max":4},{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"训练","target":"腹部","name":"平板支撑","video":0,"zushu":4,"cishu":-1,"rest":"30秒","value":0,"dzyl":"腰背、腹、臀收紧，身体呈平板式","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"组","max":4},{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"有氧","name":"HIIT燃脂初级","video":1,"time":"40分钟","value":0,"dzyl":"按照视频节奏练习","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"分钟","max":40},{"jsTitle":"家庭减脂训练计划（胸＋肩＋腹）","jsTop":0,"jsCurrent":0,"bzName":"拉伸","target":"拉伸","name":"上半身拉伸","video":0,"time":"8~10分钟","value":0,"dzyl":"侧重拉伸斜方肌、胸部和肩部肌群","hxyl":"鼻吸口呼，用力吐气，省力吸气","unit":"分钟","max":10}]'
           var val = JSON.parse(s)
+          // console.log("back", val)
           // val.complete = res.data.retVal.completeRate >= 1
-          console.log(val)
+          if (Array.isArray(val)) {
+            var t;
+
+            for (var i = 0; i <= val.length - 1; i++) {
+              var it = val[i]
+              if (!t) {
+                t = {}
+                t.title = it.jsTitle
+                t.map = new Map
+              }
+         
+
+              var ittn = t.map.get(it.bzName)
+              if (!ittn) {
+                ittn = []
+                t.map.set(it.bzName, ittn)
+              }
+              delete it.jsTitle
+              delete it.bzName
+              delete it.jsCurrent
+              delete it.jsTop
+              ittn.push(it)
+            }
+            t.map.forEach(function(v, k, map) {
+              if (!t.items) {
+                t.items = []
+              }
+              var tp = {}
+              tp.name = k
+              tp.items = v
+              t.items.push(tp)
+            })
+
+            delete t.map
+            val = t
+            console.log(val)
+          }
+
           if (val.self) {
             val.top = -1
             val.current = -1
@@ -206,7 +245,6 @@ Page({
             val.jsdays = 0
           }
 
-          console.log(val)
           val.nodata = false
           that.setData(val)
         } else {
