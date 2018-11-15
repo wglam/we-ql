@@ -154,8 +154,14 @@ Page({
       .then(res => {
         var _val = {}
         if (res.data.retCode == '0000') {
-          var p = JSON.parse(res.data.retVal.planContent.replace(/\s+/g, ''))
-          _val.title = p.title
+          if (res.data.retVal.planContent) {
+            var p = JSON.parse(res.data.retVal.planContent.replace(/\s+/g, ''))
+            if (Array.isArray(p)) {
+              _val.title = p[0].jsTitle
+            } else {
+              _val.title = p.title
+            }
+          }
           _val.progress = res.data.retVal.completeRate
         } else {
           _val.title = '当天没有训练哦！'

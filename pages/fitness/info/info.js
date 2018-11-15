@@ -35,7 +35,6 @@ Page({
             url: res.data.retVal.actionUrl
           })
         }
-
       })
       .catch(e => {
         console.log(e)

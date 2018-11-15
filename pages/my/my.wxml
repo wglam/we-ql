@@ -1,5 +1,6 @@
 <view class='top'>
-  <view wx:if='{{dietNum>=1}}' class='daka shadow'>累计打卡{{dietNum}}天</view>
+
+  <navigator url='/pages/fitness/schedule/index' wx:if='{{dietNum>=1}}' class='daka shadow'>累计打卡{{dietNum}}天</navigator>
   <navigator url='/pages/my/set/set'>
     <image class='user-avatar' src="{{portrait}}" mode='widthFix' />
   </navigator>
