@@ -1,12 +1,15 @@
 <view class='top'>
 
-  <navigator url='/pages/fitness/schedule/index' wx:if='{{dietNum>=1}}' class='daka shadow'>累计打卡{{dietNum}}天</navigator>
   <navigator url='/pages/my/set/set'>
     <image class='user-avatar' src="{{portrait}}" mode='widthFix' />
   </navigator>
 
   <view class='info'>
-    <view class='name '>{{memberName}}</view>
+    <view class='flex'>
+      <view class='name flex-1'>{{memberName}}</view>
+      <navigator url='/pages/fitness/schedule/index' wx:if='{{dietNum>=1}}' class='daka shadow'>累计打卡{{dietNum}}天</navigator>
+    </view>
+
     <navigator url='/pages/my/set/set' class='flag'>
       {{signature}}
     </navigator>
