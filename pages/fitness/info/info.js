@@ -1,11 +1,12 @@
 // pages/fitness/info/info.js
+var g = getApp().globalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    video: "",
+    url: "",
     dzyl: "",
     hxyl: "",
   },
@@ -19,6 +20,27 @@ Page({
     })
     var that = this;
     that.setData(options)
+    wx.showLoading({
+      title: '请稍后',
+    })
+    g.api.getAction({
+        data: {
+          actionName: options.title
+        }
+      })
+      .then(res => {
+        wx.hideLoading()
+        if (res.data.retCode == '0000') {
+          that.setData({
+            url: res.data.retVal.actionUrl
+          })
+        }
+
+      })
+      .catch(e => {
+        console.log(e)
+        wx.hideLoading()
+      })
   },
 
 })

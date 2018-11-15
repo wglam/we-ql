@@ -41,7 +41,7 @@
               </view>
               <view>
                 {{item.name}}</view>
-              <view class='iconfont icon-play ml' hidden='{{!item.video}}' />
+              <view class='iconfont icon-play ml' hidden='{{!(item.video==1)}}' />
             </view>
             <view class='flex' wx:if="{{item.zushu}}">
               <view class='item-title-5'>

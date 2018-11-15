@@ -1,5 +1,5 @@
 <view class='h-center p'>
-  <video wx:if="{{video}}" style='width:100%;' src="{{video}}" />
+  <video wx:if="{{url}}" style='width:100%;' src="{{url}}" />
 </view>
 
 <view wx:if="{{dzyl}}" class='item-h' style='justify-content: flex-start;'>

@@ -246,6 +246,7 @@ Page({
           }
 
           val.nodata = false
+          val.planId = res.data.retVal.planId
           that.setData(val)
         } else {
           that.setData({

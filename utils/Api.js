@@ -53,6 +53,7 @@ class Api extends WxRequest {
       refund: 'ht/wechat/refund', //提交退款
       getCardCategory: 'ht/wechat/getCardCategory', //
       searchMemberJsPlan: 'ht/wechat/searchMemberJsPlan', //日历
+      getAction: 'ht/wechat/getAction', //动作名称获取视频
     }
     this.$$const = {
       memberCard: null
@@ -468,6 +469,10 @@ class Api extends WxRequest {
   searchMemberJsPlan(param) {
     return this.getRequest(this.$$path.searchMemberJsPlan, param)
   }
+  getAction(param) {
+    return this.getRequest(this.$$path.getAction, param)
+  }
+
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {
