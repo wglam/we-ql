@@ -25,7 +25,8 @@
     "pages/sliderinfo/sliderinfo",
     "pages/my/tuikuan/tuikuan",
     "pages/my/addtuikuan/addtuikuan",
-    "pages/coach/coach"
+    "pages/coach/coach",
+    "pages/bindorder/bindorder"
   ],
   "window": {
     "backgroundTextStyle": "light",

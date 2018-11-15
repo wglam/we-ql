@@ -21,7 +21,7 @@ Page({
     var that = this;
     that.setData(options)
     wx.showLoading({
-      title: '请稍后',
+      title: '加载中',
     })
     g.api.getAction({
         data: {

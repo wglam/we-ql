@@ -54,6 +54,8 @@ class Api extends WxRequest {
       getCardCategory: 'ht/wechat/getCardCategory', //
       searchMemberJsPlan: 'ht/wechat/searchMemberJsPlan', //日历
       getAction: 'ht/wechat/getAction', //动作名称获取视频
+      getOrder: 'ht/wechat/getOrder', //获取订单信息
+      bindOrder: 'ht/wechat/bindOrder', //绑定订单信息
     }
     this.$$const = {
       memberCard: null
@@ -260,6 +262,9 @@ class Api extends WxRequest {
         memberId: id
       }
     })
+  }
+  memberByOpenid(param) {
+    return this.getRequest(this.$$path.getMemberByOpenid, param)
   }
   getMemberByOpenid(success, error) {
     var that = this
@@ -472,7 +477,15 @@ class Api extends WxRequest {
   getAction(param) {
     return this.getRequest(this.$$path.getAction, param)
   }
-
+  getOrder(param) {
+    return this.getRequest(this.$$path.getOrder, param)
+  }
+  bindOrder(param) {
+    return this.getRequest(this.$$path.bindOrder, param)
+  }
+  decodeUserInfo(param) {
+    return this.getRequest(this.$$path.decodeUserInfo, param)
+  }
   //inner
   _convertDateFromString(dateString) {
     if (dateString) {

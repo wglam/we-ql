@@ -3,7 +3,6 @@ var g = getApp().globalData
 
 Page({
   onLoad(options) {
-    options.id = 8
     if (options.id) {
       wx.showLoading({
         title: '加载中',

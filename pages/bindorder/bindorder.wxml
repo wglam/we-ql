@@ -1,0 +1,24 @@
+<view class='panel p'>
+  <view class='left'>
+    <image wx:if='{{logo}}' src='{{logo}}' mode='widthFix' />
+    <view class='flex-col ml right'>
+      <view class='category'>{{cardCategoryName}}</view>
+      <view class='name '>有效期:{{cardName}}</view>
+    </view>
+  </view>
+  <view class='flex-col'>
+    <view class='payment'>￥{{payment}}元</view>
+    <view class='price'>￥{{orderPrice}}元</view>
+  </view>
+</view>
+
+<image src='{{img}}' style='width:100%; ' mode='widthFix' />
+
+<view hidden='{{nodata}}' style='height:120rpx;' />
+<view hidden='{{nodata}}' class=' flex flex-c ' style='width:100%;height:84rpx;position:fixed;bottom:0rpx;margin-bottom:24rpx; '>
+  <button hidden='{{authed}}' class='bottom-btn ' hover-class='btn-hover ' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"> 绑定</button>
+
+  <view hidden='{{!authed}}' class='bottom-btn ' hover-class='btn-hover ' bindtap='bindClick'> 绑定</view>
+</view>
+
+<!-- <button hidden='{{binded}} ' class='bottom-btn ' hover-class='btn-hover ' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"> 绑定</button> -->
