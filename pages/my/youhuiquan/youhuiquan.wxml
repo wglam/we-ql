@@ -30,5 +30,5 @@
 </view> -->
 
 <navigator  wx:if='{{price<=0}}' class='lq_bg' url='/pages/my/getyhq/getyhq'>
-  <image class='lq' src="/img/lqzx.png" mode='aspectFit' />
+  <image class='lq' src="{{icon}}" mode='aspectFit' />
 </navigator>

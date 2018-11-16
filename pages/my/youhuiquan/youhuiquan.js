@@ -27,6 +27,7 @@ Page({
     if (options.price) {
       val.price = options.price
     }
+    val.icon = g.api.getFile("icon/lingquan.png")
     this.setData(val)
     // this.searchMemberCoupon();
   },
