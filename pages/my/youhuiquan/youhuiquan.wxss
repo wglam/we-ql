@@ -9,3 +9,23 @@
   height: 30%;
   width: 70%;
 }
+
+.lq_bg {
+  width: 72rpx;
+  height: 72rpx;
+  position: fixed;
+  bottom: 36rpx;
+  right: 0rpx;
+  background: transparent;
+  border-color: transparent;
+}
+
+.lq {
+  width: 72rpx;
+  height: 72rpx;
+  position: fixed;
+  bottom: 36rpx;
+  right: 0rpx;
+  background: transparent;
+  border-color: transparent;
+}

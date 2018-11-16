@@ -56,6 +56,8 @@ class Api extends WxRequest {
       getAction: 'ht/wechat/getAction', //动作名称获取视频
       getOrder: 'ht/wechat/getOrder', //获取订单信息
       bindOrder: 'ht/wechat/bindOrder', //绑定订单信息
+      searchCoupon: 'ht/wechat/searchCoupon', //领取优惠券列表
+      addMemberCoupon: 'ht/wechat/addMemberCoupon', //领取优惠券
     }
     this.$$const = {
       memberCard: null
@@ -485,6 +487,12 @@ class Api extends WxRequest {
   }
   decodeUserInfo(param) {
     return this.getRequest(this.$$path.decodeUserInfo, param)
+  }
+  searchCoupon(param) {
+    return this.getRequest(this.$$path.searchCoupon, param)
+  }
+  addMemberCoupon(param) {
+    return this.getRequest(this.$$path.addMemberCoupon, param)
   }
   //inner
   _convertDateFromString(dateString) {

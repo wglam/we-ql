@@ -1,0 +1,11 @@
+/* pages/youhuiquanMy/youhuiquanMy.wxss */
+
+.btn {
+  border-radius: 2em;
+  color: white;
+  background: linear-gradient(to right, #ffa21f, #fd5c01);
+  font-size: 24rpx;
+  line-height: 1rpx;
+  height: 30%;
+  width: 70%;
+}

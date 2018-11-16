@@ -26,7 +26,8 @@
     "pages/my/tuikuan/tuikuan",
     "pages/my/addtuikuan/addtuikuan",
     "pages/coach/coach",
-    "pages/bindorder/bindorder"
+    "pages/bindorder/bindorder",
+    "pages/my/getyhq/getyhq"
   ],
   "window": {
     "backgroundTextStyle": "light",
