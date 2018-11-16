@@ -72,10 +72,11 @@ Page({
             card.images = []
             for (var it of card.rightsContent.split(',')) {
               var img = g.api.getFile(it)
-              console.log(img)
               card.images.push(img)
             }
+            card.collageImg = g.api.getFile(card.collageImg)
           }
+          console.log("card" ,card)
           self.setData({
             card
           })
@@ -120,7 +121,6 @@ Page({
                 temp.push(it)
               }
             }
-            console.log(groups)
             self.setData({
               groups,
               total: res.data.total
@@ -134,7 +134,6 @@ Page({
       })
   },
   btnBuy(e) {
-    console.log(e)
     var self = this
     var collageMemberId = e.currentTarget.dataset.collagememberid
     if (collageMemberId == g.userInfo.memberId) {

@@ -1,66 +1,68 @@
-<bottom bottom='84'>
-  <view slot='content'>
-    <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-      <block wx:for="{{card.images}}" wx:key="{{index}}">
-        <swiper-item>
-          <image class='martch-parent' src='{{item}}' mode='aspectFill' />
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class='body flex'>
-      <view class='flex-1 pl'>
-        <view class='price'>
-          ￥{{card.collagePrice}}
-        </view>
-        <view class='src_price'>
-          ￥{{card.cardPrice}}
-        </view>
+<view slot='content'>
+  <swiper class='banner' autoplay indicator-dots circular interval="{{2000}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+    <block wx:for="{{card.images}}" wx:key="{{index}}">
+      <swiper-item>
+        <image class='martch-parent' src='{{item}}' mode='aspectFill' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='body flex'>
+    <view class='flex-1 pl'>
+      <view class='price'>
+        ￥{{card.collagePrice}}
       </view>
-      <view wx:if="{{card.collageNum>=1}}" class='tips flex-1  h-end pr'>
-        已拼{{card.collageNum}}件
+      <view class='src_price'>
+        ￥{{card.cardPrice}}
       </view>
     </view>
-    <view class='body pl pr pb flex '>
-      <view style='font-size:1.2em;margin-left:6rpx;color:#333;'>{{card.cardCategoryName}}</view>
-      <view class='content_end' style='font-size:24rpx;margin-left:12rpx;color:#666;'>{{card.cardName}}</view>
+    <view wx:if="{{card.collageNum>=1}}" class='tips flex-1  h-end pr'>
+      已拼{{card.collageNum}}件
     </view>
-    <view style='height:12rpx;'></view>
-    <view hidden='{{total<=2}}' class='body pl pr flex hp-v'>
-      <view style='flex:1;'>
-        {{total}}人在拼单，可直接参与
-      </view>
-      <view class='more' bindtap='moreClick'>查看更多</view>
+  </view>
+  <view class='body pl pr pb flex '>
+    <view style='font-size:1.2em;margin-left:6rpx;color:#333;'>{{card.cardCategoryName}}</view>
+    <view class='content_end' style='font-size:24rpx;margin-left:12rpx;color:#666;'>{{card.cardName}}</view>
+  </view>
+  <view style='height:12rpx;'></view>
+  <view hidden='{{total<=2}}' class='body pl pr flex hp-v'>
+    <view style='flex:1;'>
+      {{total}}人在拼单，可直接参与
     </view>
-    <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
+    <view class='more' bindtap='moreClick'>查看更多</view>
+  </view>
+  <!-- <scroll-view class='body pl pr' scroll-into-view='{{page}}' scroll-with-animation>
 </scroll-view> -->
 
-    <swiper hidden='{{total==0}}' class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
-      <block wx:for="{{groups}}" wx:key="{{index}}" wx:for-item="its">
-        <swiper-item class='swiperitem'>
-          <view class='item' wx:for="{{its}}" wx:key='{{item}}'>
-            <view class='flex-v flex-2'>
-              <image class='avatar' src='{{item.portrait}}' mode='widthFix' />
-              <view class='ml'>{{item.memberName}}</view>
-            </view>
-            <view class='font-min flex-1'>
-              <view class='num'>{{item.diffNum}}人</view>
-              <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
-            </view>
-            <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collageMemberId='{{item.collageMemberId}}' data-price='{{card.collagePrice}}' data-endtime='{{item.collageEndTime}}'>去拼单</view>
+  <swiper hidden='{{total==0}}' class='body pl pr' autoplay circular interval="{{3500}}" indicator-color='#CCCCCC' indicator-active-color='#ffa000'>
+    <block wx:for="{{groups}}" wx:key="{{index}}" wx:for-item="its">
+      <swiper-item class='swiperitem'>
+        <view class='item' wx:for="{{its}}" wx:key='{{item}}'>
+          <view class='flex-v flex-2'>
+            <image class='avatar' src='{{item.portrait}}' mode='widthFix' />
+            <view class='ml'>{{item.memberName}}</view>
           </view>
-        </swiper-item>
-      </block>
-    </swiper>
+          <view class='font-min flex-1'>
+            <view class='num'>{{item.diffNum}}人</view>
+            <timer before='剩余' time='{{item.minSeconds>=currentTime?item.minSeconds-currentTime:0}}' />
+          </view>
+          <view class='btn' hover-class='btn-hover' bindtap='btnBuy' data-isInitiator='1' data-collageMemberId='{{item.collageMemberId}}' data-price='{{card.collagePrice}}' data-endtime='{{item.collageEndTime}}'>去拼单</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<image wx:if="{{card.collageImg}}" style='width:100%;' src="{{card.collageImg}}" mode='widthFix' />
+
+<view class='bottom'>
+  <view class='self' hover-class='hover' hover-start-time='10' bindtap='btnBuy' data-isinitiator='1' data-price='{{card.cardPrice}}'>
+    ￥{{card.cardPrice}}
   </view>
-  <view class='bottom' slot="bottom">
-    <view class='self' hover-class='hover' hover-start-time='10' bindtap='btnBuy' data-isinitiator='1' data-price='{{card.cardPrice}}'>
-      ￥{{card.cardPrice}}
-    </view>
-    <view class='pin' hover-start-time='10' hover-class='btn-hover' bindtap='btnBuy' data-isinitiator='2' data-price='{{card.collagePrice}}'>
-      ￥{{card.collagePrice}}
-    </view>
+  <view class='pin' hover-start-time='10' hover-class='btn-hover' bindtap='btnBuy' data-isinitiator='2' data-price='{{card.collagePrice}}'>
+    ￥{{card.collagePrice}}
   </view>
-</bottom>
+</view>
+
 
 <view class='flex flex-c' style='position: fixed; top: 0;  background: rgba(0, 0, 0, 0.6); height:100%;width:100%;' hidden='{{!modal}}'>
   <view class='modal-dialog' style='height:70%;'>
