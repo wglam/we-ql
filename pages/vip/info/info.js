@@ -49,7 +49,7 @@ Page({
     }
     if (g.userInfo == null) {
       wx.navigateTo({
-        url: '/pages/shouquan/shouquan',
+        url: '/pages/shouquan/shouquan?srcFrom=' + options.srcFrom,
       })
     }
     if (options.home) {

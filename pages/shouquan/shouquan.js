@@ -18,6 +18,9 @@ Page({
     var param = {};
     param.encryptedData = event.detail.encryptedData;
     param.iv = event.detail.iv;
+    if (this.data.srcFrom) {
+      param.srcFrom = this.data.srcFrom
+    }
     g.api.login(param);
   },
   /*小程序的logo名称和图片 */
@@ -95,6 +98,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if (options.srcFrom) {
+      this.setData({
+        srcFrom: options.srcFrom
+      })
+    }
     this.searchConfig();
   },
   getWeRunData: function(code) {
