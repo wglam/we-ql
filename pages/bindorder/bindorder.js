@@ -14,8 +14,10 @@ Page({
    */
   onLoad: function(options) {
     var val = {}
-    if (options.orderCode) {
-      val.orderCode = options.orderCode
+    console.log("二维码", options)
+    // options.orderCode ='ORD1811000130'
+    if (options.scene) {
+      val.orderCode = options.scene
     }
     var that = this
     if (g.userInfo) {

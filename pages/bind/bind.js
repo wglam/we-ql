@@ -3,14 +3,14 @@ var g = getApp().globalData
 
 Page({
   onLoad(options) {
-    if (options.id) {
+    if (options.scene) {
       wx.showLoading({
         title: '加载中',
       })
       var that = this
       g.api.getMember({
           data: {
-            memberId: options.id
+            memberId: options.scene
           }
         }).then(res => {
           wx.hideLoading()
