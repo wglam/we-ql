@@ -72,23 +72,22 @@ Page({
     val.unit = e.currentTarget.dataset.item.unit
     val.max = e.currentTarget.dataset.item.max
 
-    if (val.top <= that.data.top) {
-      that.setData({
-        slider: val,
-        inputHide: false
-      })
-    } else if (val.index <= that.data.current) {
-      that.setData({
-        slider: val,
-        inputHide: false
-      })
-    } else {
+    if (val.top > that.data.top) {
       wx.showToast({
         title: '请按步骤训练',
         icon: 'none'
       })
+    } else if (val.index > that.data.current) {
+      wx.showToast({
+        title: '请按步骤训练',
+        icon: 'none'
+      })
+    } else {
+      that.setData({
+        slider: val,
+        inputHide: false
+      })
     }
-
   },
   _hideInput: function() {
     var that = this;
@@ -186,7 +185,7 @@ Page({
                 t.title = it.jsTitle
                 t.map = new Map
               }
-         
+
 
               var ittn = t.map.get(it.bzName)
               if (!ittn) {
@@ -276,7 +275,7 @@ Page({
     param.planContent.title = that.data.title
     param.planContent.items = that.data.items
     param.planContent.self = true
-
+    param.planId = that.data.planId
     // console.log(param.planContent.items );
     var value = 0;
     var max = 0;
