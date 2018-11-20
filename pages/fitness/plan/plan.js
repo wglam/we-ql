@@ -183,6 +183,7 @@ Page({
               if (!t) {
                 t = {}
                 t.title = it.jsTitle
+                t.self = it.self
                 t.map = new Map
               }
 
@@ -316,14 +317,28 @@ Page({
     wx.showLoading({
       title: '提交中',
     })
-
-    var planContent = JSON.stringify(param.planContent)
-    console.log(param)
+    param.planId = that.data.planId
+    var planContent = param.planContent
+    var temp = []
+    var title = planContent.title
+    var self = planContent.self
+    for (var it of planContent.items) {
+      var name = it.name
+      for (var vit of it.items) {
+        vit.jsTitle = title
+        vit.bzName = name
+        vit.self = self
+        temp.push(vit)
+      }
+    }
+    var planContent = JSON.stringify(temp)
+  
     param.planContent = planContent
     param.memberId = g.userInfo.memberId
+    console.log(param)
     g.api.addMemberJsPlan({
         data: {
-          memberJsPlan: param
+          memberJsPlan: JSON.stringify(param) 
         }
       })
       .then(res => {

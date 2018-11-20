@@ -334,7 +334,7 @@ class Api extends WxRequest {
   }
 
   addMemberJsPlan(param) {
-    return this.getRequest(this.$$path.addMemberJsPlan, param)
+    return this.postRequest(this.$$path.addMemberJsPlan, param)
   }
   getDietPlan(param) {
     return this.getRequest(this.$$path.getDietPlan, param)
