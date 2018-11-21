@@ -21,8 +21,9 @@
   font-size: 24rpx;
   height: 1.5em;
   line-height: 1.5em;
-  width: 3em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
